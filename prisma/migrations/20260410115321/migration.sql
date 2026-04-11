@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "inquiries" ALTER COLUMN "inquiry_date" SET DEFAULT CURRENT_TIMESTAMP;

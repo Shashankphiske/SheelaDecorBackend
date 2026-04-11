@@ -1,0 +1,420 @@
+{"ip":"::1","level":"http","message":"User fetch request received","timestamp":"2026-04-03 16:11:20"}
+{"ip":"::1","level":"http","message":"User fetch request received","timestamp":"2026-04-03 16:11:55"}
+{"level":"info","message":"User fetched","timestamp":"2026-04-03 16:11:57","userId":"aa7bbeda-7e2e-44f7-adad-fa955cc55125"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:20"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-03 17:08:24"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:08:50"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/:?email=ssp@gmail.com","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-03 17:08:58"}
+{"ip":"::1","level":"http","message":"User fetch request received","timestamp":"2026-04-03 17:08:58"}
+{"level":"info","message":"User fetched","timestamp":"2026-04-03 17:08:59","userId":"aa7bbeda-7e2e-44f7-adad-fa955cc55125"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/:?email=ssp@gmail.com","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-03 17:09:04"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:11:55"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/:?email=ssp@gmail.com","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-03 17:12:01"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/:?username=ssp","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-03 17:12:07"}
+{"ip":"::1","level":"http","message":"User fetch request received","timestamp":"2026-04-03 17:12:07"}
+{"level":"info","message":"User fetched","timestamp":"2026-04-03 17:12:08","userId":"aa7bbeda-7e2e-44f7-adad-fa955cc55125"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/:?username=ssp","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-03 17:12:13"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:14:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:46:34"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/forget/ssp@gmail.com:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-03 17:47:00"}
+{"ip":"::1","level":"http","message":"Forget password request received","timestamp":"2026-04-03 17:47:00"}
+{"ip":"::1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:23:41\n\n  20 }\n  21 \n  22 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 23     const user = await prisma.users.findFirst(\nInvalid input value: invalid input syntax for type uuid: \"ssp@gmail.com\"","timestamp":"2026-04-03 17:47:02"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:47:38"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:47:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:05"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:11"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:12"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:48:22"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/forget/ssp@gmail.com:","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-03 17:48:29"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/forget/ssp@gmail.com:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-03 17:48:58"}
+{"ip":"::1","level":"http","message":"Forget password request received","timestamp":"2026-04-03 17:48:58"}
+{"ip":"::1","level":"error","message":"secretOrPrivateKey must have a value","timestamp":"2026-04-03 17:48:59"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:49:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-03 17:49:59"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/user/forget/ssp@gmail.com:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-03 17:50:03"}
+{"ip":"::1","level":"http","message":"Forget password request received","timestamp":"2026-04-03 17:50:03"}
+{"level":"info","message":"Forget password token generated","timestamp":"2026-04-03 17:50:04","userId":"aa7bbeda-7e2e-44f7-adad-fa955cc55125"}
+{"ip":"::1","level":"http","message":"Change password request received","timestamp":"2026-04-03 17:50:59"}
+{"level":"info","message":"User password changed","timestamp":"2026-04-03 17:51:01","userId":"aa7bbeda-7e2e-44f7-adad-fa955cc55125"}
+{"ip":"::1","level":"http","message":"USER delete request received","timestamp":"2026-04-03 17:52:20","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.delete()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:191:37\n\n  188  */\n  189 hardDelete = async (id: string, userId?: string): Promise<T> => {\n  190     try {\n→ 191         return await this.model.delete({\n                where: {\n                  id: undefined,\n              ?   username?: String,\n              ?   email?: String,\n              ?   AND?: usersWhereInput | usersWhereInput[],\n              ?   OR?: usersWhereInput[],\n              ?   NOT?: usersWhereInput | usersWhereInput[],\n              ?   password?: StringFilter | String,\n              ?   role?: EnumRoleFilter | Role,\n              ?   createdAt?: DateTimeFilter | DateTime\n                }\n              })\n\nArgument `where` of type usersWhereUniqueInput needs at least one of `id`, `username` or `email` arguments. Available options are marked with ?.","timestamp":"2026-04-03 17:52:20"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:20:46"}
+{"ip":"::1","level":"http","message":"Login request received","timestamp":"2026-04-05 14:21:28"}
+{"level":"info","message":"POST /v1/auth 2124.427 ms","timestamp":"2026-04-05 14:21:30"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/auth/false:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-05 14:22:21"}
+{"ip":"::1","level":"http","message":"Logout request received","timestamp":"2026-04-05 14:22:21"}
+{"ip":"::1","level":"error","message":"Cannot read properties of undefined (reading 'refreshToken')","timestamp":"2026-04-05 14:22:21"}
+{"level":"info","message":"GET /v1/auth/false 123.226 ms","timestamp":"2026-04-05 14:22:21"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:23:24"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/auth/false:","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-05 14:23:26"}
+{"level":"info","message":"GET /v1/auth/false 249.666 ms","timestamp":"2026-04-05 14:23:26"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:23:52"}
+{"ip":"::1","level":"http","message":"Logout request received","timestamp":"2026-04-05 14:23:54"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.refreshTokens.findUnique()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\auth.repository.ts:46:50\n\n  43 \n  44 delete = async (id: string, flag: boolean) => {\n  45     return await prisma.$transaction(async (tx) => {\n→ 46         const token = await tx.refreshTokens.findUnique({\n               where: {\n                 id: {\n                   id: \"5e8937c5-157c-4587-a5c5-40200742cc50\",\n                   familyId: \"218a7bed-15a0-485a-b65a-109a8fed0d58\",\n                   userId: \"aa7bbeda-7e2e-44f7-adad-fa955cc55125\",\n                   isUsed: false\n                 },\n                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                 isUsed: false\n               }\n             })\n\nArgument `id`: Invalid value provided. Expected String, provided Object.","timestamp":"2026-04-05 14:23:55"}
+{"level":"info","message":"DELETE /v1/auth/false 1184.026 ms","timestamp":"2026-04-05 14:23:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:31:56"}
+{"ip":"::1","level":"http","message":"Logout request received","timestamp":"2026-04-05 14:32:01"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.refreshTokens.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\auth.repository.ts:46:50\n\n  43 \n  44 delete = async (id: string, flag: boolean) => {\n  45     return await prisma.$transaction(async (tx) => {\n→ 46         const token = await tx.refreshTokens.findFirst({\n               where: {\n                 id: {\n                   id: \"5e8937c5-157c-4587-a5c5-40200742cc50\",\n                   ~~\n                   familyId: \"218a7bed-15a0-485a-b65a-109a8fed0d58\",\n                   userId: \"aa7bbeda-7e2e-44f7-adad-fa955cc55125\",\n                   isUsed: false,\n             ?     equals?: String | StringFieldRefInput,\n             ?     in?: String[] | ListStringFieldRefInput,\n             ?     notIn?: String[] | ListStringFieldRefInput,\n             ?     lt?: String | StringFieldRefInput,\n             ?     lte?: String | StringFieldRefInput,\n             ?     gt?: String | StringFieldRefInput,\n             ?     gte?: String | StringFieldRefInput,\n             ?     mode?: QueryMode,\n             ?     not?: String | NestedUuidFilter\n                 },\n                 isUsed: false\n               }\n             })\n\nUnknown argument `id`. Did you mean `in`? Available options are marked with ?.","timestamp":"2026-04-05 14:32:02"}
+{"level":"info","message":"DELETE /v1/auth/false 1282.383 ms","timestamp":"2026-04-05 14:32:02"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:33:12"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-05 14:33:17"}
+{"ip":"::1","level":"http","message":"Login request received","timestamp":"2026-04-05 14:33:22"}
+{"level":"info","message":"POST /v1/auth 1737.607 ms","timestamp":"2026-04-05 14:33:24"}
+{"ip":"::1","level":"http","message":"Logout request received","timestamp":"2026-04-05 14:33:29"}
+{"level":"info","message":"User logged out","timestamp":"2026-04-05 14:33:30"}
+{"level":"info","message":"DELETE /v1/auth/false 1329.818 ms","timestamp":"2026-04-05 14:33:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 17:49:50"}
+{"ip":"::1","level":"http","message":"AREA create request received","timestamp":"2026-04-09 17:52:15","userId":"PUBLIC"}
+{"id":"220de051-4f6f-4416-ac34-90cb2899d8be","level":"info","message":"AREA created","timestamp":"2026-04-09 17:52:16"}
+{"level":"info","message":"POST /v1/areas 1516.816 ms","timestamp":"2026-04-09 17:52:16"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:AREA:*","resource":"AREA","timestamp":"2026-04-09 17:52:16","userId":"PUBLIC"}
+{"level":"info","message":"POST /v1/banks 1.931 ms","timestamp":"2026-04-09 17:54:22"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 17:54:48"}
+{"ip":"::1","level":"http","message":"BANK create request received","timestamp":"2026-04-09 17:54:52","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:79:37\n\n  76  */\n  77 create = async (data: TCreateData): Promise<T> => {\n  78     try {\n→ 79         return await this.model.create({\n               data: {\n                 bankName: \"sample\",\n                 accountName: \"sample\",\n                 branch: \"sample\",\n                 pincode: 411041,\n                 accountNumber: \"1234\",\n                                ~~~~~~\n                 ifscCode: \"124\",\n                 accountType: \"Savings\"\n               }\n             })\n\nArgument `accountNumber`: Invalid value provided. Expected Int, provided String.","timestamp":"2026-04-09 17:54:52"}
+{"level":"info","message":"POST /v1/banks 394.534 ms","timestamp":"2026-04-09 17:54:52"}
+{"ip":"::1","level":"http","message":"BANK create request received","timestamp":"2026-04-09 17:55:10","userId":"PUBLIC"}
+{"id":"04187ce6-4f29-4db6-ae59-08896225cd21","level":"info","message":"BANK created","timestamp":"2026-04-09 17:55:11"}
+{"level":"info","message":"POST /v1/banks 1269.617 ms","timestamp":"2026-04-09 17:55:11"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BANK:*","resource":"BANK","timestamp":"2026-04-09 17:55:11","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"BRAND create request received","timestamp":"2026-04-09 17:56:12","userId":"PUBLIC"}
+{"id":"fb086f2c-c0cd-47d4-b700-bd31d7a97acc","level":"info","message":"BRAND created","timestamp":"2026-04-09 17:56:13"}
+{"level":"info","message":"POST /v1/brands 1088.517 ms","timestamp":"2026-04-09 17:56:13"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BRAND:*","resource":"BRAND","timestamp":"2026-04-09 17:56:13","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"CATALOGUE create request received","timestamp":"2026-04-09 17:57:10","userId":"PUBLIC"}
+{"id":"ba944949-0c5b-4e00-9f54-befa556ccb06","level":"info","message":"CATALOGUE created","timestamp":"2026-04-09 17:57:11"}
+{"level":"info","message":"POST /v1/catalogues 1103.922 ms","timestamp":"2026-04-09 17:57:11"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CATALOGUE:*","resource":"CATALOGUE","timestamp":"2026-04-09 17:57:11","userId":"PUBLIC"}
+{"level":"info","message":"POST /v1/customers 1.482 ms","timestamp":"2026-04-09 17:59:04"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 17:59:24"}
+{"ip":"::1","level":"http","message":"CUSTOMER create request received","timestamp":"2026-04-09 17:59:26","userId":"PUBLIC"}
+{"id":"05cfef09-9bc5-4259-96f3-870d0798d29d","level":"info","message":"CUSTOMER created","timestamp":"2026-04-09 17:59:27"}
+{"level":"info","message":"POST /v1/customers 1463.648 ms","timestamp":"2026-04-09 17:59:27"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CUSTOMER:*","resource":"CUSTOMER","timestamp":"2026-04-09 17:59:28","userId":"PUBLIC"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:00:44"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:00:47"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:01:21"}
+{"ip":"::1","level":"http","message":"PRODUCT create request received","timestamp":"2026-04-09 18:01:58","userId":"PUBLIC"}
+{"id":"abc1a2fd-ddd1-4a35-b9b6-fb199b29f57c","level":"info","message":"PRODUCT created","timestamp":"2026-04-09 18:02:00"}
+{"level":"info","message":"POST /v1/products 1833.080 ms","timestamp":"2026-04-09 18:02:00"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:PRODUCT:*","resource":"PRODUCT","timestamp":"2026-04-09 18:02:00","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"TAILOR create request received","timestamp":"2026-04-09 18:07:54","userId":"PUBLIC"}
+{"id":"17cfd36c-f793-439c-8052-c74904a5eeee","level":"info","message":"TAILOR created","timestamp":"2026-04-09 18:07:55"}
+{"level":"info","message":"POST /v1/tailors 1106.219 ms","timestamp":"2026-04-09 18:07:55"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:TAILOR:*","resource":"TAILOR","timestamp":"2026-04-09 18:07:55","userId":"PUBLIC"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:12:50"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:13:27"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:13:38"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:14:32"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:14:35"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:14:42"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:15:24"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:15:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:15:41"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:16:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:16:31"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:16:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:20:23"}
+{"ip":"::1","level":"info","message":"No access token found, creating new credentials","timestamp":"2026-04-09 18:20:25"}
+{"level":"warn","message":"Invalid refresh token id","timestamp":"2026-04-09 18:20:26"}
+{"ip":"::1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-04-09 18:20:26"}
+{"level":"info","message":"POST /v1/projects 1234.873 ms","timestamp":"2026-04-09 18:20:26"}
+{"ip":"::1","level":"http","message":"Login request received","timestamp":"2026-04-09 18:20:44"}
+{"level":"warn","message":"No user found","timestamp":"2026-04-09 18:20:45","username":"ssp"}
+{"ip":"::1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-09 18:20:45"}
+{"level":"info","message":"POST /v1/auth 890.627 ms","timestamp":"2026-04-09 18:20:45"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:21:12"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.projects.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:10:47\n\n   7 create = async (projectData: ProjectData, productsData: ProjectProductData, customProductsData: CustomProductsData ) => {\n   8     return await prisma.$transaction(async (tx) => {\n   9 \n→ 10         const project = await tx.projects.create(\nInvalid input value: invalid input syntax for type uuid: \"NA\"","timestamp":"2026-04-09 18:21:19"}
+{"level":"info","message":"POST /v1/projects 1729.396 ms","timestamp":"2026-04-09 18:21:19"}
+{"ip":"::1","level":"http","message":"USER create request received","timestamp":"2026-04-09 18:21:33","userId":"PUBLIC"}
+{"level":"info","message":"User created","timestamp":"2026-04-09 18:21:34","userId":"2e01e229-bc06-4bc8-9043-5db64408e85e"}
+{"level":"info","message":"POST /v1/user/ 1096.180 ms","timestamp":"2026-04-09 18:21:34"}
+{"ip":"::1","level":"http","message":"Login request received","timestamp":"2026-04-09 18:21:47"}
+{"level":"warn","message":"Login failed: Incorrect password","timestamp":"2026-04-09 18:21:48","userId":"2e01e229-bc06-4bc8-9043-5db64408e85e"}
+{"ip":"::1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-04-09 18:21:48"}
+{"level":"info","message":"POST /v1/auth 1120.768 ms","timestamp":"2026-04-09 18:21:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:22:57"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:23:01"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:23:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:23:20"}
+{"ip":"::1","level":"http","message":"USER create request received","timestamp":"2026-04-09 18:23:30","userId":"PUBLIC"}
+{"level":"info","message":"User created","timestamp":"2026-04-09 18:23:32","userId":"c7ab56e9-eb67-4ef2-b22f-bcd5c90f9542"}
+{"level":"info","message":"POST /v1/user/ 1487.793 ms","timestamp":"2026-04-09 18:23:32"}
+{"ip":"::1","level":"http","message":"Login request received","timestamp":"2026-04-09 18:23:39"}
+{"level":"info","message":"POST /v1/auth 735.018 ms","timestamp":"2026-04-09 18:23:40"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.projects.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:10:47\n\n   7 create = async (projectData: ProjectData, productsData: ProjectProductData, customProductsData: CustomProductsData ) => {\n   8     return await prisma.$transaction(async (tx) => {\n   9 \n→ 10         const project = await tx.projects.create(\nInvalid input value: invalid input syntax for type uuid: \"NA\"","timestamp":"2026-04-09 18:23:46"}
+{"level":"info","message":"POST /v1/projects 775.200 ms","timestamp":"2026-04-09 18:23:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:23:58"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.projectProducts.createManyAndReturn()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:14:62\n\n  11     data: projectData\n  12 });\n  13 \n→ 14 const projectProducts = await tx.projectProducts.createManyAndReturn({\n       data: {\n         0: {\n           productId: \"abc1a2fd-ddd1-4a35-b9b6-fb199b29f57c\",\n           areaId: \"220de051-4f6f-4416-ac34-90cb2899d8be\",\n           price: 100,\n           quantity: 10,\n           designNo: 10,\n           measurementUnit: \"METER\"\n         },\n         projectId: \"0322bc71-6364-4930-8d33-aaa49a7b8de0\",\n     +   productId: String\n       }\n     })\n\nArgument `productId` is missing.","timestamp":"2026-04-09 18:24:02"}
+{"level":"info","message":"POST /v1/projects 1725.074 ms","timestamp":"2026-04-09 18:24:02"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:25:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:25:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:26:04"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:27:10"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:27:17"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:27:27"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:27:32"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:27:37"}
+{"ip":"::1","level":"error","message":"\nInvalid `tx.projectProducts.createManyAndReturn()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:14:62\n\n  11     data: projectData\n  12 });\n  13 \n→ 14 const projectProducts = await tx.projectProducts.createManyAndReturn({\n       data: {\n         0: {\n           productId: \"abc1a2fd-ddd1-4a35-b9b6-fb199b29f57c\",\n           areaId: \"220de051-4f6f-4416-ac34-90cb2899d8be\",\n           price: 100,\n           quantity: 10,\n           designNo: 10,\n           measurementUnit: \"METER\"\n         },\n         projectId: \"f012c282-d526-4737-9b42-1613df1b0bc1\",\n     +   productId: String\n       }\n     })\n\nArgument `productId` is missing.","timestamp":"2026-04-09 18:27:49"}
+{"level":"info","message":"POST /v1/projects 2150.845 ms","timestamp":"2026-04-09 18:27:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:28:43"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:28:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:28:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-09 18:28:58"}
+{"level":"info","message":"POST /v1/projects 2274.659 ms","timestamp":"2026-04-09 18:29:03"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:49"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:49"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-09 18:29:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:24"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:25"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:26"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:27"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:28"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:29"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 00:19:31"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 09:39:16"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 09:39:18"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-10 09:39:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 09:39:21"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 15:32:43"}
+{"ip":"::1","level":"http","message":"AREA create request received","timestamp":"2026-04-10 15:32:52","userId":"PUBLIC"}
+{"id":"c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3","level":"info","message":"AREA created","timestamp":"2026-04-10 15:32:54"}
+{"level":"info","message":"POST /v1/areas 1936.854 ms","timestamp":"2026-04-10 15:32:54"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:AREA:*","resource":"AREA","timestamp":"2026-04-10 15:32:54","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/areas/:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:33:15"}
+{"ip":"::1","level":"http","message":"AREA fetch all request received","timestamp":"2026-04-10 15:33:15","userId":"NA"}
+{"level":"info","message":"AREA records fetched","timestamp":"2026-04-10 15:33:17"}
+{"level":"info","message":"GET /v1/areas/ 2064.786 ms","timestamp":"2026-04-10 15:33:17"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/areas/c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:33:52"}
+{"ip":"::1","level":"http","message":"AREA fetch request received","timestamp":"2026-04-10 15:33:52","userId":"PUBLIC"}
+{"id":"c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3","level":"info","message":"AREA fetched","timestamp":"2026-04-10 15:33:54"}
+{"level":"info","message":"GET /v1/areas/c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3 1323.125 ms","timestamp":"2026-04-10 15:33:54"}
+{"ip":"::1","level":"http","message":"AREA update request received","timestamp":"2026-04-10 15:34:44","userId":"PUBLIC"}
+{"id":"c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3","level":"info","message":"AREA record updated","timestamp":"2026-04-10 15:34:45"}
+{"level":"info","message":"PATCH /v1/areas/c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3 1385.767 ms","timestamp":"2026-04-10 15:34:45"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:AREA:*","resource":"AREA","timestamp":"2026-04-10 15:34:45","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"AREA delete request received","timestamp":"2026-04-10 15:35:21","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.delete()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:191:37\n\n  188  */\n  189 hardDelete = async (id: string, userId?: string): Promise<T> => {\n  190     try {\n→ 191         return await this.model.delete({\n                where: {\n                  id: undefined,\n              ?   name?: String,\n              ?   AND?: areasWhereInput | areasWhereInput[],\n              ?   OR?: areasWhereInput[],\n              ?   NOT?: areasWhereInput | areasWhereInput[],\n              ?   createdAt?: DateTimeFilter | DateTime,\n              ?   projectProducts?: ProjectProductsListRelationFilter\n                }\n              })\n\nArgument `where` of type areasWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.","timestamp":"2026-04-10 15:35:21"}
+{"level":"info","message":"DELETE /v1/areas/c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3 98.082 ms","timestamp":"2026-04-10 15:35:21"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 15:36:25"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 15:36:46"}
+{"ip":"::1","level":"http","message":"AREA delete request received","timestamp":"2026-04-10 15:36:49","userId":"PUBLIC"}
+{"id":"c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3","level":"info","message":"AREA record hard deleted","timestamp":"2026-04-10 15:36:52"}
+{"level":"info","message":"DELETE /v1/areas/c8eeaafa-d00e-45bf-b5f0-5ad7262c73a3 2519.250 ms","timestamp":"2026-04-10 15:36:52"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:AREA:*","resource":"AREA","timestamp":"2026-04-10 15:36:52","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"BANK create request received","timestamp":"2026-04-10 15:39:52","userId":"PUBLIC"}
+{"id":"c4c991ae-9186-42c3-9afe-8c94ddd15677","level":"info","message":"BANK created","timestamp":"2026-04-10 15:39:54"}
+{"level":"info","message":"POST /v1/banks 1316.632 ms","timestamp":"2026-04-10 15:39:54"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BANK:*","resource":"BANK","timestamp":"2026-04-10 15:39:54","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/banks:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:40:16"}
+{"ip":"::1","level":"http","message":"BANK fetch all request received","timestamp":"2026-04-10 15:40:16","userId":"NA"}
+{"level":"info","message":"BANK records fetched","timestamp":"2026-04-10 15:40:20"}
+{"level":"info","message":"GET /v1/banks 4231.657 ms","timestamp":"2026-04-10 15:40:20"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/banks/c4c991ae-9186-42c3-9afe-8c94ddd15677:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:40:40"}
+{"ip":"::1","level":"http","message":"BANK fetch request received","timestamp":"2026-04-10 15:40:40","userId":"PUBLIC"}
+{"id":"c4c991ae-9186-42c3-9afe-8c94ddd15677","level":"info","message":"BANK fetched","timestamp":"2026-04-10 15:40:41"}
+{"level":"info","message":"GET /v1/banks/c4c991ae-9186-42c3-9afe-8c94ddd15677 1622.335 ms","timestamp":"2026-04-10 15:40:41"}
+{"ip":"::1","level":"http","message":"BANK update request received","timestamp":"2026-04-10 15:41:56","userId":"PUBLIC"}
+{"id":"c4c991ae-9186-42c3-9afe-8c94ddd15677","level":"info","message":"BANK record updated","timestamp":"2026-04-10 15:41:57"}
+{"level":"info","message":"PATCH /v1/banks/c4c991ae-9186-42c3-9afe-8c94ddd15677 1213.070 ms","timestamp":"2026-04-10 15:41:57"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BANK:*","resource":"BANK","timestamp":"2026-04-10 15:41:57","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"BANK delete request received","timestamp":"2026-04-10 15:42:23","userId":"PUBLIC"}
+{"id":"c4c991ae-9186-42c3-9afe-8c94ddd15677","level":"info","message":"BANK record hard deleted","timestamp":"2026-04-10 15:42:24"}
+{"level":"info","message":"DELETE /v1/banks/c4c991ae-9186-42c3-9afe-8c94ddd15677 1235.491 ms","timestamp":"2026-04-10 15:42:24"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BANK:*","resource":"BANK","timestamp":"2026-04-10 15:42:25","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"BRAND create request received","timestamp":"2026-04-10 15:43:38","userId":"PUBLIC"}
+{"id":"f5c43f00-25fe-4708-98b2-dd550948a0d7","level":"info","message":"BRAND created","timestamp":"2026-04-10 15:43:40"}
+{"level":"info","message":"POST /v1/brands 1544.758 ms","timestamp":"2026-04-10 15:43:40"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BRAND:*","resource":"BRAND","timestamp":"2026-04-10 15:43:40","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/brands:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:44:03"}
+{"ip":"::1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-10 15:44:03","userId":"NA"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-04-10 15:44:04"}
+{"level":"info","message":"GET /v1/brands 1546.428 ms","timestamp":"2026-04-10 15:44:04"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/brands/f5c43f00-25fe-4708-98b2-dd550948a0d7:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:44:25"}
+{"ip":"::1","level":"http","message":"BRAND fetch request received","timestamp":"2026-04-10 15:44:25","userId":"PUBLIC"}
+{"id":"f5c43f00-25fe-4708-98b2-dd550948a0d7","level":"info","message":"BRAND fetched","timestamp":"2026-04-10 15:44:26"}
+{"level":"info","message":"GET /v1/brands/f5c43f00-25fe-4708-98b2-dd550948a0d7 1149.341 ms","timestamp":"2026-04-10 15:44:26"}
+{"ip":"::1","level":"http","message":"BRAND update request received","timestamp":"2026-04-10 15:44:47","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.update()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:152:37\n\n  149     where[this.config.statusField] = null;\n  150 }\n  151 \n→ 152 return await this.model.update({\n        where: {\n          id: \"f5c43f00-25fe-4708-98b2-dd550948a0d7\"\n        },\n        data: {\n          bankName: \"idbi\",\n          ~~~~~~~~\n      ?   id?: String | StringFieldUpdateOperationsInput,\n      ?   name?: String | StringFieldUpdateOperationsInput,\n      ?   description?: String | NullableStringFieldUpdateOperationsInput | Null,\n      ?   createdAt?: DateTime | DateTimeFieldUpdateOperationsInput,\n      ?   projectProducts?: projectProductsUpdateManyWithoutBrandNestedInput\n        }\n      })\n\nUnknown argument `bankName`. Available options are marked with ?.","timestamp":"2026-04-10 15:44:47"}
+{"level":"info","message":"PATCH /v1/brands/f5c43f00-25fe-4708-98b2-dd550948a0d7 116.218 ms","timestamp":"2026-04-10 15:44:47"}
+{"ip":"::1","level":"http","message":"BRAND update request received","timestamp":"2026-04-10 15:45:00","userId":"PUBLIC"}
+{"id":"f5c43f00-25fe-4708-98b2-dd550948a0d7","level":"info","message":"BRAND record updated","timestamp":"2026-04-10 15:45:02"}
+{"level":"info","message":"PATCH /v1/brands/f5c43f00-25fe-4708-98b2-dd550948a0d7 1554.357 ms","timestamp":"2026-04-10 15:45:02"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BRAND:*","resource":"BRAND","timestamp":"2026-04-10 15:45:02","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"BRAND delete request received","timestamp":"2026-04-10 15:45:22","userId":"PUBLIC"}
+{"id":"f5c43f00-25fe-4708-98b2-dd550948a0d7","level":"info","message":"BRAND record hard deleted","timestamp":"2026-04-10 15:45:23"}
+{"level":"info","message":"DELETE /v1/brands/f5c43f00-25fe-4708-98b2-dd550948a0d7 981.095 ms","timestamp":"2026-04-10 15:45:23"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:BRAND:*","resource":"BRAND","timestamp":"2026-04-10 15:45:23","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"CATALOGUE create request received","timestamp":"2026-04-10 15:46:38","userId":"PUBLIC"}
+{"id":"59c318c4-8e05-4cb2-a921-569b7db95657","level":"info","message":"CATALOGUE created","timestamp":"2026-04-10 15:46:40"}
+{"level":"info","message":"POST /v1/catalogues 2134.823 ms","timestamp":"2026-04-10 15:46:40"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CATALOGUE:*","resource":"CATALOGUE","timestamp":"2026-04-10 15:46:41","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/catalogues:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:47:11"}
+{"ip":"::1","level":"http","message":"CATALOGUE fetch all request received","timestamp":"2026-04-10 15:47:11","userId":"NA"}
+{"level":"info","message":"CATALOGUE records fetched","timestamp":"2026-04-10 15:47:12"}
+{"level":"info","message":"GET /v1/catalogues 1006.414 ms","timestamp":"2026-04-10 15:47:12"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/catalogues/59c318c4-8e05-4cb2-a921-569b7db95657:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:47:52"}
+{"ip":"::1","level":"http","message":"CATALOGUE fetch request received","timestamp":"2026-04-10 15:47:52","userId":"PUBLIC"}
+{"id":"59c318c4-8e05-4cb2-a921-569b7db95657","level":"info","message":"CATALOGUE fetched","timestamp":"2026-04-10 15:47:53"}
+{"level":"info","message":"GET /v1/catalogues/59c318c4-8e05-4cb2-a921-569b7db95657 1284.289 ms","timestamp":"2026-04-10 15:47:53"}
+{"ip":"::1","level":"http","message":"CATALOGUE update request received","timestamp":"2026-04-10 15:48:20","userId":"PUBLIC"}
+{"id":"59c318c4-8e05-4cb2-a921-569b7db95657","level":"info","message":"CATALOGUE record updated","timestamp":"2026-04-10 15:48:21"}
+{"level":"info","message":"PATCH /v1/catalogues/59c318c4-8e05-4cb2-a921-569b7db95657 1196.754 ms","timestamp":"2026-04-10 15:48:21"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CATALOGUE:*","resource":"CATALOGUE","timestamp":"2026-04-10 15:48:22","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"CATALOGUE delete request received","timestamp":"2026-04-10 15:48:51","userId":"PUBLIC"}
+{"id":"59c318c4-8e05-4cb2-a921-569b7db95657","level":"info","message":"CATALOGUE record hard deleted","timestamp":"2026-04-10 15:48:52"}
+{"level":"info","message":"DELETE /v1/catalogues/59c318c4-8e05-4cb2-a921-569b7db95657 1584.246 ms","timestamp":"2026-04-10 15:48:52"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CATALOGUE:*","resource":"CATALOGUE","timestamp":"2026-04-10 15:48:52","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"CUSTOMER create request received","timestamp":"2026-04-10 15:50:34","userId":"PUBLIC"}
+{"id":"ca4610ab-35bb-4642-a8db-2b834d96f3f0","level":"info","message":"CUSTOMER created","timestamp":"2026-04-10 15:50:36"}
+{"level":"info","message":"POST /v1/customers 1581.049 ms","timestamp":"2026-04-10 15:50:36"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CUSTOMER:*","resource":"CUSTOMER","timestamp":"2026-04-10 15:50:36","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/customers:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:51:05"}
+{"ip":"::1","level":"http","message":"CUSTOMER fetch all request received","timestamp":"2026-04-10 15:51:05","userId":"NA"}
+{"level":"info","message":"CUSTOMER records fetched","timestamp":"2026-04-10 15:51:07"}
+{"level":"info","message":"GET /v1/customers 1758.184 ms","timestamp":"2026-04-10 15:51:07"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/customers/ca4610ab-35bb-4642-a8db-2b834d96f3f0:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:51:34"}
+{"ip":"::1","level":"http","message":"CUSTOMER fetch request received","timestamp":"2026-04-10 15:51:34","userId":"PUBLIC"}
+{"id":"ca4610ab-35bb-4642-a8db-2b834d96f3f0","level":"info","message":"CUSTOMER fetched","timestamp":"2026-04-10 15:51:35"}
+{"level":"info","message":"GET /v1/customers/ca4610ab-35bb-4642-a8db-2b834d96f3f0 1033.158 ms","timestamp":"2026-04-10 15:51:35"}
+{"ip":"::1","level":"http","message":"CUSTOMER update request received","timestamp":"2026-04-10 15:52:06","userId":"PUBLIC"}
+{"id":"ca4610ab-35bb-4642-a8db-2b834d96f3f0","level":"info","message":"CUSTOMER record updated","timestamp":"2026-04-10 15:52:07"}
+{"level":"info","message":"PATCH /v1/customers/ca4610ab-35bb-4642-a8db-2b834d96f3f0 1252.987 ms","timestamp":"2026-04-10 15:52:07"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CUSTOMER:*","resource":"CUSTOMER","timestamp":"2026-04-10 15:52:07","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"CUSTOMER delete request received","timestamp":"2026-04-10 15:52:32","userId":"PUBLIC"}
+{"id":"ca4610ab-35bb-4642-a8db-2b834d96f3f0","level":"info","message":"CUSTOMER record hard deleted","timestamp":"2026-04-10 15:52:33"}
+{"level":"info","message":"DELETE /v1/customers/ca4610ab-35bb-4642-a8db-2b834d96f3f0 1549.457 ms","timestamp":"2026-04-10 15:52:33"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CUSTOMER:*","resource":"CUSTOMER","timestamp":"2026-04-10 15:52:33","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"TAILOR create request received","timestamp":"2026-04-10 15:53:50","userId":"PUBLIC"}
+{"id":"84b29672-1966-4be3-b572-13b05fca3d6e","level":"info","message":"TAILOR created","timestamp":"2026-04-10 15:53:51"}
+{"level":"info","message":"POST /v1/tailors 953.222 ms","timestamp":"2026-04-10 15:53:51"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:TAILOR:*","resource":"TAILOR","timestamp":"2026-04-10 15:53:51","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/tailors:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:54:16"}
+{"ip":"::1","level":"http","message":"TAILOR fetch all request received","timestamp":"2026-04-10 15:54:16","userId":"NA"}
+{"level":"info","message":"TAILOR records fetched","timestamp":"2026-04-10 15:54:17"}
+{"level":"info","message":"GET /v1/tailors 1129.231 ms","timestamp":"2026-04-10 15:54:17"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/tailors/84b29672-1966-4be3-b572-13b05fca3d6e:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 15:54:39"}
+{"ip":"::1","level":"http","message":"TAILOR fetch request received","timestamp":"2026-04-10 15:54:39","userId":"PUBLIC"}
+{"id":"84b29672-1966-4be3-b572-13b05fca3d6e","level":"info","message":"TAILOR fetched","timestamp":"2026-04-10 15:54:40"}
+{"level":"info","message":"GET /v1/tailors/84b29672-1966-4be3-b572-13b05fca3d6e 1327.484 ms","timestamp":"2026-04-10 15:54:40"}
+{"ip":"::1","level":"http","message":"TAILOR update request received","timestamp":"2026-04-10 15:55:26","userId":"PUBLIC"}
+{"id":"84b29672-1966-4be3-b572-13b05fca3d6e","level":"info","message":"TAILOR record updated","timestamp":"2026-04-10 15:55:27"}
+{"level":"info","message":"PATCH /v1/tailors/84b29672-1966-4be3-b572-13b05fca3d6e 1026.893 ms","timestamp":"2026-04-10 15:55:27"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:TAILOR:*","resource":"TAILOR","timestamp":"2026-04-10 15:55:28","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"TAILOR delete request received","timestamp":"2026-04-10 15:55:53","userId":"PUBLIC"}
+{"id":"84b29672-1966-4be3-b572-13b05fca3d6e","level":"info","message":"TAILOR record hard deleted","timestamp":"2026-04-10 15:55:54"}
+{"level":"info","message":"DELETE /v1/tailors/84b29672-1966-4be3-b572-13b05fca3d6e 1007.908 ms","timestamp":"2026-04-10 15:55:54"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:TAILOR:*","resource":"TAILOR","timestamp":"2026-04-10 15:55:54","userId":"PUBLIC"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 15:57:27"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 15:57:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:18:42"}
+{"ip":"::1","level":"http","message":"PRODUCT create request received","timestamp":"2026-04-10 16:18:45","userId":"PUBLIC"}
+{"level":"info","message":"PRODUCT created","timestamp":"2026-04-10 16:18:47"}
+{"level":"info","message":"POST /v1/products 1638.587 ms","timestamp":"2026-04-10 16:18:47"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:PRODUCT:*","resource":"PRODUCT","timestamp":"2026-04-10 16:18:47","userId":"PUBLIC"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/products:","level":"info","message":"Cache 'Miss' for key","timestamp":"2026-04-10 16:20:08"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-10 16:20:08","userId":"NA"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:54:33\n\n  51 }\n  52 \n  53 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 54 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {}\n         ]\n       },\n       orderBy: [\n         {\n           createdAt: \"desc\"\n         },\n         {\n           id: \"desc\"\n         }\n       ],\n       includes: {\n       ~~~~~~~~\n         stitchings: true\n       },\n     ? cursor?: productsWhereUniqueInput,\n     ? skip?: Int,\n     ? distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]\n     })\n\nUnknown argument `includes`. Available options are marked with ?.","timestamp":"2026-04-10 16:20:08"}
+{"level":"info","message":"GET /v1/products 226.256 ms","timestamp":"2026-04-10 16:20:08"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:20:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:20:29"}
+{"key":"v1:cache:undefined:GLOBAL:/v1/products:","level":"info","message":"Cache 'Hit' for key","timestamp":"2026-04-10 16:20:32"}
+{"level":"info","message":"GET /v1/products 110.935 ms","timestamp":"2026-04-10 16:20:32"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:20:57"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-10 16:21:01","userId":"NA"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:54:33\n\n  51 }\n  52 \n  53 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 54 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {}\n         ]\n       },\n       orderBy: [\n         {\n           createdAt: \"desc\"\n         },\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         stitchings: true,\n         ~~~~~~~~~~\n     ?   projectProducts?: true,\n     ?   stichings?: true\n       }\n     })\n\nUnknown field `stitchings` for include statement on model `products`. Available options are marked with ?.","timestamp":"2026-04-10 16:21:01"}
+{"level":"info","message":"GET /v1/products 282.377 ms","timestamp":"2026-04-10 16:21:01"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:23:12"}
+{"ip":"::1","level":"http","message":"PRODUCT delete request received","timestamp":"2026-04-10 16:23:16","userId":"PUBLIC"}
+{"id":"279927ee-cc2a-4a8c-a3a2-cbc2268bd60f","level":"info","message":"PRODUCT record hard deleted","timestamp":"2026-04-10 16:23:17"}
+{"level":"info","message":"DELETE /v1/products/279927ee-cc2a-4a8c-a3a2-cbc2268bd60f 1230.111 ms","timestamp":"2026-04-10 16:23:17"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:PRODUCT:*","resource":"PRODUCT","timestamp":"2026-04-10 16:23:17","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"PRODUCT create request received","timestamp":"2026-04-10 16:23:25","userId":"PUBLIC"}
+{"level":"info","message":"PRODUCT created","timestamp":"2026-04-10 16:23:26"}
+{"level":"info","message":"POST /v1/products 380.735 ms","timestamp":"2026-04-10 16:23:26"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:PRODUCT:*","resource":"PRODUCT","timestamp":"2026-04-10 16:23:26","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-10 16:23:37","userId":"NA"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-04-10 16:23:38"}
+{"level":"info","message":"GET /v1/products 1425.262 ms","timestamp":"2026-04-10 16:23:38"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:29:15"}
+{"ip":"::1","level":"http","message":"PRODUCT delete request received","timestamp":"2026-04-10 16:29:17","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-04-10 16:29:19"}
+{"level":"info","message":"DELETE /v1/products/86616812-f6af-424c-b5a7-1e625c49b5a5 1380.205 ms","timestamp":"2026-04-10 16:29:19"}
+{"ip":"::1","level":"http","message":"PRODUCT create request received","timestamp":"2026-04-10 16:29:32","userId":"PUBLIC"}
+{"ip":"::1","level":"error","message":"\nInvalid `prisma.products.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:14:47\n\n  11 }\n  12 \n  13 create = async (data: any): Promise<any> => {\n→ 14     const product = await prisma.products.create(\nUnique constraint failed on the fields: (`name`)","timestamp":"2026-04-10 16:29:34"}
+{"level":"info","message":"POST /v1/products 1319.852 ms","timestamp":"2026-04-10 16:29:34"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-10 16:29:39","userId":"NA"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:54:33\n\n  51 }\n  52 \n  53 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 54 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {}\n         ]\n       },\n       orderBy: [\n         {\n           createdAt: \"desc\"\n         },\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         stitchings: true,\n         ~~~~~~~~~~\n     ?   projectProducts?: true,\n     ?   stitching?: true\n       }\n     })\n\nUnknown field `stitchings` for include statement on model `products`. Available options are marked with ?.","timestamp":"2026-04-10 16:29:39"}
+{"level":"info","message":"GET /v1/products 25.733 ms","timestamp":"2026-04-10 16:29:39"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:30:06"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 16:30:08"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-10 16:30:12","userId":"NA"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-04-10 16:30:13"}
+{"level":"info","message":"GET /v1/products 1500.846 ms","timestamp":"2026-04-10 16:30:13"}
+{"ip":"::1","level":"http","message":"PRODUCT fetch request received","timestamp":"2026-04-10 16:30:52","userId":"PUBLIC"}
+{"id":"86616812-f6af-424c-b5a7-1e625c49b5a5","level":"info","message":"PRODUCT fetched","timestamp":"2026-04-10 16:30:53"}
+{"level":"info","message":"GET /v1/products/86616812-f6af-424c-b5a7-1e625c49b5a5 1083.763 ms","timestamp":"2026-04-10 16:30:53"}
+{"ip":"::1","level":"http","message":"PRODUCT update request received","timestamp":"2026-04-10 16:31:41","userId":"PUBLIC"}
+{"id":"86616812-f6af-424c-b5a7-1e625c49b5a5","level":"info","message":"PRODUCT record updated","timestamp":"2026-04-10 16:31:41"}
+{"level":"info","message":"PATCH /v1/products/86616812-f6af-424c-b5a7-1e625c49b5a5 923.879 ms","timestamp":"2026-04-10 16:31:41"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:PRODUCT:*","resource":"PRODUCT","timestamp":"2026-04-10 16:31:42","userId":"PUBLIC"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:15:49"}
+{"ip":"::1","level":"http","message":"CATALOGUE create request received","timestamp":"2026-04-10 17:17:25","userId":"PUBLIC"}
+{"id":"5590c8a1-ca96-4535-87df-81e7aabdba70","level":"info","message":"CATALOGUE created","timestamp":"2026-04-10 17:17:26"}
+{"level":"info","message":"POST /v1/catalogues 1233.054 ms","timestamp":"2026-04-10 17:17:26"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:CATALOGUE:*","resource":"CATALOGUE","timestamp":"2026-04-10 17:17:26","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"INQUIRY create request received","timestamp":"2026-04-10 17:17:48","userId":"PUBLIC"}
+{"id":"a0a98cc6-17e7-4b20-9436-dc817d975f92","level":"info","message":"INQUIRY created","timestamp":"2026-04-10 17:17:49"}
+{"level":"info","message":"POST /v1/inquiries 881.898 ms","timestamp":"2026-04-10 17:17:49"}
+{"action":"CREATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:INQUIRY:*","resource":"INQUIRY","timestamp":"2026-04-10 17:17:49","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-10 17:18:13","userId":"NA"}
+{"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:123:33\n\n  120 }\n  121 \n  122 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 123 return await this.model.findMany({\n        take: 10,\n        where: {\n          AND: [\n            {}\n          ]\n        },\n        orderBy: [\n          {\n            createdAt: \"desc\"\n          },\n          {\n            id: \"desc\"\n          }\n        ]\n      })\n\nUnknown argument `createdAt`. Available options are marked with ?.","timestamp":"2026-04-10 17:18:13"}
+{"level":"info","message":"GET /v1/inquiries 103.181 ms","timestamp":"2026-04-10 17:18:13"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:20:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:21:01"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:21:10"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:21:50"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:21:57"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:22:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:22:28"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:22:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-10 17:23:46"}
+{"ip":"::1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-10 17:23:51","userId":"NA"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-10 17:23:53"}
+{"level":"info","message":"GET /v1/inquiries 1257.185 ms","timestamp":"2026-04-10 17:23:53"}
+{"ip":"::1","level":"http","message":"INQUIRY fetch request received","timestamp":"2026-04-10 17:24:35","userId":"PUBLIC"}
+{"id":"a0a98cc6-17e7-4b20-9436-dc817d975f92","level":"info","message":"INQUIRY fetched","timestamp":"2026-04-10 17:24:36"}
+{"level":"info","message":"GET /v1/inquiries/a0a98cc6-17e7-4b20-9436-dc817d975f92 882.857 ms","timestamp":"2026-04-10 17:24:36"}
+{"ip":"::1","level":"http","message":"INQUIRY update request received","timestamp":"2026-04-10 17:25:11","userId":"PUBLIC"}
+{"id":"a0a98cc6-17e7-4b20-9436-dc817d975f92","level":"info","message":"INQUIRY record updated","timestamp":"2026-04-10 17:25:13"}
+{"level":"info","message":"PATCH /v1/inquiries/a0a98cc6-17e7-4b20-9436-dc817d975f92 1481.005 ms","timestamp":"2026-04-10 17:25:13"}
+{"action":"UPDATE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:INQUIRY:*","resource":"INQUIRY","timestamp":"2026-04-10 17:25:13","userId":"PUBLIC"}
+{"ip":"::1","level":"http","message":"INQUIRY delete request received","timestamp":"2026-04-10 17:25:35","userId":"PUBLIC"}
+{"id":"a0a98cc6-17e7-4b20-9436-dc817d975f92","level":"info","message":"INQUIRY record hard deleted","timestamp":"2026-04-10 17:25:36"}
+{"level":"info","message":"DELETE /v1/inquiries/a0a98cc6-17e7-4b20-9436-dc817d975f92 859.553 ms","timestamp":"2026-04-10 17:25:36"}
+{"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:INQUIRY:*","resource":"INQUIRY","timestamp":"2026-04-10 17:25:36","userId":"PUBLIC"}

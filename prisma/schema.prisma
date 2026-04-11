@@ -1,0 +1,340 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+  INTERIOR
+  SALES_ASSOCIATE
+}
+
+model users {
+  id String @id @default(uuid()) @db.Uuid
+  username String @unique
+  email String @unique
+  password String
+  role Role
+  phonenumber Int?
+  address String?
+  alternatePhonenumber Int? @map("alternate_phonenumber")
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  refreshTokens refreshTokens[]
+
+  projects projects[]
+
+  @@index([id, createdAt])
+}
+
+model refreshTokens {
+  id String @id @default(uuid()) @db.Uuid
+  familyId String @db.Uuid @map("family_id")
+  userId String @db.Uuid @map("user_id")
+  role Role @default(INTERIOR)
+  isUsed Boolean @map("is_used")
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+  @@index([familyId])
+}
+
+model customers {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  email String
+  phonenumber Int
+  alternatePhonenumber Int? @map("alternate_phonenumber")
+  address String
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  payments payments[]
+
+  projects projects[]
+
+  @@index([id, createdAt])
+}
+
+model brands {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  description String?
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+model catalogues {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  description String?
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+enum SellingUnit {
+  METER
+  FEET 
+  INCHES
+  CENTIMETER
+  PANHA
+  RUNNING_FEET
+}
+
+enum productType {
+  FABRIC
+  AREA
+  RUNNING_LENGTH
+  PEICE
+  FIXED_LENGTH
+  FIXED_AREA
+  TAILORING
+}
+
+model products {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  description String?
+  sellingUnit SellingUnit? @map("selling_unit")
+  productType String? @map("product_type")
+  price Decimal
+  taxRate Decimal @map("tax_rate")
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  projectProducts projectProducts[]
+
+  stitching stitchings?
+
+  @@index([id, createdAt])
+}
+
+model stitchings {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  price Decimal
+  unit SellingUnit
+  productId String @db.Uuid @map("product_id") @unique
+
+  product products? @relation(fields: [productId], references: [id])
+}
+
+model tailors {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  phonenumber Int?
+  email String?
+  address String?
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  @@index([id, createdAt])
+}
+
+model areas {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+enum BankTypes {
+  SAVINGS
+  CURRENT
+  RECURRING
+  SALARY
+}
+
+model banks {
+  id String @id @default(uuid()) @db.Uuid
+  bankName String @map("bank_name")
+  accountName String? @map("account_name")
+  branch String
+  pincode String
+  accountNumber String @map("account_number")
+  ifscCode String @map("ifsc_code")
+  accountType BankTypes @map("account_type")
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  project projects[]
+
+  @@index([id, createdAt])
+}
+
+enum Status {
+  TODO
+  INPROGRESS
+  COMPLETED
+}
+
+enum ProjectStatus {
+  PENDING
+  ACTIVE
+  GOODS_PENDING
+  GOODS_COMPLETE
+  TAILOR_PENDING
+  TAILOR_COMPLETE
+  COMPLETED
+  DEFAULTER
+}
+
+model projects {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  customerId String? @db.Uuid @map("customer_id")
+  creatorId String @db.Uuid @map("creator_id")
+  status ProjectStatus
+  totalAmount Decimal @map("total_amount")
+  totalTax Decimal @map("total_tax")
+  paid Decimal
+  discount Decimal
+  discountType String @map("discount_type")
+  projectDate DateTime @db.Timestamptz @map("project_date")
+  additionalRequests String? @map("additional_requests")
+  address String?
+  bankId String @db.Uuid @map("bank_id")
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  customer customers? @relation(fields: [customerId], references: [id])
+  creator users @relation(fields: [creatorId], references: [id])
+  bank banks @relation(fields: [bankId], references: [id])
+
+  projectProducts projectProducts[]
+
+  tasks tasks[]
+
+  customProducts customProducts[]
+
+  payments payments[]
+
+  @@index([id, createdAt])
+}
+
+enum ProductStatus {
+  PENDING
+  ORDERED
+  RECEIVED
+  INSTOCK
+}
+
+model projectProducts {
+  id String @id @db.Uuid @default(uuid())
+  projectId String @db.Uuid @map("project_id")
+  productId String @db.Uuid @map("product_id")
+  areaId String? @db.Uuid @map("area_id")
+  price Decimal
+  quantity Int
+  brandId String? @db.Uuid @map("company_id")
+  catalogueId String? @db.Uuid @map("catalogue_id")
+  designNo Int @map("design_no")
+  references String?
+  measurementUnit SellingUnit @default(METER) @map("measurement_unit")
+  width Decimal?
+  height Decimal?
+  length Decimal?
+  status ProductStatus @default(PENDING)
+  remark String?
+  orderId String? @map("order_id")
+
+  area areas? @relation(fields: [areaId], references: [id], onDelete: Cascade)
+  catalogue catalogues? @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
+  brand brands? @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("project_products")
+}
+
+model customProducts {
+  id String @id @db.Uuid @default(uuid())
+  name String
+  quantity Int
+  price Decimal
+  tax Decimal
+  remarks String
+  projectId String @db.Uuid @map("project_id")
+
+  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("custom_poducts")
+}
+
+enum Priority {
+  HIGH
+  MODERATE
+  LOW
+}
+
+model tasks {
+  id String @id @default(uuid()) @db.Uuid
+  title String
+  description String?
+  taskDate DateTime @db.Timestamptz @map("task_date")
+  projectId String @db.Uuid @map("project_id")
+  priority Priority
+  status Status
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([id, createdAt])
+}
+
+model stores {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  address String?
+  phonenumber Int
+  email String
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  @@index([id, createdAt])
+}
+
+enum PaymentType {
+  CREDIT
+  DEBIT
+}
+
+model payments {
+  id String @id @default(uuid()) @db.Uuid
+  customerId String? @db.Uuid @map("customer_id")
+  projectId String? @db.Uuid @map("project_id")
+  amount Decimal
+  paymentMode String @map("payment_mode")
+  type PaymentType
+  remarks String
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  customer customers? @relation(fields: [customerId], references: [id])
+  project projects? @relation(fields: [projectId], references: [id])
+
+  @@index([id, createdAt])
+}
+
+model inquiries {
+  id String @id @default(uuid()) @db.Uuid
+  projectName String @map("project_name")
+  customerName String @map("customer_name")
+  phonenumber Int
+  comments String?
+  createdAt DateTime @default(now()) @db.Timestamptz @map("inquiry_date")
+  followUpDate DateTime @db.Timestamptz @map("follow_up_date")
+}
