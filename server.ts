@@ -32,7 +32,7 @@ const stream = {
 
 const corsOptions = {
   // Replace the second URL with your actual frontend URL after deploying it
-  origin: ['http://localhost:5173', 'https://onrender.com'],
+  origin: ['http://localhost:5173', 'https://project-sheela-dash.lovable.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Required if you are using cookies or sessions
