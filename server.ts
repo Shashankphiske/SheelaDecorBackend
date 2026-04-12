@@ -61,6 +61,6 @@ app.use("/v1/inquiries", InquiryRouter);
 
 app.use(globalErrorHandler.handleError);
 
-app.listen(config.port, () => {
+app.listen(config.port, "0.0.0.0",() => {
     console.log(`App listening on port : ${config.port}`);
 });

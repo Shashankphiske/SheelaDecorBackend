@@ -418,3 +418,4 @@
 {"id":"a0a98cc6-17e7-4b20-9436-dc817d975f92","level":"info","message":"INQUIRY record hard deleted","timestamp":"2026-04-10 17:25:36"}
 {"level":"info","message":"DELETE /v1/inquiries/a0a98cc6-17e7-4b20-9436-dc817d975f92 859.553 ms","timestamp":"2026-04-10 17:25:36"}
 {"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:INQUIRY:*","resource":"INQUIRY","timestamp":"2026-04-10 17:25:36","userId":"PUBLIC"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-12 09:34:54"}
