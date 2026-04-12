@@ -19,6 +19,7 @@ import { BankRouter } from "./router/bank.router.js";
 import { CustomerRouter } from "./router/customer.router.js";
 import { StitchingRouter } from "./router/stitching.router.js";
 import { InquiryRouter } from "./router/inquiry.router.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
@@ -28,6 +29,17 @@ app.use(cookieParser());
 const stream = {
     write: (message: string) => logger.info(message.trim())
 };
+
+const corsOptions = {
+  // Replace the second URL with your actual frontend URL after deploying it
+  origin: ['http://localhost:5173', 'https://onrender.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Required if you are using cookies or sessions
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions));
 
 app.use(morgan(`:method :url :response-time ms`, { stream }) );
 
