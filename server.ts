@@ -36,8 +36,6 @@ app.use(morgan(`:method :url :response-time ms`, { stream }) );
 app.use("/v1/user", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
-
-
 app.use("/v1/brands", BrandRouter);
 app.use("/v1/tailors", TailorRouter);
 
@@ -58,6 +56,8 @@ app.use("/v1/customers", CustomerRouter);
 app.use("/v1/stitching", StitchingRouter);
 
 app.use("/v1/inquiries", InquiryRouter);
+
+
 
 app.use(globalErrorHandler.handleError);
 
