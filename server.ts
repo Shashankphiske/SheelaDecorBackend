@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Request, type Response } from "express";
 import dotenv from "dotenv";
 import { config } from "./config/index.js";
 import { UserRouter } from "./router/user.router.js";
@@ -69,7 +69,19 @@ app.use("/v1/stitching", StitchingRouter);
 
 app.use("/v1/inquiries", InquiryRouter);
 
+app.get("/", (req: Request, res: Response) => {
+    if(req.headers["x-cron-key"] == config.cronKey) {
+        return res.status(200).json({
+            success: true,
+            message: "Service authenticated"
+        });
+    }
 
+    return res.status(400).json({
+        success: false,
+        message: "Service unauthorized"
+    });
+})
 
 app.use(globalErrorHandler.handleError);
 
