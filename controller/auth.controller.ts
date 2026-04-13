@@ -31,6 +31,16 @@ class AuthController {
 
         return ApiResponse.success(res, "Logged out");
     }
+
+    fetchState = async (req: Request, res: Response) => {
+        logger.http("Fetch state request received", {
+            ip: req.ip
+        });
+
+        const data = await this.service.fetchState(req.cookies.accessToken);
+
+        return ApiResponse.success(res, "State fetched", data);
+    }
 }
 
 export { AuthController }

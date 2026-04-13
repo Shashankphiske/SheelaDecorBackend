@@ -65,6 +65,18 @@ class AuthService {
 
         return { accessToken, refreshToken: newRefreshToken };
     }
+
+    fetchState = async (accessToken: string) => {
+        const { id, role } = authUtils.decodeAccesstoken(accessToken);
+
+        if(!id || !role) {
+            logger.warn(errorMessage.UNAUTHORIZED.message);
+
+            throw new ServerError(errorMessage.UNAUTHORIZED);
+        }
+
+        return { id, role };
+    }
 }
 
 export { AuthService }
