@@ -11,6 +11,7 @@ interface Config {
     directDbConnection: string
     databaseUrl: string
     redisUrl: string
+    cronKey: string
 }
 
 const config: Config = {
@@ -18,7 +19,8 @@ const config: Config = {
     jwtSecret: process.env.JWT_SECRET ?? "",
     directDbConnection: process.env.DIRECT_URL ?? "",
     databaseUrl: process.env.DATABASE_URL ?? "",
-    redisUrl: process.env.REDIS_URL ?? ""
+    redisUrl: process.env.REDIS_URL ?? "",
+    cronKey: process.env.CRON_KEY ?? ""
 }
 
 export { config };
