@@ -11,11 +11,9 @@ async function main() {
       email: 'admin@example.com',
       username: 'admin',
       password: hashedPassword,
-      role: 'ADMIN', // Ensure this exists in your schema
+      role: 'ADMIN',
     },
   })
-
-  console.log({ admin })
 }
 
 main()

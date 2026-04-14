@@ -1,7 +1,7 @@
 interface Tailor {
     id: string
     name: string
-    phonenumber: number | null
+    phonenumber: string | null
     email: string | null
     address: string | null
     createdAt: Date
@@ -9,7 +9,7 @@ interface Tailor {
 
 interface TailorData {
     name: string
-    phonenumber: number | null
+    phonenumber: string | null
     email: string | null
     address: string | null
 }

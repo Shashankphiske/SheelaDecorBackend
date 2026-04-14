@@ -2,7 +2,7 @@ interface Inquiry {
     id: string
     projectName: string
     customerName: string
-    phonenumber: number
+    phonenumber: string
     comments: string | null
     createdAt: Date
     followUpDate: Date
@@ -11,7 +11,7 @@ interface Inquiry {
 interface InquiryData {
     projectName: string
     customerName: string
-    phonenumber: number
+    phonenumber: string
     comments?: string
     createdAt: Date
     followUpDate: Date

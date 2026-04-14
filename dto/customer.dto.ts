@@ -10,9 +10,9 @@ interface Customer {
 
 interface CustomerData {
     name: string
-    phonenumber: number
+    phonenumber: string
     email: string
-    alternatePhonenumber: number | null
+    alternatePhonenumber: string | null
     address: string
 }
 

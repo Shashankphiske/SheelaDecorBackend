@@ -13,7 +13,7 @@ class UserService extends BaseService<User, UserData, any> {
 
     create = async (data: UserData) => {
         const hashedPassword = await authUtils.hashPassword(data.password);
-        const user = await this.method.create({ ...data, password: hashedPassword });
+        const user = await this.method.create({ ...data, password: hashedPassword, role: data.role ? data.role : "USER" });
 
         logger.info("User created", {
             userId: user.id

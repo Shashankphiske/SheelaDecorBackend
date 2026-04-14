@@ -10,10 +10,7 @@ class UserRepository extends BaseRepository<User, UserData, any> {
 
     create = async (data: UserData): Promise<User> => {
         const user = await prisma.users.create({
-            data: {
-                ...data,
-                role: "USER"
-            }
+            data: data
         });
 
         return user;

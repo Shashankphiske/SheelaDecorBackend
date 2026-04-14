@@ -25,9 +25,9 @@ model users {
   email String @unique
   password String
   role Role
-  phonenumber Int?
+  phonenumber String?
   address String?
-  alternatePhonenumber Int? @map("alternate_phonenumber")
+  alternatePhonenumber String? @map("alternate_phonenumber")
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
   refreshTokens refreshTokens[]
@@ -54,8 +54,8 @@ model customers {
   id String @id @default(uuid()) @db.Uuid
   name String
   email String
-  phonenumber Int
-  alternatePhonenumber Int? @map("alternate_phonenumber")
+  phonenumber String
+  alternatePhonenumber String? @map("alternate_phonenumber")
   address String
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
@@ -137,7 +137,7 @@ model stitchings {
 model tailors {
   id String @id @default(uuid()) @db.Uuid
   name String
-  phonenumber Int?
+  phonenumber String?
   email String?
   address String?
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
@@ -333,7 +333,7 @@ model inquiries {
   id String @id @default(uuid()) @db.Uuid
   projectName String @map("project_name")
   customerName String @map("customer_name")
-  phonenumber Int
+  phonenumber String
   comments String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("inquiry_date")
   followUpDate DateTime @db.Timestamptz @map("follow_up_date")

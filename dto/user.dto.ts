@@ -7,8 +7,8 @@ interface User {
     password: string
     role: Role
     createdAt: Date
-    phonenumber: number | null,
-    alternatePhonenumber: number | null
+    phonenumber: string | null,
+    alternatePhonenumber: string | null
     address: string | null
 }
 
@@ -16,6 +16,7 @@ interface UserData {
     username: string
     email: string
     password: string
+    role: Role
 }
 
 export type { User, UserData };
