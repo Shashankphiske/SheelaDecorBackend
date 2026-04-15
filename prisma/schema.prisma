@@ -320,7 +320,7 @@ model payments {
   amount Decimal
   paymentMode String @map("payment_mode")
   type PaymentType
-  remarks String
+  remarks String?
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
 
   customer customers? @relation(fields: [customerId], references: [id])

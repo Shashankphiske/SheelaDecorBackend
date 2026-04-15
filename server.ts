@@ -20,6 +20,7 @@ import { CustomerRouter } from "./router/customer.router.js";
 import { StitchingRouter } from "./router/stitching.router.js";
 import { InquiryRouter } from "./router/inquiry.router.js";
 import cors from "cors";
+import { PaymentRouter } from "./router/payment.router.js";
 dotenv.config();
 
 const app = express();
@@ -67,6 +68,8 @@ app.use("/v1/customers", CustomerRouter);
 app.use("/v1/stitching", StitchingRouter);
 
 app.use("/v1/inquiries", InquiryRouter);
+
+app.use("/v1/payments", PaymentRouter);
 
 app.get("/", (req: Request, res: Response) => {
     if(req.headers["x-cron-key"] == config.cronKey) {
