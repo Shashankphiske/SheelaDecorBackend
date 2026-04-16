@@ -220,8 +220,6 @@ model projects {
 
   tasks tasks[]
 
-  customProducts customProducts[]
-
   payments payments[]
 
   @@index([id, createdAt])
@@ -260,20 +258,6 @@ model projectProducts {
   product products @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("project_products")
-}
-
-model customProducts {
-  id String @id @db.Uuid @default(uuid())
-  name String
-  quantity Int
-  price Decimal
-  tax Decimal
-  remarks String
-  projectId String @db.Uuid @map("project_id")
-
-  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-
-  @@map("custom_poducts")
 }
 
 enum Priority {
