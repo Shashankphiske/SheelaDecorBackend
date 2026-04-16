@@ -14,7 +14,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
         console.log(data);
         const product = await prisma.products.create({
             data: {
-                name: data.productName,
+                name: data.name,
                 description: data.description ?? null,
                 productType: data.productType,
                 sellingUnit: data.sellingUnit,
