@@ -32,7 +32,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
             });
         }
 
-        return { product, stitching };
+        return { ...product, stitching };
     }
 
     fetch = async (id: string, userId?: string): Promise<any> => {
