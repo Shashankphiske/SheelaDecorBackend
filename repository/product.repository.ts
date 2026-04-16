@@ -5,14 +5,22 @@ import { BaseRepository } from "./base.repository.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import { serverUtils } from "../utils/server.utils.js";
 
-class ProductRepository extends BaseRepository<Product, ProductData, any> {
+class ProductRepository extends BaseRepository<any, any, any> {
     constructor() {
         super(prisma.products, "PRODUCT");
     }
 
     create = async (data: any): Promise<any> => {
+        console.log(data);
         const product = await prisma.products.create({
-            data: data.productData
+            data: {
+                name: data.productName,
+                description: data.description ?? null,
+                productType: data.productType,
+                sellingUnit: data.sellingUnit,
+                price: data.price,
+                taxRate: data.taxRate
+            }
         });
         let stitching;
         if(product.productType == "TAILORING") {
