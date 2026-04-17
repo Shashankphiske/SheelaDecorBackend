@@ -11,28 +11,31 @@ class ProductRepository extends BaseRepository<any, any, any> {
     }
 
     create = async (data: any): Promise<any> => {
-        console.log(data);
-        const product = await prisma.products.create({
-            data: {
-                name: data.name,
-                description: data.description ?? null,
-                productType: data.productType,
-                sellingUnit: data.sellingUnit,
-                price: data.price,
-                taxRate: data.taxRate
-            }
-        });
-        let stitching;
-        if(product.productType == "TAILORING") {
-            stitching = await prisma.stitchings.create({
+        return await prisma.$transaction(async (tx) => {
+            const product = await tx.products.create({
                 data: {
-                    ...data.stitchingData,
-                    productId: product.id
+                    name: data.name,
+                    description: data.description ?? null,
+                    productType: data.productType,
+                    sellingUnit: data.sellingUnit,
+                    price: data.price,
+                    taxRate: data.taxRate
                 }
             });
-        }
+            let stitching;
+            if (product.productType == "TAILORING") {
+                stitching = await tx.stitchings.create({
+                    data: {
+                        name: data.stitchingName,
+                        price: data.stitchingPrice,
+                        unit: product.sellingUnit ?? "METER",
+                        productId: product.id
+                    }
+                });
+            }
 
-        return { ...product, stitching };
+            return { ...product, stitching };
+        })
     }
 
     fetch = async (id: string, userId?: string): Promise<any> => {
