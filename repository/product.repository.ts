@@ -74,6 +74,39 @@ class ProductRepository extends BaseRepository<any, any, any> {
             }
         });
     };
+
+    update = async (data: any, id: string): Promise<any> => {
+        return await prisma.$transaction(async (tx) => {
+            const product = await tx.products.update({
+                where: {
+                    id
+                },
+                data: {
+                    name: data.name,
+                    description: data.description ?? null,
+                    productType: data.productType,
+                    sellingUnit: data.sellingUnit,
+                    price: data.price,
+                    taxRate: data.taxRate
+                }
+            });
+            let stitching;
+            if (product.productType == "TAILORING") {
+                stitching = await tx.stitchings.update({
+                    where: {
+                        productId: product.id
+                    },
+                    data: {
+                        name: data.stitchingName,
+                        price: data.stitchingPrice,
+                        unit: product.sellingUnit ?? "METER"
+                    }
+                });
+            }
+
+            return { ...product, stitching };
+        })
+    }
 }
 
 export { ProductRepository }
