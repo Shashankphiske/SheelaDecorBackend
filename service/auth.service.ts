@@ -33,7 +33,7 @@ class AuthService {
         const familyId = crypto.randomUUID();
         const refreshToken = await this.AuthMethods.create({ familyId, userId: user.id, role: user.role });
 
-        return { refreshToken: refreshToken.id, accessToken };
+        return { refreshToken: refreshToken.id, accessToken, id: user.id, role: user.role };
     }
 
     logout = async (refreshTokenId: string, flag: boolean) => {
