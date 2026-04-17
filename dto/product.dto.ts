@@ -1,5 +1,5 @@
 type SellingUnit =  "METER" | "FEET" | "INCHES" | "CENTIMETER" | "PANHA"
-type ProductType = "FABRIC" | "AREA" | "RUNNING_LENGTH" | "PEICE" | "FIXED_LENGTH" | "FIXED_AREA" | "TAILORING" 
+type ProductType = "FABRIC" | "AREA" | "RUNNING_LENGTH" | "PEICE" | "FIXED_LENGTH" | "FIXED_AREA" | "TAILORING" | "SOFA_TYPE"
 
 interface Product {
     id: string

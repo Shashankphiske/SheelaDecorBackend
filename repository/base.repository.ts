@@ -3,6 +3,7 @@ import { prisma } from "../db/prisma.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { ServerError } from "../utils/error.utils.js";
+import { logger } from "../utils/logger.util.js";
 import { serverUtils } from "../utils/server.utils.js";
 
 

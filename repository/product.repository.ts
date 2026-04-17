@@ -28,7 +28,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     data: {
                         name: data.stitchingName,
                         price: data.stitchingPrice,
-                        unit: product.sellingUnit ?? "METER",
+                        unit: data.stitchingUnit ?? "METER",
                         productId: product.id
                     }
                 });
@@ -99,7 +99,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     data: {
                         name: data.stitchingName,
                         price: data.stitchingPrice,
-                        unit: product.sellingUnit ?? "METER"
+                        unit: data.stitchingUnit ?? "METER"
                     }
                 });
             }

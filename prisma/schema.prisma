@@ -105,6 +105,7 @@ enum productType {
   FIXED_LENGTH
   FIXED_AREA
   TAILORING
+  SOFA_TYPE
 }
 
 model products {
@@ -131,7 +132,7 @@ model stitchings {
   unit SellingUnit
   productId String @db.Uuid @map("product_id") @unique
 
-  product products? @relation(fields: [productId], references: [id])
+  product products? @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 enum ArtisanType {

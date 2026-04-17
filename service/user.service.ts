@@ -37,7 +37,7 @@ class UserService extends BaseService<User, UserData, any> {
             userId: user.id
         })
 
-        return user;
+        return { ...user, password: null };
     }
 
     forgetPass = async (id?: string, username?: string, email?: string) => {
