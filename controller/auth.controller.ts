@@ -13,8 +13,8 @@ class AuthController {
 
         const { accessToken, refreshToken, id, role } = await this.service.login(req.body.username, req.body.password);
 
-        res.cookie("accessToken", accessToken, { sameSite: "strict", httpOnly: true, maxAge: 7*24*60*60*1000 });
-        res.cookie("refreshToken", refreshToken, { sameSite: "strict", httpOnly: true, maxAge: 30*24*60*60*1000 });
+        res.cookie("accessToken", accessToken, { sameSite: "none", secure: true, httpOnly: true, maxAge: 7*24*60*60*1000 });
+        res.cookie("refreshToken", refreshToken, { sameSite: "none", secure: true, httpOnly: true, maxAge: 30*24*60*60*1000 });
 
         return ApiResponse.success(res, "Logged in", {id, role});
     }
