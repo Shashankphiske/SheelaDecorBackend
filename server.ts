@@ -73,10 +73,7 @@ app.use("/v1/payments", PaymentRouter);
 
 app.get("/", (req: Request, res: Response) => {
     if(req.headers["x-cron-key"] == config.cronKey) {
-        return res.status(200).json({
-            success: true,
-            message: "Service authenticated"
-        });
+        return res.status(200).send("OK");
     }
 
     return res.status(400).json({
