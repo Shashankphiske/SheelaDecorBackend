@@ -45,7 +45,7 @@ app.use(morgan(`:method :url :response-time ms`, { stream }) );
 
 // app.use(cacheMiddleware.cacheRequest(3600, "PRIVATE"));
 
-app.use("/v1/user", UserRouter);
+app.use("/v1/users", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
 app.use("/v1/brands", BrandRouter);
