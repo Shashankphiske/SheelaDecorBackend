@@ -11,7 +11,7 @@ const controller = GeneralFactory.create(UserRepository, UserService, UserContro
 
 router.get("/verify/:token", errorHandler.wrapper(controller.verify));
 
-router.use(authenticate);
+// router.use(authenticate);
 
 router.post("/", errorHandler.wrapper(controller.create));
 
@@ -23,7 +23,7 @@ router.patch("/:token", errorHandler.wrapper(controller.changePass));
 
 router.delete("/:id", errorHandler.wrapper(controller.delete));
 
-router.use(authenticateAdmin);
+// router.use(authenticateAdmin);
 
 
 
