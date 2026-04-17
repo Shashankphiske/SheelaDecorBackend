@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import type { AuthService } from "../service/auth.service.js";
 import { logger } from "../utils/logger.util.js";
 import { ApiResponse } from "../utils/api.utils.js";
+import { CookieOptions } from "../dto/token.dto.js";
 
 class AuthController {
     constructor(private service: AuthService) {}
@@ -26,8 +27,8 @@ class AuthController {
 
         await this.service.logout(req.cookies.refreshToken, req.params.flag?.toString() == "true" ? true : false);
 
-        res.clearCookie("accessToken");
-        res.clearCookie("refreshToken");
+        res.clearCookie("accessToken", CookieOptions);
+        res.clearCookie("refreshToken", CookieOptions);
 
         return ApiResponse.success(res, "Logged out");
     }

@@ -14,4 +14,12 @@ interface TokenData {
     role: Role
 }
 
+const CookieOptions = {
+    sameSite: "none" as const,
+    secure: true,
+    partitioned: true,
+    httpOnly: true
+}
+
 export type { TokenData, Token, Role }
+export { CookieOptions }
