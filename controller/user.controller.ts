@@ -49,9 +49,9 @@ class UserController extends BaseController<UserService> {
             ip:req.ip
         });
 
-        const token = await this.service.forgetPass(req.params.id?.toString() ?? undefined, req.query.username?.toString() ?? undefined, req.params.email?.toString() ?? undefined);
+        await this.service.forgetPass(req.params.id?.toString() ?? undefined, req.query.username?.toString() ?? undefined, req.params.email?.toString() ?? undefined);
 
-        return ApiResponse.success(res, "Forget password token generated", token);
+        return ApiResponse.success(res, "Forget password token generated");
     }
 
     changePass = async (req: Request, res: Response) => {

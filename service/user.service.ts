@@ -1,4 +1,6 @@
+import { sendMail } from "../config/mail.js";
 import { errorMessage } from "../constants/error.constants.js";
+import { resetPasswordTemplate } from "../dto/mail.dto.js";
 import type { User, UserData } from "../dto/user.dto.js";
 import { authUtils } from "../factory/utils.factory.js";
 import type { UserRepository } from "../repository/user.repository.js";
@@ -56,7 +58,9 @@ class UserService extends BaseService<User, UserData, any> {
             userId: user.id
         });
 
-        return token;
+        await sendMail(user.email, "Sheela Decor - Change Password", resetPasswordTemplate(user.username, `https://sheeladecorfrontend.netlify.app/change-pass/${token}`));
+
+        return;
     }
 
     changePass = async (token: string, password: string) => {
