@@ -76,11 +76,8 @@ app.get("/", (req: Request, res: Response) => {
         return res.status(200).send("OK");
     }
 
-    return res.status(400).json({
-        success: false,
-        message: "Service unauthorized"
-    });
-})
+    return res.status(400).send("FAILED");
+});
 
 app.use(globalErrorHandler.handleError);
 
