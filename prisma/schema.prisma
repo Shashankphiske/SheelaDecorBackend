@@ -134,8 +134,14 @@ model stitchings {
   product products? @relation(fields: [productId], references: [id])
 }
 
-model tailors {
+enum ArtisanType {
+  TAILOR
+  SOFA_WORKER
+}
+
+model artisans {
   id String @id @default(uuid()) @db.Uuid
+  artisanType ArtisanType @default(TAILOR) @map("artisan_type")
   name String
   phonenumber String?
   email String?

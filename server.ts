@@ -9,7 +9,7 @@ import { cacheMiddleware } from "./middleware/cache.middleware.js";
 import { AuthRouter } from "./router/auth.router.js";
 import cookieParser from "cookie-parser";
 import { BrandRouter } from "./router/brand.router.js";
-import { TailorRouter } from "./router/tailor.router.js";
+import { ArtisanRouter } from "./router/artisan.router.js";
 import { ProductRouter } from "./router/product.router.js";
 import { CatalogueRouter } from "./router/catalogue.router.js";
 import { AreaRouter } from "./router/area.router.js";
@@ -49,7 +49,7 @@ app.use("/v1/user", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
 app.use("/v1/brands", BrandRouter);
-app.use("/v1/tailors", TailorRouter);
+app.use("/v1/artisans", ArtisanRouter);
 
 app.use("/v1/products", ProductRouter);
 

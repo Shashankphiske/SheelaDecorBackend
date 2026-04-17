@@ -1,15 +1,15 @@
 import type { Request, Response } from "express";
 import { ControllerMessages } from "../constants/controller.messages.js";
-import type { TailorService } from "../service/tailor.service.js";
+import type { ArtisanService } from "../service/artisan.service.js";
 import { logger } from "../utils/logger.util.js";
 import { BaseController } from "./base.controller.js";
 import { ApiResponse } from "../utils/api.utils.js";
 
-const controllerMessages = new ControllerMessages("TAILOR");
+const controllerMessages = new ControllerMessages("ARTISAN");
 
-class TailorController extends BaseController<TailorService> {
-    constructor(service: TailorService) {
-        super(service, "TAILOR");
+class ArtisanController extends BaseController<ArtisanService> {
+    constructor(service: ArtisanService) {
+        super(service, "ARTISAN");
     }
 
     fetchAll = async (req: Request, res: Response) => {
@@ -18,10 +18,10 @@ class TailorController extends BaseController<TailorService> {
             userId: req.user?.id ?? "NA"
         });
 
-        const tailors = await this.service.fetchAll(
+        const artisans = await this.service.fetchAll(
             this.getPagination(req),
             {
-
+                artisanType: req.query.artisanType?.toString()
             },
             [
                 "name",
@@ -30,8 +30,8 @@ class TailorController extends BaseController<TailorService> {
             ]
         );
 
-        return ApiResponse.success(res, controllerMessages.FETCHALL.res, tailors)
+        return ApiResponse.success(res, controllerMessages.FETCHALL.res, artisans)
     }
 }
 
-export { TailorController }
+export { ArtisanController }
