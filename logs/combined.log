@@ -419,3 +419,42 @@
 {"level":"info","message":"DELETE /v1/inquiries/a0a98cc6-17e7-4b20-9436-dc817d975f92 859.553 ms","timestamp":"2026-04-10 17:25:36"}
 {"action":"DELETE","level":"info","message":"Redis cache invalidation completed","pattern":"v1:cache:PUBLIC:INQUIRY:*","resource":"INQUIRY","timestamp":"2026-04-10 17:25:36","userId":"PUBLIC"}
 {"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-12 09:34:54"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-17 17:38:05"}
+{"ip":"127.0.0.1","level":"http","message":"Forget password request received","timestamp":"2026-04-17 17:38:31"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:20:41\n\n  17 }\n  18 \n  19 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 20     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:38:32"}
+{"level":"info","message":"GET /v1/users/forget/ssp@gmail.com 974.442 ms","timestamp":"2026-04-17 17:38:32"}
+{"ip":"127.0.0.1","level":"http","message":"Forget password request received","timestamp":"2026-04-17 17:38:43"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:20:41\n\n  17 }\n  18 \n  19 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 20     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:38:44"}
+{"level":"info","message":"GET /v1/users/forget/admin@gmail.com 607.162 ms","timestamp":"2026-04-17 17:38:44"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-17 17:40:50","userId":"NA"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:124:33\n\n  121 }\n  122 \n  123 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 124 return await this.model.findMany(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:40:51"}
+{"level":"info","message":"GET /v1/brands 819.647 ms","timestamp":"2026-04-17 17:40:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-17 17:42:05"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-17 17:42:09","userId":"NA"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-04-17 17:42:10"}
+{"level":"info","message":"GET /v1/brands 1203.828 ms","timestamp":"2026-04-17 17:42:10"}
+{"ip":"127.0.0.1","level":"http","message":"Forget password request received","timestamp":"2026-04-17 17:42:17"}
+{"email":"admin@gmail.com","level":"warn","message":"User not found","timestamp":"2026-04-17 17:42:17"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-17 17:42:17"}
+{"level":"info","message":"GET /v1/users/forget/admin@gmail.com 164.802 ms","timestamp":"2026-04-17 17:42:17"}
+{"ip":"127.0.0.1","level":"http","message":"Forget password request received","timestamp":"2026-04-17 17:42:26"}
+{"level":"info","message":"Forget password token generated","timestamp":"2026-04-17 17:42:26","userId":"1b727b76-9afc-43b3-96ab-6b7ce7cc04e9"}
+{"level":"info","message":"GET /v1/users/forget/shashankphiske@gmail.com 2861.046 ms","timestamp":"2026-04-17 17:42:28"}
