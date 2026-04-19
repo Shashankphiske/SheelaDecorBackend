@@ -1,7 +1,7 @@
 import { config } from "../config/index.js";
 import { errorMessage } from "../constants/error.constants.js";
 import { prisma } from "../db/prisma.js";
-import type { CustomProductsData } from "../dto/customProducts.dto.js";
+
 import type { PaginationData } from "../dto/pagination.dto.js";
 import type { Project, ProjectData } from "../dto/project.dto.js";
 import type { ProjectProductData } from "../dto/projectProduct.dto.js";
