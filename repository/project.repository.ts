@@ -48,12 +48,7 @@ class ProjectRepository  {
             const projectProducts = await tx.projectProducts.createManyAndReturn({
                 data: productsToInsert
             });
-
-            const customProducts = await tx.customProducts.createManyAndReturn({
-                data: customProductsToInsert
-            });
-
-            return {...project, projectProducts, customProducts};
+            return {...project, projectProducts};
         });
     }
 
@@ -67,7 +62,6 @@ class ProjectRepository  {
             },
             include: {
                 projectProducts: true,
-                customProducts: true,
                 payments: true,
                 tasks: true
             }
@@ -110,7 +104,6 @@ class ProjectRepository  {
             ],
             include: {
                 projectProducts: true,
-                customProducts: true,
                 payments: true,
                 tasks: true   
             }
