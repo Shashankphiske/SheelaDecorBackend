@@ -58,3 +58,25 @@
 {"ip":"::1","level":"error","message":"\nInvalid `prisma.products.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:14:47\n\n  11 }\n  12 \n  13 create = async (data: any): Promise<any> => {\n→ 14     const product = await prisma.products.create(\nUnique constraint failed on the fields: (`name`)","timestamp":"2026-04-10 16:29:34"}
 {"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\product.repository.ts:54:33\n\n  51 }\n  52 \n  53 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 54 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {}\n         ]\n       },\n       orderBy: [\n         {\n           createdAt: \"desc\"\n         },\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         stitchings: true,\n         ~~~~~~~~~~\n     ?   projectProducts?: true,\n     ?   stitching?: true\n       }\n     })\n\nUnknown field `stitchings` for include statement on model `products`. Available options are marked with ?.","timestamp":"2026-04-10 16:29:39"}
 {"ip":"::1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:123:33\n\n  120 }\n  121 \n  122 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 123 return await this.model.findMany({\n        take: 10,\n        where: {\n          AND: [\n            {}\n          ]\n        },\n        orderBy: [\n          {\n            createdAt: \"desc\"\n          },\n          {\n            id: \"desc\"\n          }\n        ]\n      })\n\nUnknown argument `createdAt`. Available options are marked with ?.","timestamp":"2026-04-10 17:18:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:30:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:46"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:47"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:48"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-17 17:36:49"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:20:41\n\n  17 }\n  18 \n  19 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 20     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:38:32"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:20:41\n\n  17 }\n  18 \n  19 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 20     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:38:44"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:124:33\n\n  121 }\n  122 \n  123 where = serverUtils.buildWhere(where, filters, data, searchFields);\n→ 124 return await this.model.findMany(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-17 17:40:51"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-17 17:42:17"}
