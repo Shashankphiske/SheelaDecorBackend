@@ -329,3 +329,9 @@ model inquiries {
   createdAt DateTime @default(now()) @db.Timestamptz @map("inquiry_date")
   followUpDate DateTime @db.Timestamptz @map("follow_up_date")
 }
+
+model authorizations {
+  id String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid @map("user_id")
+  access String
+}
