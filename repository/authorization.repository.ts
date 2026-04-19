@@ -7,5 +7,6 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
         super(prisma.authorizations, "AUTHORIZATION");
     }
 
-    
 }
+
+export {  AuthorizationRepository}
