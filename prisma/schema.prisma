@@ -34,6 +34,8 @@ model users {
 
   projects projects[]
 
+  auth authorizations[]
+
   @@index([id, createdAt])
 }
 
@@ -334,4 +336,6 @@ model authorizations {
   id String @id @default(uuid()) @db.Uuid
   userId String @db.Uuid @map("user_id")
   access String
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

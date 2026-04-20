@@ -2,7 +2,7 @@ import type { Authorization, AuthorizationData } from "../dto/authorization.dto.
 import type { AuthorizationRepository } from "../repository/authorization.repository.js";
 import { BaseService } from "./base.service.js";
 
-class AuthorizationService extends BaseService<Authorization, AuthorizationData, any> {
+class AuthorizationService extends BaseService<any, any, any> {
     constructor(methods: AuthorizationRepository) {
         super(methods, "AUTHORIZATION");
     }

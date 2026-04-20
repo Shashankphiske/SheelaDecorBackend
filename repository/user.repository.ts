@@ -22,6 +22,9 @@ class UserRepository extends BaseRepository<User, UserData, any> {
                 ...(id ? {id} : {}),
                 ...(username ? { username } : {}),
                 ...(email ? {email} : {})
+            },
+            include: {
+                auth: true
             }
         });
 
