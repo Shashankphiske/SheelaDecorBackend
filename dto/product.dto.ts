@@ -1,5 +1,5 @@
-type SellingUnit =  "METER" | "FEET" | "INCHES" | "CENTIMETER" | "PANHA"
-type ProductType = "FABRIC" | "AREA" | "RUNNING_LENGTH" | "PEICE" | "FIXED_LENGTH" | "FIXED_AREA" | "TAILORING" | "SOFA_TYPE"
+type SellingUnit =  "METER" | "FEET" | "INCHES" | "CENTIMETER" | "PANHA" | "RFT" | "SQFT" | "SQM" | "SQY" | "ROLL" | "PIECE" | "PANEL"
+type ProductType = "FABRIC" | "AREA" | "RUNNING_LENGTH" | "PIECE" | "FIXED_LENGTH" | "FIXED_AREA" | "TAILORING" | "SOFA_TYPE"
 type DimensionType = "lb" | "lh" | "bh" | "lbh"
 
 interface Product {

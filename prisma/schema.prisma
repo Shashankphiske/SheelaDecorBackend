@@ -96,14 +96,20 @@ enum SellingUnit {
   INCHES
   CENTIMETER
   PANHA
-  RUNNING_FEET
+  RFT 
+  SQFT 
+  SQM 
+  SQY
+  ROLL
+  PIECE 
+  PANEL
 }
 
 enum productType {
   FABRIC
   AREA
   RUNNING_LENGTH
-  PEICE
+  PIECE
   FIXED_LENGTH
   FIXED_AREA
   TAILORING
