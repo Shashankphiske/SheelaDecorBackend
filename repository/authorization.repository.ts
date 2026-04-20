@@ -1,6 +1,8 @@
 import { prisma } from "../db/prisma.js";
 import type { Authorization, AuthorizationData } from "../dto/authorization.dto.js";
+import type { PaginationData } from "../dto/pagination.dto.js";
 import { logger } from "../utils/logger.util.js";
+import { serverUtils } from "../utils/server.utils.js";
 import { BaseRepository } from "./base.repository.js";
 
 class AuthorizationRepository extends BaseRepository<Authorization, AuthorizationData, any> {
@@ -20,6 +22,24 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
         } catch (error: any) {
             logger.warn(error.message);
         }
+    };
+
+    fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []) => {
+
+        let where: any = {
+        };
+        if (this.config.statusField) {
+            where[this.config.statusField] = null;
+        }
+
+        where = serverUtils.buildWhere(where, filters, data, searchFields);
+        return await this.model.findMany({
+            take: data.limit,
+            where,
+            orderBy: [
+                { id: (data.sort ?? "desc") as 'asc' | 'desc' }
+            ]
+        });
     };
 
 }
