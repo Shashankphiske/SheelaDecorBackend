@@ -11,6 +11,8 @@ class ProductRepository extends BaseRepository<any, any, any> {
     }
 
     create = async (data: any): Promise<any> => {
+        let ProductTypes = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"]
+
         return await prisma.$transaction(async (tx) => {
             const product = await tx.products.create({
                 data: {
@@ -24,7 +26,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                 }
             });
             let stitching;
-            if (product.productType == "TAILORING") {
+            if (ProductTypes.includes(product.productType ?? "")) {
                 stitching = await tx.stitchings.create({
                     data: {
                         name: data.stitchingName,
