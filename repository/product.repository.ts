@@ -79,6 +79,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
     };
 
     update = async (data: any, id: string): Promise<any> => {
+        let ProductTypes = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"]
         return await prisma.$transaction(async (tx) => {
             const product = await tx.products.update({
                 where: {
@@ -95,7 +96,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                 }
             });
             let stitching;
-            if (product.productType == "TAILORING") {
+            if (ProductTypes.includes(product.productType ?? "")) {
                 stitching = await tx.stitchings.update({
                     where: {
                         productId: product.id
