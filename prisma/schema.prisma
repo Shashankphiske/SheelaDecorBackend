@@ -110,6 +110,13 @@ enum productType {
   SOFA_TYPE
 }
 
+enum DimensionType {
+  lb
+  lh 
+  bh 
+  lbh
+}
+
 model products {
   id String @id @default(uuid()) @db.Uuid
   name String @unique
@@ -118,6 +125,7 @@ model products {
   productType String? @map("product_type")
   price Decimal
   taxRate Decimal @map("tax_rate")
+  dimensionType DimensionType @default(lbh) @map("dimension_type")
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
 
   projectProducts projectProducts[]

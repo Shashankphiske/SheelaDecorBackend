@@ -1,5 +1,6 @@
 type SellingUnit =  "METER" | "FEET" | "INCHES" | "CENTIMETER" | "PANHA"
 type ProductType = "FABRIC" | "AREA" | "RUNNING_LENGTH" | "PEICE" | "FIXED_LENGTH" | "FIXED_AREA" | "TAILORING" | "SOFA_TYPE"
+type DimensionType = "lb" | "lh" | "bh" | "lbh"
 
 interface Product {
     id: string
@@ -8,7 +9,8 @@ interface Product {
     sellingUnit: SellingUnit
     productType: ProductType
     price: number
-    tax_rate: number
+    taxRate: number
+    dimensionType: DimensionType
     createdAt: Date
 }
 
@@ -18,7 +20,8 @@ interface ProductData {
     sellingUnit: SellingUnit
     productType: ProductType
     price: number
-    tax_rate: number
+    taxRate: number
+    dimensionType: DimensionType
 }
 
-export type { Product, ProductData, SellingUnit, ProductType }
+export type { Product, ProductData, SellingUnit, ProductType, DimensionType }
