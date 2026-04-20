@@ -114,6 +114,8 @@ enum productType {
   FIXED_AREA
   TAILORING
   SOFA_TYPE
+  AP_CURTAIN
+  ROMAN_CURTAIN
 }
 
 enum DimensionType {
