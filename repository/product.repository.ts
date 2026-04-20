@@ -19,7 +19,8 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     productType: data.productType,
                     sellingUnit: data.sellingUnit,
                     price: data.price,
-                    taxRate: data.taxRate
+                    taxRate: data.taxRate,
+                    dimensionType: data.dimensionType
                 }
             });
             let stitching;
@@ -86,6 +87,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     description: data.description ?? null,
                     productType: data.productType,
                     sellingUnit: data.sellingUnit,
+                    dimensionType: data.dimensionType,
                     price: data.price,
                     taxRate: data.taxRate
                 }
