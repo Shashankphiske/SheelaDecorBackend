@@ -238,12 +238,12 @@ model projects {
   projectDate DateTime @db.Timestamptz @map("project_date")
   additionalRequests String? @map("additional_requests")
   address String?
-  bankId String @db.Uuid @map("bank_id")
+  bankId String? @db.Uuid @map("bank_id")
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
   customer customers? @relation(fields: [customerId], references: [id])
   creator users @relation(fields: [creatorId], references: [id])
-  bank banks @relation(fields: [bankId], references: [id])
+  bank banks? @relation(fields: [bankId], references: [id])
 
   projectProducts projectProducts[]
 

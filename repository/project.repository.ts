@@ -40,7 +40,7 @@ class ProjectRepository  {
                     discount: data.discount,
                     discountType: data.discountType,
                     projectDate: data.projectDate,
-                    additionalRequest: data.additionalRequest,
+                    additionalRequests: data.additionalRequest,
                     address: data.address,
                     status: "PENDING",
                     creatorId: data.creatorId,
