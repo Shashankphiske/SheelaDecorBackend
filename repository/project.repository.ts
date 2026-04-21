@@ -164,14 +164,87 @@ class ProjectRepository  {
     };
 
     update = async (data: any, id: string, userId?: string) => {
-        try {
-            return await prisma.projects.update({
+        return await prisma.$transaction(async (tx) => {
+
+            // ── 1. Update Project ─────────────────────────────────────
+
+            const project = await tx.projects.update({
                 where: { id },
-                data
+                data: {
+                    name: data.name,
+                    customerId: data.customerId,
+                    totalAmount: data.totalAmount,
+                    totalTax: data.totalTax,
+                    discount: data.discount,
+                    discountType: data.discountType,
+                    projectDate: new Date(data.projectDate),
+                    additionalRequests: data.additionalRequest,
+                    address: data.address,
+                    bankId: data.bankId,
+                } as any,
             });
-        } catch (error) {
-            this.handlePrismaError(error);
-        }
+
+            // ── 2. Reset Products ─────────────────────────────────────
+
+            await tx.projectProducts.deleteMany({
+                where: { projectId: id },
+            });
+
+            const areas: any[] = data.areas ?? [];
+
+            const productRows = areas.flatMap((area: any) =>
+                (area.areacollection ?? []).map((item: any) => ({
+                    projectId: id,
+                    productId: item.productId,
+                    areaId: area.areaId || null,
+                    price: Number(item.mrp ?? 0),
+                    quantity: Number(item.quantity ?? 1),
+                    brandId: item.companyId || null,
+                    catalogueId: item._catalogueId || null,
+                    designNo: Number(item.designNo ?? 0),
+                    references: item.reference || null,
+                    measurementUnit: item.unit || null,
+                    width: item.width != null ? Number(item.width) : null,
+                    height: item.height != null ? Number(item.height) : null,
+                    length: item.length != null ? Number(item.length) : null,
+                    orderId: null,
+                    remark: item.remark || null,
+                    status: "PENDING",
+                }))
+            );
+
+            if (productRows.length > 0) {
+                await tx.projectProducts.createMany({
+                    data: productRows as any,
+                });
+            }
+
+            // ── 3. Reset Labours ─────────────────────────────────────
+
+            await tx.projectLabours.deleteMany({
+                where: { projectId: id },
+            });
+
+            const labourData: any[] = data.labourData ?? [];
+
+            const labourRows = labourData.map((labour: any) => ({
+                projectId: id,
+                stitchingId: labour.stitchingId || null,
+                artisanId: labour.artisanId || null,
+                cost: Number(labour.labourCost ?? 0),
+                key: labour.key,
+                quantity: Number(labour.quantity ?? 0),
+                unit: labour.unit,
+            }));
+
+            if (labourRows.length > 0) {
+                await tx.projectLabours.createMany({
+                    data: labourRows as any,
+                });
+            }
+
+            return project;
+        });
     };
 
     delete = async (id: string, userId?: string) => {
