@@ -12,7 +12,11 @@ class AuthUtilsClass {
     }
 
     generateAccessToken = (id: string, role: string) => {
-        return jwt.sign({ id, role }, config.jwtSecret as string, { expiresIn: "15m" });
+        return jwt.sign(
+            { id, role },
+            config.jwtSecret as string,
+            { expiresIn: "7d" } // Changed from "15m" to "7d"
+        );
     }
 
     generateForgetToken = (id: string) => {
@@ -34,15 +38,17 @@ class AuthUtilsClass {
 
     decodeAccesstoken = (token: string) => {
         try {
-            return jwt.verify(token, config.jwtSecret as string) as { id: string, role: Role }
-        } catch (err) {
-            logger.warn("Invalid token provided", {
-                token: token
-            });
+            // Strip "Bearer " if it exists
+            const actualToken = token.startsWith("Bearer ") ? token.split(" ")[1] : token;
+            return jwt.verify(actualToken as string, config.jwtSecret as string) as unknown as { id: string, role: Role };
 
+        } catch (err: any) {
+            // Log the actual JWT error (e.g., "jwt expired" or "invalid signature")
+            logger.warn(`JWT Error: ${err.message}`, { token: token.substring(0, 15) });
             throw new ServerError(errorMessage.INVALIDDATA);
         }
     }
+
 
     hashPassword = async (password: string) => {
         return await bcrypt.hash(password, 10);
