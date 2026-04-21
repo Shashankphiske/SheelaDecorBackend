@@ -6,11 +6,13 @@ import { logger } from "../utils/logger.util.js";
 import { ServerError } from "../utils/error.utils.js";
 import { errorMessage } from "../constants/error.constants.js";
 import { authUtils } from "../factory/utils.factory.js";
+import { AuthorizationRepository } from "../repository/authorization.repository.js";
 
 
 const repo = new AuthRepository();
 const userRepo = new UserRepository();
-const service = new AuthService(repo, userRepo);
+const authorizationRepo = new AuthorizationRepository();
+const service = new AuthService(repo, userRepo, authorizationRepo);
 
 const authenticate = async (req: Request, res: Response, next: NextFunction) => {
 
