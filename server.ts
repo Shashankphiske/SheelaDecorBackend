@@ -22,6 +22,7 @@ import { InquiryRouter } from "./router/inquiry.router.js";
 import cors from "cors";
 import { PaymentRouter } from "./router/payment.router.js";
 import { AuthorizationRouter } from "./router/authorization.router.js";
+import { authenticate, authenticateAdmin } from "./middleware/authenticate.middleware.js";
 dotenv.config();
 
 const app = express();
@@ -49,6 +50,8 @@ app.use(morgan(`:method :url :response-time ms`, { stream }) );
 app.use("/v1/users", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
+app.use(authenticate);
+
 app.use("/v1/brands", BrandRouter);
 app.use("/v1/artisans", ArtisanRouter);
 
@@ -71,6 +74,8 @@ app.use("/v1/stitching", StitchingRouter);
 app.use("/v1/inquiries", InquiryRouter);
 
 app.use("/v1/payments", PaymentRouter);
+
+app.use(authenticateAdmin);
 
 app.use("/v1/authorizations", AuthorizationRouter);
 

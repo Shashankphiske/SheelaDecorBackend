@@ -14,17 +14,15 @@ router.get("/verify/:token", errorHandler.wrapper(controller.verify));
 // router.use(authenticate);
 
 router.post("/", errorHandler.wrapper(controller.create));
-
-router.get("/", errorHandler.wrapper(controller.fetchAll));
-router.get("/:id", errorHandler.wrapper(controller.fetch));
 router.get("/forget/:email", errorHandler.wrapper(controller.forgetPass));
-
 router.patch("/:token", errorHandler.wrapper(controller.changePass));
 
+router.use(authenticate);
+router.get("/:id", errorHandler.wrapper(controller.fetch));
 router.delete("/:id", errorHandler.wrapper(controller.delete));
 
-// router.use(authenticateAdmin);
-
+router.use(authenticateAdmin);
+router.get("/", errorHandler.wrapper(controller.fetchAll));
 
 
 export { router as UserRouter };
