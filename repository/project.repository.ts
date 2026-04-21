@@ -60,7 +60,7 @@ class ProjectRepository  {
                     areaId: area.areaId || null,
                     price: Number(item.mrp ?? 0),
                     quantity: Number(item.quantity ?? 1),
-                    companyId: item.companyId || null,
+                    brandId: item.companyId || null,
                     catalogueId: item._catalogueId || null,
                     designNo: Number(item.designNo ?? 0),
                     references: item.reference || null,
