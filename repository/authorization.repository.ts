@@ -42,6 +42,33 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
         });
     };
 
+    update = async (data: any, id: string, userId?: string) => {
+        try {
+            // Step 1: delete existing access for this user
+            await this.model.deleteMany({
+                where: {
+                    userId: data.userId || userId,
+                },
+            });
+
+            // Step 2: recreate from array (same as create)
+            const records = (data.access || []).map((accessItem: any) => ({
+                userId: data.userId || userId,
+                access: accessItem,
+            }));
+
+            if (!records.length) return [];
+
+            return await this.model.createMany({
+                data: records,
+                skipDuplicates: true,
+            });
+
+        } catch (error: any) {
+            logger.warn(error.message);
+        }
+    };
+
 }
 
 export {  AuthorizationRepository}
