@@ -1,5 +1,4 @@
 import { errorMessage } from "../constants/error.constants.js";
-import type { CustomProductsData } from "../dto/customProducts.dto.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import type { Project, ProjectData } from "../dto/project.dto.js";
 import type { ProjectProductData } from "../dto/projectProduct.dto.js";
@@ -13,8 +12,8 @@ class ProjectService{
 
     constructor( private method: ProjectRepository ) {} 
 
-    create = async (projectData: ProjectData, projectProductsData: any, customProductsData: any): Promise<any> => {
-        const project = await this.method.create(projectData, projectProductsData, customProductsData);
+    create = async (projectData: any): Promise<any> => {
+        const project = await this.method.create(projectData);
 
         return project;
     }

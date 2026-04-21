@@ -25,99 +25,142 @@ class ProjectRepository  {
         throw error;
     }
 
-    create = async (projectData: ProjectData, productsData: any, customProductsData: any ) => {
+    create = async (data: any) => {
         return await prisma.$transaction(async (tx) => {
 
+            // ── 1. Project ────────────────────────────────────────────────────────
+
             const project = await tx.projects.create({
-                data: projectData
+                data: {
+                    name: data.name,
+                    customerId: data.customerId,
+                    totalAmount: data.totalAmount,
+                    totalTax: data.totalTax,
+                    paid: 0,
+                    discount: data.discount,
+                    discountType: data.discountType,
+                    projectDate: data.projectDate,
+                    additionalRequest: data.additionalRequest,
+                    address: data.address,
+                    status: "PENDING",
+                    creatorId: data.creatorId,
+                    bankId: data.bankId,
+                } as any,
             });
 
-            // 1. Map the standard products to include the new project ID
-            const productsToInsert = productsData.map((p: any) => ({
-                ...p,
-                projectId: project.id // Attach the foreign key
+            // ── 2. Project Products ───────────────────────────────────────────────
+            // Source: selections.areas[].areacollection[]
+
+            const areas: any[] = data.areas ?? [];
+
+            const productRows = areas.flatMap((area: any) =>
+                (area.areacollection ?? []).map((item: any) => ({
+                    projectId: project.id,
+                    productId: item.productId,
+                    areaId: area.areaId || null,
+                    price: Number(item.mrp ?? 0),
+                    quantity: Number(item.quantity ?? 1),
+                    companyId: item.companyId || null,
+                    catalogueId: item._catalogueId || null,
+                    designNo: Number(item.designNo ?? 0),
+                    references: item.reference || null,
+                    measurementUnit: item.unit || null,
+                    width: item.width != null ? Number(item.width) : null,
+                    height: item.height != null ? Number(item.height) : null,
+                    length: item.length != null ? Number(item.length) : null,
+                    orderId: null,
+                    remark: item.remark || null,
+                    status: "PENDING",
+                }))
+            );
+
+            if (productRows.length > 0) {
+                await tx.projectProducts.createMany({
+                    data: productRows as any,
+                });
+            }
+
+            // ── 3. Project Labours ────────────────────────────────────────────────
+            // Source: selections.labourData[]
+
+            const labourData: any[] = data.labourData ?? [];
+
+            const labourRows = labourData.map((labour: any) => ({
+                projectId: project.id,
+                stitchingId: labour.stitchingId || null,
+                artisanId: labour.artisanId || null,
+                cost: Number(labour.labourCost ?? 0),
+                key: labour.key,
+                quantity: Number(labour.quantity ?? 0),
+                unit: labour.unit,
             }));
 
-            // 2. Map the custom products to include the new project ID
-            const customProductsToInsert = customProductsData.map((cp: any) => ({
-                ...cp,
-                projectId: project.id // Attach the foreign key
-            }));
+            if (labourRows.length > 0) {
+                await tx.projectLabours.createMany({
+                    data: labourRows as any,
+                });
+            }
 
-            // 3. Execute the bulk inserts
-            const projectProducts = await tx.projectProducts.createManyAndReturn({
-                data: productsToInsert
-            });
-            return {...project, projectProducts};
+            return project;
         });
-    }
+    };
 
     fetch = async (id: string) => {
-        const project = await prisma.products.findFirst({
+        const project = await prisma.projects.findFirst({  // fix: was prisma.products
             where: {
                 id,
-                status: {
-                    not: "DEFAULTER"
-                }
+                status: { not: "DEFAULTER" }
             },
             include: {
                 projectProducts: true,
+                projectLabours: true,
                 payments: true,
                 tasks: true
             }
         });
 
         return project;
-    }
+    };
 
     markAsDefaulter = async (id: string) => {
         const project = await prisma.projects.update({
-            where: {
-                id
-            },
-            data: {
-                status: "DEFAULTER"
-            },
+            where: { id },
+            data: { status: "DEFAULTER" },
             include: {
                 projectProducts: true,
-                customProducts: true,
+                projectLabours: true,  // fix: was customProducts (doesn't exist)
                 payments: true,
                 tasks: true
             }
         });
 
         return project;
-    }
+    };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<any> => {
-
-        let where: any = {
-        };
-
+        let where: any = {};
         where = serverUtils.buildWhere(where, filters, data, searchFields);
+
         return await prisma.projects.findMany({
             take: data.limit ?? 10,
             where,
             orderBy: [
-                { createdAt: (data.sort ?? "desc") as 'asc' | 'desc' },
-                { id: (data.sort ?? "desc") as 'asc' | 'desc' }
+                { createdAt: (data.sort ?? "desc") as "asc" | "desc" },
+                { id: (data.sort ?? "desc") as "asc" | "desc" }
             ],
             include: {
                 projectProducts: true,
+                projectLabours: true,  // added — was missing
                 payments: true,
-                tasks: true   
+                tasks: true
             }
         });
     };
 
     update = async (data: any, id: string, userId?: string) => {
         try {
-            const where: any = {
-                id
-            };
-
             return await prisma.projects.update({
-                where,
+                where: { id },
                 data
             });
         } catch (error) {
