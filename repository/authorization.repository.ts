@@ -12,16 +12,24 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
 
     create = async (data: any) => {
 
-        const record = data.access.map((accessItem: any) => ({
+        await this.model.deleteMany({
+            where: {
+                userId: data.userId,
+            },
+        });
+
+        // Step 2: recreate from array (same as create)
+        const records = (data.access || []).map((accessItem: any) => ({
             userId: data.userId,
-            access: accessItem
+            access: accessItem,
         }));
 
-        try {
-            return await this.model.createMany({ data: record, skipDuplicates: true });
-        } catch (error: any) {
-            logger.warn(error.message);
-        }
+        if (!records.length) return [];
+
+        return await this.model.createMany({
+            data: records,
+            skipDuplicates: true,
+        });
     };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []) => {
