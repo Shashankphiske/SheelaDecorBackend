@@ -13,7 +13,7 @@ class ProjectController extends BaseController<ProjectService> {
     }
 
     create = async (req: Request, res: Response) => {
-        const project = await this.service.create({...req.body.projectData, creatorId: req.user?.id ?? "NA"});
+        const project = await this.service.create({...req.body, creatorId: req.user?.id ?? "NA"});
 
         return ApiResponse.success(res, "Project created", project);
     }
