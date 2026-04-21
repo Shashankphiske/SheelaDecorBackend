@@ -82,38 +82,53 @@ class ProductRepository extends BaseRepository<any, any, any> {
     };
 
     update = async (data: any, id: string): Promise<any> => {
-        let ProductTypes = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"]
+        const LABOUR_TYPES = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
+        const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
+
         return await prisma.$transaction(async (tx) => {
             const product = await tx.products.update({
-                where: {
-                    id
-                },
+                where: { id },
                 data: {
                     name: data.name,
                     description: data.description ?? null,
                     productType: data.productType,
                     sellingUnit: data.sellingUnit,
-                    dimensionType: data.dimensionType,
-                    price: data.price,
-                    taxRate: data.taxRate
+                    dimensionType: data.dimensionType ?? null,
+                    price: parseFloat(data.price),
+                    taxRate: parseFloat(data.taxRate ?? 0),
+                    size: SIZE_TYPES.includes(data.productType) ? (data.size ?? null) : null,
                 }
             });
-            let stitching;
-            if (ProductTypes.includes(product.productType ?? "")) {
-                stitching = await tx.stitchings.update({
+
+            let stitching = null;
+
+            if (LABOUR_TYPES.includes(product.productType ?? "")) {
+                // upsert — handles case where stitching row doesn't exist yet
+                stitching = await tx.stitchings.upsert({
                     where: {
                         productId: product.id
                     },
-                    data: {
+                    update: {
                         name: data.stitchingName,
-                        price: data.stitchingPrice,
-                        unit: data.stitchingUnit ?? "METER"
+                        price: parseFloat(data.stitchingPrice ?? 0),
+                        unit: data.stitchingUnit ?? "METER",
+                    },
+                    create: {
+                        name: data.stitchingName,
+                        price: parseFloat(data.stitchingPrice ?? 0),
+                        unit: data.stitchingUnit ?? "METER",
+                        productId: product.id,
                     }
+                });
+            } else {
+                // Product type changed away from a labour type — delete stitching if it exists
+                await tx.stitchings.deleteMany({
+                    where: { productId: product.id }
                 });
             }
 
             return { ...product, stitching };
-        })
+        });
     }
 }
 
