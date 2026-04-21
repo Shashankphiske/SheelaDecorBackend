@@ -115,7 +115,9 @@ class ProjectRepository  {
                 projectProducts: true,
                 projectLabours: true,
                 payments: true,
-                tasks: true
+                tasks: true,
+                customer: true,
+                creator: true
             }
         });
 
@@ -128,9 +130,11 @@ class ProjectRepository  {
             data: { status: "DEFAULTER" },
             include: {
                 projectProducts: true,
-                projectLabours: true,  // fix: was customProducts (doesn't exist)
+                projectLabours: true,
                 payments: true,
-                tasks: true
+                tasks: true,
+                customer: true,
+                creator: true
             }
         });
 
@@ -150,9 +154,11 @@ class ProjectRepository  {
             ],
             include: {
                 projectProducts: true,
-                projectLabours: true,  // added — was missing
+                projectLabours: true,
                 payments: true,
-                tasks: true
+                tasks: true,
+                customer: true,
+                creator: true
             }
         });
     };
