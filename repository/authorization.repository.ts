@@ -34,7 +34,6 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
 
         where = serverUtils.buildWhere(where, filters, data, searchFields);
         return await this.model.findMany({
-            take: data.limit,
             where,
             orderBy: [
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
