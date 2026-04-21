@@ -27,8 +27,8 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
         });
 
         const { accessToken, refreshToken } = await service.generateCredentials(req.cookies.refreshToken);
-        res.cookie("accessToken", accessToken, { sameSite: "strict", httpOnly: true, maxAge: 15 * 60 * 1000 });
-        res.cookie("refreshToken", refreshToken.id, { sameSite: "strict", httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
+        res.cookie("accessToken", accessToken, { sameSite: "strict", httpOnly: true, maxAge:  7 * 24 * 60 * 60 * 1000 });
+        res.cookie("refreshToken", refreshToken.id, { sameSite: "strict", httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 });
         req.cookies.accessToken = accessToken;
         req.cookies.refreshToken = refreshToken.id;
 
