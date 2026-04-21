@@ -76,8 +76,7 @@ class AuthService {
             throw new ServerError(errorMessage.UNAUTHORIZED);
         }
 
-        const access = this.AuthorizationMethods.fetchAuth(id);
-        console.log("Access:", access)
+        const access = await this.AuthorizationMethods.fetchAuth(id);
         return { id, role, access };
     }
 }
