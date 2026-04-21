@@ -2,6 +2,7 @@ import { errorMessage } from "../constants/error.constants.js";
 import { prisma } from "../db/prisma.js";
 import { authUtils } from "../factory/utils.factory.js";
 import type { AuthRepository } from "../repository/auth.repository.js"
+import type { AuthorizationRepository } from "../repository/authorization.repository.js";
 import type { UserRepository } from "../repository/user.repository.js"
 import { ServerError } from "../utils/error.utils.js";
 import { logger } from "../utils/logger.util.js";
@@ -9,7 +10,7 @@ import crypto from "crypto"
 
 class AuthService {
 
-    constructor(private AuthMethods: AuthRepository, private UserMethods: UserRepository) {}
+    constructor(private AuthMethods: AuthRepository, private UserMethods: UserRepository, private AuthorizationMethods: AuthorizationRepository) {}
 
     login = async (username: string, password: string) => {
         const user = await this.UserMethods.fetch(undefined, username, undefined);
@@ -75,7 +76,9 @@ class AuthService {
             throw new ServerError(errorMessage.UNAUTHORIZED);
         }
 
-        return { id, role };
+        const access = this.AuthorizationMethods.fetchAuth(id);
+
+        return { id, role, access };
     }
 }
 

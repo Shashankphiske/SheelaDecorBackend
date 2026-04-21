@@ -68,6 +68,18 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
         }
     };
 
+    fetchAuth = async (userId: string) => {
+        const data = await this.model.findMany({
+            where: {
+                userId
+            }
+        });
+
+        const accessData = data.map((item: any) => item.access);
+
+        return accessData;
+    }
+
 }
 
 export {  AuthorizationRepository}
