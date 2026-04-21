@@ -134,6 +134,7 @@ model products {
   price Decimal
   taxRate Decimal @map("tax_rate")
   dimensionType DimensionType @default(lbh) @map("dimension_type")
+  size Decimal?
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
 
   projectProducts projectProducts[]

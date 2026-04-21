@@ -11,7 +11,8 @@ class ProductRepository extends BaseRepository<any, any, any> {
     }
 
     create = async (data: any): Promise<any> => {
-        let ProductTypes = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"]
+        const LABOUR_TYPES = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
+        const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
 
         return await prisma.$transaction(async (tx) => {
             const product = await tx.products.create({
@@ -20,25 +21,27 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     description: data.description ?? null,
                     productType: data.productType,
                     sellingUnit: data.sellingUnit,
-                    price: data.price,
-                    taxRate: data.taxRate,
-                    dimensionType: data.dimensionType
+                    price: parseFloat(data.price),
+                    taxRate: parseFloat(data.taxRate ?? 0),
+                    dimensionType: data.dimensionType ?? null,
+                    size: SIZE_TYPES.includes(data.productType) ? (data.size ?? null) : null,
                 }
             });
-            let stitching;
-            if (ProductTypes.includes(product.productType ?? "")) {
+
+            let stitching = null;
+            if (LABOUR_TYPES.includes(product.productType ?? "")) {
                 stitching = await tx.stitchings.create({
                     data: {
                         name: data.stitchingName,
-                        price: data.stitchingPrice,
+                        price: parseFloat(data.stitchingPrice ?? 0),
                         unit: data.stitchingUnit ?? "METER",
-                        productId: product.id
+                        productId: product.id,
                     }
                 });
             }
 
             return { ...product, stitching };
-        })
+        });
     }
 
     fetch = async (id: string, userId?: string): Promise<any> => {
