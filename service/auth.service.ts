@@ -77,7 +77,7 @@ class AuthService {
         }
 
         const access = this.AuthorizationMethods.fetchAuth(id);
-
+        console.log("Access:", access)
         return { id, role, access };
     }
 }

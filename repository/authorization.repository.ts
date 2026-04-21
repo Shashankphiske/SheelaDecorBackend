@@ -78,6 +78,8 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
             }
         });
 
+        console.log("Data: ", data);
+
         return data.map((item: any) => item.access);
     }
 
