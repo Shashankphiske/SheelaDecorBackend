@@ -72,12 +72,13 @@ class AuthorizationRepository extends BaseRepository<Authorization, Authorizatio
         const data = await this.model.findMany({
             where: {
                 userId
+            },
+            select: {
+                access: true
             }
         });
 
-        const accessData = data.map((item: any) => item.access);
-
-        return accessData;
+        return data.map((item: any) => item.access);
     }
 
 }
