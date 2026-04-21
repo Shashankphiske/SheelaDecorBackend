@@ -39,7 +39,7 @@ class ProjectRepository  {
                     paid: 0,
                     discount: data.discount,
                     discountType: data.discountType,
-                    projectDate: data.projectDate,
+                    projectDate: new Date(data.projectDate),
                     additionalRequests: data.additionalRequest,
                     address: data.address,
                     status: "PENDING",
