@@ -25,17 +25,24 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     taxRate: parseFloat(data.taxRate ?? 0),
                     dimensionType: data.dimensionType ?? null,
                     size: SIZE_TYPES.includes(data.productType) ? (data.size ?? null) : null,
+                },
+                select: {
+                    id: true,
+                    createdAt: true
                 }
             });
 
             let stitching = null;
-            if (LABOUR_TYPES.includes(product.productType ?? "")) {
+            if (LABOUR_TYPES.includes(data.productType ?? "")) {
                 stitching = await tx.stitchings.create({
                     data: {
                         name: data.stitchingName,
                         price: parseFloat(data.stitchingPrice ?? 0),
                         unit: data.stitchingUnit ?? "METER",
                         productId: product.id,
+                    },
+                    select: {
+                        id: true
                     }
                 });
             }
@@ -97,14 +104,18 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     price: parseFloat(data.price),
                     taxRate: parseFloat(data.taxRate ?? 0),
                     size: SIZE_TYPES.includes(data.productType) ? (data.size ?? null) : null,
+                },
+                select: {
+                    id: true,
+                    createdAt: true
                 }
             });
 
             let stitching = null;
 
-            if (LABOUR_TYPES.includes(product.productType ?? "")) {
+            if (LABOUR_TYPES.includes(data.productType ?? "")) {
                 // upsert — handles case where stitching row doesn't exist yet
-                stitching = await tx.stitchings.upsert({
+                await tx.stitchings.upsert({
                     where: {
                         productId: product.id
                     },
@@ -127,7 +138,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                 });
             }
 
-            return { ...product, stitching };
+            return;
         });
     }
 }
