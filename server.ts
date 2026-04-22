@@ -47,6 +47,14 @@ app.use(morgan(`:method :url :response-time ms`, { stream }) );
 
 // app.use(cacheMiddleware.cacheRequest(3600, "PRIVATE"));
 
+app.get("/", (req: Request, res: Response) => {
+    if (req.headers["x-cron-key"] == config.cronKey) {
+        return res.status(200).send("OK");
+    }
+
+    return res.status(400).send("FAILED");
+});
+
 app.use("/v1/users", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
@@ -78,14 +86,6 @@ app.use("/v1/payments", PaymentRouter);
 app.use(authenticateAdmin);
 
 app.use("/v1/authorizations", AuthorizationRouter);
-
-app.get("/", (req: Request, res: Response) => {
-    if(req.headers["x-cron-key"] == config.cronKey) {
-        return res.status(200).send("OK");
-    }
-
-    return res.status(400).send("FAILED");
-});
 
 app.use(globalErrorHandler.handleError);
 
