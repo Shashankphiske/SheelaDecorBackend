@@ -77,7 +77,13 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      */
     create = async (data: TCreateData): Promise<T> => {
         try {
-            return await this.model.create({ data });
+            return await this.model.create({
+                data,
+                select: {
+                    id: true,
+                    createdAt: true
+                }
+            });
         } catch (error) {
             this.handlePrismaError(error);
         }
@@ -138,7 +144,7 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      * @returns {Promise<T>} The updated record.
      * @throws {serverError} If the record is not found or validation fails.
      */
-    update = async (data: TUpdateData, id: string, userId?: string): Promise<T> => {
+    update = async (data: TUpdateData, id: string, userId?: string) => {
         try {
             const where: any = {
                 [this.config.primaryKey]: id,
@@ -149,13 +155,9 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
                 where[this.config.statusField] = null;
             }
 
-            return await this.model.update({
+            await this.model.update({
                 where,
                 data,
-                select: {
-                    id: true,
-                    createdAt: true
-                }
             });
         } catch (error) {
             this.handlePrismaError(error);
@@ -190,9 +192,9 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      * @returns {Promise<T>} The deleted record metadata.
      * @throws {serverError} If the record does not exist.
      */
-    hardDelete = async (id: string, userId?: string): Promise<T> => {
+    hardDelete = async (id: string, userId?: string) => {
         try {
-            return await this.model.delete({
+            await this.model.delete({
                 where: { [this.config.primaryKey]: id, ...(userId ? { userId } : {}) }
             });
         } catch (error) {
