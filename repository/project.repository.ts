@@ -46,6 +46,12 @@ class ProjectRepository  {
                     creatorId: data.creatorId,
                     bankId: data.bankId,
                 } as any,
+                select: {
+                    id: true,
+                    createdAt: true,
+                    status: true,
+                    paid: true
+                }
             });
 
             // ── 2. Project Products ───────────────────────────────────────────────
@@ -182,6 +188,9 @@ class ProjectRepository  {
                     address: data.address,
                     bankId: data.bankId,
                 } as any,
+                select: {
+                    id: true
+                }
             });
 
             // ── 2. Reset Products ─────────────────────────────────────
@@ -243,13 +252,13 @@ class ProjectRepository  {
                 });
             }
 
-            return project;
+            return;
         });
     };
 
     delete = async (id: string, userId?: string) => {
         try {
-            return await prisma.projects.delete({
+            await prisma.projects.delete({
                 where: { id }
             });
         } catch (error) {

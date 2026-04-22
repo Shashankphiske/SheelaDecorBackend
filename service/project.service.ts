@@ -69,8 +69,6 @@ class ProjectService{
             id
         });
 
-        redisUtils.invalidateKey("PUBLIC", "PROJECT", "UPDATE");
-
         return record;
     }
 
@@ -84,8 +82,6 @@ class ProjectService{
     delete = async (id: string) => {
         const record = await this.method.delete(id);
         logger.info(`Project record hard deleted`, { id });
-
-        redisUtils.invalidateKey("PUBLIC", "PROJECT", "DELETE");
 
         return record;
     }
