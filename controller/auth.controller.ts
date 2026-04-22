@@ -12,12 +12,12 @@ class AuthController {
             ip: req.ip
         });
 
-        const { accessToken, refreshToken, id, role } = await this.service.login(req.body.username, req.body.password);
+        const { accessToken, refreshToken, id, role, access } = await this.service.login(req.body.username, req.body.password);
 
         res.cookie("accessToken", accessToken, { sameSite: "none", secure: true, partitioned: true, httpOnly: true, maxAge: 7*24*60*60*1000 });
         res.cookie("refreshToken", refreshToken, { sameSite: "none", secure: true, partitioned: true, httpOnly: true, maxAge: 30*24*60*60*1000 });
 
-        return ApiResponse.success(res, "Logged in", {id, role});
+        return ApiResponse.success(res, "Logged in", {id, role, access});
     }
 
     logout = async (req: Request, res: Response) => {
