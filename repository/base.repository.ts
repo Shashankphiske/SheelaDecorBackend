@@ -151,7 +151,11 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
 
             return await this.model.update({
                 where,
-                data
+                data,
+                select: {
+                    id: true,
+                    createdAt: true
+                }
             });
         } catch (error) {
             this.handlePrismaError(error);
