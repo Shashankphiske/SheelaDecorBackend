@@ -87,7 +87,7 @@ model catalogues {
   name String @unique
   type String
   price Decimal
-  launchYear Int @map("launch_year")
+  launchYear String @map("launch_year")
   rackNo Int @map("rack_no")
   description String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
