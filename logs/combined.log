@@ -458,3 +458,23 @@
 {"ip":"127.0.0.1","level":"http","message":"Forget password request received","timestamp":"2026-04-17 17:42:26"}
 {"level":"info","message":"Forget password token generated","timestamp":"2026-04-17 17:42:26","userId":"1b727b76-9afc-43b3-96ab-6b7ce7cc04e9"}
 {"level":"info","message":"GET /v1/users/forget/shashankphiske@gmail.com 2861.046 ms","timestamp":"2026-04-17 17:42:28"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-23 10:54:01"}
+{"ip":"127.0.0.1","level":"warn","message":"User unauthorized","timestamp":"2026-04-23 10:54:50"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-04-23 10:54:50"}
+{"level":"info","message":"GET /v1/artisans 5.487 ms","timestamp":"2026-04-23 10:54:50"}
+{"ip":"127.0.0.1","level":"warn","message":"User unauthorized","timestamp":"2026-04-23 10:54:50"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-04-23 10:54:50"}
+{"level":"info","message":"GET /v1/auth/ 2.787 ms","timestamp":"2026-04-23 10:54:50"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-04-23 10:56:49"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:24:41\n\n  21 }\n  22 \n  23 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 24     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-23 10:56:50"}
+{"level":"info","message":"POST /v1/auth/ 1518.286 ms","timestamp":"2026-04-23 10:56:50"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-04-23 10:58:14"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:24:41\n\n  21 }\n  22 \n  23 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 24     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-23 10:58:16"}
+{"level":"info","message":"POST /v1/auth/ 2196.189 ms","timestamp":"2026-04-23 10:58:16"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-04-23 10:58:30"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:24:41\n\n  21 }\n  22 \n  23 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 24     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-23 10:58:31"}
+{"level":"info","message":"POST /v1/auth/ 850.649 ms","timestamp":"2026-04-23 10:58:31"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-23 10:59:05"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-04-23 10:59:07"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.users.findFirst()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\user.repository.ts:24:41\n\n  21 }\n  22 \n  23 fetch = async (id?: string, username?: string, email?: string): Promise<User> => {\n→ 24     const user = await prisma.users.findFirst(\nDatabase `postgres.lljhvppwnkxrmtxapzig` does not exist on the database server","timestamp":"2026-04-23 10:59:08"}
+{"level":"info","message":"POST /v1/auth/ 898.684 ms","timestamp":"2026-04-23 10:59:08"}

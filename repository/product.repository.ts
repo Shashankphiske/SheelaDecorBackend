@@ -114,28 +114,28 @@ class ProductRepository extends BaseRepository<any, any, any> {
             let stitching = null;
 
             if (LABOUR_TYPES.includes(data.productType ?? "")) {
-                // upsert — handles case where stitching row doesn't exist yet
-                await tx.stitchings.upsert({
-                    where: {
-                        productId: product.id
-                    },
-                    update: {
-                        name: data.stitchingName,
-                        price: parseFloat(data.stitchingPrice ?? 0),
-                        unit: data.stitchingUnit ?? "METER",
-                    },
-                    create: {
-                        name: data.stitchingName,
-                        price: parseFloat(data.stitchingPrice ?? 0),
-                        unit: data.stitchingUnit ?? "METER",
-                        productId: product.id,
-                    }
-                });
+                // // upsert — handles case where stitching row doesn't exist yet
+                // await tx.stitchings.upsert({
+                //     where: {
+                        
+                //     },
+                //     update: {
+                //         name: data.stitchingName,
+                //         price: parseFloat(data.stitchingPrice ?? 0),
+                //         unit: data.stitchingUnit ?? "METER",
+                //     },
+                //     create: {
+                //         name: data.stitchingName,
+                //         price: parseFloat(data.stitchingPrice ?? 0),
+                //         unit: data.stitchingUnit ?? "METER",
+                //         productId: product.id,
+                //     }
+                // });
             } else {
                 // Product type changed away from a labour type — delete stitching if it exists
-                await tx.stitchings.deleteMany({
-                    where: { productId: product.id }
-                });
+                // await tx.stitchings.deleteMany({
+                //     where: { productId: product.id }
+                // });
             }
 
             return;

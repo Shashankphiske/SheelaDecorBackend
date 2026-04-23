@@ -76,16 +76,25 @@ model brands {
 
   projectProducts projectProducts[]
 
+  catalogues catalogues[]
+
   @@index([id, createdAt])
 }
 
 model catalogues {
   id String @id @default(uuid()) @db.Uuid
+  brandId String? @db.Uuid @map("brand_id")
   name String @unique
+  type String
+  price Decimal
+  launchYear Int @map("launch_year")
+  rackNo Int @map("rack_no")
   description String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
   projectProducts projectProducts[]
+
+  brand brands? @relation(fields: [brandId], references: [id])
 
   @@index([id, createdAt])
 }
@@ -139,8 +148,6 @@ model products {
 
   projectProducts projectProducts[]
 
-  stitching stitchings?
-
   @@index([id, createdAt])
 }
 
@@ -149,9 +156,7 @@ model stitchings {
   name String
   price Decimal
   unit SellingUnit
-  productId String @db.Uuid @map("product_id") @unique
 
-  product products? @relation(fields: [productId], references: [id], onDelete: Cascade)
   projectLabours projectLabours[]
 }
 
@@ -230,11 +235,11 @@ model projects {
   customerId String? @db.Uuid @map("customer_id")
   creatorId String @db.Uuid @map("creator_id")
   status ProjectStatus
-  totalAmount Decimal @map("total_amount")
-  totalTax Decimal @map("total_tax")
-  paid Decimal
-  discount Decimal
-  discountType String @map("discount_type")
+  totalAmount Decimal? @map("total_amount")
+  totalTax Decimal? @map("total_tax")
+  paid Decimal?
+  discount Decimal?
+  discountType String? @map("discount_type")
   projectDate DateTime @db.Timestamptz @map("project_date")
   additionalRequests String? @map("additional_requests")
   address String?
