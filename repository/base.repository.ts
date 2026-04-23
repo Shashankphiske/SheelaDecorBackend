@@ -10,8 +10,10 @@ import { serverUtils } from "../utils/server.utils.js";
 
 interface RepoConfig {
     primaryKey: string,
-    statusField: string
+    statusField: string,
+    hasCreatedAt: boolean,   // ← add
 }
+
 
 /**
  * Abstract Base Repository providing generic CRUD operations using Prisma.
@@ -22,20 +24,21 @@ interface RepoConfig {
  */
 export abstract class BaseRepository<T, TCreateData, TUpdateData> {
 
+    // In constructor:
     constructor(
         protected model: any = prisma,
         protected modelName: string,
-        config: { primaryKey?: string; statusField?: string } = {}
+        config: { primaryKey?: string; statusField?: string; hasCreatedAt?: boolean } = {}  // ← add
     ) {
         this.config = {
             primaryKey: "id",
             statusField: "",
+            hasCreatedAt: true,   // ← default true so existing repos need no changes
             ...config
         }
     }
 
-    protected config: { primaryKey: string; statusField: string };
-
+    protected config: { primaryKey: string; statusField: string; hasCreatedAt: boolean };
     /**
      * Maps Prisma-specific known request errors to custom server errors.
      * @param error - The error caught from a Prisma operation.
@@ -81,7 +84,7 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
                 data,
                 select: {
                     id: true,
-                    createdAt: true
+                    ...(this.config.hasCreatedAt !== false ? { createdAt: true } : {}),
                 }
             });
         } catch (error) {
@@ -119,19 +122,22 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      * @returns {Promise<T[]>} An array of retrieved records.
      */
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<T[]> => {
+        let where: any = {};
 
-        let where: any = {
-        };
         if (this.config.statusField) {
             where[this.config.statusField] = null;
         }
 
         where = serverUtils.buildWhere(where, filters, data, searchFields);
+
         return await this.model.findMany({
             take: data.limit,
             where,
             orderBy: [
-                { createdAt: (data.sort ?? "desc") as 'asc' | 'desc' },
+                ...(this.config.hasCreatedAt !== false
+                    ? [{ createdAt: (data.sort ?? "desc") as 'asc' | 'desc' }]
+                    : []
+                ),
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
             ]
         });

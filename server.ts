@@ -17,12 +17,14 @@ import { TaskRouter } from "./router/task.router.js";
 import { ProjectRouter } from "./router/project.router.js";
 import { BankRouter } from "./router/bank.router.js";
 import { CustomerRouter } from "./router/customer.router.js";
-import { StitchingRouter } from "./router/stitching.router.js";
 import { InquiryRouter } from "./router/inquiry.router.js";
 import cors from "cors";
 import { PaymentRouter } from "./router/payment.router.js";
 import { AuthorizationRouter } from "./router/authorization.router.js";
 import { authenticate, authenticateAdmin } from "./middleware/authenticate.middleware.js";
+import { DealerRouter } from "./router/dealer.router.js";
+import { DealsInRouter } from "./router/dealsIn.router.js";
+import { ArtisanTypeRouter } from "./router/artisanType.router.js";
 dotenv.config();
 
 const app = express();
@@ -62,6 +64,7 @@ app.use(authenticate);
 
 app.use("/v1/brands", BrandRouter);
 app.use("/v1/artisans", ArtisanRouter);
+app.use("/v1/artisantypes", ArtisanTypeRouter);
 
 app.use("/v1/products", ProductRouter);
 
@@ -77,11 +80,13 @@ app.use("/v1/banks", BankRouter);
 
 app.use("/v1/customers", CustomerRouter);
 
-app.use("/v1/stitching", StitchingRouter);
-
 app.use("/v1/inquiries", InquiryRouter);
 
 app.use("/v1/payments", PaymentRouter);
+
+app.use("/v1/dealers", DealerRouter);
+
+app.use("/v1/dealsin", DealsInRouter);
 
 app.use(authenticateAdmin);
 

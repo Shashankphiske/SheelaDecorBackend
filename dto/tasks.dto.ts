@@ -10,6 +10,10 @@ interface Task {
     priority: Priority
     status: Status
     createdAt: Date
+    project: {
+        id: string
+        name: string
+    }
 }
 
 interface TaskData {

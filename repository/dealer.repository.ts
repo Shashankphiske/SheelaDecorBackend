@@ -1,22 +1,13 @@
 import { prisma } from "../db/prisma.js";
+import type { Dealer, DealerData } from "../dto/dealer.dto.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
-import type { Task, TaskData } from "../dto/tasks.dto.js";
 import { serverUtils } from "../utils/server.utils.js";
 import { BaseRepository } from "./base.repository.js";
 
-class TaskRepository extends BaseRepository<Task, TaskData, any> {
+class DealerRepository extends BaseRepository<Dealer, DealerData, any> {
     constructor() {
-        super(prisma.tasks, "TASK");
+        super(prisma.dealers, "DEALER");
     }
-
-    create = async (data: TaskData): Promise<Task> => {
-        return await this.model.create({
-            data: {
-                ...data,
-                taskDate: new Date(data.taskDate)
-            }
-        })
-    };
 
     fetch = async (id: string, userId?: string) => {
 
@@ -31,15 +22,10 @@ class TaskRepository extends BaseRepository<Task, TaskData, any> {
         const record = await this.model.findFirst({
             where,
             include: {
-                project: {
-                    select: {
-                        id: true,
-                        name: true
-                    }
-                }
+                DealsIn: true
             }
         });
-        return record ?? ({} as Task);
+        return record ?? ({} as Dealer);
     };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []) => {
@@ -54,23 +40,19 @@ class TaskRepository extends BaseRepository<Task, TaskData, any> {
         return await this.model.findMany({
             take: data.limit,
             where,
+            include: {
+                DealsIn: true
+            },
             orderBy: [
                 ...(this.config.hasCreatedAt !== false
                     ? [{ createdAt: (data.sort ?? "desc") as 'asc' | 'desc' }]
                     : []
                 ),
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
-            ],
-            include: {
-                project: {
-                    select: {
-                        id: true,
-                        name: true
-                    }
-                }
-            }
+            ]
         });
     };
+
 }
 
-export { TaskRepository }
+export { DealerRepository };

@@ -99,6 +99,30 @@ model catalogues {
   @@index([id, createdAt])
 }
 
+model DealsIn {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+
+  dealers dealers[]
+}
+
+model dealers {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  description String?
+  dealsInId String? @db.Uuid @map("deals_in_id")
+  personName String @map("person_name")
+  phonenumber String?
+  email String?
+  catalogueLink String? @map("catalogue_link")
+  address String?
+  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
+
+  DealsIn DealsIn? @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
+
+  @@unique([name, personName])
+}
+
 enum SellingUnit {
   METER
   FEET 
@@ -151,28 +175,27 @@ model products {
   @@index([id, createdAt])
 }
 
-model stitchings {
+
+model ArtisanTypes {
   id String @id @default(uuid()) @db.Uuid
-  name String
-  price Decimal
-  unit SellingUnit
+  name String @unique
 
-  projectLabours projectLabours[]
-}
+  artisans artisans[]
 
-enum ArtisanType {
-  TAILOR
-  SOFA_WORKER
+  @@map("artisan_types")
 }
 
 model artisans {
   id String @id @default(uuid()) @db.Uuid
-  artisanType ArtisanType @default(TAILOR) @map("artisan_type")
+  artisanTypeId String @db.Uuid @map("artisan_type_id")
   name String
   phonenumber String?
   email String?
   address String?
+  price Decimal
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  artisanType ArtisanTypes @relation(fields: [artisanTypeId], references: [id], onDelete: Cascade)
 
   projectLabours projectLabours[]
 
@@ -299,15 +322,13 @@ model projectProducts {
 model projectLabours {
   id String @id @default(uuid()) @db.Uuid
   projectId String @db.Uuid
-  stitchingId String? @db.Uuid
   artisanId String? @db.Uuid
-  cost Decimal 
+  price Decimal 
+  unit SellingUnit
   key String
   quantity Decimal
-  unit SellingUnit
 
   project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  stitching stitchings? @relation(fields: [stitchingId], references: [id])
   artisan artisans? @relation(fields: [artisanId], references: [id])
 }
 

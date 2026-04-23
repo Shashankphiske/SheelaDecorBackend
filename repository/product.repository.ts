@@ -32,22 +32,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
                 }
             });
 
-            let stitching = null;
-            if (LABOUR_TYPES.includes(data.productType ?? "")) {
-                stitching = await tx.stitchings.create({
-                    data: {
-                        name: data.stitchingName,
-                        price: parseFloat(data.stitchingPrice ?? 0),
-                        unit: data.stitchingUnit ?? "METER",
-                        productId: product.id,
-                    },
-                    select: {
-                        id: true
-                    }
-                });
-            }
-
-            return { ...product, stitching };
+            return product;
         });
     }
 
@@ -58,10 +43,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
         };
 
         const record = await this.model.findFirst({
-            where,
-            include: {
-                stitching: true
-            }
+            where
         });
         return record;
     };
@@ -81,10 +63,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
             orderBy: [
                 { createdAt: (data.sort ?? "desc") as 'asc' | 'desc' },
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
-            ],
-            include: {
-                stitching: true
-            }
+            ]
         });
     };
 
@@ -93,7 +72,7 @@ class ProductRepository extends BaseRepository<any, any, any> {
         const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
 
         return await prisma.$transaction(async (tx) => {
-            const product = await tx.products.update({
+            await tx.products.update({
                 where: { id },
                 data: {
                     name: data.name,
@@ -110,33 +89,6 @@ class ProductRepository extends BaseRepository<any, any, any> {
                     createdAt: true
                 }
             });
-
-            let stitching = null;
-
-            if (LABOUR_TYPES.includes(data.productType ?? "")) {
-                // // upsert — handles case where stitching row doesn't exist yet
-                // await tx.stitchings.upsert({
-                //     where: {
-                        
-                //     },
-                //     update: {
-                //         name: data.stitchingName,
-                //         price: parseFloat(data.stitchingPrice ?? 0),
-                //         unit: data.stitchingUnit ?? "METER",
-                //     },
-                //     create: {
-                //         name: data.stitchingName,
-                //         price: parseFloat(data.stitchingPrice ?? 0),
-                //         unit: data.stitchingUnit ?? "METER",
-                //         productId: product.id,
-                //     }
-                // });
-            } else {
-                // Product type changed away from a labour type — delete stitching if it exists
-                // await tx.stitchings.deleteMany({
-                //     where: { productId: product.id }
-                // });
-            }
 
             return;
         });

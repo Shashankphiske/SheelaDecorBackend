@@ -121,8 +121,6 @@ abstract class BaseService<T, TData, TMethods> {
             id
         });
 
-        redisUtils.invalidateKey(record.userId ? record.userId : "PUBLIC", this.modelName, "UPDATE");
-
         return record;
     }
 

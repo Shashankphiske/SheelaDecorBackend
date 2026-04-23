@@ -14,7 +14,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "@prisma/client": "^7.6.0",
+    "@prisma/client": "^7.8.0",
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
