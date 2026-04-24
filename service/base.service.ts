@@ -41,8 +41,6 @@ abstract class BaseService<T, TData, TMethods> {
             id: record.id,
         });
 
-        redisUtils.invalidateKey(record.userId ? record.userId : "PUBLIC", this.modelName, "CREATE");
-
         return record;
     }
 
@@ -135,8 +133,6 @@ abstract class BaseService<T, TData, TMethods> {
         // @ts-ignore
         const record = await this.method.hardDelete(id);
         logger.info(`${this.modelName} record hard deleted`, { id });
-
-        redisUtils.invalidateKey("PUBLIC", this.modelName, "DELETE");
 
         return record;
     }

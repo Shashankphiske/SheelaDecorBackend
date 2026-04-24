@@ -50,7 +50,12 @@ class ProjectRepository  {
                     id: true,
                     createdAt: true,
                     status: true,
-                    paid: true
+                    paid: true,
+                    creator: {
+                        select: {
+                            username: true
+                        }
+                    }
                 }
             });
 
@@ -66,7 +71,7 @@ class ProjectRepository  {
                     areaId: area.areaId || null,
                     price: Number(item.mrp ?? 0),
                     quantity: Number(item.quantity ?? 1),
-                    brandId: item.companyId || null,
+                    brandId: item.brandId || null,
                     catalogueId: item.catalogueId || null,
                     designNo: Number(item.designNo ?? 0),
                     references: item.reference || null,
@@ -93,11 +98,11 @@ class ProjectRepository  {
 
             const labourRows = labourData.map((labour: any) => ({
                 projectId: project.id,
-                stitchingId: labour.stitchingId || null,
                 artisanId: labour.artisanId || null,
-                cost: Number(labour.labourCost ?? 0),
+                productId: labour.productId,
+                price: Number(labour?.price) || 0,
                 key: labour.key,
-                quantity: Number(labour.quantity ?? 0),
+                quantity: Number(labour.quantity) || 0,
                 unit: labour.unit,
             }));
 
@@ -118,12 +123,12 @@ class ProjectRepository  {
                 status: { not: "DEFAULTER" }
             },
             include: {
-                projectProducts: true,
-                projectLabours: true,
-                payments: true,
-                tasks: true,
                 customer: true,
-                creator: true
+                creator: {
+                    select: {
+                        username: true
+                    }
+                }
             }
         });
 
@@ -134,17 +139,9 @@ class ProjectRepository  {
         const project = await prisma.projects.update({
             where: { id },
             data: { status: "DEFAULTER" },
-            include: {
-                projectProducts: true,
-                projectLabours: true,
-                payments: true,
-                tasks: true,
-                customer: true,
-                creator: true
-            }
         });
 
-        return project;
+        return;
     };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<any> => {
@@ -159,12 +156,12 @@ class ProjectRepository  {
                 { id: (data.sort ?? "desc") as "asc" | "desc" }
             ],
             include: {
-                projectProducts: true,
-                projectLabours: true,
-                payments: true,
-                tasks: true,
                 customer: true,
-                creator: true
+                creator: {
+                    select: {
+                        username: true
+                    }
+                }
             }
         });
     };
@@ -186,6 +183,8 @@ class ProjectRepository  {
                     projectDate: new Date(data.projectDate),
                     additionalRequests: data.additionalRequest,
                     address: data.address,
+                    status: data.status,
+                    creatorId: data.creatorId,
                     bankId: data.bankId,
                 } as any,
                 select: {
@@ -203,12 +202,12 @@ class ProjectRepository  {
 
             const productRows = areas.flatMap((area: any) =>
                 (area.areacollection ?? []).map((item: any) => ({
-                    projectId: id,
+                    projectId: project.id,
                     productId: item.productId,
                     areaId: area.areaId || null,
                     price: Number(item.mrp ?? 0),
                     quantity: Number(item.quantity ?? 1),
-                    brandId: item.companyId || null,
+                    brandId: item.brandId || null,
                     catalogueId: item.catalogueId || null,
                     designNo: Number(item.designNo ?? 0),
                     references: item.reference || null,
@@ -216,9 +215,9 @@ class ProjectRepository  {
                     width: item.width != null ? Number(item.width) : null,
                     height: item.height != null ? Number(item.height) : null,
                     length: item.length != null ? Number(item.length) : null,
-                    orderId: null,
+                    orderId: item.orderId ?? null,
                     remark: item.remark || null,
-                    status: "PENDING",
+                    status: item.status,
                 }))
             );
 
@@ -237,12 +236,12 @@ class ProjectRepository  {
             const labourData: any[] = data.labourData ?? [];
 
             const labourRows = labourData.map((labour: any) => ({
-                projectId: id,
-                stitchingId: labour.stitchingId || null,
+                projectId: project.id,
                 artisanId: labour.artisanId || null,
-                cost: Number(labour.labourCost ?? 0),
+                productId: labour.productId,
+                price: Number(labour?.price) || 0,
                 key: labour.key,
-                quantity: Number(labour.quantity ?? 0),
+                quantity: Number(labour.quantity) || 0,
                 unit: labour.unit,
             }));
 

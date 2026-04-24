@@ -1,6 +1,0 @@
--- AlterTable
-ALTER TABLE "projects" ALTER COLUMN "total_amount" DROP NOT NULL,
-ALTER COLUMN "total_tax" DROP NOT NULL,
-ALTER COLUMN "paid" DROP NOT NULL,
-ALTER COLUMN "discount" DROP NOT NULL,
-ALTER COLUMN "discount_type" DROP NOT NULL;

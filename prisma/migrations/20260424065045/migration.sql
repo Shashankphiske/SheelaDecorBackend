@@ -2,13 +2,25 @@
 CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'INTERIOR', 'SALES_ASSOCIATE');
 
 -- CreateEnum
-CREATE TYPE "SellingUnit" AS ENUM ('METER', 'FEET', 'INCHES', 'CENTIMETER');
+CREATE TYPE "SellingUnit" AS ENUM ('METER', 'FEET', 'INCHES', 'CENTIMETER', 'PANHA', 'RFT', 'SQFT', 'SQM', 'SQY', 'ROLL', 'PIECE', 'PANEL');
 
 -- CreateEnum
-CREATE TYPE "productType" AS ENUM ('FABRIC', 'AREA', 'RUNNING_LENGTH', 'PEICE', 'FIXED_LENGTH', 'FIXED_AREA', 'TAILORING');
+CREATE TYPE "productType" AS ENUM ('FABRIC', 'AREA', 'RUNNING_LENGTH', 'PIECE', 'FIXED_LENGTH', 'FIXED_AREA', 'TAILORING', 'SOFA_TYPE', 'AP_CURTAIN', 'ROMAN_CURTAIN');
+
+-- CreateEnum
+CREATE TYPE "DimensionType" AS ENUM ('lb', 'lh', 'bh', 'lbh');
+
+-- CreateEnum
+CREATE TYPE "BankTypes" AS ENUM ('SAVINGS', 'CURRENT', 'RECURRING', 'SALARY');
 
 -- CreateEnum
 CREATE TYPE "Status" AS ENUM ('TODO', 'INPROGRESS', 'COMPLETED');
+
+-- CreateEnum
+CREATE TYPE "ProjectStatus" AS ENUM ('PENDING', 'ACTIVE', 'GOODS_PENDING', 'GOODS_COMPLETE', 'TAILOR_PENDING', 'TAILOR_COMPLETE', 'COMPLETED', 'DEFAULTER');
+
+-- CreateEnum
+CREATE TYPE "ProductStatus" AS ENUM ('PENDING', 'ORDERED', 'RECEIVED', 'INSTOCK');
 
 -- CreateEnum
 CREATE TYPE "Priority" AS ENUM ('HIGH', 'MODERATE', 'LOW');
@@ -23,9 +35,9 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" "Role" NOT NULL,
-    "phonenumber" INTEGER,
+    "phonenumber" TEXT,
     "address" TEXT,
-    "alternate_phonenumber" INTEGER,
+    "alternate_phonenumber" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
@@ -47,8 +59,8 @@ CREATE TABLE "customers" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "phonenumber" INTEGER NOT NULL,
-    "alternate_phonenumber" INTEGER,
+    "phonenumber" TEXT NOT NULL,
+    "alternate_phonenumber" TEXT,
     "address" TEXT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -68,7 +80,12 @@ CREATE TABLE "brands" (
 -- CreateTable
 CREATE TABLE "catalogues" (
     "id" UUID NOT NULL,
+    "brand_id" UUID,
     "name" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "price" DECIMAL(65,30) NOT NULL,
+    "launch_year" TEXT NOT NULL,
+    "rack_no" INTEGER NOT NULL,
     "description" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -76,12 +93,27 @@ CREATE TABLE "catalogues" (
 );
 
 -- CreateTable
-CREATE TABLE "product_groups" (
+CREATE TABLE "deals_in" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
+
+    CONSTRAINT "deals_in_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "dealers" (
+    "id" UUID NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "deals_in_id" UUID NOT NULL,
+    "person_name" TEXT NOT NULL,
+    "phonenumber" TEXT,
+    "email" TEXT,
+    "catalogue_link" TEXT,
+    "address" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "product_groups_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "dealers_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -89,26 +121,37 @@ CREATE TABLE "products" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
-    "product_group_id" UUID,
     "selling_unit" "SellingUnit",
     "product_type" TEXT,
-    "mrp" INTEGER NOT NULL,
-    "tax_rate" INTEGER NOT NULL,
+    "price" DECIMAL(65,30) NOT NULL,
+    "tax_rate" DECIMAL(65,30) NOT NULL,
+    "dimension_type" "DimensionType" NOT NULL DEFAULT 'lbh',
+    "size" DECIMAL(65,30),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "tailors" (
+CREATE TABLE "artisan_types" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
-    "phonenumber" INTEGER,
+
+    CONSTRAINT "artisan_types_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "artisans" (
+    "id" UUID NOT NULL,
+    "artisan_type_id" UUID NOT NULL,
+    "name" TEXT NOT NULL,
+    "phonenumber" TEXT,
     "email" TEXT,
     "address" TEXT,
+    "price" DECIMAL(65,30) NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "tailors_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "artisans_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -126,22 +169,13 @@ CREATE TABLE "banks" (
     "bank_name" TEXT NOT NULL,
     "account_name" TEXT,
     "branch" TEXT NOT NULL,
-    "pincode" INTEGER NOT NULL,
-    "account_number" INTEGER NOT NULL,
+    "pincode" TEXT NOT NULL,
+    "account_number" TEXT NOT NULL,
     "ifsc_code" TEXT NOT NULL,
-    "accountType" TEXT NOT NULL,
+    "account_type" "BankTypes" NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "banks_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "companies" (
-    "id" UUID NOT NULL,
-    "name" TEXT NOT NULL,
-    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "companies_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -149,19 +183,17 @@ CREATE TABLE "projects" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
     "customer_id" UUID,
-    "status" "Status" NOT NULL,
-    "total_amount" INTEGER NOT NULL,
-    "total_tax" INTEGER NOT NULL,
-    "paid" INTEGER NOT NULL,
-    "discount" INTEGER NOT NULL,
-    "discount_type" TEXT NOT NULL,
-    "created_by" TEXT,
+    "creator_id" UUID NOT NULL,
+    "status" "ProjectStatus" NOT NULL,
+    "total_amount" DECIMAL(65,30),
+    "total_tax" DECIMAL(65,30),
+    "paid" DECIMAL(65,30),
+    "discount" DECIMAL(65,30),
+    "discount_type" TEXT,
     "project_date" TIMESTAMPTZ NOT NULL,
     "additional_requests" TEXT,
-    "interior_id" UUID,
-    "sales_associate_id" UUID,
     "address" TEXT,
-    "defaulter" BOOLEAN NOT NULL,
+    "bank_id" UUID,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "projects_pkey" PRIMARY KEY ("id")
@@ -172,37 +204,36 @@ CREATE TABLE "project_products" (
     "id" UUID NOT NULL,
     "project_id" UUID NOT NULL,
     "product_id" UUID NOT NULL,
-    "product_group_id" UUID,
     "area_id" UUID,
-    "price" INTEGER NOT NULL,
-    "quantity" INTEGER NOT NULL,
+    "price" DECIMAL(65,30),
+    "quantity" INTEGER,
     "company_id" UUID,
     "catalogue_id" UUID,
-    "design_no" INTEGER NOT NULL,
+    "design_no" INTEGER,
     "references" TEXT,
-    "measurementUnit" "SellingUnit" NOT NULL DEFAULT 'METER',
-    "width" INTEGER NOT NULL DEFAULT 0,
-    "height" INTEGER NOT NULL DEFAULT 0,
+    "measurement_unit" "SellingUnit" DEFAULT 'METER',
+    "width" DECIMAL(65,30),
+    "height" DECIMAL(65,30),
+    "length" DECIMAL(65,30),
+    "status" "ProductStatus" NOT NULL DEFAULT 'PENDING',
+    "remark" TEXT,
+    "order_id" TEXT,
 
     CONSTRAINT "project_products_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "project_areas" (
+CREATE TABLE "project_labours" (
     "id" UUID NOT NULL,
-    "areaId" UUID NOT NULL,
-    "projectId" UUID NOT NULL,
+    "project_id" UUID NOT NULL,
+    "product_id" UUID NOT NULL,
+    "artisan_id" UUID,
+    "price" DECIMAL(65,30) NOT NULL,
+    "unit" "SellingUnit" NOT NULL,
+    "key" TEXT NOT NULL,
+    "quantity" DECIMAL(65,30) NOT NULL,
 
-    CONSTRAINT "project_areas_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "projectBankDetails" (
-    "id" UUID NOT NULL,
-    "bankId" UUID NOT NULL,
-    "projectId" UUID NOT NULL,
-
-    CONSTRAINT "projectBankDetails_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "project_labours_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -235,13 +266,36 @@ CREATE TABLE "stores" (
 CREATE TABLE "payments" (
     "id" UUID NOT NULL,
     "customer_id" UUID,
-    "amount" INTEGER NOT NULL,
+    "project_id" UUID,
+    "amount" DECIMAL(65,30) NOT NULL,
     "payment_mode" TEXT NOT NULL,
     "type" "PaymentType" NOT NULL,
-    "remarks" TEXT NOT NULL,
+    "remarks" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "payments_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "inquiries" (
+    "id" UUID NOT NULL,
+    "project_name" TEXT NOT NULL,
+    "customer_name" TEXT NOT NULL,
+    "phonenumber" TEXT NOT NULL,
+    "comments" TEXT,
+    "inquiry_date" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "follow_up_date" TIMESTAMPTZ NOT NULL,
+
+    CONSTRAINT "inquiries_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "authorizations" (
+    "id" UUID NOT NULL,
+    "user_id" UUID NOT NULL,
+    "access" TEXT NOT NULL,
+
+    CONSTRAINT "authorizations_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -272,10 +326,10 @@ CREATE UNIQUE INDEX "catalogues_name_key" ON "catalogues"("name");
 CREATE INDEX "catalogues_id_created_at_idx" ON "catalogues"("id", "created_at");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "product_groups_name_key" ON "product_groups"("name");
+CREATE UNIQUE INDEX "deals_in_name_key" ON "deals_in"("name");
 
 -- CreateIndex
-CREATE INDEX "product_groups_id_created_at_idx" ON "product_groups"("id", "created_at");
+CREATE UNIQUE INDEX "dealers_name_person_name_key" ON "dealers"("name", "person_name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "products_name_key" ON "products"("name");
@@ -284,7 +338,10 @@ CREATE UNIQUE INDEX "products_name_key" ON "products"("name");
 CREATE INDEX "products_id_created_at_idx" ON "products"("id", "created_at");
 
 -- CreateIndex
-CREATE INDEX "tailors_id_created_at_idx" ON "tailors"("id", "created_at");
+CREATE UNIQUE INDEX "artisan_types_name_key" ON "artisan_types"("name");
+
+-- CreateIndex
+CREATE INDEX "artisans_id_created_at_idx" ON "artisans"("id", "created_at");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "areas_name_key" ON "areas"("name");
@@ -294,12 +351,6 @@ CREATE INDEX "areas_id_created_at_idx" ON "areas"("id", "created_at");
 
 -- CreateIndex
 CREATE INDEX "banks_id_created_at_idx" ON "banks"("id", "created_at");
-
--- CreateIndex
-CREATE UNIQUE INDEX "companies_name_key" ON "companies"("name");
-
--- CreateIndex
-CREATE INDEX "companies_id_created_at_idx" ON "companies"("id", "created_at");
 
 -- CreateIndex
 CREATE INDEX "projects_id_created_at_idx" ON "projects"("id", "created_at");
@@ -313,20 +364,29 @@ CREATE INDEX "stores_id_created_at_idx" ON "stores"("id", "created_at");
 -- CreateIndex
 CREATE INDEX "payments_id_created_at_idx" ON "payments"("id", "created_at");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "authorizations_user_id_access_key" ON "authorizations"("user_id", "access");
+
 -- AddForeignKey
 ALTER TABLE "refresh_tokens" ADD CONSTRAINT "refresh_tokens_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "products" ADD CONSTRAINT "products_product_group_id_fkey" FOREIGN KEY ("product_group_id") REFERENCES "product_groups"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "catalogues" ADD CONSTRAINT "catalogues_brand_id_fkey" FOREIGN KEY ("brand_id") REFERENCES "brands"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "dealers" ADD CONSTRAINT "dealers_deals_in_id_fkey" FOREIGN KEY ("deals_in_id") REFERENCES "deals_in"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "artisans" ADD CONSTRAINT "artisans_artisan_type_id_fkey" FOREIGN KEY ("artisan_type_id") REFERENCES "artisan_types"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "projects" ADD CONSTRAINT "projects_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "customers"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "projects" ADD CONSTRAINT "projects_interior_id_fkey" FOREIGN KEY ("interior_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "projects" ADD CONSTRAINT "projects_creator_id_fkey" FOREIGN KEY ("creator_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "projects" ADD CONSTRAINT "projects_sales_associate_id_fkey" FOREIGN KEY ("sales_associate_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "projects" ADD CONSTRAINT "projects_bank_id_fkey" FOREIGN KEY ("bank_id") REFERENCES "banks"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "project_products" ADD CONSTRAINT "project_products_area_id_fkey" FOREIGN KEY ("area_id") REFERENCES "areas"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -335,7 +395,7 @@ ALTER TABLE "project_products" ADD CONSTRAINT "project_products_area_id_fkey" FO
 ALTER TABLE "project_products" ADD CONSTRAINT "project_products_catalogue_id_fkey" FOREIGN KEY ("catalogue_id") REFERENCES "catalogues"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "project_products" ADD CONSTRAINT "project_products_company_id_fkey" FOREIGN KEY ("company_id") REFERENCES "companies"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "project_products" ADD CONSTRAINT "project_products_company_id_fkey" FOREIGN KEY ("company_id") REFERENCES "brands"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "project_products" ADD CONSTRAINT "project_products_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "projects"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -344,22 +404,22 @@ ALTER TABLE "project_products" ADD CONSTRAINT "project_products_project_id_fkey"
 ALTER TABLE "project_products" ADD CONSTRAINT "project_products_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "project_products" ADD CONSTRAINT "project_products_product_group_id_fkey" FOREIGN KEY ("product_group_id") REFERENCES "product_groups"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "project_labours" ADD CONSTRAINT "project_labours_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "projects"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "project_areas" ADD CONSTRAINT "project_areas_areaId_fkey" FOREIGN KEY ("areaId") REFERENCES "areas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "project_labours" ADD CONSTRAINT "project_labours_artisan_id_fkey" FOREIGN KEY ("artisan_id") REFERENCES "artisans"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "project_areas" ADD CONSTRAINT "project_areas_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "projects"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "projectBankDetails" ADD CONSTRAINT "projectBankDetails_bankId_fkey" FOREIGN KEY ("bankId") REFERENCES "banks"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "projectBankDetails" ADD CONSTRAINT "projectBankDetails_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "projects"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "project_labours" ADD CONSTRAINT "project_labours_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "tasks" ADD CONSTRAINT "tasks_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "projects"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "payments" ADD CONSTRAINT "payments_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "customers"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "payments" ADD CONSTRAINT "payments_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "projects"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "authorizations" ADD CONSTRAINT "authorizations_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

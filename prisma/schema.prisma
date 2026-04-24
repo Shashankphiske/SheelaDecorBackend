@@ -104,13 +104,15 @@ model DealsIn {
   name String @unique
 
   dealers dealers[]
+
+  @@map("deals_in")
 }
 
 model dealers {
   id String @id @default(uuid()) @db.Uuid
   name String
   description String?
-  dealsInId String? @db.Uuid @map("deals_in_id")
+  dealsInId String @db.Uuid @map("deals_in_id")
   personName String @map("person_name")
   phonenumber String?
   email String?
@@ -118,7 +120,7 @@ model dealers {
   address String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
-  DealsIn DealsIn? @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
+  DealsIn DealsIn @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
 
   @@unique([name, personName])
 }
@@ -171,6 +173,8 @@ model products {
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
 
   projectProducts projectProducts[]
+
+  projectLabours projectLabours[]
 
   @@index([id, createdAt])
 }
@@ -296,19 +300,19 @@ model projectProducts {
   projectId String @db.Uuid @map("project_id")
   productId String @db.Uuid @map("product_id")
   areaId String? @db.Uuid @map("area_id")
-  price Decimal
-  quantity Int
+  price Decimal?
+  quantity Int?
   brandId String? @db.Uuid @map("company_id")
   catalogueId String? @db.Uuid @map("catalogue_id")
-  designNo Int @map("design_no")
+  designNo Int? @map("design_no")
   references String?
-  measurementUnit SellingUnit @default(METER) @map("measurement_unit")
+  measurementUnit SellingUnit? @default(METER) @map("measurement_unit")
   width Decimal?
   height Decimal?
   length Decimal?
   status ProductStatus @default(PENDING)
   remark String?
-  orderId String? @map("order_id")
+  orderId String? @map("order_id") 
 
   area areas? @relation(fields: [areaId], references: [id], onDelete: Cascade)
   catalogue catalogues? @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
@@ -321,8 +325,9 @@ model projectProducts {
 
 model projectLabours {
   id String @id @default(uuid()) @db.Uuid
-  projectId String @db.Uuid
-  artisanId String? @db.Uuid
+  projectId String @db.Uuid @map("project_id")
+  productId String @db.Uuid @map("product_id")
+  artisanId String? @db.Uuid @map("artisan_id")
   price Decimal 
   unit SellingUnit
   key String
@@ -330,6 +335,9 @@ model projectLabours {
 
   project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
   artisan artisans? @relation(fields: [artisanId], references: [id])
+  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("project_labours")
 }
 
 enum Priority {

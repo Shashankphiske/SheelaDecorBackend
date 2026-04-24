@@ -25,6 +25,8 @@ import { authenticate, authenticateAdmin } from "./middleware/authenticate.middl
 import { DealerRouter } from "./router/dealer.router.js";
 import { DealsInRouter } from "./router/dealsIn.router.js";
 import { ArtisanTypeRouter } from "./router/artisanType.router.js";
+import { ProjectLabourRouter } from "./router/projectLabour.router.js";
+import { ProjectProductRouter } from "./router/projectProduct.router.js";
 dotenv.config();
 
 const app = express();
@@ -75,6 +77,8 @@ app.use("/v1/areas", AreaRouter);
 app.use("/v1/tasks", TaskRouter);
 
 app.use("/v1/projects", ProjectRouter);
+app.use("/v1/projectlabours", ProjectLabourRouter);
+app.use("/v1/projectproducts", ProjectProductRouter);
 
 app.use("/v1/banks", BankRouter);
 

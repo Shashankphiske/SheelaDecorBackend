@@ -1,4 +1,4 @@
-import type { SellingUnit } from "./product.dto.js"
+import type { Product, SellingUnit } from "./product.dto.js"
 
 type ProductStatus = "PENDING" | "ORDERED" | "RECEIVED" | "INSTOCK";
 
@@ -9,7 +9,7 @@ interface ProjectProduct {
     areaId: string | null
     price: number
     quantity: number
-    companyId: string | null
+    brandId: string | null
     catalogueId: string | null
     designNo: number
     references: string | null
@@ -20,14 +20,28 @@ interface ProjectProduct {
     orderId: string | null
     remark: string | null
     status: ProductStatus
+    area: {
+        name: string,
+        id: string
+    },
+    brand: {
+        name: string,
+        id: string
+    },
+    catalogue: {
+        name: string,
+        id: string
+    },
+    product: Product
 }
+
 
 interface ProjectProductData {
     productId: string
     areaId?: string
     price: number
     quantity: number
-    companyId?: string
+    brandId?: string
     catalogueId?: string
     designNo: number
     references?: string

@@ -1,12 +1,13 @@
 import { prisma } from "../db/prisma.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
-import type { Payment, PaymentData } from "../dto/payment.dto.js";
+import type { ProjectLabour, ProjectLabourData } from "../dto/projectLabour.dto.js";
 import { serverUtils } from "../utils/server.utils.js";
+
 import { BaseRepository } from "./base.repository.js";
 
-class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
+class ProjectLabourRepository extends BaseRepository<ProjectLabour, ProjectLabourData, any> {
     constructor() {
-        super(prisma.payments, "PAYMENT");
+        super(prisma.projectLabours, "PROJECT-LABOUR", { hasCreatedAt: false });
     }
 
     fetch = async (id: string, userId?: string) => {
@@ -22,19 +23,10 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
         const record = await this.model.findFirst({
             where,
             include: {
-                customer: {
-                    select: {
-                        name: true
-                    }
-                },
-                project: {
-                    select: {
-                        name: true
-                    }
-                }
+                artisan: true
             },
         });
-        return record ?? ({} as Payment);
+        return record ?? ({} as ProjectLabour);
     };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []) => {
@@ -57,19 +49,10 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
             ],
             include: {
-                customer: {
-                    select: {
-                        name: true
-                    }
-                },
-                project: {
-                    select: {
-                        name: true
-                    }
-                }
+                artisan: true
             },
         });
     };
 }
 
-export { PaymentRepository }
+export { ProjectLabourRepository };
