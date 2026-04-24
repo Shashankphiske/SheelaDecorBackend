@@ -45,7 +45,7 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      * @throws {serverError} Corresponding to P2025 (Not Found), P2003 (Foreign Key), or P2002 (Unique).
      * @private
      */
-    private handlePrismaError(error: any): never {
+    public handlePrismaError(error: any): never {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
             if (error.code === 'P2025') {
                 throw new ServerError(errorMessage.NOTFOUND);

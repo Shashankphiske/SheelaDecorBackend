@@ -203,3 +203,5 @@
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-24 14:20:29"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-24 14:20:29"}
 {"ip":"127.0.0.1","level":"error","message":"\nInvalid `tx.projects.update()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:174:47\n\n  171 \n  172 // ── 1. Update Project ─────────────────────────────────────\n  173 \n→ 174 const project = await tx.projects.update(\nInvalid input value: invalid input syntax for type uuid: \"\"","timestamp":"2026-04-24 14:21:55"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-24 15:42:40"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-24 15:42:45"}
