@@ -130,15 +130,32 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
 
         where = serverUtils.buildWhere(where, filters, data, searchFields);
 
+        // ── Cursor pagination ─────────────────────────────────────────────────
+        if (data.lastId) {
+            if (this.config.hasCreatedAt && data.lastCreatedAt) {
+                // Use compound cursor: createdAt + id for stable ordering
+                where.OR = [
+                    { createdAt: { lt: new Date(data.lastCreatedAt) } },
+                    {
+                        createdAt: new Date(data.lastCreatedAt),
+                        id: { lt: data.lastId }
+                    }
+                ];
+            } else {
+                // No createdAt — cursor by id only
+                where.id = { lt: data.lastId };
+            }
+        }
+
         return await this.model.findMany({
-            take: data.limit,
+            take: 10,
             where,
             orderBy: [
                 ...(this.config.hasCreatedAt !== false
-                    ? [{ createdAt: (data.sort ?? "desc") as 'asc' | 'desc' }]
+                    ? [{ createdAt: "desc" as const }]
                     : []
                 ),
-                { id: (data.sort ?? "desc") as 'asc' | 'desc' }
+                { id: "desc" as const }
             ]
         });
     };
