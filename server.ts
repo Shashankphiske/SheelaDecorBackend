@@ -52,12 +52,18 @@ app.use(morgan(`:method :url :response-time ms`, { stream }) );
 // app.use(cacheMiddleware.cacheRequest(3600, "PRIVATE"));
 
 app.get("/", (req: Request, res: Response) => {
-    if (req.headers["x-cron-key"] == config.cronKey) {
+    // Check key in URL: ://yoursite.com
+    const key = req.query.key || req.headers["x-cron-key"];
+
+    if (key === config.cronKey) {
         return res.status(200).send("OK");
     }
 
-    return res.status(400).send("FAILED");
+    // Still return 200 but with a different message to keep the cron "Success" 
+    // OR keep 401/403 for security (just ensure your cron service sends the key)
+    return res.status(401).send("Unauthorized");
 });
+
 
 app.use("/v1/users", UserRouter);
 app.use("/v1/auth", AuthRouter);

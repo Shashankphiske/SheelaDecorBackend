@@ -222,3 +222,59 @@
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:03:27"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:07:18"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:07:24"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:37:13"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:39:04"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:39:55"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:40:36"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:40:44"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:46:39"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:49:12"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:49:15"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:50:39"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:51:01"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:53:32"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:53:41"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:54:41"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:55:01"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:56:58"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-25 19:58:40"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:27"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:28"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:28"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:28"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:28"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:29"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:29"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:29"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:30"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:30"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:31"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:31"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-25 21:36:32"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:11"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:12"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:14"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 04:11:17"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 15:48:58"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 15:49:00"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 15:49:02"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 15:53:43"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 15:54:10"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:11:38"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:16:26"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:16:31"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:41:23"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:42:14"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `tx.projects.create()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\project.repository.ts:33:47\n\n  30 \n  31 // ── 1. Project ────────────────────────────────────────────────────────\n  32 \n→ 33 const project = await tx.projects.create({\n       data: {\n         name: undefined,\n         customerId: undefined,\n         totalAmount: 1951.923076923077,\n         totalTax: 125,\n         paid: 0,\n         discount: 10,\n         discountType: \"percent\",\n         projectDate: new Date(\"Invalid Date\"),\n                      ~~~~~~~~~~~~~~~~~~~~~~~~\n         additionalRequests: undefined,\n         address: undefined,\n         status: \"PENDING\",\n         creatorId: \"cf311af2-b641-4f95-b974-763c71535187\",\n         bankId: \"ff7b3fcc-828c-45bd-ac7f-5a4d22737b15\"\n       },\n       select: {\n         id: true,\n         createdAt: true,\n         status: true,\n         paid: true,\n         creator: {\n           select: {\n             username: true\n           }\n         }\n       }\n     })\n\nInvalid value for argument `projectDate`: Provided Date object is invalid. Expected Date.","timestamp":"2026-04-26 16:43:38"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:44:40"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:45:03"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:45:14"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:45:56"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 16:53:12"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 17:05:58"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-26 17:47:37"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-26 17:48:59"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 09:43:27"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 09:43:38"}
