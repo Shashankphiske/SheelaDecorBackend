@@ -49,7 +49,13 @@ class ProjectLabourRepository extends BaseRepository<ProjectLabour, ProjectLabou
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
             ],
             include: {
-                artisan: true
+                artisan: true,
+                product: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
             },
         });
     };

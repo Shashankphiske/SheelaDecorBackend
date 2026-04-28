@@ -278,3 +278,80 @@
 {"level":"error","message":"Redis error","timestamp":"2026-04-26 17:48:59"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 09:43:27"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 09:43:38"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 10:58:31"}
+{"ip":"127.0.0.1","level":"error","message":"Transaction API error: Unable to start a transaction in the given time.","timestamp":"2026-04-27 11:17:44"}
+{"ip":"127.0.0.1","level":"error","message":"Transaction API error: Unable to start a transaction in the given time.","timestamp":"2026-04-27 11:18:10"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 11:45:22"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 12:31:11"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 12:57:38"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 13:01:53"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 16:49:12"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 16:55:26"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 16:59:44"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:26:53"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 17:31:43"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:31:49"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:42:50"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:46:17"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:46:57"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:51:36"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-27 17:56:54"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:54"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:55"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:55"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:55"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:56"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:56"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:56"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:57"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:57"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:58"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:58"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:59"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:48:59"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 18:49:00"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 20:26:21"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:01"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:01"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:01"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:02"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:02"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:02"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:02"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:03"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:03"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:04"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:04"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-27 21:56:05"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:11"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:12"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:14"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:15"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 03:09:16"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 09:49:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 09:49:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 09:49:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-04-28 09:49:53"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 10:27:42"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:150:33\n\n  147     }\n  148 }\n  149 \n→ 150 return await this.model.findMany({\n        take: 10,\n        where: {\n          AND: [\n            {}\n          ]\n        },\n        orderBy: [\n          {\n            createdAt: \"desc\"\n          },\n          {\n            id: \"desc\"\n          }\n        ]\n      })\n\nUnknown argument `createdAt`. Available options are marked with ?.","timestamp":"2026-04-28 11:34:30"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\order.repository.ts:106:33\n\n  103     }\n  104 }\n  105 \n→ 106 return await this.model.findMany({\n        take: 10,\n        where: {\n          AND: [\n            {}\n          ]\n        },\n        includes: {\n        ~~~~~~~~\n          customer: {\n            select: {\n              id: true,\n              name: true\n            }\n          },\n          product: {\n            select: {\n              id: true,\n              name: true\n            }\n          },\n          project: {\n            select: {\n              id: true,\n              name: true\n            }\n          },\n          brand: {\n            select: {\n              id: true,\n              name: true\n            }\n          },\n          catalogue: {\n            select: {\n              id: true,\n              name: true\n            }\n          },\n          area: {\n            select: {\n              id: true,\n              name: true\n            }\n          }\n        },\n        orderBy: [\n          {\n            id: \"desc\"\n          }\n        ],\n      ? cursor?: ordersWhereUniqueInput,\n      ? skip?: Int,\n      ? distinct?: OrdersScalarFieldEnum | OrdersScalarFieldEnum[]\n      })\n\nUnknown argument `includes`. Available options are marked with ?.","timestamp":"2026-04-28 11:40:59"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.update()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:181:30\n\n  178     where[this.config.statusField] = null;\n  179 }\n  180 \n→ 181 await this.model.update({\n        where: {\n          id: \"a7d91dca-6c74-4f30-8a7f-68de7d713da7\"\n        },\n        data: {\n          id: \"a7d91dca-6c74-4f30-8a7f-68de7d713da7\",\n          customerId: \"49f6294f-7f81-4f71-bfe8-bf695d8589d7\",\n          productId: \"4047ab42-9db7-4d95-8e69-93bea3ae0361\",\n          projectId: \"cd1bf12f-d904-490f-9fb5-925e2cf50de6\",\n          catalogueId: null,\n          brandId: \"4de4d9dc-f379-4660-901e-921549eade61\",\n          areaId: \"d193ac29-563a-474c-aa2b-7985b34ac463\",\n          orderedDate: \"2026-04-28\",\n                       ~~~~~~~~~~~~\n          quantity: \"9.615384615384615\",\n          orderId: \"100\",\n          receivedDate: \"\",\n          customer: {\n            id: \"49f6294f-7f81-4f71-bfe8-bf695d8589d7\",\n            name: \"customer 1\"\n          },\n          product: {\n            id: \"4047ab42-9db7-4d95-8e69-93bea3ae0361\",\n            name: \"ap curtain\"\n          },\n          project: {\n            id: \"cd1bf12f-d904-490f-9fb5-925e2cf50de6\",\n            name: \"order project\"\n          },\n          brand: {\n            id: \"4de4d9dc-f379-4660-901e-921549eade61\",\n            name: \"brand 11\"\n          },\n          catalogue: null,\n          area: {\n            id: \"d193ac29-563a-474c-aa2b-7985b34ac463\",\n            name: \"bedroom\"\n          },\n          taskDate: \"\"\n        }\n      })\n\nInvalid value for argument `orderedDate`: premature end of input. Expected ISO-8601 DateTime.","timestamp":"2026-04-28 11:51:59"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:02:22"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:02:41"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:03:37"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:03:41"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:05:58"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:06:06"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\projectLabour.repository.ts:41:33\n\n  38 \n  39 where = serverUtils.buildWhere(where, filters, data, searchFields);\n  40 \n→ 41 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {},\n           {\n             projectId: \"cd1bf12f-d904-490f-9fb5-925e2cf50de6\"\n           },\n           {\n             OR: [\n               {\n                 unit: {\n                   contains: \"sample\",\n                   mode: \"insensitive\"\n                 }\n               }\n             ]\n           }\n         ]\n       },\n       orderBy: [\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         artisan: true,\n         product: {\n           select: {\n             id: true,\n             name: true\n           }\n         }\n       }\n     })\n\nUnknown argument `contains`. Available options are marked with ?.","timestamp":"2026-04-28 12:33:35"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\projectLabour.repository.ts:41:33\n\n  38 \n  39 where = serverUtils.buildWhere(where, filters, data, searchFields);\n  40 \n→ 41 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {},\n           {\n             projectId: \"cd1bf12f-d904-490f-9fb5-925e2cf50de6\"\n           },\n           {\n             OR: [\n               {\n                 status: {\n                   contains: \"sample\",\n                   mode: \"insensitive\"\n                 }\n               }\n             ]\n           }\n         ]\n       },\n       orderBy: [\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         artisan: true,\n         product: {\n           select: {\n             id: true,\n             name: true\n           }\n         }\n       }\n     })\n\nUnknown argument `contains`. Available options are marked with ?.","timestamp":"2026-04-28 12:35:52"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\projectLabour.repository.ts:41:33\n\n  38 \n  39 where = serverUtils.buildWhere(where, filters, data, searchFields);\n  40 \n→ 41 return await this.model.findMany({\n       take: 10,\n       where: {\n         AND: [\n           {},\n           {\n             projectId: \"cd1bf12f-d904-490f-9fb5-925e2cf50de6\"\n           },\n           {\n             OR: [\n               {\n                 status: {\n                   contains: \"sample\",\n                   mode: \"insensitive\"\n                 }\n               }\n             ]\n           }\n         ]\n       },\n       orderBy: [\n         {\n           id: \"desc\"\n         }\n       ],\n       include: {\n         artisan: true,\n         product: {\n           select: {\n             id: true,\n             name: true\n           }\n         }\n       }\n     })\n\nUnknown argument `contains`. Available options are marked with ?.","timestamp":"2026-04-28 12:37:37"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:44:18"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:44:57"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:48:13"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:49:32"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 12:49:53"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 13:06:24"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 13:19:11"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 14:05:08"}

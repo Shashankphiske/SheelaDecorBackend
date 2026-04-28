@@ -30,7 +30,7 @@ class ServerUtils {
             AND.push({
                 OR: searchFields.map((field) => ({
                     [field]: {
-                        contains: data.search,
+                        contains: data?.search ,
                         mode: "insensitive"
                     }
                 }))

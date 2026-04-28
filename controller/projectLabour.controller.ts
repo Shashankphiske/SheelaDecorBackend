@@ -23,10 +23,13 @@ class ProjectLabourController extends BaseController<ProjectLabourService> {
             this.getPagination(req),
             {
                 artisanId: req.query.artisanId?.toString(),
-                projectId: req.query.projectId?.toString()
+                projectId: req.query.projectId?.toString(),
+                productId: req.query.productId?.toString(),
+                status: req.query.status?.toString(),
+                lastId: req.query.lastId?.toString()
             },
             [
-                "unit"
+
             ]
         );
 

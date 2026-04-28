@@ -21,7 +21,9 @@ class CatalogueController extends BaseController<CatalogueService> {
         const catalogues = await this.service.fetchAll(
             this.getPagination(req),
             {
-
+                brandId: req.query.brandId?.toString(),
+                type: req.query.type?.toString(),
+                launchYear: req.query.launchYear?.toString()
             },
             [
                 "name"

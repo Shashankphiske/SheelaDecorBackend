@@ -65,6 +65,8 @@ model customers {
 
   projects projects[]
 
+  orders orders[]
+
   @@index([id, createdAt])
 }
 
@@ -77,6 +79,8 @@ model brands {
   projectProducts projectProducts[]
 
   catalogues catalogues[]
+
+  order orders[]
 
   @@index([id, createdAt])
 }
@@ -95,6 +99,8 @@ model catalogues {
   projectProducts projectProducts[]
 
   brand brands? @relation(fields: [brandId], references: [id])
+
+  order orders[]
 
   @@index([id, createdAt])
 }
@@ -176,6 +182,8 @@ model products {
 
   projectLabours projectLabours[]
 
+  order orders[]
+
   @@index([id, createdAt])
 }
 
@@ -212,6 +220,7 @@ model areas {
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
 
   projectProducts projectProducts[]
+  order orders[]
 
   @@index([id, createdAt])
 }
@@ -285,6 +294,8 @@ model projects {
 
   projectLabours projectLabours[]
 
+  order orders[]
+
   @@index([id, createdAt])
 }
 
@@ -323,6 +334,12 @@ model projectProducts {
   @@map("project_products")
 }
 
+enum LabourStatus {
+  PENDING
+  COMPLETED
+  RECEIVED
+}
+
 model projectLabours {
   id String @id @default(uuid()) @db.Uuid
   projectId String @db.Uuid @map("project_id")
@@ -332,6 +349,7 @@ model projectLabours {
   unit SellingUnit
   key String
   quantity Decimal
+  status LabourStatus @default(PENDING)
 
   project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
   artisan artisans? @relation(fields: [artisanId], references: [id])
@@ -412,3 +430,25 @@ model authorizations {
 
   @@unique([userId, access])
 }
+
+model orders {
+  id String @id @default(uuid()) @db.Uuid
+  customerId String @db.Uuid @map("customer_id")
+  productId String @db.Uuid @map("product_id")
+  projectId String @db.Uuid @map("project_id")
+  catalogueId String? @db.Uuid @map("catalogue_id")
+  brandId String? @db.Uuid @map("brand_id")
+  areaId String? @db.Uuid @map("area_id")
+  orderedDate DateTime? @db.Timestamptz
+  quantity Decimal?
+  orderId String? @map("order_id")
+  receivedDate DateTime? @db.Timestamptz @map("received_date")
+
+  customer customers @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
+  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  catalogue catalogues? @relation(fields: [catalogueId], references: [id])
+  brand brands? @relation(fields: [brandId], references: [id])
+  area areas? @relation(fields: [areaId], references: [id])
+}
+

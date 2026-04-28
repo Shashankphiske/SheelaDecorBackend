@@ -51,16 +51,11 @@ class ProjectRepository  {
                     createdAt: true,
                     status: true,
                     paid: true,
-                    creator: {
-                        select: {
-                            username: true
-                        }
-                    }
+                    creator: { select: { username: true } }
                 }
             });
 
             // ── 2. Project Products ───────────────────────────────────────────────
-            // Source: selections.areas[].areacollection[]
 
             const areas: any[] = data.areas ?? [];
 
@@ -79,8 +74,8 @@ class ProjectRepository  {
                     width: item.width != null ? Number(item.width) : null,
                     height: item.height != null ? Number(item.height) : null,
                     length: item.length != null ? Number(item.length) : null,
-                    orderId: null,
                     remark: item.remark || null,
+                    orderId: null,
                     status: "PENDING",
                 }))
             );
@@ -91,8 +86,32 @@ class ProjectRepository  {
                 });
             }
 
-            // ── 3. Project Labours ────────────────────────────────────────────────
-            // Source: selections.labourData[]
+            // ── 3. Auto-create initial Orders for each product ────────────────────
+            // Stores the initial purchase intent — other fields filled later
+            // from the orders page.
+
+            const orderRows = areas.flatMap((area: any) =>
+                (area.areacollection ?? []).map((item: any) => ({
+                    projectId: project.id,
+                    customerId: data.customerId || null,
+                    productId: item.productId,
+                    catalogueId: item.catalogueId || null,
+                    brandId: item.brandId || null,
+                    areaId: area.areaId || null,
+                    quantity: Number(item.quantity ?? 1),
+                    orderedDate: null,
+                    receivedDate: null,
+                    orderId: null,
+                }))
+            );
+
+            if (orderRows.length > 0) {
+                await tx.orders.createMany({
+                    data: orderRows as any,
+                });
+            }
+
+            // ── 4. Project Labours ────────────────────────────────────────────────
 
             const labourData: any[] = data.labourData ?? [];
 
@@ -169,7 +188,7 @@ class ProjectRepository  {
     update = async (data: any, id: string, userId?: string) => {
         return await prisma.$transaction(async (tx) => {
 
-            // ── 1. Update Project ─────────────────────────────────────
+            // ── 1. Update Project ─────────────────────────────────────────────────
 
             const project = await tx.projects.update({
                 where: { id },
@@ -187,51 +206,149 @@ class ProjectRepository  {
                     creatorId: data.creatorId,
                     bankId: data.bankId,
                 } as any,
-                select: {
-                    id: true
-                }
+                select: { id: true }
             });
 
-            // ── 2. Reset Products ─────────────────────────────────────
+            // ── 2. Snapshot existing products + orders ────────────────────────────
 
-            await tx.projectProducts.deleteMany({
+            const existingProducts = await tx.projectProducts.findMany({
                 where: { projectId: id },
+                select: {
+                    productId: true,
+                    areaId: true,
+                    orderId: true,
+                    status: true,
+                },
             });
+
+            // Map: productId+areaId → { orderId, status }
+            const productOrderMap = new Map<string, { orderId: string | null; status: string }>();
+            for (const ep of existingProducts) {
+                const key = `${ep.productId}_${ep.areaId ?? "null"}`;
+                productOrderMap.set(key, { orderId: ep.orderId, status: ep.status });
+            }
+
+            // Snapshot existing orders for this project keyed the same way
+            const existingOrders = await tx.orders.findMany({
+                where: { projectId: id },
+                select: {
+                    id: true,
+                    productId: true,
+                    areaId: true,
+                    orderedDate: true,
+                    receivedDate: true,
+                    orderId: true,
+                },
+            });
+
+            // Map: productId+areaId → existing order record
+            const existingOrderMap = new Map<string, typeof existingOrders[0]>();
+            for (const eo of existingOrders) {
+                const key = `${eo.productId}_${eo.areaId ?? "null"}`;
+                existingOrderMap.set(key, eo);
+            }
+
+            // ── 3. Build new product rows ─────────────────────────────────────────
 
             const areas: any[] = data.areas ?? [];
 
+            const incomingKeys = new Set<string>();
+
             const productRows = areas.flatMap((area: any) =>
-                (area.areacollection ?? []).map((item: any) => ({
-                    projectId: project.id,
-                    productId: item.productId,
-                    areaId: area.areaId || null,
-                    price: Number(item.mrp ?? 0),
-                    quantity: Number(item.quantity ?? 1),
-                    brandId: item.brandId || null,
-                    catalogueId: item.catalogueId || null,
-                    designNo: Number(item.designNo ?? 0),
-                    references: item.reference || null,
-                    measurementUnit: item.unit || null,
-                    width: item.width != null ? Number(item.width) : null,
-                    height: item.height != null ? Number(item.height) : null,
-                    length: item.length != null ? Number(item.length) : null,
-                    orderId: item.orderId ?? null,
-                    remark: item.remark || null,
-                    status: item.status,
-                }))
+                (area.areacollection ?? []).map((item: any) => {
+                    const key = `${item.productId}_${area.areaId || "null"}`;
+                    incomingKeys.add(key);
+
+                    const existing = productOrderMap.get(key);
+
+                    return {
+                        projectId: project.id,
+                        productId: item.productId,
+                        areaId: area.areaId || null,
+                        price: Number(item.mrp ?? 0),
+                        quantity: Number(item.quantity ?? 1),
+                        brandId: item.brandId || null,
+                        catalogueId: item.catalogueId || null,
+                        designNo: Number(item.designNo ?? 0),
+                        references: item.reference || null,
+                        measurementUnit: item.unit || null,
+                        width: item.width != null ? Number(item.width) : null,
+                        height: item.height != null ? Number(item.height) : null,
+                        length: item.length != null ? Number(item.length) : null,
+                        remark: item.remark || null,
+                        // Preserve order linkage
+                        orderId: existing?.orderId ?? null,
+                        status: existing?.status ?? "PENDING",
+                    };
+                })
             );
 
+            await tx.projectProducts.deleteMany({ where: { projectId: id } });
+
             if (productRows.length > 0) {
-                await tx.projectProducts.createMany({
-                    data: productRows as any,
+                await tx.projectProducts.createMany({ data: productRows as any });
+            }
+
+            // ── 4. Sync Orders ────────────────────────────────────────────────────
+
+            // Delete orders for products that were removed from the project
+            const removedOrderIds = existingOrders
+                .filter((eo) => {
+                    const key = `${eo.productId}_${eo.areaId ?? "null"}`;
+                    return !incomingKeys.has(key);
+                })
+                .map((eo) => eo.id);
+
+            if (removedOrderIds.length > 0) {
+                await tx.orders.deleteMany({
+                    where: { id: { in: removedOrderIds } },
                 });
             }
 
-            // ── 3. Reset Labours ─────────────────────────────────────
+            // Update existing orders with latest customer/catalogue/brand/quantity
+            // Only update fields the user may have changed — preserve orderedDate,
+            // receivedDate, orderId which are managed from the orders page.
+            for (const area of areas) {
+                for (const item of area.areacollection ?? []) {
+                    const key = `${item.productId}_${area.areaId || "null"}`;
+                    const existingOrder = existingOrderMap.get(key);
 
-            await tx.projectLabours.deleteMany({
-                where: { projectId: id },
-            });
+                    if (existingOrder) {
+                        // Product already had an order — update mutable fields only
+                        await tx.orders.update({
+                            where: { id: existingOrder.id },
+                            data: {
+                                customerId: data.customerId || null,
+                                catalogueId: item.catalogueId || null,
+                                brandId: item.brandId || null,
+                                quantity: Number(item.quantity ?? 1),
+                                // orderedDate, receivedDate, orderId — NOT touched
+                                // those are owned by the orders page
+                            },
+                        });
+                    } else {
+                        // New product added to the project — create its order
+                        await tx.orders.create({
+                            data: {
+                                projectId: id,
+                                customerId: data.customerId || null,
+                                productId: item.productId,
+                                catalogueId: item.catalogueId || null,
+                                brandId: item.brandId || null,
+                                areaId: area.areaId || null,
+                                quantity: Number(item.quantity ?? 1),
+                                orderedDate: null,
+                                receivedDate: null,
+                                orderId: null,
+                            },
+                        });
+                    }
+                }
+            }
+
+            // ── 5. Reset Labours ──────────────────────────────────────────────────
+
+            await tx.projectLabours.deleteMany({ where: { projectId: id } });
 
             const labourData: any[] = data.labourData ?? [];
 
@@ -246,9 +363,7 @@ class ProjectRepository  {
             }));
 
             if (labourRows.length > 0) {
-                await tx.projectLabours.createMany({
-                    data: labourRows as any,
-                });
+                await tx.projectLabours.createMany({ data: labourRows as any });
             }
 
             return;
