@@ -52,7 +52,7 @@ class ProjectProductRepository extends BaseRepository<ProjectProduct, ProjectPro
             where[this.config.statusField] = null;
         }
 
-        where = serverUtils.buildWhere(where, filters, data, searchFields);
+        where = serverUtils.buildWhere(where, filters, data, searchFields, false);
 
         return await this.model.findMany({
             take: data.limit,

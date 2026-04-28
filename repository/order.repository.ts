@@ -84,7 +84,7 @@ class OrderRepository extends BaseRepository<Order, OrderData, any> {
             where[this.config.statusField] = null;
         }
 
-        where = serverUtils.buildWhere(where, filters, data, searchFields);
+        where = serverUtils.buildWhere(where, filters, data, searchFields, false);
 
         // ── Cursor pagination ─────────────────────────────────────────────────
         if (data.lastId) {

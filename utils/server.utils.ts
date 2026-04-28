@@ -15,28 +15,48 @@ class ServerUtils {
 
         return value;
     }
-    buildWhere = (baseWhere: any, filters: any, data: PaginationData, searchFields: string[]) => {
+    buildWhere = (
+        baseWhere: any,
+        filters: any,
+        data: PaginationData,
+        searchFields: string[],
+        hasCreatedAt: boolean = true
+    ) => {
         const AND: any[] = [{ ...baseWhere }];
+
+        // ─────────────────────────────
+        // BASE WHERE
+        // ─────────────────────────────
         Object.entries(baseWhere).forEach(([key, value]) => {
             AND.push({ [key]: value });
         });
 
+        // ─────────────────────────────
+        // NORMAL FILTERS
+        // ─────────────────────────────
         Object.entries(filters || {}).forEach(([key, value]) => {
-            if (value != null && value !== 'undefined' && value !== "") {
+            if (value != null && value !== "undefined" && value !== "") {
                 AND.push({ [key]: this.parseFilterValue(value) });
             }
         });
+
+        // ─────────────────────────────
+        // SEARCH
+        // ─────────────────────────────
         if (data.search && searchFields.length > 0) {
             AND.push({
                 OR: searchFields.map((field) => ({
                     [field]: {
-                        contains: data?.search ,
-                        mode: "insensitive"
-                    }
-                }))
+                        contains: data.search,
+                        mode: "insensitive",
+                    },
+                })),
             });
         }
 
+        // ─────────────────────────────
+        // CURSOR PAGINATION
+        // ─────────────────────────────
         if (data.lastCreatedAt && data.lastId) {
             AND.push({
                 OR: [
@@ -44,12 +64,48 @@ class ServerUtils {
                     {
                         AND: [
                             { createdAt: data.lastCreatedAt },
-                            { id: { lt: data.lastId } }
-                        ]
-                    }
-                ]
+                            { id: { lt: data.lastId } },
+                        ],
+                    },
+                ],
             });
         }
+
+        // ─────────────────────────────
+        // 💰 PRICE RANGE FILTER (NEW)
+        // ─────────────────────────────
+        if (data.minPrice != null || data.maxPrice != null) {
+            AND.push({
+                price: {
+                    ...(data.minPrice != null ? { gte: Number(data.minPrice) } : {}),
+                    ...(data.maxPrice != null ? { lte: Number(data.maxPrice) } : {}),
+                },
+            });
+        }
+
+        // ─────────────────────────────
+        // 📅 DATE RANGE FILTER (NEW)
+        // ─────────────────────────────
+        if (data.startDate || data.endDate) {
+            const dateFilter: any = {};
+
+            if (data.startDate) {
+                dateFilter.gte = new Date(data.startDate);
+            }
+
+            if (data.endDate) {
+                dateFilter.lte = new Date(data.endDate);
+            }
+
+            // default fallback field
+            const dateField =
+                hasCreatedAt !== false ? "createdAt" : "updatedAt";
+
+            AND.push({
+                [dateField]: dateFilter,
+            });
+        }
+
         return { AND };
     };
 

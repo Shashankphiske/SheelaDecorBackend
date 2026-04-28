@@ -355,3 +355,11 @@
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 13:06:24"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 13:19:11"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 14:05:08"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 14:42:58"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 14:47:00"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\base.repository.ts:186:33\n\n  183     }\n  184 }\n  185 \n→ 186 return await this.model.findMany({\n        take: 10,\n        where: {\n          AND: [\n            {}\n          ],\n          price: {\n            gte: NaN,\n            lte: NaN\n          },\n          createdAt: {\n            gte: new Date(\"Invalid Date\"),\n                 ~~~~~~~~~~~~~~~~~~~~~~~~\n            lte: new Date(\"Invalid Date\")\n          }\n        },\n        orderBy: [\n          {\n            createdAt: \"desc\"\n          },\n          {\n            id: \"desc\"\n          }\n        ]\n      })\n\nInvalid value for argument `gte`: Provided Date object is invalid. Expected Date.","timestamp":"2026-04-28 14:58:35"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 15:08:53"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 15:30:51"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 15:30:56"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 15:44:32"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-28 15:48:43"}

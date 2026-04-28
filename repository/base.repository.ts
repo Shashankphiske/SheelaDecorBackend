@@ -121,31 +121,18 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
      * @param searchFields - List of model fields to apply search logic to.
      * @returns {Promise<T[]>} An array of retrieved records.
      */
-    fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<T[]> => {
+    fetchAll = async (
+        data: PaginationData,
+        filters: any,
+        searchFields: string[] = []
+    ): Promise<T[]> => {
         let where: any = {};
 
         if (this.config.statusField) {
             where[this.config.statusField] = null;
         }
 
-        where = serverUtils.buildWhere(where, filters, data, searchFields);
-
-        // ── Cursor pagination ─────────────────────────────────────────────────
-        if (data.lastId) {
-            if (this.config.hasCreatedAt && data.lastCreatedAt) {
-                // Use compound cursor: createdAt + id for stable ordering
-                where.OR = [
-                    { createdAt: { lt: new Date(data.lastCreatedAt) } },
-                    {
-                        createdAt: new Date(data.lastCreatedAt),
-                        id: { lt: data.lastId }
-                    }
-                ];
-            } else {
-                // No createdAt — cursor by id only
-                where.id = { lt: data.lastId };
-            }
-        }
+        where = serverUtils.buildWhere(where, filters, data, searchFields, this.config.hasCreatedAt);
 
         return await this.model.findMany({
             take: 10,
@@ -153,13 +140,11 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
             orderBy: [
                 ...(this.config.hasCreatedAt !== false
                     ? [{ createdAt: "desc" as const }]
-                    : []
-                ),
-                { id: "desc" as const }
-            ]
+                    : []),
+                { id: "desc" as const },
+            ],
         });
     };
-
     /**
      * Updates an existing record.
      * @param data - The fields to update.
