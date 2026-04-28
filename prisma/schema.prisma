@@ -55,10 +55,10 @@ model refreshTokens {
 model customers {
   id String @id @default(uuid()) @db.Uuid
   name String
-  email String
+  email String?
   phonenumber String
   alternatePhonenumber String? @map("alternate_phonenumber")
-  address String
+  address String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
   payments payments[]
@@ -89,10 +89,10 @@ model catalogues {
   id String @id @default(uuid()) @db.Uuid
   brandId String? @db.Uuid @map("brand_id")
   name String @unique
-  type String
-  price Decimal
-  launchYear String @map("launch_year")
-  rackNo Int @map("rack_no")
+  type String?
+  price Decimal?
+  launchYear String? @map("launch_year")
+  rackNo Int? @map("rack_no")
   description String?
   createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
 
@@ -172,8 +172,8 @@ model products {
   description String?
   sellingUnit SellingUnit? @map("selling_unit")
   productType String? @map("product_type")
-  price Decimal
-  taxRate Decimal @map("tax_rate")
+  price Decimal?
+  taxRate Decimal? @map("tax_rate")
   dimensionType DimensionType @default(lbh) @map("dimension_type")
   size Decimal?
   createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
@@ -212,6 +212,7 @@ model artisans {
   projectLabours projectLabours[]
 
   @@index([id, createdAt])
+  @@unique([name, email, phonenumber])
 }
 
 model areas {

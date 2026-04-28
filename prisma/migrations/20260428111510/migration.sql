@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "catalogues" ALTER COLUMN "type" DROP NOT NULL,
+ALTER COLUMN "price" DROP NOT NULL,
+ALTER COLUMN "launch_year" DROP NOT NULL,
+ALTER COLUMN "rack_no" DROP NOT NULL;

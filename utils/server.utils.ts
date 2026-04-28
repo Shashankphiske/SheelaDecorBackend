@@ -97,13 +97,13 @@ class ServerUtils {
                 dateFilter.lte = new Date(data.endDate);
             }
 
-            // default fallback field
-            const dateField =
-                hasCreatedAt !== false ? "createdAt" : "updatedAt";
+            const dateField = hasCreatedAt !== false ? "createdAt" : null;
 
-            AND.push({
-                [dateField]: dateFilter,
-            });
+            if (dateField) {
+                AND.push({
+                    [dateField]: dateFilter,
+                });
+            }
         }
 
         return { AND };
