@@ -6060,3 +6060,503 @@
 {"ip":"127.0.0.1","level":"http","message":"ORDER fetch all request received","timestamp":"2026-04-28 17:05:35","userId":"cf311af2-b641-4f95-b974-763c71535187"}
 {"level":"info","message":"ORDER records fetched","timestamp":"2026-04-28 17:05:37"}
 {"level":"info","message":"GET /v1/orders?projectId=undefined 1630.352 ms","timestamp":"2026-04-28 17:05:37"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 14:59:17"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 15:01:03"}
+{"level":"info","message":"GET /v1/auth/ 1181.002 ms","timestamp":"2026-04-29 15:01:04"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 15:01:04","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 15:01:04","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 15:01:04","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 15:01:04"}
+{"level":"info","message":"GET /v1/tasks 382.260 ms","timestamp":"2026-04-29 15:01:04"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 15:01:05"}
+{"level":"info","message":"GET /v1/projects 965.231 ms","timestamp":"2026-04-29 15:01:05"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 15:01:05"}
+{"level":"info","message":"GET /v1/inquiries 747.526 ms","timestamp":"2026-04-29 15:01:05"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-29 15:02:19","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-04-29 15:02:21"}
+{"level":"info","message":"GET /v1/products 2492.212 ms","timestamp":"2026-04-29 15:02:21"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-04-29 15:03:03","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No PRODUCT records found","timestamp":"2026-04-29 15:03:04"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-29 15:03:04"}
+{"level":"info","message":"GET /v1/products?lastId=080c1191-620b-43e4-bfc4-03d511b8d043&lastCreatedAt=2026-04-24T07%3A10%3A04.196Z 807.778 ms","timestamp":"2026-04-29 15:03:04"}
+{"ip":"127.0.0.1","level":"http","message":"ORDER fetch all request received","timestamp":"2026-04-29 15:03:14","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ORDER records fetched","timestamp":"2026-04-29 15:03:15"}
+{"level":"info","message":"GET /v1/orders?projectId=undefined 1269.082 ms","timestamp":"2026-04-29 15:03:15"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 15:07:33"}
+{"level":"info","message":"GET /v1/auth/ 1820.534 ms","timestamp":"2026-04-29 15:07:35"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 15:07:35","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 15:07:36"}
+{"level":"info","message":"GET /v1/projects 1207.181 ms","timestamp":"2026-04-29 15:07:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:08:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:08:13"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:08:27"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:08:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:09:04"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:09:11"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:09:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:09:58"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:25"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:41"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:54"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:11:59"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:16"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:12:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:16:33"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:16:41"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:16:57"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:05"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:10"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:16"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:20"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:39"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:52"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:17:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:00"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:06"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:11"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:18"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:21"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:27"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:42"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:44"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:18:52"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:05"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:13"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:24"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:38"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:40"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:43"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:52"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:19:58"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:00"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:02"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:09"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:12"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:16"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:24"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:31"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:37"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:42"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:20:52"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:26"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:28"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:33"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:45"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:21:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:22:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:22:14"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:22:28"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:22:47"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:22:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:18"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:22"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:37"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:23:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:16"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:22"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:25"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:32"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:24:58"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:25:01"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:25:22"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42601`. Message: `syntax error at or near \"lte\"`","timestamp":"2026-04-29 15:26:23"}
+{"level":"info","message":"GET /v1/reports 5255.450 ms","timestamp":"2026-04-29 15:26:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:26:45"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:26:49"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42P01`. Message: `relation \"payment\" does not exist`","timestamp":"2026-04-29 15:26:53"}
+{"level":"info","message":"GET /v1/reports 1306.161 ms","timestamp":"2026-04-29 15:26:53"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:27:05"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42803`. Message: `column \"payments.created_at\" must appear in the GROUP BY clause or be used in an aggregate function`","timestamp":"2026-04-29 15:27:10"}
+{"level":"info","message":"GET /v1/reports 1287.076 ms","timestamp":"2026-04-29 15:27:10"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:27:52"}
+{"level":"info","message":"GET /v1/reports 1154.455 ms","timestamp":"2026-04-29 15:27:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:32"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:35"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:37"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:41"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:44"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:31:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:32:05"}
+{"level":"info","message":"GET /v1/reports 1055.899 ms","timestamp":"2026-04-29 15:32:22"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:34:07"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `22007`. Message: `invalid input syntax for type timestamp with time zone: \"0NaN-NaN-NaN NaN:NaN:NaN\"`","timestamp":"2026-04-29 15:34:12"}
+{"level":"info","message":"GET /v1/reports 1383.845 ms","timestamp":"2026-04-29 15:34:12"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:34:25"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:34:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:35:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:35:59"}
+{"level":"info","message":"GET /v1/reports 1277.122 ms","timestamp":"2026-04-29 15:36:04"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-29&endDate=2028-12-12 967.914 ms","timestamp":"2026-04-29 15:36:39"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 320.830 ms","timestamp":"2026-04-29 15:36:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:40:42"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1345.430 ms","timestamp":"2026-04-29 15:40:46"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 858.855 ms","timestamp":"2026-04-29 15:41:00"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:41:40"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:41:43"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:41:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:41:48"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 991.364 ms","timestamp":"2026-04-29 15:41:53"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:44:56"}
+{"ip":"127.0.0.1","level":"http","message":"BANK fetch all request received","timestamp":"2026-04-29 15:45:01","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-29 15:45:02","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-PRODUCT fetch all request received","timestamp":"2026-04-29 15:45:02","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-LABOUR fetch all request received","timestamp":"2026-04-29 15:45:02","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"BANK records fetched","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"GET /v1/banks 1289.856 ms","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"GET /v1/artisans 1115.190 ms","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"PROJECT-LABOUR records fetched","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"GET /v1/projectlabours?projectId=cd1bf12f-d904-490f-9fb5-925e2cf50de6 1736.026 ms","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"PROJECT-PRODUCT records fetched","timestamp":"2026-04-29 15:45:03"}
+{"level":"info","message":"GET /v1/projectproducts?projectId=cd1bf12f-d904-490f-9fb5-925e2cf50de6 1759.185 ms","timestamp":"2026-04-29 15:45:03"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-29 15:45:06","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"AREA fetch all request received","timestamp":"2026-04-29 15:45:06","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"AREA records fetched","timestamp":"2026-04-29 15:45:06"}
+{"level":"info","message":"GET /v1/areas 199.260 ms","timestamp":"2026-04-29 15:45:06"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-29 15:45:06"}
+{"level":"info","message":"GET /v1/artisans 365.601 ms","timestamp":"2026-04-29 15:45:06"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:46:31"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1278.395 ms","timestamp":"2026-04-29 15:46:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:47:11"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1133.071 ms","timestamp":"2026-04-29 15:47:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:20"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:22"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:26"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:38"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1203.040 ms","timestamp":"2026-04-29 15:48:45"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:48:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:52:14"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42703`. Message: `column \"completed\" does not exist`","timestamp":"2026-04-29 15:52:21"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 2935.647 ms","timestamp":"2026-04-29 15:52:21"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:52:34"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:52:36"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42703`. Message: `column \"COMPLETED\" does not exist`","timestamp":"2026-04-29 15:52:39"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1695.679 ms","timestamp":"2026-04-29 15:52:40"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:53:11"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `prisma.$queryRaw()` invocation:\n\n\nRaw query failed. Code: `42601`. Message: `syntax error at or near \"$3\"`","timestamp":"2026-04-29 15:53:15"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1993.850 ms","timestamp":"2026-04-29 15:53:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:53:46"}
+{"ip":"127.0.0.1","level":"error","message":"Do not know how to serialize a BigInt","timestamp":"2026-04-29 15:53:51"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1686.623 ms","timestamp":"2026-04-29 15:53:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:54:43"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:54:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:54:50"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:54:54"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:55:04"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:55:11"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:55:20"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1507.392 ms","timestamp":"2026-04-29 15:55:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:57:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:57:57"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:58:01"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:58:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:58:05"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 15:58:13"}
+{"level":"info","message":"GET /v1/reports/?startDate=2026-04-20&endDate=2028-12-12 1104.566 ms","timestamp":"2026-04-29 15:58:30"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:04:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:04:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:04:51"}
+{"level":"info","message":"GET /v1/inquiries 1094.390 ms","timestamp":"2026-04-29 16:04:51"}
+{"level":"info","message":"GET /v1/reports 1232.071 ms","timestamp":"2026-04-29 16:04:51"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:04:51"}
+{"level":"info","message":"GET /v1/tasks 1363.552 ms","timestamp":"2026-04-29 16:04:51"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:05:11"}
+{"level":"info","message":"GET /v1/auth/ 1875.787 ms","timestamp":"2026-04-29 16:05:13"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:05:13","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:05:13","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:05:13","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 1694.809 ms","timestamp":"2026-04-29 16:05:14"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"GET /v1/inquiries 1578.578 ms","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"GET /v1/tasks 1784.311 ms","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"GET /v1/projects 1783.185 ms","timestamp":"2026-04-29 16:05:15"}
+{"level":"info","message":"GET /v1/reports 1069.420 ms","timestamp":"2026-04-29 16:05:53"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:06:32"}
+{"level":"info","message":"GET /v1/auth/ 871.587 ms","timestamp":"2026-04-29 16:06:33"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:06:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:06:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:06:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"GET /v1/tasks 360.042 ms","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"GET /v1/reports 853.330 ms","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"GET /v1/inquiries 858.152 ms","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:06:34"}
+{"level":"info","message":"GET /v1/projects 1038.629 ms","timestamp":"2026-04-29 16:06:34"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:07:06"}
+{"level":"info","message":"GET /v1/auth/ 832.795 ms","timestamp":"2026-04-29 16:07:07"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:07:09"}
+{"level":"info","message":"GET /v1/auth/ 151.596 ms","timestamp":"2026-04-29 16:07:10"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:07:25"}
+{"level":"info","message":"GET /v1/auth/ 1376.058 ms","timestamp":"2026-04-29 16:07:26"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:07:26","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:07:26","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:07:26","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:07:26"}
+{"level":"info","message":"GET /v1/tasks 324.704 ms","timestamp":"2026-04-29 16:07:26"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:07:27"}
+{"level":"info","message":"GET /v1/inquiries 805.508 ms","timestamp":"2026-04-29 16:07:27"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:07:27"}
+{"level":"info","message":"GET /v1/projects 985.701 ms","timestamp":"2026-04-29 16:07:27"}
+{"level":"info","message":"GET /v1/reports 907.117 ms","timestamp":"2026-04-29 16:07:49"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:07:50"}
+{"level":"info","message":"GET /v1/auth/ 159.107 ms","timestamp":"2026-04-29 16:07:50"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:07:51","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 197.395 ms","timestamp":"2026-04-29 16:07:51"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:07:51","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:07:51","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:07:51"}
+{"level":"info","message":"GET /v1/inquiries 439.902 ms","timestamp":"2026-04-29 16:07:51"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:07:51"}
+{"level":"info","message":"GET /v1/projects 699.642 ms","timestamp":"2026-04-29 16:07:51"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:07:52"}
+{"level":"info","message":"GET /v1/tasks 1567.557 ms","timestamp":"2026-04-29 16:07:52"}
+{"level":"info","message":"GET /v1/reports 1111.863 ms","timestamp":"2026-04-29 16:08:24"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:08:36"}
+{"level":"info","message":"GET /v1/auth/ 1003.791 ms","timestamp":"2026-04-29 16:08:37"}
+{"level":"info","message":"GET /v1/reports 899.464 ms","timestamp":"2026-04-29 16:08:38"}
+{"level":"info","message":"GET /v1/reports 903.600 ms","timestamp":"2026-04-29 16:10:06"}
+{"level":"info","message":"GET /v1/reports 169.700 ms","timestamp":"2026-04-29 16:10:09"}
+{"level":"info","message":"GET /v1/reports 775.368 ms","timestamp":"2026-04-29 16:10:25"}
+{"level":"info","message":"GET /v1/reports 188.239 ms","timestamp":"2026-04-29 16:10:32"}
+{"level":"info","message":"GET /v1/reports 151.369 ms","timestamp":"2026-04-29 16:10:38"}
+{"level":"info","message":"GET /v1/reports 765.584 ms","timestamp":"2026-04-29 16:10:52"}
+{"level":"info","message":"GET /v1/reports 163.046 ms","timestamp":"2026-04-29 16:10:56"}
+{"level":"info","message":"GET /v1/reports 827.587 ms","timestamp":"2026-04-29 16:12:08"}
+{"level":"info","message":"GET /v1/reports 155.046 ms","timestamp":"2026-04-29 16:12:14"}
+{"level":"info","message":"GET /v1/reports 1038.490 ms","timestamp":"2026-04-29 16:12:37"}
+{"level":"info","message":"GET /v1/reports 1181.767 ms","timestamp":"2026-04-29 16:12:50"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:12:53"}
+{"level":"info","message":"GET /v1/auth/ 225.224 ms","timestamp":"2026-04-29 16:12:53"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:12:54","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 165.506 ms","timestamp":"2026-04-29 16:12:54"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:12:54","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:12:54","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:12:54"}
+{"level":"info","message":"GET /v1/inquiries 165.612 ms","timestamp":"2026-04-29 16:12:54"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:12:54"}
+{"level":"info","message":"GET /v1/projects 329.281 ms","timestamp":"2026-04-29 16:12:54"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:12:55"}
+{"level":"info","message":"GET /v1/tasks 1790.049 ms","timestamp":"2026-04-29 16:12:55"}
+{"level":"info","message":"GET /v1/reports 1153.210 ms","timestamp":"2026-04-29 16:13:09"}
+{"level":"info","message":"GET /v1/reports 1123.065 ms","timestamp":"2026-04-29 16:13:48"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:13:50"}
+{"level":"info","message":"GET /v1/auth/ 201.657 ms","timestamp":"2026-04-29 16:13:50"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:13:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 241.104 ms","timestamp":"2026-04-29 16:13:50"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:13:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:13:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:13:50"}
+{"level":"info","message":"GET /v1/inquiries 280.754 ms","timestamp":"2026-04-29 16:13:50"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:13:51"}
+{"level":"info","message":"GET /v1/projects 503.458 ms","timestamp":"2026-04-29 16:13:51"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:13:51"}
+{"level":"info","message":"GET /v1/tasks 1348.684 ms","timestamp":"2026-04-29 16:13:51"}
+{"level":"info","message":"GET /v1/reports 1237.003 ms","timestamp":"2026-04-29 16:16:26"}
+{"level":"info","message":"GET /v1/reports 168.995 ms","timestamp":"2026-04-29 16:16:27"}
+{"level":"info","message":"GET /v1/reports 382.477 ms","timestamp":"2026-04-29 16:16:34"}
+{"level":"info","message":"GET /v1/reports 215.275 ms","timestamp":"2026-04-29 16:16:36"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:16:39"}
+{"level":"info","message":"GET /v1/auth/ 987.496 ms","timestamp":"2026-04-29 16:16:40"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:16:40","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:16:40","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:16:40","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 437.630 ms","timestamp":"2026-04-29 16:16:40"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:16:42"}
+{"level":"info","message":"GET /v1/inquiries 2057.137 ms","timestamp":"2026-04-29 16:16:42"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:16:43"}
+{"level":"info","message":"GET /v1/tasks 2359.066 ms","timestamp":"2026-04-29 16:16:43"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:16:43"}
+{"level":"info","message":"GET /v1/projects 2360.780 ms","timestamp":"2026-04-29 16:16:43"}
+{"level":"info","message":"GET /v1/reports 329.065 ms","timestamp":"2026-04-29 16:16:48"}
+{"level":"info","message":"GET /v1/reports 1280.854 ms","timestamp":"2026-04-29 16:18:08"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:18:19"}
+{"level":"info","message":"GET /v1/auth/ 1647.656 ms","timestamp":"2026-04-29 16:18:21"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:18:21","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:18:21","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:18:21","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:18:22"}
+{"level":"info","message":"GET /v1/tasks 601.448 ms","timestamp":"2026-04-29 16:18:22"}
+{"level":"info","message":"GET /v1/reports 1634.493 ms","timestamp":"2026-04-29 16:18:23"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:18:23"}
+{"level":"info","message":"GET /v1/inquiries 1727.003 ms","timestamp":"2026-04-29 16:18:23"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:18:23"}
+{"level":"info","message":"GET /v1/projects 1937.444 ms","timestamp":"2026-04-29 16:18:23"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:20:05","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:20:05","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:20:05","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:20:05"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:20:07"}
+{"level":"info","message":"GET /v1/inquiries 2389.577 ms","timestamp":"2026-04-29 16:20:07"}
+{"level":"info","message":"GET /v1/auth/ 3258.533 ms","timestamp":"2026-04-29 16:20:08"}
+{"level":"info","message":"GET /v1/reports 3280.885 ms","timestamp":"2026-04-29 16:20:08"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:20:08"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:20:08","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/auth/ 287.694 ms","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"GET /v1/tasks 3572.993 ms","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"GET /v1/reports 231.521 ms","timestamp":"2026-04-29 16:20:09"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:20:09","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"GET /v1/inquiries 232.240 ms","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"GET /v1/tasks 669.586 ms","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:20:09"}
+{"level":"info","message":"GET /v1/projects 4246.459 ms","timestamp":"2026-04-29 16:20:09"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:20:09","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:20:10"}
+{"level":"info","message":"GET /v1/projects 415.268 ms","timestamp":"2026-04-29 16:20:10"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:20:19"}
+{"level":"info","message":"GET /v1/auth/ 163.930 ms","timestamp":"2026-04-29 16:20:19"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:20:20","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:20:20","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:20:20","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:20:20"}
+{"level":"info","message":"GET /v1/tasks 596.940 ms","timestamp":"2026-04-29 16:20:20"}
+{"level":"info","message":"GET /v1/reports 1413.330 ms","timestamp":"2026-04-29 16:20:21"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:20:22"}
+{"level":"info","message":"GET /v1/inquiries 1645.379 ms","timestamp":"2026-04-29 16:20:22"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:20:22"}
+{"level":"info","message":"GET /v1/projects 1903.504 ms","timestamp":"2026-04-29 16:20:22"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:20:31","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:20:31","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:20:31","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:20:31"}
+{"level":"info","message":"GET /v1/reports 239.524 ms","timestamp":"2026-04-29 16:20:31"}
+{"level":"info","message":"GET /v1/auth/ 1535.024 ms","timestamp":"2026-04-29 16:20:32"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:20:32"}
+{"level":"info","message":"GET /v1/inquiries 1588.495 ms","timestamp":"2026-04-29 16:20:32"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:20:33"}
+{"level":"info","message":"GET /v1/projects 1900.641 ms","timestamp":"2026-04-29 16:20:33"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:20:33"}
+{"level":"info","message":"GET /v1/tasks 1905.949 ms","timestamp":"2026-04-29 16:20:33"}
+{"level":"info","message":"GET /v1/reports 268.911 ms","timestamp":"2026-04-29 16:20:33"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-29 16:20:43","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-04-29 16:20:43"}
+{"level":"info","message":"GET /v1/brands 406.627 ms","timestamp":"2026-04-29 16:20:43"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:22:01"}
+{"level":"info","message":"GET /v1/reports - ms","timestamp":"2026-04-29 16:22:05"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:22:05"}
+{"level":"info","message":"GET /v1/auth/ 1128.835 ms","timestamp":"2026-04-29 16:22:06"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:22:07","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:22:07","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:22:07","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:22:07"}
+{"level":"info","message":"GET /v1/inquiries 214.081 ms","timestamp":"2026-04-29 16:22:07"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:22:07"}
+{"level":"info","message":"GET /v1/tasks 464.327 ms","timestamp":"2026-04-29 16:22:07"}
+{"level":"info","message":"GET /v1/reports 857.355 ms","timestamp":"2026-04-29 16:22:07"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:22:08"}
+{"level":"info","message":"GET /v1/projects 1423.532 ms","timestamp":"2026-04-29 16:22:08"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:24:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:24:33"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:24:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:24:55"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:24:58"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:25:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:25:19"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:25:21"}
+{"level":"info","message":"GET /v1/auth/ 1182.735 ms","timestamp":"2026-04-29 16:25:22"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:25:22","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:25:22","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:25:22","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 843.344 ms","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"GET /v1/tasks 966.601 ms","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"GET /v1/inquiries 788.427 ms","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"GET /v1/projects 958.606 ms","timestamp":"2026-04-29 16:25:23"}
+{"level":"info","message":"GET /v1/reports 889.338 ms","timestamp":"2026-04-29 16:26:36"}
+{"level":"info","message":"GET /v1/reports 814.978 ms","timestamp":"2026-04-29 16:26:47"}
+{"level":"info","message":"GET /v1/reports 178.598 ms","timestamp":"2026-04-29 16:26:49"}
+{"level":"info","message":"GET /v1/reports 887.908 ms","timestamp":"2026-04-29 16:27:52"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:27:55"}
+{"level":"info","message":"GET /v1/auth/ 244.809 ms","timestamp":"2026-04-29 16:27:55"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:27:55","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 261.231 ms","timestamp":"2026-04-29 16:27:55"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:27:55","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:27:55","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:27:56"}
+{"level":"info","message":"GET /v1/inquiries 290.603 ms","timestamp":"2026-04-29 16:27:56"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:27:56"}
+{"level":"info","message":"GET /v1/projects 536.918 ms","timestamp":"2026-04-29 16:27:56"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:27:57"}
+{"level":"info","message":"GET /v1/tasks 2071.734 ms","timestamp":"2026-04-29 16:27:57"}
+{"level":"info","message":"GET /v1/reports 782.309 ms","timestamp":"2026-04-29 16:28:08"}
+{"level":"info","message":"GET /v1/reports 772.594 ms","timestamp":"2026-04-29 16:28:22"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:28:25"}
+{"level":"info","message":"GET /v1/auth/ 165.253 ms","timestamp":"2026-04-29 16:28:25"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:28:25","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"GET /v1/reports 182.761 ms","timestamp":"2026-04-29 16:28:25"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:28:25","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:28:25","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:28:25"}
+{"level":"info","message":"GET /v1/inquiries 157.998 ms","timestamp":"2026-04-29 16:28:25"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:28:25"}
+{"level":"info","message":"GET /v1/projects 311.831 ms","timestamp":"2026-04-29 16:28:25"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:28:26"}
+{"level":"info","message":"GET /v1/tasks 956.295 ms","timestamp":"2026-04-29 16:28:26"}
+{"level":"info","message":"GET /v1/reports 1095.620 ms","timestamp":"2026-04-29 16:28:45"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:33:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:02"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:23"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:25"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:31"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:36"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-29 16:34:40"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-29 16:34:42"}
+{"level":"info","message":"GET /v1/auth/ 1319.540 ms","timestamp":"2026-04-29 16:34:44"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-04-29 16:34:44","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-04-29 16:34:44","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-04-29 16:34:44","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"GET /v1/inquiries 784.492 ms","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"GET /v1/reports 1146.525 ms","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"TASK records fetched","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"GET /v1/tasks 984.504 ms","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-04-29 16:34:45"}
+{"level":"info","message":"GET /v1/projects 1398.742 ms","timestamp":"2026-04-29 16:34:45"}
+{"ip":"127.0.0.1","level":"http","message":"CUSTOMER fetch all request received","timestamp":"2026-04-29 16:34:57","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"CUSTOMER records fetched","timestamp":"2026-04-29 16:34:58"}
+{"level":"info","message":"GET /v1/customers 928.989 ms","timestamp":"2026-04-29 16:34:58"}
+{"level":"info","message":"GET /v1/reports 823.153 ms","timestamp":"2026-04-29 16:38:45"}
+{"level":"info","message":"GET /v1/reports 817.899 ms","timestamp":"2026-04-29 16:40:27"}
+{"level":"info","message":"GET /v1/reports 160.195 ms","timestamp":"2026-04-29 16:40:34"}
+{"level":"info","message":"GET /v1/reports 1052.638 ms","timestamp":"2026-04-29 16:41:22"}
+{"level":"info","message":"GET /v1/reports 272.816 ms","timestamp":"2026-04-29 16:41:23"}
+{"level":"info","message":"GET /v1/reports 184.535 ms","timestamp":"2026-04-29 16:41:30"}
+{"level":"info","message":"GET /v1/reports 154.215 ms","timestamp":"2026-04-29 16:41:33"}
+{"level":"info","message":"GET /v1/reports 156.433 ms","timestamp":"2026-04-29 16:41:41"}
+{"level":"info","message":"GET /v1/reports 779.347 ms","timestamp":"2026-04-29 16:42:07"}
+{"level":"info","message":"GET /v1/reports 156.372 ms","timestamp":"2026-04-29 16:42:14"}
+{"level":"info","message":"GET /v1/reports 157.568 ms","timestamp":"2026-04-29 16:42:16"}

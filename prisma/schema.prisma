@@ -409,7 +409,8 @@ model payments {
   customer customers? @relation(fields: [customerId], references: [id])
   project projects? @relation(fields: [projectId], references: [id])
 
-  @@index([id, createdAt])
+  @@index([createdAt, id])
+  @@index([createdAt, amount])
 }
 
 model inquiries {
