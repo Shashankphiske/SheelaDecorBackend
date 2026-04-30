@@ -7531,3 +7531,107 @@
 {"level":"info","message":"GET /v1/artisantypes 914.969 ms","timestamp":"2026-04-30 12:12:08"}
 {"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:12:08"}
 {"level":"info","message":"GET /v1/artisans 1078.014 ms","timestamp":"2026-04-30 12:12:08"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-30 12:18:58"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:19:05"}
+{"level":"info","message":"GET /v1/auth/ 1097.731 ms","timestamp":"2026-04-30 12:19:06"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:19:06","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:19:06","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:19:06"}
+{"level":"info","message":"GET /v1/artisans 345.719 ms","timestamp":"2026-04-30 12:19:06"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:19:07"}
+{"level":"info","message":"GET /v1/artisantypes 799.403 ms","timestamp":"2026-04-30 12:19:07"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:20:35"}
+{"level":"info","message":"GET /v1/auth/ 1254.170 ms","timestamp":"2026-04-30 12:20:36"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:20:36","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:20:36","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:20:37"}
+{"level":"info","message":"GET /v1/artisans 472.472 ms","timestamp":"2026-04-30 12:20:37"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:20:37"}
+{"level":"info","message":"GET /v1/artisantypes 1186.943 ms","timestamp":"2026-04-30 12:20:37"}
+{"ip":"127.0.0.1","level":"http","message":"AREA fetch all request received","timestamp":"2026-04-30 12:20:47","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"AREA records fetched","timestamp":"2026-04-30 12:20:47"}
+{"level":"info","message":"GET /v1/areas 153.286 ms","timestamp":"2026-04-30 12:20:47"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-04-30 12:20:49","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-04-30 12:20:49"}
+{"level":"info","message":"GET /v1/users 157.888 ms","timestamp":"2026-04-30 12:20:49"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:22:24"}
+{"level":"info","message":"GET /v1/auth/ 1935.739 ms","timestamp":"2026-04-30 12:22:26"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:22:26","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:22:26","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:22:26"}
+{"level":"info","message":"GET /v1/artisans 579.884 ms","timestamp":"2026-04-30 12:22:26"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:22:27"}
+{"level":"info","message":"GET /v1/artisantypes 1506.801 ms","timestamp":"2026-04-30 12:22:27"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:23:00","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No ARTISAN records found","timestamp":"2026-04-30 12:23:02"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 12:23:02"}
+{"level":"info","message":"GET /v1/artisans?lastId=afabfb46-5baa-4d3d-af61-f0edb3259972&lastCreatedAt=2026-04-24T07%3A12%3A48.400Z 1139.039 ms","timestamp":"2026-04-30 12:23:02"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:23:09"}
+{"level":"info","message":"GET /v1/auth/ 154.914 ms","timestamp":"2026-04-30 12:23:10"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:23:10","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:23:10","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:23:10"}
+{"level":"info","message":"GET /v1/artisans 428.918 ms","timestamp":"2026-04-30 12:23:10"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:23:11"}
+{"level":"info","message":"GET /v1/artisantypes 1420.004 ms","timestamp":"2026-04-30 12:23:11"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:27:39"}
+{"level":"info","message":"GET /v1/auth/ 1146.981 ms","timestamp":"2026-04-30 12:27:40"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:27:40","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:27:40","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:27:41"}
+{"level":"info","message":"GET /v1/artisans 474.062 ms","timestamp":"2026-04-30 12:27:41"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:27:41"}
+{"level":"info","message":"GET /v1/artisantypes 960.375 ms","timestamp":"2026-04-30 12:27:41"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:30:32"}
+{"level":"info","message":"GET /v1/auth/ 949.612 ms","timestamp":"2026-04-30 12:30:33"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:30:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:30:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:30:33"}
+{"level":"info","message":"GET /v1/artisans 385.428 ms","timestamp":"2026-04-30 12:30:33"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:30:34"}
+{"level":"info","message":"GET /v1/artisantypes 943.053 ms","timestamp":"2026-04-30 12:30:34"}
+{"ip":"127.0.0.1","level":"http","message":"DEALER fetch all request received","timestamp":"2026-04-30 12:30:54","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"DEALSIN fetch all request received","timestamp":"2026-04-30 12:30:54","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"DEALSIN records fetched","timestamp":"2026-04-30 12:30:55"}
+{"level":"info","message":"GET /v1/dealsin 1451.846 ms","timestamp":"2026-04-30 12:30:55"}
+{"level":"info","message":"DEALER records fetched","timestamp":"2026-04-30 12:30:55"}
+{"level":"info","message":"GET /v1/dealers 1587.816 ms","timestamp":"2026-04-30 12:30:55"}
+{"ip":"127.0.0.1","level":"http","message":"DEALER fetch all request received","timestamp":"2026-04-30 12:30:59","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No DEALER records found","timestamp":"2026-04-30 12:31:00"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 12:31:00"}
+{"level":"info","message":"GET /v1/dealers?lastId=b4fc392d-57f5-4061-9886-9e27f782c99b&lastCreatedAt=2026-04-24T10%3A38%3A26.258Z 363.780 ms","timestamp":"2026-04-30 12:31:00"}
+{"ip":"127.0.0.1","level":"http","message":"DEALSIN fetch all request received","timestamp":"2026-04-30 12:31:02","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"DEALSIN records fetched","timestamp":"2026-04-30 12:31:02"}
+{"level":"info","message":"GET /v1/dealsin?lastId=3f99eaad-6287-4309-8ba9-783863d98c57 224.855 ms","timestamp":"2026-04-30 12:31:02"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:33:00","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:33:01"}
+{"level":"info","message":"GET /v1/artisantypes?lastId=12a60e85-b6f4-4b00-bee6-4359b30ec3f1 830.610 ms","timestamp":"2026-04-30 12:33:01"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:33:07","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:33:07"}
+{"level":"info","message":"GET /v1/artisantypes?lastId=12a60e85-b6f4-4b00-bee6-4359b30ec3f1 158.031 ms","timestamp":"2026-04-30 12:33:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-04-30 12:37:30"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-04-30 12:37:33"}
+{"level":"info","message":"GET /v1/auth/ 1123.626 ms","timestamp":"2026-04-30 12:37:34"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:37:34","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:37:34","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-04-30 12:37:34"}
+{"level":"info","message":"GET /v1/artisans 338.865 ms","timestamp":"2026-04-30 12:37:34"}
+{"level":"info","message":"ARTISAN-TYPE records fetched","timestamp":"2026-04-30 12:37:35"}
+{"level":"info","message":"GET /v1/artisantypes 928.909 ms","timestamp":"2026-04-30 12:37:35"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN-TYPE fetch all request received","timestamp":"2026-04-30 12:37:37","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No ARTISAN-TYPE records found","timestamp":"2026-04-30 12:37:37"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 12:37:37"}
+{"level":"info","message":"GET /v1/artisantypes?lastId=12a60e85-b6f4-4b00-bee6-4359b30ec3f1 251.810 ms","timestamp":"2026-04-30 12:37:37"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-04-30 12:37:44","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No ARTISAN records found","timestamp":"2026-04-30 12:37:44"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 12:37:44"}
+{"level":"info","message":"GET /v1/artisans?lastId=afabfb46-5baa-4d3d-af61-f0edb3259972&lastCreatedAt=2026-04-24T07%3A12%3A48.400Z 354.091 ms","timestamp":"2026-04-30 12:37:44"}
+{"ip":"127.0.0.1","level":"http","message":"CATALOGUE fetch all request received","timestamp":"2026-04-30 12:37:49","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"CATALOGUE records fetched","timestamp":"2026-04-30 12:37:49"}
+{"level":"info","message":"GET /v1/catalogues 343.472 ms","timestamp":"2026-04-30 12:37:49"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-30 12:37:50","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-04-30 12:37:50"}
+{"level":"info","message":"GET /v1/brands 169.801 ms","timestamp":"2026-04-30 12:37:50"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-04-30 12:37:57","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-04-30 12:37:57"}
+{"level":"info","message":"GET /v1/brands?lastId=d2a190bb-3596-4817-9ab5-386e0cc41657&lastCreatedAt=2026-04-25T13%3A01%3A11.767Z 167.154 ms","timestamp":"2026-04-30 12:37:57"}

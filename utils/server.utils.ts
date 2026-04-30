@@ -53,22 +53,28 @@ class ServerUtils {
                 })),
             });
         }
-
         // ─────────────────────────────
         // CURSOR PAGINATION
         // ─────────────────────────────
-        if (data.lastCreatedAt && data.lastId) {
-            AND.push({
-                OR: [
-                    { createdAt: { lt: data.lastCreatedAt } },
-                    {
-                        AND: [
-                            { createdAt: data.lastCreatedAt },
-                            { id: { lt: data.lastId } },
-                        ],
-                    },
-                ],
-            });
+        if (hasCreatedAt !== false) {
+            if (data.lastCreatedAt && data.lastId) {
+                AND.push({
+                    OR: [
+                        { createdAt: { lt: data.lastCreatedAt } },
+                        {
+                            AND: [
+                                { createdAt: data.lastCreatedAt },
+                                { id: { lt: data.lastId } },
+                            ],
+                        },
+                    ],
+                });
+            }
+        } else {
+            // No createdAt — paginate by id only
+            if (data.lastId) {
+                AND.push({ id: { lt: data.lastId } });
+            }
         }
 
         // ─────────────────────────────
