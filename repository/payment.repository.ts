@@ -149,7 +149,7 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
                     },
                     data: {
                         paid: {
-                            [payment.type === "CREDIT" ? "increment" : "decrement"]: payment.amount,
+                            [payment.type === "CREDIT" ? "decrement" : "increment"]: payment.amount,
                         },   
                     }
                 })
