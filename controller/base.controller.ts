@@ -23,29 +23,37 @@ abstract class BaseController <TService> {
 
     protected getPagination(req: Request) {
         const now = new Date();
+        const path = req.baseUrl || req.path || "";
+        console.log(path);
 
-        // ── FINANCIAL YEAR (INDIA: APR 1 - MAR 31) ──
+        const isFinancialDateResource =
+            path.includes("/payments") || path.includes("/projects");
+
         const currentYear = now.getFullYear();
 
         const financialYearStart =
-            now.getMonth() >= 3 // April = 3 (0-based)
+            now.getMonth() >= 3
                 ? new Date(currentYear, 3, 1)     // Apr 1 current year
                 : new Date(currentYear - 1, 3, 1); // Apr 1 previous year
 
         const financialYearEnd =
             now.getMonth() >= 3
-                ? new Date(currentYear + 1, 2, 31, 23, 59, 59, 999) // Mar 31 next year
-                : new Date(currentYear, 2, 31, 23, 59, 59, 999);    // Mar 31 current year
+                ? new Date(currentYear + 1, 2, 31, 23, 59, 59, 999)
+                : new Date(currentYear, 2, 31, 23, 59, 59, 999);
 
         const startDate =
             req.query.startDate
                 ? new Date(req.query.startDate.toString())
-                : financialYearStart;
+                : isFinancialDateResource
+                    ? financialYearStart
+                    : undefined;
 
         const endDate =
             req.query.endDate
                 ? new Date(req.query.endDate.toString())
-                : financialYearEnd;
+                : isFinancialDateResource
+                    ? financialYearEnd
+                    : undefined;
 
         return {
             limit: Number(req.query.limit) || 10,
@@ -56,16 +64,16 @@ abstract class BaseController <TService> {
                 ? new Date(req.query.lastCreatedAt.toString())
                 : undefined,
 
-            // ── PRICE RANGE ──
-            minPrice: req.query.minPrice !== undefined
-                ? Number(req.query.minPrice)
-                : undefined,
+            minPrice:
+                req.query.minPrice !== undefined
+                    ? Number(req.query.minPrice)
+                    : undefined,
 
-            maxPrice: req.query.maxPrice !== undefined
-                ? Number(req.query.maxPrice)
-                : undefined,
+            maxPrice:
+                req.query.maxPrice !== undefined
+                    ? Number(req.query.maxPrice)
+                    : undefined,
 
-            // ── DATE RANGE (DEFAULT = FY) ──
             startDate,
             endDate,
         };

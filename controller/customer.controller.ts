@@ -21,7 +21,7 @@ class CustomerController extends BaseController<CustomerService> {
         const brands = await this.service.fetchAll(
             this.getPagination(req),
             {
-
+                id: req.query.id?.toString()   
             },
             [
                 "name",

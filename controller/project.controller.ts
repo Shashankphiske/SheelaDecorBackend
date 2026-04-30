@@ -28,7 +28,8 @@ class ProjectController extends BaseController<ProjectService> {
             this.getPagination(req),
             {
                 customerId: req.query.customerId?.toString(),
-                creatorId: req.query.creatorId?.toString()
+                creatorId: req.query.creatorId?.toString(),
+                id: req.query.id?.toString()
             },
             [
                 "name"

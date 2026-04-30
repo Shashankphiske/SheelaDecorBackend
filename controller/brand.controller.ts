@@ -21,7 +21,7 @@ class BrandController extends BaseController<BrandService> {
         const brands = await this.service.fetchAll(
             this.getPagination(req),
             {
-
+                id: req.query.id?.toString()
             },
             [
                 "name"
