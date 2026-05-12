@@ -928,3 +928,21 @@
 {"ip":"127.0.0.1","level":"http","message":"PRODUCT update request received","timestamp":"2026-05-12 12:15:13","userId":"cf311af2-b641-4f95-b974-763c71535187"}
 {"id":"21e973b4-f250-4c76-ab34-4ece154d5222","level":"info","message":"PRODUCT record updated","timestamp":"2026-05-12 12:15:15"}
 {"level":"info","message":"PATCH /v1/products/21e973b4-f250-4c76-ab34-4ece154d5222 1949.105 ms","timestamp":"2026-05-12 12:15:15"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-12 12:19:59"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-12 12:20:01"}
+{"level":"info","message":"GET /v1/auth/ 794.791 ms","timestamp":"2026-05-12 12:20:01"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-05-12 12:20:01","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-05-12 12:20:02"}
+{"level":"info","message":"GET /v1/products 158.668 ms","timestamp":"2026-05-12 12:20:02"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT update request received","timestamp":"2026-05-12 12:20:12","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"id":"21e973b4-f250-4c76-ab34-4ece154d5222","level":"info","message":"PRODUCT record updated","timestamp":"2026-05-12 12:20:13"}
+{"level":"info","message":"PATCH /v1/products/21e973b4-f250-4c76-ab34-4ece154d5222 1092.212 ms","timestamp":"2026-05-12 12:20:13"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-12 12:20:19"}
+{"level":"info","message":"GET /v1/auth/ 151.678 ms","timestamp":"2026-05-12 12:20:19"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-05-12 12:20:19","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-05-12 12:20:19"}
+{"level":"info","message":"GET /v1/products 152.799 ms","timestamp":"2026-05-12 12:20:19"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-12 12:27:39"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT update request received","timestamp":"2026-05-12 12:27:46","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"id":"21e973b4-f250-4c76-ab34-4ece154d5222","level":"info","message":"PRODUCT record updated","timestamp":"2026-05-12 12:27:48"}
+{"level":"info","message":"PATCH /v1/products/21e973b4-f250-4c76-ab34-4ece154d5222 1696.766 ms","timestamp":"2026-05-12 12:27:48"}

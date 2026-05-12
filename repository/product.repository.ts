@@ -5,6 +5,7 @@ import { BaseRepository } from "./base.repository.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import { serverUtils } from "../utils/server.utils.js";
 import { DimensionType } from "../generated/prisma/enums.js";
+import { logger } from "../utils/logger.util.js";
 
 class ProductRepository extends BaseRepository<any, any, any> {
     constructor() {
@@ -111,7 +112,7 @@ create = async (data: any): Promise<any> => {
         const LABOUR_TYPES = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
         const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
 
-        console.log(data);
+        logger.info(data);
 
         return await prisma.$transaction(async (tx) => {
             await tx.products.update({
