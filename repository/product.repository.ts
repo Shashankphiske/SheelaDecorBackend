@@ -44,6 +44,10 @@ create = async (data: any): Promise<any> => {
             if (!isNaN(tax)) payload.taxRate = tax;
         }
 
+        if(data.productType !== "") {
+            payload.productCategory = data.productCategory;
+        }
+
         // ── enum ────────────────────────────
         if (
             data.dimensionType &&
@@ -107,6 +111,8 @@ create = async (data: any): Promise<any> => {
         const LABOUR_TYPES = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
         const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
 
+        console.log(data);
+
         return await prisma.$transaction(async (tx) => {
             await tx.products.update({
                 where: { id },
@@ -118,7 +124,8 @@ create = async (data: any): Promise<any> => {
                     dimensionType: data.dimensionType ?? null,
                     price: parseFloat(data.price),
                     taxRate: parseFloat(data.taxRate ?? 0),
-                    size: SIZE_TYPES.includes(data.productType) ? (data.size ?? null) : null,
+                    size: parseFloat(data.size),
+                    productCategory: data.productCategory ?? null
                 },
                 select: {
                     id: true,

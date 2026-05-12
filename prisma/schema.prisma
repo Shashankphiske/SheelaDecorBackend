@@ -146,24 +146,44 @@ enum SellingUnit {
   PANEL
 }
 
-enum productType {
-  FABRIC
+enum ProductType {
+  SOFA
+  CHAIR
+  OTTOMANS_PUFFY
+  CURTAIN
+  ROMAN_BLINDS
+  CORIAN
+  ORTHO_QUIRE_GAADI
+  BEDBACK
+  PILLOW_COVERS
+  CUSTOM_WALLPAPERS
+  WOODEN_FLOORING
+  PVC_FLOORING
+  CARPET
+  RUBBER_GYM_FLOORING
+  ROLLER_ZEBRA_VENETIAN_VERTICALBLINDS
+  BLINDS
+  BEDSHEET
+  PILLOW
+  MATTRESS_READY
+  MATTRESS_PROTECTOR
+  COMFORTERS
+  DINING
+  WALLPAPER_ROLL
+  RUGS
+}
+
+enum ProductCategory {
+  CUSTOM
   AREA
-  RUNNING_LENGTH
-  PIECE
-  FIXED_LENGTH
-  FIXED_AREA
-  TAILORING
-  SOFA_TYPE
-  AP_CURTAIN
-  ROMAN_CURTAIN
+  READY
 }
 
 enum DimensionType {
   lb
   lh 
-  bh 
   lbh
+  l
 }
 
 model products {
@@ -172,6 +192,7 @@ model products {
   description String?
   sellingUnit SellingUnit? @map("selling_unit")
   productType String? @map("product_type")
+  productCategory ProductCategory? @map("product_category")
   price Decimal?
   taxRate Decimal? @map("tax_rate")
   dimensionType DimensionType @default(lbh) @map("dimension_type")

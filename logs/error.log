@@ -5,3 +5,76 @@
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 17:07:32"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 17:15:15"}
 {"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-04-30 17:19:10"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-03 10:00:16"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:33:42"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:39:23"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:39:25"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:39:28"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:45:47"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:49:00"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:49:01"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 13:49:02"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 15:14:55"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 18:43:03"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-03 19:04:17"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:21"}
+{"ip":"127.0.0.1","level":"error","message":"\nInvalid `this.model.findMany()` invocation in\nC:\\Users\\kanaka\\Documents\\InteriorProject\\backend\\repository\\authorization.repository.ts:80:39\n\n  77 };\n  78 \n  79 fetchAuth = async (userId: string) => {\n→ 80     const data = await this.model.findMany(\nCan't reach database server at aws-1-ap-northeast-2.pooler.supabase.com","timestamp":"2026-05-03 20:41:22"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:23"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:24"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:24"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:24"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:25"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:25"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-03 20:41:26"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:37"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:38"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:39"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:40"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:40"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 00:04:41"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 03:04:38"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 03:04:39"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-04 03:05:07"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-04 09:44:01"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 10:25:47"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 10:25:54"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 10:26:21"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 12:22:46"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 12:36:30"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 12:58:33"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 14:43:30"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 14:57:50"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 15:01:13"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 15:23:16"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 16:03:38"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-11 16:51:06"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:49"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:50"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:51"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:52"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:53"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-11 18:33:53"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:09"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:10"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:11"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:11"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:12"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:13"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 00:49:14"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 09:40:40"}
+{"level":"error","message":"Redis error","timestamp":"2026-05-12 09:40:41"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-12 10:33:34"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-12 10:45:17"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-12 10:46:39"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-12 12:00:19"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-12 12:00:20"}
