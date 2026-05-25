@@ -5,6 +5,7 @@ interface Order {
     productId: string
     catalogueId: string | null
     brandId: string | null
+    designNo: number | null
     areaId: string | null
     orderedDate: Date | null
     quantity: number | null
@@ -43,6 +44,7 @@ interface OrderData {
     catalogueId?: string
     brandId?: string
     areaId?: string
+    designNo?: number
     orderedDate?: Date
     quantity?: number
     orderId?: string

@@ -205,6 +205,8 @@ model products {
 
   order orders[]
 
+  measurmentsData measurementsData[]
+
   @@index([id, createdAt])
 }
 
@@ -243,6 +245,8 @@ model areas {
 
   projectProducts projectProducts[]
   order orders[]
+
+  measurementsData measurementsData[]
 
   @@index([id, createdAt])
 }
@@ -461,6 +465,7 @@ model orders {
   projectId String @db.Uuid @map("project_id")
   catalogueId String? @db.Uuid @map("catalogue_id")
   brandId String? @db.Uuid @map("brand_id")
+  designNo Int? @map("design_no")
   areaId String? @db.Uuid @map("area_id")
   orderedDate DateTime? @db.Timestamptz
   quantity Decimal?
@@ -475,3 +480,28 @@ model orders {
   area areas? @relation(fields: [areaId], references: [id])
 }
 
+model measurements {
+  id String @id @db.Uuid @default(uuid())
+  projectName String @map("project_name")
+  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
+
+  measurementsData measurementsData[]
+
+  @@index([id, createdAt])
+}
+
+model measurementsData {
+  id String @id @default(uuid()) @db.Uuid
+  areaId String @db.Uuid @map("area_id")
+  productId String @db.Uuid @map("product_id")
+  length Decimal?
+  width Decimal?
+  height Decimal?
+  measurementId String @db.Uuid @map("measurement_id")
+
+  measurements measurements @relation(fields: [measurementId], references: [id])
+  area areas @relation(fields: [areaId], references: [id])
+  product products @relation(fields: [productId], references: [id])
+
+  @@map("measurements_data")
+}

@@ -29,6 +29,7 @@ import { ProjectLabourRouter } from "./router/projectLabour.router.js";
 import { ProjectProductRouter } from "./router/projectProduct.router.js";
 import { OrderRouter } from "./router/order.router.js";
 import { ReportRouter } from "./router/report.router.js";
+import { MeasurementRouter } from "./router/measurement.router.js";
 dotenv.config();
 
 const app = express();
@@ -101,6 +102,8 @@ app.use("/v1/dealers", DealerRouter);
 app.use("/v1/dealsin", DealsInRouter);
 
 app.use("/v1/orders", OrderRouter);
+
+app.use("/v1/measurements", MeasurementRouter);
 
 app.use(authenticateAdmin);
 
