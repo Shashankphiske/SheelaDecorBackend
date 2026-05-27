@@ -190,8 +190,19 @@ class ProjectRepository {
     };
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<any> => {
+        const { artisanId, ...restFilters } = filters || {};
         let where: any = {};
-        where = serverUtils.buildWhere(where, filters, data, searchFields);
+        where = serverUtils.buildWhere(where, restFilters, data, searchFields);
+
+        if (artisanId) {
+            where.AND.push({
+                projectLabours: {
+                    some: {
+                        artisanId: artisanId
+                    }
+                }
+            });
+        }
 
         return await prisma.projects.findMany({
             take: data.limit ?? 10,

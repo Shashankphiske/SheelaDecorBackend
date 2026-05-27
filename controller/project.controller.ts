@@ -29,7 +29,8 @@ class ProjectController extends BaseController<ProjectService> {
             {
                 customerId: req.query.customerId?.toString(),
                 creatorId: req.query.creatorId?.toString(),
-                id: req.query.id?.toString()
+                id: req.query.id?.toString(),
+                artisanId: req.query.artisanId?.toString()
             },
             [
                 "name"
