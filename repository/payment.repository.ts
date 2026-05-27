@@ -15,25 +15,27 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
     create = async (data: PaymentData) => {
         try {
             return await prisma.$transaction(async (tx) => {
-                await tx.projects.update({
-                    where: {
-                        id: data.projectId,
-                    },
-                    data: {
-                        paid: {
-                            // Use a ternary to select the correct Prisma action
-                            [data.type === "CREDIT" ? "increment" : "decrement"]: data.amount,
+                if (data.projectId) {
+                    await tx.projects.update({
+                        where: {
+                            id: data.projectId,
                         },
-                    },
-                });
+                        data: {
+                            paid: {
+                                // Use a ternary to select the correct Prisma action
+                                [data.type === "CREDIT" ? "increment" : "decrement"]: data.amount,
+                            },
+                        },
+                    });
+                }
 
-                return await this.model.create({
+                return await tx.payments.create({
                     data,
                     select: {
                         id: true,
                         ...(this.config.hasCreatedAt !== false ? { createdAt: true } : {}),
                     }
-                });
+                }) as any;
             })
         } catch (error) {
             this.handlePrismaError(error);
@@ -105,18 +107,39 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
     update = async (data: PaymentData, id: string, userId?: string) => {
 
         return await prisma.$transaction(async (tx) => {
-            await tx.projects.update({
-                where: {
-                    id: data.projectId,
-                },
-                data: {
-                    paid: {
-                        [data.type === "CREDIT" ? "increment" : "decrement"]: data.amount,
-                    },
-                },
-            });
-
             try {
+                // Find the existing payment to revert its values first
+                const oldPayment = await tx.payments.findUnique({
+                    where: { id }
+                });
+
+                if (oldPayment && oldPayment.projectId) {
+                    await tx.projects.update({
+                        where: {
+                            id: oldPayment.projectId,
+                        },
+                        data: {
+                            paid: {
+                                [oldPayment.type === "CREDIT" ? "decrement" : "increment"]: oldPayment.amount,
+                            },
+                        },
+                    });
+                }
+
+                // Apply the new payment values
+                if (data.projectId) {
+                    await tx.projects.update({
+                        where: {
+                            id: data.projectId,
+                        },
+                        data: {
+                            paid: {
+                                [data.type === "CREDIT" ? "increment" : "decrement"]: data.amount,
+                            },
+                        },
+                    });
+                }
+
                 const where: any = {
                     [this.config.primaryKey]: id,
                     ...(userId ? { userId } : {})
@@ -126,9 +149,9 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
                     where[this.config.statusField] = null;
                 }
 
-                await this.model.update({
-                    where,
-                    data,
+                await tx.payments.update({
+                    where: where as any,
+                    data: data as any,
                 });
             } catch (error) {
                 this.handlePrismaError(error);
@@ -139,20 +162,22 @@ class PaymentRepository extends BaseRepository<Payment, PaymentData, any> {
     hardDelete = async (id: string, userId?: string) => {
         return await prisma.$transaction(async (tx) => {
             try {
-                const payment = await this.model.delete({
-                    where: { [this.config.primaryKey]: id, ...(userId ? { userId } : {}) }
+                const payment = await tx.payments.delete({
+                    where: { [this.config.primaryKey]: id, ...(userId ? { userId } : {}) } as any
                 });
 
-                await tx.projects.update({
-                    where: {
-                        id: payment.projectId
-                    },
-                    data: {
-                        paid: {
-                            [payment.type === "CREDIT" ? "decrement" : "increment"]: payment.amount,
-                        },   
-                    }
-                })
+                if (payment && payment.projectId) {
+                    await tx.projects.update({
+                        where: {
+                            id: payment.projectId
+                        },
+                        data: {
+                            paid: {
+                                [payment.type === "CREDIT" ? "decrement" : "increment"]: payment.amount,
+                            },   
+                        }
+                    });
+                }
             } catch (error) {
                 this.handlePrismaError(error);
             }
