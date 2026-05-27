@@ -72,6 +72,12 @@ class ProjectService{
         return record;
     }
 
+    updateStatus = async (id: string, status: any) => {
+        const record = await this.method.updateStatus(id, status);
+        logger.info(`Project status updated`, { id });
+        return record;
+    }
+
     /**
      * Orchestrates record deletion (Soft or Hard) and clears cache.
      * 

@@ -38,6 +38,17 @@ class ProjectController extends BaseController<ProjectService> {
 
         return ApiResponse.success(res, controllerMessages.FETCHALL.res, products);
     }
+
+    updateStatus = async (req: Request, res: Response) => {
+        logger.http("PROJECT status update request received", {
+            ip: req.ip,
+            userId: req.user?.id ?? "NA"
+        });
+
+        await this.service.updateStatus(req.params.id as string, req.body.status);
+
+        return ApiResponse.success(res, "Project status updated");
+    }
 }
 
 export { ProjectController }

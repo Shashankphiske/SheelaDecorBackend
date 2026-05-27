@@ -15,6 +15,7 @@ router.get("/:id", errorHandler.wrapper(controller.fetch));
 router.get("/", errorHandler.wrapper(controller.fetchAll))
 router.post("/", errorHandler.wrapper(controller.create));
 router.patch("/:id", errorHandler.wrapper(controller.update));
+router.patch("/:id/status", errorHandler.wrapper(controller.updateStatus));
 router.delete("/:id", errorHandler.wrapper(controller.delete));
 
 export { router as ProjectRouter };
