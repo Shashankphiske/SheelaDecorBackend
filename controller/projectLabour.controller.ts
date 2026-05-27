@@ -10,7 +10,7 @@ const controllerMessages = new ControllerMessages("PROJECT-LABOUR");
 
 class ProjectLabourController extends BaseController<ProjectLabourService> {
     constructor(service: ProjectLabourService) {
-        super(service, "AREA");
+        super(service, "PROJECT-LABOUR");
     }
 
     fetchAll = async (req: Request, res: Response) => {

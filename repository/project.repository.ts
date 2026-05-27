@@ -98,6 +98,7 @@ class ProjectRepository  {
                     catalogueId: item.catalogueId || null,
                     brandId: item.brandId || null,
                     areaId: area.areaId || null,
+                    designNo: Number(item.designNo) ?? null,
                     quantity: Number(item.quantity ?? 1),
                     orderedDate: null,
                     receivedDate: null,
@@ -115,15 +116,28 @@ class ProjectRepository  {
 
             const labourData: any[] = data.labourData ?? [];
 
-            const labourRows = labourData.map((labour: any) => ({
-                projectId: project.id,
-                artisanId: labour.artisanId || null,
-                productId: labour.productId,
-                price: Number(labour?.price) || 0,
-                key: labour.key,
-                quantity: Number(labour.quantity) || 0,
-                unit: labour.unit,
-            }));
+            const labourRows = labourData.map((labour: any) => {
+                let unit = labour.unit;
+                if (unit === "MTR") unit = "METER";
+                if (unit === "PCS") unit = "PIECE";
+                
+                const validUnits = ["METER", "FEET", "INCHES", "CENTIMETER", "PANHA", "RFT", "SQFT", "SQM", "SQY", "ROLL", "PIECE", "PANEL"];
+                if (!validUnits.includes(unit)) {
+                    unit = "PIECE";
+                }
+
+                return {
+                    projectId: project.id,
+                    artisanId: labour.artisanId || null,
+                    productId: labour.productId,
+                    price: Number(labour?.price) || 0,
+                    key: labour.key,
+                    quantity: Number(labour.quantity) || 0,
+                    unit: unit,
+                    workName: labour.workName || null,
+                    labourType: labour.labourType || "STITCHING",
+                };
+            });
 
             if (labourRows.length > 0) {
                 await tx.projectLabours.createMany({
@@ -146,6 +160,21 @@ class ProjectRepository  {
                 creator: {
                     select: {
                         username: true
+                    }
+                },
+                projectLabours: {
+                    include: {
+                        artisan: {
+                            include: {
+                                artisanType: true
+                            }
+                        },
+                        product: {
+                            select: {
+                                id: true,
+                                name: true
+                            }
+                        }
                     }
                 }
             }
@@ -179,6 +208,21 @@ class ProjectRepository  {
                 creator: {
                     select: {
                         username: true
+                    }
+                },
+                projectLabours: {
+                    include: {
+                        artisan: {
+                            include: {
+                                artisanType: true
+                            }
+                        },
+                        product: {
+                            select: {
+                                id: true,
+                                name: true
+                            }
+                        }
                     }
                 }
             }
@@ -352,15 +396,28 @@ class ProjectRepository  {
 
             const labourData: any[] = data.labourData ?? [];
 
-            const labourRows = labourData.map((labour: any) => ({
-                projectId: project.id,
-                artisanId: labour.artisanId || null,
-                productId: labour.productId,
-                price: Number(labour?.price) || 0,
-                key: labour.key,
-                quantity: Number(labour.quantity) || 0,
-                unit: labour.unit,
-            }));
+            const labourRows = labourData.map((labour: any) => {
+                let unit = labour.unit;
+                if (unit === "MTR") unit = "METER";
+                if (unit === "PCS") unit = "PIECE";
+                
+                const validUnits = ["METER", "FEET", "INCHES", "CENTIMETER", "PANHA", "RFT", "SQFT", "SQM", "SQY", "ROLL", "PIECE", "PANEL"];
+                if (!validUnits.includes(unit)) {
+                    unit = "PIECE";
+                }
+
+                return {
+                    projectId: project.id,
+                    artisanId: labour.artisanId || null,
+                    productId: labour.productId,
+                    price: Number(labour?.price) || 0,
+                    key: labour.key,
+                    quantity: Number(labour.quantity) || 0,
+                    unit: unit,
+                    workName: labour.workName || null,
+                    labourType: labour.labourType || "STITCHING",
+                };
+            });
 
             if (labourRows.length > 0) {
                 await tx.projectLabours.createMany({ data: labourRows as any });

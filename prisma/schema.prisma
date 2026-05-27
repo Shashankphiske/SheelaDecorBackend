@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -12,6 +7,352 @@ datasource db {
   provider = "postgresql"
 }
 
+model users {
+  id                   String           @id @default(uuid()) @db.Uuid
+  username             String           @unique
+  email                String           @unique
+  password             String
+  role                 Role
+  phonenumber          String?
+  address              String?
+  alternatePhonenumber String?          @map("alternate_phonenumber")
+  createdAt            DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  auth                 authorizations[]
+  projects             projects[]
+  refreshTokens        refreshTokens[]
+
+  @@index([id, createdAt])
+}
+
+model refreshTokens {
+  id       String  @id @default(uuid()) @db.Uuid
+  familyId String  @map("family_id") @db.Uuid
+  userId   String  @map("user_id") @db.Uuid
+  role     Role    @default(INTERIOR)
+  isUsed   Boolean @map("is_used")
+  user     users   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([familyId])
+  @@map("refresh_tokens")
+}
+
+model customers {
+  id                   String     @id @default(uuid()) @db.Uuid
+  name                 String
+  email                String?
+  phonenumber          String
+  alternatePhonenumber String?    @map("alternate_phonenumber")
+  address              String?
+  createdAt            DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  orders               orders[]
+  payments             payments[]
+  projects             projects[]
+
+  @@index([id, createdAt])
+}
+
+model brands {
+  id              String            @id @default(uuid()) @db.Uuid
+  name            String            @unique
+  description     String?
+  createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  catalogues      catalogues[]
+  order           orders[]
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+model catalogues {
+  id              String            @id @default(uuid()) @db.Uuid
+  brandId         String?           @map("brand_id") @db.Uuid
+  name            String            @unique
+  type            String?
+  price           Decimal?
+  launchYear      String?           @map("launch_year")
+  rackNo          Int?              @map("rack_no")
+  description     String?
+  createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  brand           brands?           @relation(fields: [brandId], references: [id])
+  order           orders[]
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+model DealsIn {
+  id      String    @id @default(uuid()) @db.Uuid
+  name    String    @unique
+  dealers dealers[]
+
+  @@map("deals_in")
+}
+
+model dealers {
+  id            String   @id @default(uuid()) @db.Uuid
+  name          String
+  description   String?
+  dealsInId     String   @map("deals_in_id") @db.Uuid
+  personName    String   @map("person_name")
+  phonenumber   String?
+  email         String?
+  catalogueLink String?  @map("catalogue_link")
+  address       String?
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  DealsIn       DealsIn  @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
+
+  @@unique([name, personName])
+}
+
+model products {
+  id              String             @id @default(uuid()) @db.Uuid
+  name            String             @unique
+  description     String?
+  sellingUnit     SellingUnit?       @map("selling_unit")
+  productType     String?            @map("product_type")
+  price           Decimal?
+  taxRate         Decimal?           @map("tax_rate")
+  dimensionType   DimensionType      @default(lbh) @map("dimension_type")
+  size            Decimal?
+  createdAt       DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  productCategory ProductCategory?   @map("product_category")
+  measurmentsData measurementsData[]
+  order           orders[]
+  projectLabours  projectLabours[]
+  projectProducts projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+model ArtisanTypes {
+  id       String     @id @default(uuid()) @db.Uuid
+  name     String     @unique
+  artisans artisans[]
+
+  @@map("artisan_types")
+}
+
+model artisans {
+  id             String           @id @default(uuid()) @db.Uuid
+  artisanTypeId  String           @map("artisan_type_id") @db.Uuid
+  name           String
+  phonenumber    String?
+  email          String?
+  address        String?
+  price          Decimal
+  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  artisanType    ArtisanTypes     @relation(fields: [artisanTypeId], references: [id], onDelete: Cascade)
+  projectLabours projectLabours[]
+
+  @@unique([name, email, phonenumber])
+  @@index([id, createdAt])
+}
+
+model areas {
+  id               String             @id @default(uuid()) @db.Uuid
+  name             String             @unique
+  createdAt        DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  measurementsData measurementsData[]
+  order            orders[]
+  projectProducts  projectProducts[]
+
+  @@index([id, createdAt])
+}
+
+model banks {
+  id            String     @id @default(uuid()) @db.Uuid
+  bankName      String     @map("bank_name")
+  accountName   String?    @map("account_name")
+  branch        String
+  pincode       String
+  accountNumber String     @map("account_number")
+  ifscCode      String     @map("ifsc_code")
+  accountType   BankTypes  @map("account_type")
+  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  project       projects[]
+
+  @@index([id, createdAt])
+}
+
+model projects {
+  id                 String            @id @default(uuid()) @db.Uuid
+  name               String
+  customerId         String?           @map("customer_id") @db.Uuid
+  creatorId          String            @map("creator_id") @db.Uuid
+  status             ProjectStatus
+  totalAmount        Decimal?          @map("total_amount")
+  totalTax           Decimal?          @map("total_tax")
+  paid               Decimal?
+  discount           Decimal?
+  discountType       String?           @map("discount_type")
+  projectDate        DateTime          @map("project_date") @db.Timestamptz(6)
+  additionalRequests String?           @map("additional_requests")
+  address            String?
+  bankId             String?           @map("bank_id") @db.Uuid
+  createdAt          DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  order              orders[]
+  payments           payments[]
+  projectLabours     projectLabours[]
+  projectProducts    projectProducts[]
+  bank               banks?            @relation(fields: [bankId], references: [id])
+  creator            users             @relation(fields: [creatorId], references: [id])
+  customer           customers?        @relation(fields: [customerId], references: [id])
+  tasks              tasks[]
+
+  @@index([id, createdAt])
+}
+
+model projectProducts {
+  id              String        @id @default(uuid()) @db.Uuid
+  projectId       String        @map("project_id") @db.Uuid
+  productId       String        @map("product_id") @db.Uuid
+  areaId          String?       @map("area_id") @db.Uuid
+  price           Decimal?
+  quantity        Int?
+  brandId         String?       @map("company_id") @db.Uuid
+  catalogueId     String?       @map("catalogue_id") @db.Uuid
+  designNo        Int?          @map("design_no")
+  references      String?
+  measurementUnit SellingUnit?  @default(METER) @map("measurement_unit")
+  width           Decimal?
+  height          Decimal?
+  length          Decimal?
+  status          ProductStatus @default(PENDING)
+  remark          String?
+  orderId         String?       @map("order_id")
+  area            areas?        @relation(fields: [areaId], references: [id], onDelete: Cascade)
+  catalogue       catalogues?   @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
+  brand           brands?       @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  product         products      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  project         projects      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_products")
+}
+
+model projectLabours {
+  id         String       @id @default(uuid()) @db.Uuid
+  projectId  String       @map("project_id") @db.Uuid
+  productId  String       @map("product_id") @db.Uuid
+  artisanId  String?      @map("artisan_id") @db.Uuid
+  price      Decimal
+  unit       SellingUnit
+  key        String
+  quantity   Decimal
+  status     LabourStatus @default(PENDING)
+  workName   String?      @map("work_name")
+  labourType LabourType   @default(STITCHING) @map("labour_type")
+  artisan    artisans?    @relation(fields: [artisanId], references: [id])
+  product    products     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  project    projects     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_labours")
+}
+
+model tasks {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String?
+  taskDate    DateTime @map("task_date") @db.Timestamptz(6)
+  projectId   String   @map("project_id") @db.Uuid
+  priority    Priority
+  status      Status
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  project     projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([id, createdAt])
+}
+
+model stores {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  address     String?
+  phonenumber Int
+  email       String
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@index([id, createdAt])
+}
+
+model payments {
+  id          String      @id @default(uuid()) @db.Uuid
+  customerId  String?     @map("customer_id") @db.Uuid
+  projectId   String?     @map("project_id") @db.Uuid
+  amount      Decimal
+  paymentMode String      @map("payment_mode")
+  type        PaymentType
+  remarks     String?
+  createdAt   DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  customer    customers?  @relation(fields: [customerId], references: [id])
+  project     projects?   @relation(fields: [projectId], references: [id])
+
+  @@index([createdAt, id])
+  @@index([createdAt, amount])
+}
+
+model inquiries {
+  id           String   @id @default(uuid()) @db.Uuid
+  projectName  String   @map("project_name")
+  customerName String   @map("customer_name")
+  phonenumber  String
+  comments     String?
+  createdAt    DateTime @default(now()) @map("inquiry_date") @db.Timestamptz(6)
+  followUpDate DateTime @map("follow_up_date") @db.Timestamptz(6)
+}
+
+model authorizations {
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  access String
+  user   users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, access])
+}
+
+model orders {
+  id           String      @id @default(uuid()) @db.Uuid
+  customerId   String      @map("customer_id") @db.Uuid
+  orderedDate  DateTime?   @db.Timestamptz(6)
+  quantity     Decimal?
+  orderId      String?     @map("order_id")
+  receivedDate DateTime?   @map("received_date") @db.Timestamptz(6)
+  areaId       String?     @map("area_id") @db.Uuid
+  brandId      String?     @map("brand_id") @db.Uuid
+  catalogueId  String?     @map("catalogue_id") @db.Uuid
+  productId    String      @map("product_id") @db.Uuid
+  projectId    String      @map("project_id") @db.Uuid
+  designNo     Int?        @map("design_no")
+  area         areas?      @relation(fields: [areaId], references: [id])
+  brand        brands?     @relation(fields: [brandId], references: [id])
+  catalogue    catalogues? @relation(fields: [catalogueId], references: [id])
+  customer     customers   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  product      products    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  project      projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model measurements {
+  id               String             @id @default(uuid()) @db.Uuid
+  projectName      String             @map("project_name")
+  createdAt        DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  measurementsData measurementsData[]
+
+  @@index([id, createdAt])
+}
+
+model measurementsData {
+  id            String       @id @default(uuid()) @db.Uuid
+  areaId        String       @map("area_id") @db.Uuid
+  productId     String       @map("product_id") @db.Uuid
+  length        Decimal?
+  width         Decimal?
+  height        Decimal?
+  measurementId String       @map("measurement_id") @db.Uuid
+  area          areas        @relation(fields: [areaId], references: [id])
+  measurements  measurements @relation(fields: [measurementId], references: [id])
+  product       products     @relation(fields: [productId], references: [id])
+
+  @@map("measurements_data")
+}
+
 enum Role {
   USER
   ADMIN
@@ -19,130 +360,18 @@ enum Role {
   SALES_ASSOCIATE
 }
 
-model users {
-  id String @id @default(uuid()) @db.Uuid
-  username String @unique
-  email String @unique
-  password String
-  role Role
-  phonenumber String?
-  address String?
-  alternatePhonenumber String? @map("alternate_phonenumber")
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  refreshTokens refreshTokens[]
-
-  projects projects[]
-
-  auth authorizations[]
-
-  @@index([id, createdAt])
-}
-
-model refreshTokens {
-  id String @id @default(uuid()) @db.Uuid
-  familyId String @db.Uuid @map("family_id")
-  userId String @db.Uuid @map("user_id")
-  role Role @default(INTERIOR)
-  isUsed Boolean @map("is_used")
-
-  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("refresh_tokens")
-  @@index([familyId])
-}
-
-model customers {
-  id String @id @default(uuid()) @db.Uuid
-  name String
-  email String?
-  phonenumber String
-  alternatePhonenumber String? @map("alternate_phonenumber")
-  address String?
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  payments payments[]
-
-  projects projects[]
-
-  orders orders[]
-
-  @@index([id, createdAt])
-}
-
-model brands {
-  id String @id @default(uuid()) @db.Uuid
-  name String @unique
-  description String?
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  projectProducts projectProducts[]
-
-  catalogues catalogues[]
-
-  order orders[]
-
-  @@index([id, createdAt])
-}
-
-model catalogues {
-  id String @id @default(uuid()) @db.Uuid
-  brandId String? @db.Uuid @map("brand_id")
-  name String @unique
-  type String?
-  price Decimal?
-  launchYear String? @map("launch_year")
-  rackNo Int? @map("rack_no")
-  description String?
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  projectProducts projectProducts[]
-
-  brand brands? @relation(fields: [brandId], references: [id])
-
-  order orders[]
-
-  @@index([id, createdAt])
-}
-
-model DealsIn {
-  id String @id @default(uuid()) @db.Uuid
-  name String @unique
-
-  dealers dealers[]
-
-  @@map("deals_in")
-}
-
-model dealers {
-  id String @id @default(uuid()) @db.Uuid
-  name String
-  description String?
-  dealsInId String @db.Uuid @map("deals_in_id")
-  personName String @map("person_name")
-  phonenumber String?
-  email String?
-  catalogueLink String? @map("catalogue_link")
-  address String?
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  DealsIn DealsIn @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
-
-  @@unique([name, personName])
-}
-
 enum SellingUnit {
   METER
-  FEET 
+  FEET
   INCHES
   CENTIMETER
   PANHA
-  RFT 
-  SQFT 
-  SQM 
+  RFT
+  SQFT
+  SQM
   SQY
   ROLL
-  PIECE 
+  PIECE
   PANEL
 }
 
@@ -181,74 +410,9 @@ enum ProductCategory {
 
 enum DimensionType {
   lb
-  lh 
+  lh
   lbh
   l
-}
-
-model products {
-  id String @id @default(uuid()) @db.Uuid
-  name String @unique
-  description String?
-  sellingUnit SellingUnit? @map("selling_unit")
-  productType String? @map("product_type")
-  productCategory ProductCategory? @map("product_category")
-  price Decimal?
-  taxRate Decimal? @map("tax_rate")
-  dimensionType DimensionType @default(lbh) @map("dimension_type")
-  size Decimal?
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  projectProducts projectProducts[]
-
-  projectLabours projectLabours[]
-
-  order orders[]
-
-  measurmentsData measurementsData[]
-
-  @@index([id, createdAt])
-}
-
-
-model ArtisanTypes {
-  id String @id @default(uuid()) @db.Uuid
-  name String @unique
-
-  artisans artisans[]
-
-  @@map("artisan_types")
-}
-
-model artisans {
-  id String @id @default(uuid()) @db.Uuid
-  artisanTypeId String @db.Uuid @map("artisan_type_id")
-  name String
-  phonenumber String?
-  email String?
-  address String?
-  price Decimal
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  artisanType ArtisanTypes @relation(fields: [artisanTypeId], references: [id], onDelete: Cascade)
-
-  projectLabours projectLabours[]
-
-  @@index([id, createdAt])
-  @@unique([name, email, phonenumber])
-}
-
-model areas {
-  id String @id @default(uuid()) @db.Uuid
-  name String @unique
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  projectProducts projectProducts[]
-  order orders[]
-
-  measurementsData measurementsData[]
-
-  @@index([id, createdAt])
 }
 
 enum BankTypes {
@@ -256,22 +420,6 @@ enum BankTypes {
   CURRENT
   RECURRING
   SALARY
-}
-
-model banks {
-  id String @id @default(uuid()) @db.Uuid
-  bankName String @map("bank_name")
-  accountName String? @map("account_name")
-  branch String
-  pincode String
-  accountNumber String @map("account_number")
-  ifscCode String @map("ifsc_code")
-  accountType BankTypes @map("account_type")
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  project projects[]
-
-  @@index([id, createdAt])
 }
 
 enum Status {
@@ -291,73 +439,11 @@ enum ProjectStatus {
   DEFAULTER
 }
 
-model projects {
-  id String @id @default(uuid()) @db.Uuid
-  name String
-  customerId String? @db.Uuid @map("customer_id")
-  creatorId String @db.Uuid @map("creator_id")
-  status ProjectStatus
-  totalAmount Decimal? @map("total_amount")
-  totalTax Decimal? @map("total_tax")
-  paid Decimal?
-  discount Decimal?
-  discountType String? @map("discount_type")
-  projectDate DateTime @db.Timestamptz @map("project_date")
-  additionalRequests String? @map("additional_requests")
-  address String?
-  bankId String? @db.Uuid @map("bank_id")
-  createdAt DateTime @default(now()) @db.Timestamptz @map("created_at")
-
-  customer customers? @relation(fields: [customerId], references: [id])
-  creator users @relation(fields: [creatorId], references: [id])
-  bank banks? @relation(fields: [bankId], references: [id])
-
-  projectProducts projectProducts[]
-
-  tasks tasks[]
-
-  payments payments[]
-
-  projectLabours projectLabours[]
-
-  order orders[]
-
-  @@index([id, createdAt])
-}
-
 enum ProductStatus {
   PENDING
   ORDERED
   RECEIVED
   INSTOCK
-}
-
-model projectProducts {
-  id String @id @db.Uuid @default(uuid())
-  projectId String @db.Uuid @map("project_id")
-  productId String @db.Uuid @map("product_id")
-  areaId String? @db.Uuid @map("area_id")
-  price Decimal?
-  quantity Int?
-  brandId String? @db.Uuid @map("company_id")
-  catalogueId String? @db.Uuid @map("catalogue_id")
-  designNo Int? @map("design_no")
-  references String?
-  measurementUnit SellingUnit? @default(METER) @map("measurement_unit")
-  width Decimal?
-  height Decimal?
-  length Decimal?
-  status ProductStatus @default(PENDING)
-  remark String?
-  orderId String? @map("order_id") 
-
-  area areas? @relation(fields: [areaId], references: [id], onDelete: Cascade)
-  catalogue catalogues? @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
-  brand brands? @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@map("project_products")
 }
 
 enum LabourStatus {
@@ -366,22 +452,10 @@ enum LabourStatus {
   RECEIVED
 }
 
-model projectLabours {
-  id String @id @default(uuid()) @db.Uuid
-  projectId String @db.Uuid @map("project_id")
-  productId String @db.Uuid @map("product_id")
-  artisanId String? @db.Uuid @map("artisan_id")
-  price Decimal 
-  unit SellingUnit
-  key String
-  quantity Decimal
-  status LabourStatus @default(PENDING)
-
-  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  artisan artisans? @relation(fields: [artisanId], references: [id])
-  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@map("project_labours")
+enum LabourType {
+  STITCHING
+  FABRICATION
+  FITTING
 }
 
 enum Priority {
@@ -390,118 +464,7 @@ enum Priority {
   LOW
 }
 
-model tasks {
-  id String @id @default(uuid()) @db.Uuid
-  title String
-  description String?
-  taskDate DateTime @db.Timestamptz @map("task_date")
-  projectId String @db.Uuid @map("project_id")
-  priority Priority
-  status Status
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-
-  @@index([id, createdAt])
-}
-
-model stores {
-  id String @id @default(uuid()) @db.Uuid
-  name String
-  address String?
-  phonenumber Int
-  email String
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  @@index([id, createdAt])
-}
-
 enum PaymentType {
   CREDIT
   DEBIT
-}
-
-model payments {
-  id String @id @default(uuid()) @db.Uuid
-  customerId String? @db.Uuid @map("customer_id")
-  projectId String? @db.Uuid @map("project_id")
-  amount Decimal
-  paymentMode String @map("payment_mode")
-  type PaymentType
-  remarks String?
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  customer customers? @relation(fields: [customerId], references: [id])
-  project projects? @relation(fields: [projectId], references: [id])
-
-  @@index([createdAt, id])
-  @@index([createdAt, amount])
-}
-
-model inquiries {
-  id String @id @default(uuid()) @db.Uuid
-  projectName String @map("project_name")
-  customerName String @map("customer_name")
-  phonenumber String
-  comments String?
-  createdAt DateTime @default(now()) @db.Timestamptz @map("inquiry_date")
-  followUpDate DateTime @db.Timestamptz @map("follow_up_date")
-}
-
-model authorizations {
-  id String @id @default(uuid()) @db.Uuid
-  userId String @db.Uuid @map("user_id")
-  access String
-
-  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, access])
-}
-
-model orders {
-  id String @id @default(uuid()) @db.Uuid
-  customerId String @db.Uuid @map("customer_id")
-  productId String @db.Uuid @map("product_id")
-  projectId String @db.Uuid @map("project_id")
-  catalogueId String? @db.Uuid @map("catalogue_id")
-  brandId String? @db.Uuid @map("brand_id")
-  designNo Int? @map("design_no")
-  areaId String? @db.Uuid @map("area_id")
-  orderedDate DateTime? @db.Timestamptz
-  quantity Decimal?
-  orderId String? @map("order_id")
-  receivedDate DateTime? @db.Timestamptz @map("received_date")
-
-  customer customers @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  product products @relation(fields: [productId], references: [id], onDelete: Cascade)
-  project projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  catalogue catalogues? @relation(fields: [catalogueId], references: [id])
-  brand brands? @relation(fields: [brandId], references: [id])
-  area areas? @relation(fields: [areaId], references: [id])
-}
-
-model measurements {
-  id String @id @db.Uuid @default(uuid())
-  projectName String @map("project_name")
-  createdAt DateTime @db.Timestamptz @default(now()) @map("created_at")
-
-  measurementsData measurementsData[]
-
-  @@index([id, createdAt])
-}
-
-model measurementsData {
-  id String @id @default(uuid()) @db.Uuid
-  areaId String @db.Uuid @map("area_id")
-  productId String @db.Uuid @map("product_id")
-  length Decimal?
-  width Decimal?
-  height Decimal?
-  measurementId String @db.Uuid @map("measurement_id")
-
-  measurements measurements @relation(fields: [measurementId], references: [id])
-  area areas @relation(fields: [areaId], references: [id])
-  product products @relation(fields: [productId], references: [id])
-
-  @@map("measurements_data")
 }

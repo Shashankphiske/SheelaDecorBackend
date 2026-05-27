@@ -23,7 +23,11 @@ class ProjectLabourRepository extends BaseRepository<ProjectLabour, ProjectLabou
         const record = await this.model.findFirst({
             where,
             include: {
-                artisan: true
+                artisan: {
+                    include: {
+                        artisanType: true
+                    }
+                }
             },
         });
         return record ?? ({} as ProjectLabour);
@@ -49,7 +53,11 @@ class ProjectLabourRepository extends BaseRepository<ProjectLabour, ProjectLabou
                 { id: (data.sort ?? "desc") as 'asc' | 'desc' }
             ],
             include: {
-                artisan: true,
+                artisan: {
+                    include: {
+                        artisanType: true
+                    }
+                },
                 product: {
                     select: {
                         id: true,
