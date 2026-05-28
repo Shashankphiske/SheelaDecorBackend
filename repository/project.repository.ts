@@ -354,7 +354,65 @@ class ProjectRepository {
                 });
             }
 
-            return;
+            const updatedProducts = await tx.projectProducts.findMany({
+                where: { projectId: id },
+                include: {
+                    area: {
+                        select: {
+                            name: true,
+                            id: true
+                        }
+                    },
+                    brand: {
+                        select: {
+                            name: true,
+                            id: true
+                        }
+                    },
+                    catalogue: {
+                        select: {
+                            name: true,
+                            id: true
+                        }
+                    },
+                    product: true,
+                }
+            });
+
+            const updatedLabours = await tx.projectLabours.findMany({
+                where: { projectId: id },
+                include: {
+                    artisan: {
+                        include: {
+                            artisanType: true
+                        }
+                    },
+                    product: {
+                        select: {
+                            id: true,
+                            name: true
+                        }
+                    }
+                }
+            });
+
+            const updatedProject = await tx.projects.findFirst({
+                where: { id },
+                include: {
+                    customer: true,
+                    creator: {
+                        select: {
+                            username: true
+                        }
+                    }
+                }
+            });
+
+            return {
+                project: updatedProject,
+                projectProducts: updatedProducts,
+                projectLabours: updatedLabours
+            };
         });
     };
 

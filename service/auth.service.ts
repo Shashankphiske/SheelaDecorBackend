@@ -66,6 +66,12 @@ class AuthService {
         const familyId = refreshToken.familyId;
         const newRefreshToken = await this.AuthMethods.create({ familyId, userId: refreshToken.userId, role: refreshToken.role });       
 
+        await prisma.refreshTokens.delete({
+            where: {
+                id: refreshTokenId
+            }
+        });
+
         return { accessToken, refreshToken: newRefreshToken };
     }
 
