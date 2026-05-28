@@ -6154,3 +6154,36 @@
 {"ip":"127.0.0.1","level":"http","message":"USER update request received","timestamp":"2026-05-28 14:53:48","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
 {"id":"b7940fd6-0596-4952-8965-652a3f68d293","level":"info","message":"USER record updated","timestamp":"2026-05-28 14:53:48"}
 {"level":"info","message":"PUT /v1/users/b7940fd6-0596-4952-8965-652a3f68d293 215.566 ms","timestamp":"2026-05-28 14:53:48"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:57:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 15:12:37"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 15:16:24"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-05-28 15:16:25","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-05-28 15:16:27"}
+{"level":"info","message":"GET /v1/projects 1941.636 ms","timestamp":"2026-05-28 15:16:27"}
+{"ip":"127.0.0.1","level":"http","message":"BANK fetch all request received","timestamp":"2026-05-28 15:16:28","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-05-28 15:16:28","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"BANK records fetched","timestamp":"2026-05-28 15:16:28"}
+{"level":"info","message":"GET /v1/banks 158.169 ms","timestamp":"2026-05-28 15:16:28"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-PRODUCT fetch all request received","timestamp":"2026-05-28 15:16:28","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-LABOUR fetch all request received","timestamp":"2026-05-28 15:16:29","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-05-28 15:16:29"}
+{"level":"info","message":"GET /v1/artisans 344.233 ms","timestamp":"2026-05-28 15:16:29"}
+{"level":"info","message":"PROJECT-PRODUCT records fetched","timestamp":"2026-05-28 15:16:29"}
+{"level":"info","message":"GET /v1/projectproducts?projectId=7db306dd-c99a-4dd7-9bfe-967e478c52df 976.251 ms","timestamp":"2026-05-28 15:16:29"}
+{"level":"info","message":"PROJECT-LABOUR records fetched","timestamp":"2026-05-28 15:16:30"}
+{"level":"info","message":"GET /v1/projectlabours?projectId=7db306dd-c99a-4dd7-9bfe-967e478c52df 1143.087 ms","timestamp":"2026-05-28 15:16:30"}
+{"ip":"127.0.0.1","level":"http","message":"AREA fetch all request received","timestamp":"2026-05-28 15:16:32","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"CATALOGUE fetch all request received","timestamp":"2026-05-28 15:16:32","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"AREA records fetched","timestamp":"2026-05-28 15:16:32"}
+{"level":"info","message":"GET /v1/areas 558.217 ms","timestamp":"2026-05-28 15:16:32"}
+{"level":"info","message":"CATALOGUE records fetched","timestamp":"2026-05-28 15:16:33"}
+{"level":"info","message":"GET /v1/catalogues 1030.436 ms","timestamp":"2026-05-28 15:16:33"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT update request received","timestamp":"2026-05-28 15:16:35","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"id":"7db306dd-c99a-4dd7-9bfe-967e478c52df","level":"info","message":"Project record updated","timestamp":"2026-05-28 15:16:37"}
+{"level":"info","message":"PATCH /v1/projects/7db306dd-c99a-4dd7-9bfe-967e478c52df 1877.893 ms","timestamp":"2026-05-28 15:16:37"}
+{"ip":"127.0.0.1","level":"http","message":"CUSTOMER fetch all request received","timestamp":"2026-05-28 15:16:46","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"CUSTOMER records fetched","timestamp":"2026-05-28 15:16:46"}
+{"level":"info","message":"GET /v1/customers 169.118 ms","timestamp":"2026-05-28 15:16:46"}
+{"ip":"127.0.0.1","level":"http","message":"CUSTOMER update request received","timestamp":"2026-05-28 15:16:56","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"id":"403063f1-306b-4548-abc2-9b41c784f321","level":"info","message":"CUSTOMER record updated","timestamp":"2026-05-28 15:16:56"}
+{"level":"info","message":"PATCH /v1/customers/403063f1-306b-4548-abc2-9b41c784f321 165.423 ms","timestamp":"2026-05-28 15:16:56"}
