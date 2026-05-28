@@ -5956,3 +5956,160 @@
 {"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 13:04:00"}
 {"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 13:04:04"}
 {"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 13:04:08"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 13:05:22"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 13:05:43"}
+{"level":"info","message":"POST /v1/auth/ 2483.579 ms","timestamp":"2026-05-28 13:05:46"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 13:05:46","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 13:05:46","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 13:05:46"}
+{"level":"info","message":"GET /v1/inquiries 161.516 ms","timestamp":"2026-05-28 13:05:46"}
+{"level":"info","message":"GET /v1/reports 775.820 ms","timestamp":"2026-05-28 13:05:46"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 13:05:47"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 13:05:47"}
+{"level":"info","message":"GET /v1/tasks 909.858 ms","timestamp":"2026-05-28 13:05:47"}
+{"ip":"127.0.0.1","level":"http","message":"Logout request received","timestamp":"2026-05-28 13:05:54"}
+{"level":"info","message":"User logged out","timestamp":"2026-05-28 13:05:55"}
+{"level":"info","message":"DELETE /v1/auth/false 651.003 ms","timestamp":"2026-05-28 13:05:55"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 13:06:04"}
+{"level":"warn","message":"Login failed: Incorrect password","timestamp":"2026-05-28 13:06:04","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-05-28 13:06:04"}
+{"level":"info","message":"POST /v1/auth/ 435.328 ms","timestamp":"2026-05-28 13:06:04"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 13:06:13"}
+{"level":"info","message":"POST /v1/auth/ 706.552 ms","timestamp":"2026-05-28 13:06:14"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:06:16"}
+{"level":"info","message":"GET /v1/auth/ 145.828 ms","timestamp":"2026-05-28 13:06:16"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:06:18"}
+{"level":"info","message":"GET /v1/auth/ 149.504 ms","timestamp":"2026-05-28 13:06:18"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:06:27"}
+{"level":"info","message":"GET /v1/auth/ 153.401 ms","timestamp":"2026-05-28 13:06:27"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:06:30"}
+{"level":"info","message":"GET /v1/auth/ 150.482 ms","timestamp":"2026-05-28 13:06:30"}
+{"ip":"127.0.0.1","level":"warn","message":"User unauthorized","timestamp":"2026-05-28 13:07:28"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 13:07:28"}
+{"level":"info","message":"GET /v1/auth/ 3.545 ms","timestamp":"2026-05-28 13:07:28"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 13:07:35"}
+{"level":"info","message":"POST /v1/auth/ 1462.555 ms","timestamp":"2026-05-28 13:07:37"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 13:07:37","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 13:07:37","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 13:07:37"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 13:07:37"}
+{"level":"info","message":"GET /v1/tasks 309.595 ms","timestamp":"2026-05-28 13:07:37"}
+{"level":"info","message":"GET /v1/reports 801.291 ms","timestamp":"2026-05-28 13:07:37"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 13:07:38"}
+{"level":"info","message":"GET /v1/inquiries 764.176 ms","timestamp":"2026-05-28 13:07:38"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:08:32"}
+{"level":"info","message":"GET /v1/auth/ 826.537 ms","timestamp":"2026-05-28 13:08:32"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 13:08:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 13:08:33","userId":"cf311af2-b641-4f95-b974-763c71535187"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 13:08:33"}
+{"level":"info","message":"GET /v1/inquiries 156.604 ms","timestamp":"2026-05-28 13:08:33"}
+{"level":"info","message":"GET /v1/reports 742.453 ms","timestamp":"2026-05-28 13:08:33"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 13:08:33"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 13:08:33"}
+{"level":"info","message":"GET /v1/tasks 888.413 ms","timestamp":"2026-05-28 13:08:33"}
+{"ip":"127.0.0.1","level":"http","message":"Logout request received","timestamp":"2026-05-28 13:10:09"}
+{"level":"info","message":"User logged out","timestamp":"2026-05-28 13:10:12"}
+{"level":"info","message":"DELETE /v1/auth/true 2417.062 ms","timestamp":"2026-05-28 13:10:12"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 13:10:18"}
+{"level":"info","message":"POST /v1/auth/ 762.334 ms","timestamp":"2026-05-28 13:10:19"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 13:11:02"}
+{"level":"info","message":"GET /v1/auth/ 786.203 ms","timestamp":"2026-05-28 13:11:03"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 13:11:03","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 13:11:03"}
+{"level":"info","message":"GET /v1/reports 6.145 ms","timestamp":"2026-05-28 13:11:03"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 13:11:03","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 13:11:03","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 13:11:03"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 13:11:03"}
+{"level":"info","message":"GET /v1/tasks 298.910 ms","timestamp":"2026-05-28 13:11:03"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 13:11:03"}
+{"level":"info","message":"GET /v1/inquiries 753.336 ms","timestamp":"2026-05-28 13:11:03"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:03:52"}
+{"level":"info","message":"GET /v1/auth/ 1037.874 ms","timestamp":"2026-05-28 14:03:53"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 14:03:53","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:03:53"}
+{"level":"info","message":"GET /v1/reports 3.143 ms","timestamp":"2026-05-28 14:03:53"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 14:03:53","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 14:03:53","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 14:03:53"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 14:03:53"}
+{"level":"info","message":"GET /v1/tasks 461.886 ms","timestamp":"2026-05-28 14:03:53"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 14:03:54"}
+{"level":"info","message":"GET /v1/inquiries 968.850 ms","timestamp":"2026-05-28 14:03:54"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:04:46"}
+{"level":"info","message":"GET /v1/auth/ 822.574 ms","timestamp":"2026-05-28 14:04:47"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 14:04:47","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:04:47"}
+{"level":"info","message":"GET /v1/reports 3.376 ms","timestamp":"2026-05-28 14:04:47"}
+{"ip":"127.0.0.1","level":"http","message":"TASK fetch all request received","timestamp":"2026-05-28 14:04:47","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"INQUIRY fetch all request received","timestamp":"2026-05-28 14:04:47","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"warn","message":"No TASK records found","timestamp":"2026-05-28 14:04:48"}
+{"ip":"127.0.0.1","level":"error","message":"Resource not found!","status":404,"timestamp":"2026-05-28 14:04:48"}
+{"level":"info","message":"GET /v1/tasks 331.073 ms","timestamp":"2026-05-28 14:04:48"}
+{"level":"info","message":"INQUIRY records fetched","timestamp":"2026-05-28 14:04:48"}
+{"level":"info","message":"GET /v1/inquiries 897.471 ms","timestamp":"2026-05-28 14:04:48"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT fetch all request received","timestamp":"2026-05-28 14:06:38","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"Project records fetched","timestamp":"2026-05-28 14:06:39"}
+{"level":"info","message":"GET /v1/projects 1566.209 ms","timestamp":"2026-05-28 14:06:39"}
+{"ip":"127.0.0.1","level":"http","message":"BANK fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"BANK records fetched","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"GET /v1/banks 196.931 ms","timestamp":"2026-05-28 14:06:41"}
+{"ip":"127.0.0.1","level":"http","message":"CUSTOMER fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"GET /v1/artisans 381.988 ms","timestamp":"2026-05-28 14:06:41"}
+{"ip":"127.0.0.1","level":"http","message":"AREA fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"CUSTOMER records fetched","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"GET /v1/customers 178.372 ms","timestamp":"2026-05-28 14:06:41"}
+{"ip":"127.0.0.1","level":"http","message":"PRODUCT fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"BRAND fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"CATALOGUE fetch all request received","timestamp":"2026-05-28 14:06:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"AREA records fetched","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"GET /v1/areas 167.613 ms","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"PRODUCT records fetched","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"GET /v1/products 163.754 ms","timestamp":"2026-05-28 14:06:41"}
+{"level":"info","message":"BRAND records fetched","timestamp":"2026-05-28 14:06:42"}
+{"level":"info","message":"GET /v1/brands 792.151 ms","timestamp":"2026-05-28 14:06:42"}
+{"level":"info","message":"CATALOGUE records fetched","timestamp":"2026-05-28 14:06:42"}
+{"level":"info","message":"GET /v1/catalogues 902.138 ms","timestamp":"2026-05-28 14:06:42"}
+{"level":"info","message":"POST /v1/projects 2649.197 ms","timestamp":"2026-05-28 14:08:19"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-PRODUCT fetch all request received","timestamp":"2026-05-28 14:08:21","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"PROJECT-LABOUR fetch all request received","timestamp":"2026-05-28 14:08:21","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"PROJECT-PRODUCT records fetched","timestamp":"2026-05-28 14:08:22"}
+{"level":"info","message":"GET /v1/projectproducts?projectId=7db306dd-c99a-4dd7-9bfe-967e478c52df 1081.731 ms","timestamp":"2026-05-28 14:08:22"}
+{"level":"info","message":"PROJECT-LABOUR records fetched","timestamp":"2026-05-28 14:08:23"}
+{"level":"info","message":"GET /v1/projectlabours?projectId=7db306dd-c99a-4dd7-9bfe-967e478c52df 1412.760 ms","timestamp":"2026-05-28 14:08:23"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:12:47"}
+{"level":"info","message":"GET /v1/auth/ 1109.892 ms","timestamp":"2026-05-28 14:12:48"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-05-28 14:12:48","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-05-28 14:12:48"}
+{"level":"info","message":"GET /v1/artisans 376.696 ms","timestamp":"2026-05-28 14:12:48"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 14:12:52","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:12:52"}
+{"level":"info","message":"GET /v1/users 7.654 ms","timestamp":"2026-05-28 14:12:52"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 14:12:52","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:12:52"}
+{"level":"info","message":"GET /v1/authorizations 2.248 ms","timestamp":"2026-05-28 14:12:52"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:13:59"}
+{"level":"info","message":"GET /v1/auth/ 818.671 ms","timestamp":"2026-05-28 14:13:59"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-05-28 14:14:00","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-05-28 14:14:00"}
+{"level":"info","message":"GET /v1/artisans 366.656 ms","timestamp":"2026-05-28 14:14:00"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:14:43"}
+{"level":"info","message":"GET /v1/auth/ 1802.928 ms","timestamp":"2026-05-28 14:14:45"}
+{"ip":"127.0.0.1","level":"http","message":"ARTISAN fetch all request received","timestamp":"2026-05-28 14:14:45","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"ARTISAN records fetched","timestamp":"2026-05-28 14:14:46"}
+{"level":"info","message":"GET /v1/artisans 1183.663 ms","timestamp":"2026-05-28 14:14:46"}
+{"ip":"127.0.0.1","level":"warn","message":"User Unauthorized","role":"INTERIOR","timestamp":"2026-05-28 14:14:47","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:14:47"}
+{"level":"info","message":"GET /v1/users 2.518 ms","timestamp":"2026-05-28 14:14:47"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:21:41"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:21:49"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:21:54"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:22:03"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:26:30"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:26:38"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:26:46"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:27:01"}
+{"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:28:51"}
+{"level":"info","message":"GET /v1/auth/ 17.027 ms","timestamp":"2026-05-28 14:28:51"}

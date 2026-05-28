@@ -21,7 +21,7 @@ import { InquiryRouter } from "./router/inquiry.router.js";
 import cors from "cors";
 import { PaymentRouter } from "./router/payment.router.js";
 import { AuthorizationRouter } from "./router/authorization.router.js";
-import { authenticate, authenticateAdmin } from "./middleware/authenticate.middleware.js";
+import { authenticate, authenticateAdmin, authorizePage } from "./middleware/authenticate.middleware.js";
 import { DealerRouter } from "./router/dealer.router.js";
 import { DealsInRouter } from "./router/dealsIn.router.js";
 import { ArtisanTypeRouter } from "./router/artisanType.router.js";
@@ -73,43 +73,41 @@ app.use("/v1/auth", AuthRouter);
 
 app.use(authenticate);
 
-app.use("/v1/brands", BrandRouter);
-app.use("/v1/artisans", ArtisanRouter);
-app.use("/v1/artisantypes", ArtisanTypeRouter);
+app.use("/v1/brands", authorizePage("brands"), BrandRouter);
+app.use("/v1/artisans", authorizePage("artisans"), ArtisanRouter);
+app.use("/v1/artisantypes", authorizePage("artisans"), ArtisanTypeRouter);
 
-app.use("/v1/products", ProductRouter);
+app.use("/v1/products", authorizePage("products"), ProductRouter);
 
-app.use("/v1/catalogues", CatalogueRouter);
+app.use("/v1/catalogues", authorizePage("catalogues"), CatalogueRouter);
 
-app.use("/v1/areas", AreaRouter);
+app.use("/v1/areas", authorizePage("areas"), AreaRouter);
 
-app.use("/v1/tasks", TaskRouter);
+app.use("/v1/tasks", authorizePage("tasks"), TaskRouter);
 
-app.use("/v1/projects", ProjectRouter);
-app.use("/v1/projectlabours", ProjectLabourRouter);
-app.use("/v1/projectproducts", ProjectProductRouter);
+app.use("/v1/projects", authorizePage("projects"), ProjectRouter);
+app.use("/v1/projectlabours", authorizePage("projects"), ProjectLabourRouter);
+app.use("/v1/projectproducts", authorizePage("projects"), ProjectProductRouter);
 
-app.use("/v1/banks", BankRouter);
+app.use("/v1/banks", authorizePage("banks"), BankRouter);
 
-app.use("/v1/customers", CustomerRouter);
+app.use("/v1/customers", authorizePage("customers"), CustomerRouter);
 
-app.use("/v1/inquiries", InquiryRouter);
+app.use("/v1/inquiries", authorizePage("dashboard"), InquiryRouter);
 
-app.use("/v1/payments", PaymentRouter);
+app.use("/v1/payments", authorizePage("payments"), PaymentRouter);
 
-app.use("/v1/dealers", DealerRouter);
+app.use("/v1/dealers", authorizePage("dealers"), DealerRouter);
 
-app.use("/v1/dealsin", DealsInRouter);
+app.use("/v1/dealsin", authorizePage("dealers"), DealsInRouter);
 
-app.use("/v1/orders", OrderRouter);
+app.use("/v1/orders", authorizePage("orders"), OrderRouter);
 
-app.use("/v1/measurements", MeasurementRouter);
+app.use("/v1/measurements", authorizePage("measurements"), MeasurementRouter);
 
-app.use(authenticateAdmin);
+app.use("/v1/reports", authorizePage("reports"), ReportRouter);
 
-app.use("/v1/reports", ReportRouter);
-
-app.use("/v1/authorizations", AuthorizationRouter);
+app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 
 app.use(globalErrorHandler.handleError);
 

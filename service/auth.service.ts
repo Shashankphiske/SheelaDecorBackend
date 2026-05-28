@@ -30,11 +30,10 @@ class AuthService {
             throw new ServerError(errorMessage.INVALIDDATA);
         }
 
-        const accessToken = authUtils.generateAccessToken(user.id, user.role);
+        const access = await this.AuthorizationMethods.fetchAuth(user.id);
+        const accessToken = authUtils.generateAccessToken(user.id, user.role, access);
         const familyId = crypto.randomUUID();
         const refreshToken = await this.AuthMethods.create({ familyId, userId: user.id, role: user.role });
-
-        const access = await this.AuthorizationMethods.fetchAuth(user.id);
 
         return { refreshToken: refreshToken.id, accessToken, id: user.id, role: user.role, access };
     }
@@ -62,7 +61,8 @@ class AuthService {
 
             throw new ServerError(errorMessage.UNAUTHORIZED);
         }
-        const accessToken = authUtils.generateAccessToken(refreshToken.id, refreshToken.role);
+        const access = await this.AuthorizationMethods.fetchAuth(refreshToken.userId);
+        const accessToken = authUtils.generateAccessToken(refreshToken.userId, refreshToken.role, access);
         const familyId = refreshToken.familyId;
         const newRefreshToken = await this.AuthMethods.create({ familyId, userId: refreshToken.userId, role: refreshToken.role });       
 
@@ -72,7 +72,7 @@ class AuthService {
             }
         });
 
-        return { accessToken, refreshToken: newRefreshToken };
+        return { accessToken, refreshToken: newRefreshToken, access };
     }
 
     fetchState = async (accessToken: string) => {

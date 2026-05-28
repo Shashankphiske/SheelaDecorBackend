@@ -11,9 +11,9 @@ class AuthUtilsClass {
         return bcrypt.compare(password, hashedPassword);
     }
 
-    generateAccessToken = (id: string, role: string) => {
+    generateAccessToken = (id: string, role: string, access: string[]) => {
         return jwt.sign(
-            { id, role },
+            { id, role, access },
             config.jwtSecret as string,
             { expiresIn: "7d" } // Changed from "15m" to "7d"
         );
@@ -40,7 +40,7 @@ class AuthUtilsClass {
         try {
             // Strip "Bearer " if it exists
             const actualToken = token.startsWith("Bearer ") ? token.split(" ")[1] : token;
-            return jwt.verify(actualToken as string, config.jwtSecret as string) as unknown as { id: string, role: Role };
+            return jwt.verify(actualToken as string, config.jwtSecret as string) as unknown as { id: string, role: Role, access: string[] };
 
         } catch (err: any) {
             // Log the actual JWT error (e.g., "jwt expired" or "invalid signature")
