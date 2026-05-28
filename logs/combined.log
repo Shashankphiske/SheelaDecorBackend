@@ -6113,3 +6113,44 @@
 {"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:27:01"}
 {"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:28:51"}
 {"level":"info","message":"GET /v1/auth/ 17.027 ms","timestamp":"2026-05-28 14:28:51"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:29:42"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:39:18"}
+{"ip":"127.0.0.1","level":"http","message":"Login request received","timestamp":"2026-05-28 14:41:39"}
+{"level":"info","message":"POST /v1/auth/ 1971.969 ms","timestamp":"2026-05-28 14:41:41"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-05-28 14:41:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-05-28 14:41:42"}
+{"level":"info","message":"GET /v1/users 353.245 ms","timestamp":"2026-05-28 14:41:42"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:44:45"}
+{"level":"info","message":"GET /v1/auth/ - ms","timestamp":"2026-05-28 14:44:46"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:47:36"}
+{"level":"info","message":"GET /v1/auth/ 882.257 ms","timestamp":"2026-05-28 14:47:37"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-05-28 14:47:37","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-05-28 14:47:37"}
+{"level":"info","message":"GET /v1/users 171.651 ms","timestamp":"2026-05-28 14:47:37"}
+{"ip":"127.0.0.1","level":"http","message":"Change password request received","timestamp":"2026-05-28 14:47:43"}
+{"level":"warn","message":"Invalid token provided","timestamp":"2026-05-28 14:47:43","token":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-05-28 14:47:43"}
+{"level":"info","message":"PATCH /v1/users/b7940fd6-0596-4952-8965-652a3f68d293 5.574 ms","timestamp":"2026-05-28 14:47:43"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:47:54"}
+{"level":"info","message":"GET /v1/auth/ 835.043 ms","timestamp":"2026-05-28 14:47:54"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-05-28 14:47:55","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-05-28 14:47:55"}
+{"level":"info","message":"GET /v1/users 166.933 ms","timestamp":"2026-05-28 14:47:55"}
+{"ip":"127.0.0.1","level":"http","message":"Change password request received","timestamp":"2026-05-28 14:48:07"}
+{"level":"warn","message":"Invalid token provided","timestamp":"2026-05-28 14:48:07","token":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-05-28 14:48:07"}
+{"level":"info","message":"PATCH /v1/users/b7940fd6-0596-4952-8965-652a3f68d293 19.196 ms","timestamp":"2026-05-28 14:48:07"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 14:51:47"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-05-28 14:52:32","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:52:32"}
+{"level":"info","message":"GET /v1/auth/ 960.862 ms","timestamp":"2026-05-28 14:52:33"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-05-28 14:52:33"}
+{"level":"info","message":"GET /v1/users 1115.671 ms","timestamp":"2026-05-28 14:52:33"}
+{"ip":"127.0.0.1","level":"http","message":"Fetch state request received","timestamp":"2026-05-28 14:53:40"}
+{"level":"info","message":"GET /v1/auth/ 948.059 ms","timestamp":"2026-05-28 14:53:41"}
+{"ip":"127.0.0.1","level":"http","message":"USER fetch all request received","timestamp":"2026-05-28 14:53:41","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"level":"info","message":"USER records fetched","timestamp":"2026-05-28 14:53:41"}
+{"level":"info","message":"GET /v1/users 174.790 ms","timestamp":"2026-05-28 14:53:41"}
+{"ip":"127.0.0.1","level":"http","message":"USER update request received","timestamp":"2026-05-28 14:53:48","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
+{"id":"b7940fd6-0596-4952-8965-652a3f68d293","level":"info","message":"USER record updated","timestamp":"2026-05-28 14:53:48"}
+{"level":"info","message":"PUT /v1/users/b7940fd6-0596-4952-8965-652a3f68d293 215.566 ms","timestamp":"2026-05-28 14:53:48"}

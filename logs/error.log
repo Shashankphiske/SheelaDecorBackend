@@ -1503,3 +1503,5 @@
 {"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:12:52"}
 {"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:14:47"}
 {"ip":"127.0.0.1","level":"error","message":"Forbidden!","status":403,"timestamp":"2026-05-28 14:28:51"}
+{"ip":"127.0.0.1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-05-28 14:47:43"}
+{"ip":"127.0.0.1","level":"error","message":"Please provide valid data","status":400,"timestamp":"2026-05-28 14:48:07"}

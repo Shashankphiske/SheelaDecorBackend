@@ -7,6 +7,7 @@ import type { UserRepository } from "../repository/user.repository.js";
 import { ServerError } from "../utils/error.utils.js";
 import { logger } from "../utils/logger.util.js";
 import { BaseService } from "./base.service.js";
+import { prisma } from "../db/prisma.js";
 
 class UserService extends BaseService<User, UserData, any> {
     constructor(method: UserRepository) {
@@ -17,7 +18,21 @@ class UserService extends BaseService<User, UserData, any> {
         const hashedPassword = await authUtils.hashPassword(data.password);
         const user = await this.method.create({ ...data, password: hashedPassword, role: data.role ? data.role : "USER" });
 
-        logger.info("User created", {
+        const defaultAccess = [
+            "products", "brands", "catalogues", "interiors", "artisans",
+            "sales-associate", "stitching", "stores", "areas", "dealers",
+            "orders", "measurements", "clothCalculation", "customers"
+        ];
+
+        await prisma.authorizations.createMany({
+            data: defaultAccess.map(key => ({
+                userId: user.id,
+                access: key
+            })),
+            skipDuplicates: true
+        });
+
+        logger.info("User created with default master and customer page access", {
             userId: user.id
         });
 
