@@ -24,5 +24,4 @@ router.delete("/:id", errorHandler.wrapper(controller.delete));
 router.get("/", errorHandler.wrapper(controller.fetchAll));
 router.put("/:id", errorHandler.wrapper(controller.update));
 
-
 export { router as UserRouter };

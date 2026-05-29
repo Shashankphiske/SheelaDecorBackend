@@ -6187,3 +6187,4 @@
 {"ip":"127.0.0.1","level":"http","message":"CUSTOMER update request received","timestamp":"2026-05-28 15:16:56","userId":"b7940fd6-0596-4952-8965-652a3f68d293"}
 {"id":"403063f1-306b-4548-abc2-9b41c784f321","level":"info","message":"CUSTOMER record updated","timestamp":"2026-05-28 15:16:56"}
 {"level":"info","message":"PATCH /v1/customers/403063f1-306b-4548-abc2-9b41c784f321 165.423 ms","timestamp":"2026-05-28 15:16:56"}
+{"level":"info","message":"Redis connected to upstash","timestamp":"2026-05-28 15:18:06"}
