@@ -1,0 +1,76 @@
+import { errorMessage } from "../constants/error.constants.js";
+import { redisUtils } from "../factory/utils.factory.js";
+import { ServerError } from "../utils/error.utils.js";
+import { logger } from "../utils/logger.util.js";
+import { BaseService } from "./base.service.js";
+class ProjectService {
+    method;
+    constructor(method) {
+        this.method = method;
+    }
+    create = async (projectData) => {
+        const project = await this.method.create(projectData);
+        return project;
+    };
+    fetch = async (id) => {
+        const project = await this.method.fetch(id);
+        return project;
+    };
+    /**
+     * Fetches a paginated list of records and generates a pagination cursor.
+     *
+     * @param data - Pagination, sorting, and limit parameters.
+     * @param filters - Dynamic query filters.
+     * @param searchFields - Model fields to include in the search.
+     * @returns {Promise<{records: T[], nextCursor: object}>} List of records and metadata for subsequent fetches.
+     * @throws {serverError} 404 error if no records match the criteria.
+     */
+    fetchAll = async (data, filters, searchFields) => {
+        const records = await this.method.fetchAll(data, filters, searchFields);
+        if (records.length == 0) {
+            logger.warn(`No Project records found`);
+            throw new ServerError(errorMessage.NOTFOUND);
+        }
+        const lastRecord = records[records.length - 1];
+        logger.info(`Project records fetched`);
+        return {
+            records, nextCursor: {
+                lastId: lastRecord.id,
+                lastCreatedAt: lastRecord.createdAt
+            }
+        };
+    };
+    /**
+     * Updates a record and clears relevant cache keys.
+     *
+     * @param data - The update payload.
+     * @param id - The unique identifier of the record.
+     * @returns {Promise<T>} The updated record.
+     */
+    update = async (data, id, userId) => {
+        const record = await this.method.update(data, id);
+        logger.info(`Project record updated`, {
+            id
+        });
+        return record;
+    };
+    updateStatus = async (id, status) => {
+        const record = await this.method.updateStatus(id, status);
+        logger.info(`Project status updated`, { id });
+        return record;
+    };
+    /**
+     * Orchestrates record deletion (Soft or Hard) and clears cache.
+     *
+     * @param id - The unique identifier of the record.
+     * @param flag - Boolean toggle: true for hard delete, false for soft delete.
+     * @returns {Promise<T>} The deleted/deactivated record metadata.
+     */
+    delete = async (id) => {
+        const record = await this.method.delete(id);
+        logger.info(`Project record hard deleted`, { id });
+        return record;
+    };
+}
+export { ProjectService };
+//# sourceMappingURL=project.service.js.map

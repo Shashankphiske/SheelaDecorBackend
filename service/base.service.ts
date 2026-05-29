@@ -45,6 +45,22 @@ abstract class BaseService<T, TData, TMethods> {
     }
 
     /**
+     * Orchestrates multiple records creation.
+     * 
+     * @param data - Array of payloads to create.
+     * @returns {Promise<T[]>} Array of newly created records.
+     */
+    createMany = async (data: TData[]): Promise<T[]> => {
+        //@ts-ignore
+        const records = await this.method.createMany(data);
+        logger.info(`${this.modelName} records bulk created`, {
+            count: records.length,
+        });
+
+        return records;
+    }
+
+    /**
      * Fetches a single record and validates existence.
      * 
      * @param id - The unique identifier of the record.

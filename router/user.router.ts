@@ -13,6 +13,7 @@ router.get("/verify/:token", errorHandler.wrapper(controller.verify));
 
 // router.use(authenticate);
 
+router.post("/bulk", errorHandler.wrapper(controller.createMany));
 router.post("/", errorHandler.wrapper(controller.create));
 router.get("/forget/:email", errorHandler.wrapper(controller.forgetPass));
 router.patch("/:token", errorHandler.wrapper(controller.changePass));

@@ -86,6 +86,16 @@ abstract class BaseController <TService> {
         return ApiResponse.success(res, this.messages.CREATE.res, result);
     }
 
+    createMany = async (req: Request, res: Response) => {
+        this.logRequest(req, `BULK_CREATE_${this.modelName}`);
+        if (!Array.isArray(req.body)) {
+            return ApiResponse.error(res, "Request body must be an array of records.");
+        }
+        // @ts-ignore
+        const result = await this.service.createMany(req.body);
+        return ApiResponse.success(res, `${this.modelName} records imported successfully`, result);
+    }
+
     fetch = async (req: Request, res: Response) => {
         this.logRequest(req, this.messages.FETCH.req);
         //@ts-ignore

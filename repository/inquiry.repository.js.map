@@ -1,0 +1,1 @@
+{"version":3,"file":"inquiry.repository.js","sourceRoot":"","sources":["inquiry.repository.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,iBAAiB,CAAC;AAEzC,OAAO,EAAE,cAAc,EAAE,MAAM,sBAAsB,CAAC;AAEtD,MAAM,iBAAkB,SAAQ,cAAyC;IACrE;QACI,KAAK,CAAC,MAAM,CAAC,SAAS,EAAE,SAAS,CAAE,CAAC;IACxC,CAAC;CAGJ;AAED,OAAO,EAAE,iBAAiB,EAAE,CAAA"}

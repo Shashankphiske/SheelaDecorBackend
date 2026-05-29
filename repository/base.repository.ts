@@ -93,6 +93,27 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
     };
 
     /**
+     * Creates multiple records inside a transaction.
+     * @param data - Array of payloads to insert.
+     * @returns {Promise<T[]>} Array of created records.
+     */
+    createMany = async (data: TCreateData[]): Promise<T[]> => {
+        try {
+            return await prisma.$transaction(async (txClient) => {
+                const txRepo = this.tx(txClient);
+                const results: T[] = [];
+                for (const item of data) {
+                    const record = await txRepo.create(item);
+                    if (record) results.push(record);
+                }
+                return results;
+            });
+        } catch (error) {
+            this.handlePrismaError(error);
+        }
+    };
+
+    /**
      * Retrieves a single record by its primary key.
      * @param id - The unique identifier of the record.
      * @param userId - Optional owner ID to restrict the fetch.
@@ -135,7 +156,7 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
         where = serverUtils.buildWhere(where, filters, data, searchFields, this.config.hasCreatedAt);
 
         return await this.model.findMany({
-            take: 10,
+            take: data.limit || 10,
             where,
             orderBy: [
                 ...(this.config.hasCreatedAt !== false

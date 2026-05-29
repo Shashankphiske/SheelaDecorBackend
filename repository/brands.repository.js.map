@@ -1,0 +1,1 @@
+{"version":3,"file":"brands.repository.js","sourceRoot":"","sources":["brands.repository.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,iBAAiB,CAAC;AAEzC,OAAO,EAAE,cAAc,EAAE,MAAM,sBAAsB,CAAC;AAEtD,MAAM,gBAAiB,SAAQ,cAAuC;IAClE;QACI,KAAK,CAAC,MAAM,CAAC,MAAM,EAAE,OAAO,CAAC,CAAC;IAClC,CAAC;CACJ;AAED,OAAO,EAAE,gBAAgB,EAAE,CAAA"}
