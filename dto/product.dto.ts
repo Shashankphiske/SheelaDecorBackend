@@ -37,7 +37,7 @@ type ProductType =
 type ProductCategory = "CUSTOM" | "AREA" | "READY";
 
 
-type DimensionType = "lb" | "lh" | "lbh" | "l";
+type DimensionType = "lw" | "lh" | "lwh" | "l";
 
 interface Product {
     id: string

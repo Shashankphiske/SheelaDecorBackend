@@ -112,7 +112,7 @@ model products {
   productType     String?            @map("product_type")
   price           Decimal?
   taxRate         Decimal?           @map("tax_rate")
-  dimensionType   DimensionType      @default(lbh) @map("dimension_type")
+  dimensionType   DimensionType      @default(lwh) @map("dimension_type")
   size            Decimal?
   createdAt       DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
   productCategory ProductCategory?   @map("product_category")
@@ -409,9 +409,9 @@ enum ProductCategory {
 }
 
 enum DimensionType {
-  lb
+  lw
   lh
-  lbh
+  lwh
   l
 }
 
