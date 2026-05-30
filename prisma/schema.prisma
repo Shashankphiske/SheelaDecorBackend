@@ -74,8 +74,9 @@ model catalogues {
   description     String?
   createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
   brand           brands?           @relation(fields: [brandId], references: [id])
-  order           orders[]
-  projectProducts projectProducts[]
+  order             orders[]
+  projectProducts   projectProducts[]
+  cataloguesGivenTo cataloguesGivenTo[]
 
   @@index([id, createdAt])
 }
@@ -468,3 +469,18 @@ enum PaymentType {
   CREDIT
   DEBIT
 }
+
+model cataloguesGivenTo {
+  id             String      @id @default(uuid()) @db.Uuid
+  givenDate      DateTime    @map("given_date") @db.Timestamptz(6)
+  clientName     String      @map("client_name")
+  siteName       String      @map("site_name")
+  catalogueId    String      @map("catalogue_id") @db.Uuid
+  receivedStatus Boolean     @default(false) @map("received_status")
+  createdAt      DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  catalogue      catalogues  @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
+
+  @@index([id, createdAt])
+  @@map("catalogues_given_to")
+}
+

@@ -30,6 +30,7 @@ import { ProjectProductRouter } from "./router/projectProduct.router.js";
 import { OrderRouter } from "./router/order.router.js";
 import { ReportRouter } from "./router/report.router.js";
 import { MeasurementRouter } from "./router/measurement.router.js";
+import { CataloguesGivenToRouter } from "./router/cataloguesGivenTo.router.js";
 dotenv.config();
 
 const app = express();
@@ -106,6 +107,8 @@ app.use("/v1/orders", authorizePage("orders"), OrderRouter);
 app.use("/v1/measurements", authorizePage("measurements"), MeasurementRouter);
 
 app.use("/v1/reports", authorizePage("reports"), ReportRouter);
+
+app.use("/v1/cataloguesgivento", authorizePage("cataloguesgivento"), CataloguesGivenToRouter);
 
 app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 

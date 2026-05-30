@@ -1,4 +1,4 @@
-import type { Role } from "../generated/prisma/enums.ts";
+import type { Role } from "../generated/prisma/enums.js";
 import type { Request } from "express";
 
 declare global {
