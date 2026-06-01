@@ -52,19 +52,28 @@ app.use(cors(corsOptions));
 
 app.use(morgan(`:method :url :response-time ms`, { stream }) );
 
-// app.use(cacheMiddleware.cacheRequest(3600, "PRIVATE"));
 
+// Define a dedicated endpoint instead of overloading the root "/"
 app.get("/", (req: Request, res: Response) => {
-    // Check key in URL: ://yoursite.com
+    // Check for the key in both query parameters and custom headers
     const key = req.query.key || req.headers["x-cron-key"];
 
+    // 1. Authenticated Cron Traffic: The key matches
     if (key === config.cronKey) {
-        return res.status(200).send("OK");
+        // Do any light background tasks here if needed (e.g., clear temp cache)
+        return res.status(200).json({
+            status: "success",
+            message: "Cron verified and executed successfully."
+        });
     }
 
-    // Still return 200 but with a different message to keep the cron "Success" 
-    // OR keep 401/403 for security (just ensure your cron service sends the key)
-    return res.status(401).send("Unauthorized");
+    // 2. Unauthenticated Traffic: Someone else or a generic uptime bot hit the URL
+    // We return 200 OK so the ping service counts it as a "Success",
+    // but we return an empty/idle message so no server resources are wasted.
+    return res.status(200).json({
+        status: "idle",
+        message: "Server is awake, but no cron key was provided."
+    });
 });
 
 
