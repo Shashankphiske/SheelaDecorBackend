@@ -261,6 +261,7 @@ model tasks {
   project     projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([id, createdAt])
+  @@unique([title, projectId])
 }
 
 model stores {
@@ -298,6 +299,8 @@ model inquiries {
   comments     String?
   createdAt    DateTime @default(now()) @map("inquiry_date") @db.Timestamptz(6)
   followUpDate DateTime @map("follow_up_date") @db.Timestamptz(6)
+
+  @@unique([customerName, projectName])
 }
 
 model authorizations {
@@ -332,7 +335,7 @@ model orders {
 
 model measurements {
   id               String             @id @default(uuid()) @db.Uuid
-  projectName      String             @map("project_name")
+  projectName      String             @map("project_name") @unique
   createdAt        DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
   measurementsData measurementsData[]
 
@@ -482,5 +485,6 @@ model cataloguesGivenTo {
 
   @@index([id, createdAt])
   @@map("catalogues_given_to")
+  @@unique([clientName, siteName, catalogueId])
 }
 
