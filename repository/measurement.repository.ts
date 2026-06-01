@@ -104,7 +104,12 @@ class MeasurementRepository extends BaseRepository<Measurement, any, any>{
                     measurementsData: {
                         include: {
                             area: true,
-                            product: true
+                            product: {
+                                select: {
+                                    id: true,
+                                    name: true
+                                }
+                            }
                         }
                     }
                 }
