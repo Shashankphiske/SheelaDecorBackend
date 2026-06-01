@@ -36,7 +36,6 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-
 const stream = {
     write: (message: string) => logger.info(message.trim())
 };
