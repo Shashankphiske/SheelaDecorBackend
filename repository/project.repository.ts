@@ -191,10 +191,30 @@ class ProjectRepository {
 
     fetchAll = async (data: PaginationData, filters: any, searchFields: string[] = []): Promise<any> => {
         const { artisanId, ...restFilters } = filters || {};
+        const { startDate, endDate, ...restData } = data;
         let where: any = {};
-        where = serverUtils.buildWhere(where, restFilters, data, searchFields);
+        where = serverUtils.buildWhere(where, restFilters, restData as any, searchFields);
+
+        if (startDate || endDate) {
+            const projectDateFilter: any = {};
+            if (startDate) {
+                projectDateFilter.gte = new Date(startDate);
+            }
+            if (endDate) {
+                projectDateFilter.lte = new Date(endDate);
+            }
+            if (!where.AND) {
+                where.AND = [];
+            }
+            where.AND.push({
+                projectDate: projectDateFilter
+            });
+        }
 
         if (artisanId) {
+            if (!where.AND) {
+                where.AND = [];
+            }
             where.AND.push({
                 projectLabours: {
                     some: {
