@@ -5,6 +5,7 @@ interface MeasurementData {
     length: number | null
     width: number | null
     height: number | null
+    unit: string | null
     measurementId: string
 }
 

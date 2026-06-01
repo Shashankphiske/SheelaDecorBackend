@@ -349,6 +349,7 @@ model measurementsData {
   length        Decimal?
   width         Decimal?
   height        Decimal?
+  unit          SellingUnit? @default(METER)
   measurementId String       @map("measurement_id") @db.Uuid
   area          areas        @relation(fields: [areaId], references: [id])
   measurements  measurements @relation(fields: [measurementId], references: [id])

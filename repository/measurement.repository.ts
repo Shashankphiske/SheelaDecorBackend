@@ -32,6 +32,7 @@ class MeasurementRepository extends BaseRepository<Measurement, any, any>{
                         length: d.length !== undefined && d.length !== null ? d.length : null,
                         width: d.width !== undefined && d.width !== null ? d.width : null,
                         height: d.height !== undefined && d.height !== null ? d.height : null,
+                        unit: d.unit || 'METER',
                     }))
                 });
             }
@@ -72,6 +73,7 @@ class MeasurementRepository extends BaseRepository<Measurement, any, any>{
                                     length: d.length !== undefined && d.length !== null ? d.length : null,
                                     width: d.width !== undefined && d.width !== null ? d.width : null,
                                     height: d.height !== undefined && d.height !== null ? d.height : null,
+                                    unit: d.unit || 'METER',
                                 }
                             });
                         } else {
@@ -84,6 +86,7 @@ class MeasurementRepository extends BaseRepository<Measurement, any, any>{
                                     length: d.length !== undefined && d.length !== null ? d.length : null,
                                     width: d.width !== undefined && d.width !== null ? d.width : null,
                                     height: d.height !== undefined && d.height !== null ? d.height : null,
+                                    unit: d.unit || 'METER',
                                 }
                             });
                         }
