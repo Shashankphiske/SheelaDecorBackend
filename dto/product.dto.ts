@@ -32,7 +32,9 @@ type ProductType =
 
     | "DINING"
     | "WALLPAPER_ROLL"
-    | "RUGS";
+    | "RUGS"
+
+    | "AUTO";
 
 type ProductCategory = "CUSTOM" | "AREA" | "READY";
 

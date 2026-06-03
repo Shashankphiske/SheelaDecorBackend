@@ -109,7 +109,7 @@ create = async (data: any): Promise<any> => {
     };
 
     update = async (data: any, id: string): Promise<any> => {
-        const LABOUR_TYPES = ["TAILORING", "AP_CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
+        const LABOUR_TYPES = ["TAILORING", "CURTAIN", "ROMAN_CURTAIN", "SOFA_TYPE"];
         const SIZE_TYPES = ["AREA", "FIXED_AREA", "FABRIC", "RUNNING_LENGTH", "FIXED_LENGTH"];
 
         logger.info(data);
