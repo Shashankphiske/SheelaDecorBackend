@@ -13,6 +13,7 @@ interface CataloguesGivenToData {
     clientName: string
     siteName: string
     catalogueId: string
+    catalogueIds?: string[]
     receivedStatus: boolean
 }
 

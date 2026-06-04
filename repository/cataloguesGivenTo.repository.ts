@@ -14,6 +14,9 @@ class CataloguesGivenToRepository extends BaseRepository<CataloguesGivenTo, Cata
             data: {
                 ...data,
                 givenDate: new Date(data.givenDate)
+            },
+            include: {
+                catalogue: true
             }
         });
     };
