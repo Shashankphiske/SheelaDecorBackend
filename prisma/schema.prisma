@@ -38,9 +38,9 @@ model refreshTokens {
 
 model customers {
   id                   String     @id @default(uuid()) @db.Uuid
-  name                 String
+  name                 String     @unique
   email                String?
-  phonenumber          String
+  phonenumber          String?
   alternatePhonenumber String?    @map("alternate_phonenumber")
   address              String?
   createdAt            DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
@@ -65,7 +65,7 @@ model brands {
 
 model catalogues {
   id              String            @id @default(uuid()) @db.Uuid
-  brandId         String?           @map("brand_id") @db.Uuid
+  brandId         String            @map("brand_id") @db.Uuid
   name            String            @unique
   type            String?
   price           Decimal?
@@ -73,7 +73,7 @@ model catalogues {
   rackNo          Int?              @map("rack_no")
   description     String?
   createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
-  brand           brands?           @relation(fields: [brandId], references: [id])
+  brand           brands            @relation(fields: [brandId], references: [id])
   order             orders[]
   projectProducts   projectProducts[]
   cataloguesGivenTo cataloguesGivenTo[]
@@ -113,7 +113,7 @@ model products {
   productType     String?            @map("product_type")
   price           Decimal?
   taxRate         Decimal?           @map("tax_rate")
-  dimensionType   DimensionType      @default(lwh) @map("dimension_type")
+  dimensionType   DimensionType?     @map("dimension_type")
   size            Decimal?
   createdAt       DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
   productCategory ProductCategory?   @map("product_category")

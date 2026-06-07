@@ -12,7 +12,7 @@ interface Catalogue {
 
 interface CatalogueData {
     name: string
-    brandId: string | null
+    brandId: string
     type: string | null
     price: number | null
     launchYear: String | null

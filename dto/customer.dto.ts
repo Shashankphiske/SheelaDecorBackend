@@ -1,7 +1,7 @@
 interface Customer {
     id: string
     name: string
-    phonenumber: string 
+    phonenumber: string | null
     email: string | null
     alternatePhonenumber: string | null
     address: string | null
@@ -10,10 +10,10 @@ interface Customer {
 
 interface CustomerData {
     name: string
-    phonenumber: string
-    email?: string
-    alternatePhonenumber?: string
-    address?: string
+    phonenumber?: string | null
+    email?: string | null
+    alternatePhonenumber?: string | null
+    address?: string | null
 }
 
 export type { Customer, CustomerData }

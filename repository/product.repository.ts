@@ -50,11 +50,15 @@ create = async (data: any): Promise<any> => {
         }
 
         // ── enum ────────────────────────────
-        if (
-            data.dimensionType &&
-            Object.values(DimensionType).includes(data.dimensionType)
-        ) {
-            payload.dimensionType = data.dimensionType as DimensionType;
+        if (data.productCategory === "CUSTOM") {
+            if (
+                data.dimensionType &&
+                Object.values(DimensionType).includes(data.dimensionType)
+            ) {
+                payload.dimensionType = data.dimensionType as DimensionType;
+            }
+        } else {
+            payload.dimensionType = null;
         }
 
         // ── size logic ──────────────────────
@@ -122,7 +126,7 @@ create = async (data: any): Promise<any> => {
                     description: data.description ?? null,
                     productType: data.productType,
                     sellingUnit: data.sellingUnit,
-                    dimensionType: data.dimensionType ?? null,
+                    dimensionType: data.productCategory === "CUSTOM" ? (data.dimensionType ?? null) : null,
                     price: parseFloat(data.price),
                     taxRate: parseFloat(data.taxRate ?? 0),
                     size: parseFloat(data.size),
