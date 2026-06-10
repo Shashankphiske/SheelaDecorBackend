@@ -34,6 +34,8 @@ import { CataloguesGivenToRouter } from "./router/cataloguesGivenTo.router.js";
 import { MachineCategoryRouter } from "./router/machineCategory.router.js";
 import { MachineBrandRouter } from "./router/machineBrand.router.js";
 import { MachineRouter } from "./router/machine.router.js";
+import { MaterialCategoryRouter } from "./router/materialCategory.router.js";
+import { MaterialRouter } from "./router/material.router.js";
 dotenv.config();
 
 const app = express();
@@ -124,6 +126,9 @@ app.use("/v1/cataloguesgivento", authorizePage("cataloguesgivento"), CataloguesG
 app.use("/v1/machinecategories", authorizePage("machineStock"), MachineCategoryRouter);
 app.use("/v1/machinebrands", authorizePage("machineStock"), MachineBrandRouter);
 app.use("/v1/machines", authorizePage("machineStock"), MachineRouter);
+
+app.use("/v1/materialcategories", authorizePage("materialStock"), MaterialCategoryRouter);
+app.use("/v1/materials", authorizePage("materialStock"), MaterialRouter);
 
 app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 

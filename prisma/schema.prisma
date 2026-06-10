@@ -531,5 +531,30 @@ model Machine {
   @@map("machines")
 }
 
+model MaterialCategory {
+  id        String     @id @default(uuid()) @db.Uuid
+  name      String     @unique
+  materials Material[]
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@index([id, createdAt])
+  @@map("material_categories")
+}
+
+model Material {
+  id           String           @id @default(uuid()) @db.Uuid
+  name         String
+  categoryId   String           @map("category_id") @db.Uuid
+  category     MaterialCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  unit         String
+  currentStock Decimal          @map("current_stock")
+  rate         Decimal
+  createdAt    DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@unique([name, categoryId])
+  @@index([id, createdAt])
+  @@map("materials")
+}
+
 
 
