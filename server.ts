@@ -31,6 +31,9 @@ import { OrderRouter } from "./router/order.router.js";
 import { ReportRouter } from "./router/report.router.js";
 import { MeasurementRouter } from "./router/measurement.router.js";
 import { CataloguesGivenToRouter } from "./router/cataloguesGivenTo.router.js";
+import { MachineCategoryRouter } from "./router/machineCategory.router.js";
+import { MachineBrandRouter } from "./router/machineBrand.router.js";
+import { MachineRouter } from "./router/machine.router.js";
 dotenv.config();
 
 const app = express();
@@ -117,6 +120,10 @@ app.use("/v1/measurements", authorizePage("measurements"), MeasurementRouter);
 app.use("/v1/reports", authorizePage("reports"), ReportRouter);
 
 app.use("/v1/cataloguesgivento", authorizePage("cataloguesgivento"), CataloguesGivenToRouter);
+
+app.use("/v1/machinecategories", authorizePage("machineStock"), MachineCategoryRouter);
+app.use("/v1/machinebrands", authorizePage("machineStock"), MachineBrandRouter);
+app.use("/v1/machines", authorizePage("machineStock"), MachineRouter);
 
 app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 
