@@ -78,7 +78,7 @@ const authenticateAdmin = async (req: Request, res: Response, next: NextFunction
             throw new ServerError(errorMessage.UNAUTHORIZED);
         }
 
-        res.cookie("accessToken", accessToken, { sameSite: "strict", httpOnly: true, maxAge: 7 * 26 * 60 * 60 * 1000 });
+        res.cookie("accessToken", accessToken, { sameSite: "strict", httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
         res.cookie("refreshToken", refreshToken.id, { sameSite: "strict", httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 });
 
         req.user = { id: refreshToken.userId, role: refreshToken.role, access };

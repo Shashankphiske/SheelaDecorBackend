@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from "express"
 import { logger } from "./logger.util.js";
 import { ApiResponse } from "./api.utils.js";
+import { CookieOptions } from "../dto/token.dto.js";
 
 class ErrorHandler {
     wrapper = (fn: any) => {
@@ -18,8 +19,8 @@ class GlobalErrorHandler {
         });
 
         if(err.status == 403) {
-            res.clearCookie("accessToken");
-            res.clearCookie("refreshToken");
+            res.clearCookie("accessToken", CookieOptions);
+            res.clearCookie("refreshToken", CookieOptions);
         }
 
         const status = err.status ?? 500;
