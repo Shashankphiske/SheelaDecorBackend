@@ -40,7 +40,10 @@ class ProjectService{
         if (records.length == 0) {
             logger.warn(`No Project records found`);
 
-            throw new ServerError(errorMessage.NOTFOUND);
+            return {
+                records: [],
+                nextCursor: null
+            };
         }
 
         const lastRecord = records[records.length - 1] as any;
