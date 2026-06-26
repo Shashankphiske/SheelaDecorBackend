@@ -102,20 +102,41 @@ class ProjectRepository {
 
             // ── 3. Auto-create initial Orders for each product ────────────────────
 
+            const productIds = Array.from(
+                new Set(
+                    areas.flatMap((area: any) =>
+                        (area.areacollection ?? []).map((item: any) => item.productId).filter(Boolean)
+                    )
+                )
+            );
+
+            const productsInDb = await tx.products.findMany({
+                where: { id: { in: productIds } },
+                select: { id: true, productType: true }
+            });
+
+            const autoProductIds = new Set(
+                productsInDb
+                    .filter((p: any) => p.productType === "AUTO")
+                    .map((p: any) => p.id)
+            );
+
             const orderRows = areas.flatMap((area: any) =>
-                (area.areacollection ?? []).map((item: any) => ({
-                    projectId: project.id,
-                    customerId: customerId || null,
-                    productId: item.productId,
-                    catalogueId: item.catalogueId || null,
-                    brandId: item.brandId || null,
-                    areaId: area.areaId || null,
-                    designNo: Number(item.designNo) ?? null,
-                    quantity: Number(item.quantity ?? 1),
-                    orderedDate: null,
-                    receivedDate: null,
-                    orderId: null,
-                }))
+                (area.areacollection ?? [])
+                    .filter((item: any) => !autoProductIds.has(item.productId))
+                    .map((item: any) => ({
+                        projectId: project.id,
+                        customerId: customerId || null,
+                        productId: item.productId,
+                        catalogueId: item.catalogueId || null,
+                        brandId: item.brandId || null,
+                        areaId: area.areaId || null,
+                        designNo: Number(item.designNo) ?? null,
+                        quantity: Number(item.quantity ?? 1),
+                        orderedDate: null,
+                        receivedDate: null,
+                        orderId: null,
+                    }))
             );
 
             if (orderRows.length > 0) {
@@ -315,20 +336,41 @@ class ProjectRepository {
 
             // ── 3. Auto-create initial Orders for each product ────────────────────
 
+            const productIds = Array.from(
+                new Set(
+                    areas.flatMap((area: any) =>
+                        (area.areacollection ?? []).map((item: any) => item.productId).filter(Boolean)
+                    )
+                )
+            );
+
+            const productsInDb = await tx.products.findMany({
+                where: { id: { in: productIds } },
+                select: { id: true, productType: true }
+            });
+
+            const autoProductIds = new Set(
+                productsInDb
+                    .filter((p: any) => p.productType === "AUTO")
+                    .map((p: any) => p.id)
+            );
+
             const orderRows = areas.flatMap((area: any) =>
-                (area.areacollection ?? []).map((item: any) => ({
-                    projectId: project.id,
-                    customerId: customerId || null,
-                    productId: item.productId,
-                    catalogueId: item.catalogueId || null,
-                    brandId: item.brandId || null,
-                    areaId: area.areaId || null,
-                    designNo: Number(item.designNo) ?? null,
-                    quantity: Number(item.quantity ?? 1),
-                    orderedDate: null,
-                    receivedDate: null,
-                    orderId: null,
-                }))
+                (area.areacollection ?? [])
+                    .filter((item: any) => !autoProductIds.has(item.productId))
+                    .map((item: any) => ({
+                        projectId: project.id,
+                        customerId: customerId || null,
+                        productId: item.productId,
+                        catalogueId: item.catalogueId || null,
+                        brandId: item.brandId || null,
+                        areaId: area.areaId || null,
+                        designNo: Number(item.designNo) ?? null,
+                        quantity: Number(item.quantity ?? 1),
+                        orderedDate: null,
+                        receivedDate: null,
+                        orderId: null,
+                    }))
             );
 
             await tx.orders.deleteMany({ where: { projectId: id } });

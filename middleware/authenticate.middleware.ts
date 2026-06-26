@@ -7,6 +7,7 @@ import { ServerError } from "../utils/error.utils.js";
 import { errorMessage } from "../constants/error.constants.js";
 import { authUtils } from "../factory/utils.factory.js";
 import { AuthorizationRepository } from "../repository/authorization.repository.js";
+import { CookieOptions } from "../dto/token.dto.js";
 
 
 const repo = new AuthRepository();
@@ -49,6 +50,15 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
     if (!id || !role || !access) {
         throw new ServerError(errorMessage.UNAUTHORIZED);
     }
+
+    const user = await userRepo.fetch(id);
+    if (!user || !user.id) {
+        logger.warn("Authenticated user not found in database, clearing credentials", { id });
+        res.clearCookie("accessToken", CookieOptions);
+        res.clearCookie("refreshToken", CookieOptions);
+        throw new ServerError(errorMessage.UNAUTHORIZED);
+    }
+
     req.user = { id, role, access };
 
     return next();
@@ -100,6 +110,14 @@ const authenticateAdmin = async (req: Request, res: Response, next: NextFunction
             role
         });
 
+        throw new ServerError(errorMessage.UNAUTHORIZED);
+    }
+
+    const user = await userRepo.fetch(id);
+    if (!user || !user.id || user.role !== "ADMIN") {
+        logger.warn("Authenticated admin user not found in database or role mismatch, clearing credentials", { id });
+        res.clearCookie("accessToken", CookieOptions);
+        res.clearCookie("refreshToken", CookieOptions);
         throw new ServerError(errorMessage.UNAUTHORIZED);
     }
 
