@@ -186,7 +186,7 @@ model projects {
   paid               Decimal?
   discount           Decimal?
   discountType       String?           @map("discount_type")
-  projectDate        DateTime          @map("project_date") @db.Timestamptz(6)
+  deadlineDate       DateTime?         @map("project_date") @db.Timestamptz(6)
   additionalRequests String?           @map("additional_requests")
   address            String?
   bankId             String?           @map("bank_id") @db.Uuid

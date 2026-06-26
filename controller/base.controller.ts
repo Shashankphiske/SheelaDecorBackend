@@ -27,7 +27,7 @@ abstract class BaseController <TService> {
         console.log(path);
 
         const isFinancialDateResource =
-            path.includes("/payments") || path.includes("/projects");
+            path.includes("/payments");
 
         const currentYear = now.getFullYear();
 

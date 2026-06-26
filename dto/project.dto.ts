@@ -15,7 +15,7 @@ interface Project {
     paid: number
     discount: number
     discountType: string
-    projectDate: Date
+    deadlineDate?: Date | null
     additionalRequest: string | null
     address: string | null
     status: ProjectStatus
@@ -38,7 +38,7 @@ interface ProjectData {
     paid: number
     discount: number
     discountType: string
-    projectDate: Date
+    deadlineDate?: Date | null
     additionalRequest?: string
     address?: string
     status: ProjectStatus

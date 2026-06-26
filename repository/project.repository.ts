@@ -53,7 +53,7 @@ class ProjectRepository {
                     paid: 0,
                     discount: data.discount,
                     discountType: data.discountType,
-                    projectDate: new Date(data.projectDate),
+                    deadlineDate: data.deadlineDate ? new Date(data.deadlineDate) : null,
                     additionalRequests: data.additionalRequest,
                     address: data.address,
                     status: "PENDING",
@@ -207,7 +207,7 @@ class ProjectRepository {
                 where.AND = [];
             }
             where.AND.push({
-                projectDate: projectDateFilter
+                deadlineDate: projectDateFilter
             });
         }
 
@@ -270,7 +270,7 @@ class ProjectRepository {
                     totalTax: data.totalTax,
                     discount: data.discount,
                     discountType: data.discountType,
-                    projectDate: new Date(data.projectDate),
+                    deadlineDate: data.deadlineDate ? new Date(data.deadlineDate) : null,
                     additionalRequests: data.additionalRequest,
                     address: data.address,
                     status: data.status,
