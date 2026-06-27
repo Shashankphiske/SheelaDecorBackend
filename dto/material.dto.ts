@@ -9,6 +9,7 @@ interface Material {
     rate: any // Decimal
     createdAt: Date
     category?: MaterialCategory
+    sentToSite: boolean
 }
 
 interface MaterialData {
@@ -17,6 +18,7 @@ interface MaterialData {
     unit: string
     currentStock: number
     rate: number
+    sentToSite?: boolean
 }
 
 export type { Material, MaterialData }
