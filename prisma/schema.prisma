@@ -188,6 +188,7 @@ model projects {
   discountType       String?           @map("discount_type")
   deadlineDate       DateTime?         @map("project_date") @db.Timestamptz(6)
   additionalRequests String?           @map("additional_requests")
+  quotationConfig    String?           @map("quotation_config")
   address            String?
   bankId             String?           @map("bank_id") @db.Uuid
   createdAt          DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)

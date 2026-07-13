@@ -47,7 +47,6 @@ class ProjectRepository {
             const project = await tx.projects.create({
                 data: {
                     name: data.name,
-                    customerId: customerId,
                     totalAmount: data.totalAmount,
                     totalTax: data.totalTax,
                     paid: 0,
@@ -55,10 +54,12 @@ class ProjectRepository {
                     discountType: data.discountType,
                     deadlineDate: data.deadlineDate ? new Date(data.deadlineDate) : null,
                     additionalRequests: data.additionalRequest,
+                    quotationConfig: data.quotationConfig || null,
                     address: data.address,
                     status: "PENDING",
-                    creatorId: data.creatorId,
-                    bankId: data.bankId,
+                    customer: customerId ? { connect: { id: customerId } } : undefined,
+                    creator: { connect: { id: data.creatorId } },
+                    bank: data.bankId ? { connect: { id: data.bankId } } : undefined,
                 } as any,
                 select: {
                     id: true,
@@ -286,17 +287,18 @@ class ProjectRepository {
                 where: { id },
                 data: {
                     name: data.name,
-                    customerId: customerId,
                     totalAmount: data.totalAmount,
                     totalTax: data.totalTax,
                     discount: data.discount,
                     discountType: data.discountType,
                     deadlineDate: data.deadlineDate ? new Date(data.deadlineDate) : null,
                     additionalRequests: data.additionalRequest,
+                    quotationConfig: data.quotationConfig !== undefined ? data.quotationConfig : undefined,
                     address: data.address,
                     status: data.status,
-                    creatorId: data.creatorId,
-                    bankId: data.bankId,
+                    customer: customerId ? { connect: { id: customerId } } : { disconnect: true },
+                    creator: data.creatorId ? { connect: { id: data.creatorId } } : undefined,
+                    bank: data.bankId ? { connect: { id: data.bankId } } : { disconnect: true },
                 } as any,
                 select: { id: true }
             });
