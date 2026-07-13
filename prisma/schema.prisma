@@ -70,7 +70,7 @@ model catalogues {
   type            String?
   price           Decimal?
   launchYear      String?           @map("launch_year")
-  rackNo          Int?              @map("rack_no")
+  rackNo          String?           @map("rack_no")
   description     String?
   createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
   brand           brands            @relation(fields: [brandId], references: [id])

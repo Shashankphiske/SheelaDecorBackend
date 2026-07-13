@@ -5,7 +5,7 @@ interface Catalogue {
     type?: string
     price?: number
     launchYear?: String
-    rackNo?: number
+    rackNo?: string
     description?: string
     createdAt: Date
 }
@@ -16,7 +16,7 @@ interface CatalogueData {
     type: string | null
     price: number | null
     launchYear: String | null
-    rackNo: number | null
+    rackNo: string | null
     description: string | null
 }
 
