@@ -17,6 +17,7 @@ import { TaskRouter } from "./router/task.router.js";
 import { ProjectRouter } from "./router/project.router.js";
 import { BankRouter } from "./router/bank.router.js";
 import { CustomerRouter } from "./router/customer.router.js";
+import { InteriorRouter } from "./router/interior.router.js";
 import { InquiryRouter } from "./router/inquiry.router.js";
 import cors from "cors";
 import { PaymentRouter } from "./router/payment.router.js";
@@ -106,6 +107,7 @@ app.use("/v1/projectproducts", authorizePage("projects"), ProjectProductRouter);
 app.use("/v1/banks", authorizePage("banks"), BankRouter);
 
 app.use("/v1/customers", authorizePage("customers"), CustomerRouter);
+app.use("/v1/interiors", authorizePage("interiors"), InteriorRouter);
 
 app.use("/v1/inquiries", authorizePage("dashboard"), InquiryRouter);
 

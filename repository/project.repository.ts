@@ -60,6 +60,7 @@ class ProjectRepository {
                     customer: customerId ? { connect: { id: customerId } } : undefined,
                     creator: { connect: { id: data.creatorId } },
                     bank: data.bankId ? { connect: { id: data.bankId } } : undefined,
+                    interior: data.interiorId ? { connect: { id: data.interiorId } } : undefined,
                 } as any,
                 select: {
                     id: true,
@@ -191,6 +192,7 @@ class ProjectRepository {
             },
             include: {
                 customer: true,
+                interior: true,
                 creator: {
                     select: {
                         username: true
@@ -255,6 +257,7 @@ class ProjectRepository {
             ],
             include: {
                 customer: true,
+                interior: true,
                 creator: {
                     select: {
                         username: true
@@ -299,6 +302,9 @@ class ProjectRepository {
                     customer: customerId ? { connect: { id: customerId } } : { disconnect: true },
                     creator: data.creatorId ? { connect: { id: data.creatorId } } : undefined,
                     bank: data.bankId ? { connect: { id: data.bankId } } : { disconnect: true },
+                    interior: data.interiorId !== undefined
+                        ? (data.interiorId ? { connect: { id: data.interiorId } } : { disconnect: true })
+                        : undefined,
                 } as any,
                 select: { id: true }
             });

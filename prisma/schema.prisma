@@ -51,6 +51,20 @@ model customers {
   @@index([id, createdAt])
 }
 
+model interiors {
+  id                      String     @id @default(uuid()) @db.Uuid
+  name                    String     @unique
+  email                   String?
+  phonenumber             String?
+  alternatePhonenumber    String?    @map("alternate_phonenumber")
+  address                 String?
+  commissionFeePercentage Decimal?   @map("commission_fee_percentage")
+  createdAt               DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  projects                projects[]
+
+  @@index([id, createdAt])
+}
+
 model brands {
   id              String            @id @default(uuid()) @db.Uuid
   name            String            @unique
@@ -192,6 +206,7 @@ model projects {
   quotationConfig    String?           @map("quotation_config")
   address            String?
   bankId             String?           @map("bank_id") @db.Uuid
+  interiorId         String?           @map("interior_id") @db.Uuid
   createdAt          DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
   order              orders[]
   payments           payments[]
@@ -200,6 +215,7 @@ model projects {
   bank               banks?            @relation(fields: [bankId], references: [id])
   creator            users             @relation(fields: [creatorId], references: [id])
   customer           customers?        @relation(fields: [customerId], references: [id])
+  interior           interiors?        @relation(fields: [interiorId], references: [id])
   tasks              tasks[]
 
   @@index([id, createdAt])
