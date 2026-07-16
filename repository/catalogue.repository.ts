@@ -36,7 +36,7 @@ class CatalogueRepository extends BaseRepository<Catalogue, CatalogueData, any> 
             where[this.config.statusField] = null;
         }
 
-        where = serverUtils.buildWhere(where, filters, data, searchFields);
+        where = serverUtils.buildWhere(where, filters, data, searchFields, this.config.hasCreatedAt, this.modelName);
         return await this.model.findMany({
             take: data.limit,
             where,

@@ -68,7 +68,8 @@ model catalogues {
   brandId         String            @map("brand_id") @db.Uuid
   name            String            @unique
   type            String?
-  price           Decimal?
+  lowerRrp        Decimal?          @map("lower_rrp")
+  higherRrp       Decimal?          @map("higher_rrp")
   launchYear      String?           @map("launch_year")
   rackNo          String?           @map("rack_no")
   description     String?

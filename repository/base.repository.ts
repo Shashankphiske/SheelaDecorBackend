@@ -153,7 +153,7 @@ export abstract class BaseRepository<T, TCreateData, TUpdateData> {
             where[this.config.statusField] = null;
         }
 
-        where = serverUtils.buildWhere(where, filters, data, searchFields, this.config.hasCreatedAt);
+        where = serverUtils.buildWhere(where, filters, data, searchFields, this.config.hasCreatedAt, this.modelName);
 
         return await this.model.findMany({
             take: data.limit || 10,

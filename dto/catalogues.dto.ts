@@ -3,7 +3,8 @@ interface Catalogue {
     name: string
     brandId?: string
     type?: string
-    price?: number
+    lowerRrp?: number
+    higherRrp?: number
     launchYear?: String
     rackNo?: string
     description?: string
@@ -14,7 +15,8 @@ interface CatalogueData {
     name: string
     brandId: string
     type: string | null
-    price: number | null
+    lowerRrp: number | null
+    higherRrp: number | null
     launchYear: String | null
     rackNo: string | null
     description: string | null

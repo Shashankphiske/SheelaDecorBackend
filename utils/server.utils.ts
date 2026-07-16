@@ -20,7 +20,8 @@ class ServerUtils {
         filters: any,
         data: PaginationData,
         searchFields: string[],
-        hasCreatedAt: boolean = true
+        hasCreatedAt: boolean = true,
+        modelName?: string
     ) => {
         const AND: any[] = [{ ...baseWhere }];
 
@@ -81,12 +82,31 @@ class ServerUtils {
         // 💰 PRICE RANGE FILTER (NEW)
         // ─────────────────────────────
         if (data.minPrice != null || data.maxPrice != null) {
-            AND.push({
-                price: {
-                    ...(data.minPrice != null ? { gte: Number(data.minPrice) } : {}),
-                    ...(data.maxPrice != null ? { lte: Number(data.maxPrice) } : {}),
-                },
-            });
+            if (modelName === "CATALOGUE") {
+                AND.push({
+                    OR: [
+                        {
+                            lowerRrp: {
+                                ...(data.minPrice != null ? { gte: Number(data.minPrice) } : {}),
+                                ...(data.maxPrice != null ? { lte: Number(data.maxPrice) } : {}),
+                            }
+                        },
+                        {
+                            higherRrp: {
+                                ...(data.minPrice != null ? { gte: Number(data.minPrice) } : {}),
+                                ...(data.maxPrice != null ? { lte: Number(data.maxPrice) } : {}),
+                            }
+                        }
+                    ]
+                });
+            } else {
+                AND.push({
+                    price: {
+                        ...(data.minPrice != null ? { gte: Number(data.minPrice) } : {}),
+                        ...(data.maxPrice != null ? { lte: Number(data.maxPrice) } : {}),
+                    },
+                });
+            }
         }
 
         // ─────────────────────────────
