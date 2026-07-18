@@ -9,5 +9,9 @@ const router = express.Router();
 const controller = GeneralFactory.create(ReportRespository, ReportService, ReportController);
 
 router.get("/", errorHandler.wrapper(controller.fetchDashData));
+router.get("/projects", errorHandler.wrapper(controller.getProjectsReport));
+router.get("/payments", errorHandler.wrapper(controller.getPaymentsReport));
+router.get("/interiors", errorHandler.wrapper(controller.getInteriorsReport));
+router.get("/products", errorHandler.wrapper(controller.getProductsReport));
 
-export { router as ReportRouter }
+export { router as ReportRouter };
