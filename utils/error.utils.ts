@@ -41,9 +41,8 @@ class GlobalErrorHandler {
         }
 
         const status = err.status ?? 500;
-        // TODO: Remove debug details before going to production
         const responseMessage = status === 500
-            ? `[DEBUG 500] ${err.message || "Unknown error"} | Stack: ${err.stack?.split("\n").slice(0, 3).join(" | ") ?? "no stack"}`
+            ? "Something went wrong. Please try again later."
             : err.message;
 
         return ApiResponse.error(res, responseMessage, status);
