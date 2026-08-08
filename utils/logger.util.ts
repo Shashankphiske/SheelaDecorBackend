@@ -1,53 +1,24 @@
-import { createLogger, format, transports } from "winston";
-import { addColors } from "winston/lib/winston/config/index.js"
+// Plain console logger — works in both Node.js and Cloudflare Workers.
+// Winston's format.colorize() crashes in workerd (chalk checks process.stdout.isTTY
+// which is undefined in the Workers runtime, causing the global error handler to throw
+// and return a raw HTML 500 instead of our JSON error response).
 
-const levels = {
-    error: 0,
-    warn: 1,
-    info: 2, 
-    http: 3,
-    debug: 4
-}
-
-const colors = {
-    error: "red",
-    warn: "yellow",
-    info: "green",
-    http: "magenta",
-    debug: "blue"
-}
-
-addColors(colors);
-
-const logger = createLogger({
-    level: process.env.NODE_ENV == "production" ? "info" : "debug",
-    levels,
-    format: format.combine(
-        format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-        format.errors({ stack: true }),
-        format.splat(),
-        format.json()
-    ),
-    transports: [
-        new transports.Console({
-            format: format.combine(
-                format.colorize({ all: true }),
-                format.printf(({ timestamp, level, message, ...meta }) => {
-                    return `${timestamp} [${level}]: ${message} ${
-                    Object.keys(meta).length ? JSON.stringify(meta) : ''}`;
-                })
-            )
-        })
-    ]
-});
-
-if(process.env.NODE_ENV !== "production") {
-    logger.add(new transports.Console({
-        format: format.combine(
-            format.colorize(),
-            format.simple()
-        )
-    }));
+const logger = {
+    error: (message: unknown, meta?: Record<string, unknown>) => {
+        console.error("[ERROR]", message, meta ? JSON.stringify(meta) : "");
+    },
+    warn: (message: unknown, meta?: Record<string, unknown>) => {
+        console.warn("[WARN]", message, meta ? JSON.stringify(meta) : "");
+    },
+    info: (message: unknown, meta?: Record<string, unknown>) => {
+        console.log("[INFO]", message, meta ? JSON.stringify(meta) : "");
+    },
+    http: (message: unknown, meta?: Record<string, unknown>) => {
+        console.log("[HTTP]", message, meta ? JSON.stringify(meta) : "");
+    },
+    debug: (message: unknown, meta?: Record<string, unknown>) => {
+        console.debug("[DEBUG]", message, meta ? JSON.stringify(meta) : "");
+    },
 };
 
-export { logger };
+export { logger };
