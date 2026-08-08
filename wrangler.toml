@@ -15,5 +15,3 @@ database_id = "62c01acd-6ddc-418d-bf2c-839ed933b162"
 PORT = "4000"
 CRON_KEY = "cronjobvalue"
 NODE_ENV = "production"
-# JWT_SECRET is stored as an encrypted Cloudflare Secret (not here)
-# Set it via: Cloudflare Dashboard → sheeladecor → Settings → Variables and Secrets → Add Secret
