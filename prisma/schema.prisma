@@ -1,14 +1,14 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
 }
 
 model users {
-  id                   String           @id @default(uuid()) @db.Uuid
+  id                   String           @id @default(uuid())
   username             String           @unique
   email                String           @unique
   password             String
@@ -16,7 +16,7 @@ model users {
   phonenumber          String?
   address              String?
   alternatePhonenumber String?          @map("alternate_phonenumber")
-  createdAt            DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt            DateTime         @default(now()) @map("created_at")
   auth                 authorizations[]
   projects             projects[]
   refreshTokens        refreshTokens[]
@@ -25,9 +25,9 @@ model users {
 }
 
 model refreshTokens {
-  id       String  @id @default(uuid()) @db.Uuid
-  familyId String  @map("family_id") @db.Uuid
-  userId   String  @map("user_id") @db.Uuid
+  id       String  @id @default(uuid())
+  familyId String  @map("family_id")
+  userId   String  @map("user_id")
   role     Role    @default(INTERIOR)
   isUsed   Boolean @map("is_used")
   user     users   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -37,13 +37,13 @@ model refreshTokens {
 }
 
 model customers {
-  id                   String     @id @default(uuid()) @db.Uuid
+  id                   String     @id @default(uuid())
   name                 String     @unique
   email                String?
   phonenumber          String?
   alternatePhonenumber String?    @map("alternate_phonenumber")
   address              String?
-  createdAt            DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt            DateTime   @default(now()) @map("created_at")
   orders               orders[]
   payments             payments[]
   projects             projects[]
@@ -52,24 +52,24 @@ model customers {
 }
 
 model interiors {
-  id                      String     @id @default(uuid()) @db.Uuid
+  id                      String     @id @default(uuid())
   name                    String     @unique
   email                   String?
   phonenumber             String?
   alternatePhonenumber    String?    @map("alternate_phonenumber")
   address                 String?
   commissionFeePercentage Decimal?   @map("commission_fee_percentage")
-  createdAt               DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt               DateTime   @default(now()) @map("created_at")
   projects                projects[]
 
   @@index([id, createdAt])
 }
 
 model brands {
-  id              String            @id @default(uuid()) @db.Uuid
+  id              String            @id @default(uuid())
   name            String            @unique
   description     String?
-  createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt       DateTime          @default(now()) @map("created_at")
   catalogues      catalogues[]
   order           orders[]
   projectProducts projectProducts[]
@@ -78,8 +78,8 @@ model brands {
 }
 
 model catalogues {
-  id              String            @id @default(uuid()) @db.Uuid
-  brandId         String            @map("brand_id") @db.Uuid
+  id              String            @id @default(uuid())
+  brandId         String            @map("brand_id")
   name            String            @unique
   type            String?
   lowerRrp        Decimal?          @map("lower_rrp")
@@ -87,7 +87,7 @@ model catalogues {
   launchYear      String?           @map("launch_year")
   rackNo          String?           @map("rack_no")
   description     String?
-  createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt       DateTime          @default(now()) @map("created_at")
   brand           brands            @relation(fields: [brandId], references: [id])
   order             orders[]
   projectProducts   projectProducts[]
@@ -97,7 +97,7 @@ model catalogues {
 }
 
 model DealsIn {
-  id      String    @id @default(uuid()) @db.Uuid
+  id      String    @id @default(uuid())
   name    String    @unique
   dealers dealers[]
 
@@ -105,23 +105,23 @@ model DealsIn {
 }
 
 model dealers {
-  id            String   @id @default(uuid()) @db.Uuid
+  id            String   @id @default(uuid())
   name          String
   description   String?
-  dealsInId     String   @map("deals_in_id") @db.Uuid
+  dealsInId     String   @map("deals_in_id")
   personName    String   @map("person_name")
   phonenumber   String?
   email         String?
   catalogueLink String?  @map("catalogue_link")
   address       String?
-  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt     DateTime @default(now()) @map("created_at")
   DealsIn       DealsIn  @relation(fields: [dealsInId], references: [id], onDelete: Cascade)
 
   @@unique([name, personName])
 }
 
 model products {
-  id              String             @id @default(uuid()) @db.Uuid
+  id              String             @id @default(uuid())
   name            String             @unique
   description     String?
   sellingUnit     SellingUnit?       @map("selling_unit")
@@ -130,7 +130,7 @@ model products {
   taxRate         Decimal?           @map("tax_rate")
   dimensionType   DimensionType?     @map("dimension_type")
   size            Decimal?
-  createdAt       DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt       DateTime           @default(now()) @map("created_at")
   productCategory ProductCategory?   @map("product_category")
   measurmentsData measurementsData[]
   order           orders[]
@@ -141,7 +141,7 @@ model products {
 }
 
 model ArtisanTypes {
-  id       String     @id @default(uuid()) @db.Uuid
+  id       String     @id @default(uuid())
   name     String     @unique
   artisans artisans[]
 
@@ -149,14 +149,14 @@ model ArtisanTypes {
 }
 
 model artisans {
-  id             String           @id @default(uuid()) @db.Uuid
-  artisanTypeId  String           @map("artisan_type_id") @db.Uuid
+  id             String           @id @default(uuid())
+  artisanTypeId  String           @map("artisan_type_id")
   name           String
   phonenumber    String?
   email          String?
   address        String?
   price          Decimal
-  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt      DateTime         @default(now()) @map("created_at")
   artisanType    ArtisanTypes     @relation(fields: [artisanTypeId], references: [id], onDelete: Cascade)
   projectLabours projectLabours[]
 
@@ -165,9 +165,9 @@ model artisans {
 }
 
 model areas {
-  id               String             @id @default(uuid()) @db.Uuid
+  id               String             @id @default(uuid())
   name             String             @unique
-  createdAt        DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt        DateTime           @default(now()) @map("created_at")
   measurementsData measurementsData[]
   order            orders[]
   projectProducts  projectProducts[]
@@ -176,7 +176,7 @@ model areas {
 }
 
 model banks {
-  id            String     @id @default(uuid()) @db.Uuid
+  id            String     @id @default(uuid())
   bankName      String     @map("bank_name")
   accountName   String?    @map("account_name")
   branch        String
@@ -184,30 +184,30 @@ model banks {
   accountNumber String     @map("account_number")
   ifscCode      String     @map("ifsc_code")
   accountType   BankTypes  @map("account_type")
-  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt     DateTime   @default(now()) @map("created_at")
   project       projects[]
 
   @@index([id, createdAt])
 }
 
 model projects {
-  id                 String            @id @default(uuid()) @db.Uuid
+  id                 String            @id @default(uuid())
   name               String            @unique 
-  customerId         String?           @map("customer_id") @db.Uuid
-  creatorId          String            @map("creator_id") @db.Uuid
+  customerId         String?           @map("customer_id")
+  creatorId          String            @map("creator_id")
   status             ProjectStatus
   totalAmount        Decimal?          @map("total_amount")
   totalTax           Decimal?          @map("total_tax")
   paid               Decimal?
   discount           Decimal?
   discountType       String?           @map("discount_type")
-  deadlineDate       DateTime?         @map("project_date") @db.Timestamptz(6)
+  deadlineDate       DateTime?         @map("project_date")
   additionalRequests String?           @map("additional_requests")
   quotationConfig    String?           @map("quotation_config")
   address            String?
-  bankId             String?           @map("bank_id") @db.Uuid
-  interiorId         String?           @map("interior_id") @db.Uuid
-  createdAt          DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  bankId             String?           @map("bank_id")
+  interiorId         String?           @map("interior_id")
+  createdAt          DateTime          @default(now()) @map("created_at")
   order              orders[]
   payments           payments[]
   projectLabours     projectLabours[]
@@ -222,14 +222,14 @@ model projects {
 }
 
 model projectProducts {
-  id              String        @id @default(uuid()) @db.Uuid
-  projectId       String        @map("project_id") @db.Uuid
-  productId       String        @map("product_id") @db.Uuid
-  areaId          String?       @map("area_id") @db.Uuid
+  id              String        @id @default(uuid())
+  projectId       String        @map("project_id")
+  productId       String        @map("product_id")
+  areaId          String?       @map("area_id")
   price           Decimal?
   quantity        Int?
-  brandId         String?       @map("company_id") @db.Uuid
-  catalogueId     String?       @map("catalogue_id") @db.Uuid
+  brandId         String?       @map("company_id")
+  catalogueId     String?       @map("catalogue_id")
   designNo        Int?          @map("design_no")
   references      String?
   measurementUnit SellingUnit?  @default(METER) @map("measurement_unit")
@@ -249,10 +249,10 @@ model projectProducts {
 }
 
 model projectLabours {
-  id         String       @id @default(uuid()) @db.Uuid
-  projectId  String       @map("project_id") @db.Uuid
-  productId  String       @map("product_id") @db.Uuid
-  artisanId  String?      @map("artisan_id") @db.Uuid
+  id         String       @id @default(uuid())
+  projectId  String       @map("project_id")
+  productId  String       @map("product_id")
+  artisanId  String?      @map("artisan_id")
   price      Decimal
   unit       SellingUnit
   key        String
@@ -268,14 +268,14 @@ model projectLabours {
 }
 
 model tasks {
-  id          String   @id @default(uuid()) @db.Uuid
+  id          String   @id @default(uuid())
   title       String
   description String?
-  taskDate    DateTime @map("task_date") @db.Timestamptz(6)
-  projectId   String   @map("project_id") @db.Uuid
+  taskDate    DateTime @map("task_date")
+  projectId   String   @map("project_id")
   priority    Priority
   status      Status
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt   DateTime @default(now()) @map("created_at")
   project     projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([id, createdAt])
@@ -283,25 +283,25 @@ model tasks {
 }
 
 model stores {
-  id          String   @id @default(uuid()) @db.Uuid
+  id          String   @id @default(uuid())
   name        String
   address     String?
   phonenumber Int
   email       String
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt   DateTime @default(now()) @map("created_at")
 
   @@index([id, createdAt])
 }
 
 model payments {
-  id          String      @id @default(uuid()) @db.Uuid
-  customerId  String?     @map("customer_id") @db.Uuid
-  projectId   String?     @map("project_id") @db.Uuid
+  id          String      @id @default(uuid())
+  customerId  String?     @map("customer_id")
+  projectId   String?     @map("project_id")
   amount      Decimal
   paymentMode String      @map("payment_mode")
   type        PaymentType
   remarks     String?
-  createdAt   DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt   DateTime    @default(now()) @map("created_at")
   customer    customers?  @relation(fields: [customerId], references: [id])
   project     projects?   @relation(fields: [projectId], references: [id])
 
@@ -310,20 +310,20 @@ model payments {
 }
 
 model inquiries {
-  id           String   @id @default(uuid()) @db.Uuid
+  id           String   @id @default(uuid())
   projectName  String   @map("project_name")
   customerName String   @map("customer_name")
   phonenumber  String
   comments     String?
-  createdAt    DateTime @default(now()) @map("inquiry_date") @db.Timestamptz(6)
-  followUpDate DateTime @map("follow_up_date") @db.Timestamptz(6)
+  createdAt    DateTime @default(now()) @map("inquiry_date")
+  followUpDate DateTime @map("follow_up_date")
 
   @@unique([customerName, projectName])
 }
 
 model authorizations {
-  id     String @id @default(uuid()) @db.Uuid
-  userId String @map("user_id") @db.Uuid
+  id     String @id @default(uuid())
+  userId String @map("user_id")
   access String
   user   users  @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -331,17 +331,17 @@ model authorizations {
 }
 
 model orders {
-  id           String      @id @default(uuid()) @db.Uuid
-  customerId   String      @map("customer_id") @db.Uuid
-  orderedDate  DateTime?   @db.Timestamptz(6)
+  id           String      @id @default(uuid())
+  customerId   String      @map("customer_id")
+  orderedDate  DateTime?
   quantity     Decimal?
   orderId      String?     @map("order_id")
-  receivedDate DateTime?   @map("received_date") @db.Timestamptz(6)
-  areaId       String?     @map("area_id") @db.Uuid
-  brandId      String?     @map("brand_id") @db.Uuid
-  catalogueId  String?     @map("catalogue_id") @db.Uuid
-  productId    String      @map("product_id") @db.Uuid
-  projectId    String      @map("project_id") @db.Uuid
+  receivedDate DateTime?   @map("received_date")
+  areaId       String?     @map("area_id")
+  brandId      String?     @map("brand_id")
+  catalogueId  String?     @map("catalogue_id")
+  productId    String      @map("product_id")
+  projectId    String      @map("project_id")
   designNo     Int?        @map("design_no")
   area         areas?      @relation(fields: [areaId], references: [id])
   brand        brands?     @relation(fields: [brandId], references: [id])
@@ -352,23 +352,23 @@ model orders {
 }
 
 model measurements {
-  id               String             @id @default(uuid()) @db.Uuid
+  id               String             @id @default(uuid())
   projectName      String             @map("project_name") @unique
-  createdAt        DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt        DateTime           @default(now()) @map("created_at")
   measurementsData measurementsData[]
 
   @@index([id, createdAt])
 }
 
 model measurementsData {
-  id            String       @id @default(uuid()) @db.Uuid
-  areaId        String       @map("area_id") @db.Uuid
-  productId     String       @map("product_id") @db.Uuid
+  id            String       @id @default(uuid())
+  areaId        String       @map("area_id")
+  productId     String       @map("product_id")
   length        Decimal?
   width         Decimal?
   height        Decimal?
   unit          SellingUnit? @default(METER)
-  measurementId String       @map("measurement_id") @db.Uuid
+  measurementId String       @map("measurement_id")
   area          areas        @relation(fields: [areaId], references: [id])
   measurements  measurements @relation(fields: [measurementId], references: [id])
   product       products     @relation(fields: [productId], references: [id])
@@ -493,13 +493,13 @@ enum PaymentType {
 }
 
 model cataloguesGivenTo {
-  id             String      @id @default(uuid()) @db.Uuid
-  givenDate      DateTime    @map("given_date") @db.Timestamptz(6)
+  id             String      @id @default(uuid())
+  givenDate      DateTime    @map("given_date")
   clientName     String      @map("client_name")
   siteName       String      @map("site_name")
-  catalogueId    String      @map("catalogue_id") @db.Uuid
+  catalogueId    String      @map("catalogue_id")
   receivedStatus Boolean     @default(false) @map("received_status")
-  createdAt      DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt      DateTime    @default(now()) @map("created_at")
   catalogue      catalogues  @relation(fields: [catalogueId], references: [id], onDelete: Cascade)
 
   @@index([id, createdAt])
@@ -513,36 +513,36 @@ enum MachineStatus {
 }
 
 model MachineCategory {
-  id        String    @id @default(uuid()) @db.Uuid
+  id        String    @id @default(uuid())
   name      String    @unique
   machines  Machine[]
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt DateTime  @default(now()) @map("created_at")
 
   @@index([id, createdAt])
   @@map("machine_categories")
 }
 
 model MachineBrand {
-  id        String    @id @default(uuid()) @db.Uuid
+  id        String    @id @default(uuid())
   name      String    @unique
   machines  Machine[]
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt DateTime  @default(now()) @map("created_at")
 
   @@index([id, createdAt])
   @@map("machine_brands")
 }
 
 model Machine {
-  id           String          @id @default(uuid()) @db.Uuid
+  id           String          @id @default(uuid())
   name         String
-  categoryId   String          @map("category_id") @db.Uuid
+  categoryId   String          @map("category_id")
   category     MachineCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  brandId      String          @map("brand_id") @db.Uuid
+  brandId      String          @map("brand_id")
   brand        MachineBrand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  purchaseDate DateTime?       @map("purchase_date") @db.Timestamptz(6)
+  purchaseDate DateTime?       @map("purchase_date")
   location     String?
   status       MachineStatus   @default(AVAILABLE)
-  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt    DateTime        @default(now()) @map("created_at")
 
   @@unique([name, categoryId, brandId])
   @@index([id, createdAt])
@@ -550,25 +550,25 @@ model Machine {
 }
 
 model MaterialCategory {
-  id        String     @id @default(uuid()) @db.Uuid
+  id        String     @id @default(uuid())
   name      String     @unique
   materials Material[]
-  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt DateTime   @default(now()) @map("created_at")
 
   @@index([id, createdAt])
   @@map("material_categories")
 }
 
 model Material {
-  id           String           @id @default(uuid()) @db.Uuid
+  id           String           @id @default(uuid())
   name         String
-  categoryId   String           @map("category_id") @db.Uuid
+  categoryId   String           @map("category_id")
   category     MaterialCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   unit         String
   currentStock Decimal          @map("current_stock")
   rate         Decimal
   sentToSite   Boolean          @default(false) @map("sent_to_site")
-  createdAt    DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  createdAt    DateTime         @default(now()) @map("created_at")
 
   @@unique([name, categoryId])
   @@index([id, createdAt])

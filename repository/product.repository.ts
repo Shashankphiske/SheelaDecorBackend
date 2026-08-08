@@ -4,7 +4,7 @@ import type { Product, ProductData } from "../dto/product.dto.js";
 import { BaseRepository } from "./base.repository.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import { serverUtils } from "../utils/server.utils.js";
-import { DimensionType } from "../generated/prisma/enums.js";
+import { DimensionType } from "@prisma/client";
 import { logger } from "../utils/logger.util.js";
 
 class ProductRepository extends BaseRepository<any, any, any> {

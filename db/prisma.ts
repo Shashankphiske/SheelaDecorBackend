@@ -1,10 +1,10 @@
-import { PrismaClient } from '../generated/prisma/client.js';
-import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg';
-import { config } from '../config/index.js';
+import { PrismaClient } from '@prisma/client';
+import { PrismaD1 } from '@prisma/adapter-d1';
+import { env } from 'cloudflare:workers';
 
-// Use the Pooling URL (Port 6543) for your application logic
-const pool = new Pool({ connectionString: config.databaseUrl });
-const adapter = new PrismaPg(pool);
+// Initialize Prisma Client using the Cloudflare D1 database adapter
+// @ts-ignore
+const adapter = new PrismaD1(env.DB);
+export const prisma: PrismaClient = new PrismaClient({ adapter });
 
-export const prisma = new PrismaClient({ adapter });
+

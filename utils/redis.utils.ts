@@ -39,7 +39,7 @@ class RedisUtils {
                 });
             });
 
-            stream.on("error", (err) => {
+            stream.on("error", (err: any) => {
                 throw err;
             });
 

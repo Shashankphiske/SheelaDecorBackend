@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express"
 import { logger } from "./logger.util.js";
 import { ApiResponse } from "./api.utils.js";
 import { CookieOptions } from "../dto/token.dto.js";
-import { Prisma } from "../generated/prisma/client.js";
+import { Prisma } from "@prisma/client";
 
 class ErrorHandler {
     wrapper = (fn: any) => {

@@ -1,0 +1,9 @@
+name = "sheeladecor"
+main = "server.ts"
+compatibility_date = "2025-09-01"
+compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sheela-decor"
+database_id = "62c01acd-6ddc-418d-bf2c-839ed933b162"

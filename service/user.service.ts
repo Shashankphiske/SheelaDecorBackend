@@ -28,8 +28,7 @@ class UserService extends BaseService<User, UserData, any> {
             data: defaultAccess.map(key => ({
                 userId: user.id,
                 access: key
-            })),
-            skipDuplicates: true
+            }))
         });
 
         logger.info("User created with default master and customer page access", {

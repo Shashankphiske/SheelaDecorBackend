@@ -1,20 +1,27 @@
-import { Redis } from "ioredis";
-import { ServerError } from "../utils/error.utils.js";
-import { config } from "./index.js";
 import { logger } from "../utils/logger.util.js";
 
-let redis: Redis;
+// Stub Redis client to avoid actual network/Redis connection in backend
+const redis = {
+    get: async () => null,
+    set: async () => {},
+    setex: async () => {},
+    del: async () => {},
+    scanStream: () => {
+        const stream = {
+            on: (event: string, callback: any) => {
+                if (event === "end") {
+                    setTimeout(callback, 0);
+                }
+                return stream;
+            }
+        };
+        return stream;
+    },
+    on: (event: string, callback: any) => {
+        if (event === "connect") {
+            setTimeout(() => callback(), 0);
+        }
+    }
+} as any;
 
-try {
-    redis = new Redis(config.redisUrl as string, {
-        connectTimeout: 10000,
-        maxRetriesPerRequest: 1
-    });
-
-    redis.on("connect", () => logger.info("Redis connected to upstash"));
-    redis.on("error", () => logger.error("Redis error"));
-}catch(err: any) {
-    throw new ServerError(err);
-}
-
-export { redis };
+export { redis };

@@ -2,7 +2,7 @@ import { errorMessage } from "../constants/error.constants.js";
 import { prisma } from "../db/prisma.js";
 import type { PaginationData } from "../dto/pagination.dto.js";
 import type { Payment, PaymentData } from "../dto/payment.dto.js";
-import { Prisma } from "../generated/prisma/client.js";
+import { Prisma } from "@prisma/client";
 import { ServerError } from "../utils/error.utils.js";
 import { serverUtils } from "../utils/server.utils.js";
 import { BaseRepository } from "./base.repository.js";

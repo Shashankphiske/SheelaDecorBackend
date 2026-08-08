@@ -1,10 +1,10 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { config } from "../config/index.js";
 import { logger } from "./logger.util.js";
 import { ServerError } from "./error.utils.js";
 import { errorMessage } from "../constants/error.constants.js";
-import type { Role } from "../generated/prisma/enums.js";
+import type { Role } from "@prisma/client";
 
 class AuthUtilsClass {
     comparePasswords = async (password: string, hashedPassword: string) => {

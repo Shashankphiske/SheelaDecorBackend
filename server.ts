@@ -132,10 +132,18 @@ app.use("/v1/machines", authorizePage("machineStock"), MachineRouter);
 app.use("/v1/materialcategories", authorizePage("materialStock"), MaterialCategoryRouter);
 app.use("/v1/materials", authorizePage("materialStock"), MaterialRouter);
 
+import { httpServerHandler } from "cloudflare:node";
+
 app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 
 app.use(globalErrorHandler.handleError);
 
-app.listen(config.port, "0.0.0.0",() => {
-    console.log(`App listening on port : ${config.port}`);
+const port = config.port || 4000;
+
+app.listen(port, "0.0.0.0", () => {
+    console.log(`App listening on port : ${port}`);
 });
+
+// Export default handler for Cloudflare Workers
+export default httpServerHandler({ port });
+
