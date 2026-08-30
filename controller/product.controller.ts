@@ -22,7 +22,8 @@ class ProductController extends BaseController<ProductService> {
             this.getPagination(req),
             {
                 sellingUnit: req.query.sellingUnit?.toString(),
-                productType: req.query.productType?.toString()
+                productType: req.query.productType?.toString(),
+                productCategory: req.query.productCategory?.toString()
             },
             [
                 "name"

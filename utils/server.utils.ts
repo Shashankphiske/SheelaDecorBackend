@@ -49,7 +49,6 @@ class ServerUtils {
                 OR: searchFields.map((field) => ({
                     [field]: {
                         contains: data.search,
-                        mode: "insensitive",
                     },
                 })),
             });
