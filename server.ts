@@ -138,12 +138,11 @@ app.use("/v1/authorizations", authorizePage("settings"), AuthorizationRouter);
 
 app.use(globalErrorHandler.handleError);
 
-const port = config.port || 4000;
+const port = Number(config.port || 4000);
 
 app.listen(port, "0.0.0.0", () => {
     console.log(`App listening on port : ${port}`);
 });
 
-// Export default handler for Cloudflare Workers
 export default httpServerHandler({ port });
 

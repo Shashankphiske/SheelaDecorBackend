@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec tsx server.ts",
+    "dev": "wrangler dev --port 4000",
     "build": "prisma generate && tsc",
     "generate": "prisma generate",
     "seed": "npx tsx prisma/seed.ts"
