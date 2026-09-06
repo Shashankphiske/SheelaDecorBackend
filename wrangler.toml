@@ -16,3 +16,6 @@ PORT = "4000"
 CRON_KEY = "cronjobvalue"
 NODE_ENV = "production"
 JWT_SECRET = "sheeladecor"
+
+[triggers]
+crons = [ "0 0 1 * *" ]

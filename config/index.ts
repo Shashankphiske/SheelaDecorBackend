@@ -13,6 +13,10 @@ interface Config {
     databaseUrl: string;
     redisUrl: string;
     cronKey: string;
+    googleClientEmail: string;
+    googlePrivateKey: string;
+    googleDriveParentFolderId: string;
+    defaultBackupEmail: string;
 }
 
 const config: Config = {
@@ -21,7 +25,11 @@ const config: Config = {
     directDbConnection: process.env.DIRECT_URL ?? "",
     databaseUrl: process.env.DATABASE_URL ?? "",
     redisUrl: process.env.REDIS_URL ?? "",
-    cronKey: process.env.CRON_KEY ?? ""
+    cronKey: process.env.CRON_KEY ?? "cronjobvalue",
+    googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL ?? process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? "",
+    googlePrivateKey: (process.env.GOOGLE_PRIVATE_KEY ?? "").replace(/\\n/g, "\n"),
+    googleDriveParentFolderId: process.env.GOOGLE_DRIVE_FOLDER_ID ?? process.env.GOOGLE_DRIVE_PARENT_FOLDER_ID ?? "",
+    defaultBackupEmail: "sheeladecorproject@gmail.com"
 };
 
 export { config };

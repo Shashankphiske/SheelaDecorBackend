@@ -97,10 +97,12 @@ model catalogues {
 }
 
 model DealsIn {
-  id      String    @id @default(uuid())
-  name    String    @unique
-  dealers dealers[]
+  id        String    @id @default(uuid())
+  name      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  dealers   dealers[]
 
+  @@index([id, createdAt])
   @@map("deals_in")
 }
 
@@ -141,10 +143,12 @@ model products {
 }
 
 model ArtisanTypes {
-  id       String     @id @default(uuid())
-  name     String     @unique
-  artisans artisans[]
+  id        String     @id @default(uuid())
+  name      String     @unique
+  createdAt DateTime   @default(now()) @map("created_at")
+  artisans  artisans[]
 
+  @@index([id, createdAt])
   @@map("artisan_types")
 }
 
@@ -244,7 +248,9 @@ model projectProducts {
   brand           brands?       @relation(fields: [brandId], references: [id], onDelete: Cascade)
   product         products      @relation(fields: [productId], references: [id], onDelete: Cascade)
   project         projects      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now()) @map("created_at")
 
+  @@index([id, createdAt])
   @@map("project_products")
 }
 
@@ -263,7 +269,9 @@ model projectLabours {
   artisan    artisans?    @relation(fields: [artisanId], references: [id])
   product    products     @relation(fields: [productId], references: [id], onDelete: Cascade)
   project    projects     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt  DateTime     @default(now()) @map("created_at")
 
+  @@index([id, createdAt])
   @@map("project_labours")
 }
 
@@ -322,12 +330,14 @@ model inquiries {
 }
 
 model authorizations {
-  id     String @id @default(uuid())
-  userId String @map("user_id")
-  access String
-  user   users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  access    String
+  createdAt DateTime @default(now()) @map("created_at")
+  user      users    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, access])
+  @@index([id, createdAt])
 }
 
 model orders {
@@ -349,6 +359,9 @@ model orders {
   customer     customers   @relation(fields: [customerId], references: [id], onDelete: Cascade)
   product      products    @relation(fields: [productId], references: [id], onDelete: Cascade)
   project      projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt    DateTime    @default(now()) @map("created_at")
+
+  @@index([id, createdAt])
 }
 
 model measurements {
@@ -372,7 +385,9 @@ model measurementsData {
   area          areas        @relation(fields: [areaId], references: [id])
   measurements  measurements @relation(fields: [measurementId], references: [id])
   product       products     @relation(fields: [productId], references: [id])
+  createdAt     DateTime     @default(now()) @map("created_at")
 
+  @@index([id, createdAt])
   @@map("measurements_data")
 }
 

@@ -37,6 +37,8 @@ import { MachineBrandRouter } from "./router/machineBrand.router.js";
 import { MachineRouter } from "./router/machine.router.js";
 import { MaterialCategoryRouter } from "./router/materialCategory.router.js";
 import { MaterialRouter } from "./router/material.router.js";
+import { BackupRouter, backupController } from "./router/backup.router.js";
+import { errorHandler } from "./factory/error.factory.js";
 dotenv.config();
 
 const app = express();
@@ -49,7 +51,7 @@ const stream = {
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://project-sheela-dash.lovable.app', "https://sheeladecorfrontend.netlify.app"],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-cron-key'],
   credentials: true, // Required if you are using cookies or sessions
   optionsSuccessStatus: 200 
 };
@@ -58,6 +60,9 @@ app.use(cors(corsOptions));
 
 app.use(morgan(`:method :url :response-time ms`, { stream }) );
 
+
+// Dedicated monthly backup cron entrypoint (key-authenticated, public before JWT auth)
+app.get("/v1/backup/monthly-cron", errorHandler.wrapper(backupController.monthlyCron));
 
 // Define a dedicated endpoint instead of overloading the root "/"
 app.get("/", (req: Request, res: Response) => {
@@ -87,6 +92,8 @@ app.use("/v1/users", UserRouter);
 app.use("/v1/auth", AuthRouter);
 
 app.use(authenticate);
+
+app.use("/v1/backup", authorizePage("settings"), BackupRouter);
 
 app.use("/v1/brands", authorizePage("brands"), BrandRouter);
 app.use("/v1/artisans", authorizePage("artisans"), ArtisanRouter);
@@ -144,5 +151,40 @@ app.listen(port, "0.0.0.0", () => {
     console.log(`App listening on port : ${port}`);
 });
 
-export default httpServerHandler({ port });
+import { BackupRepository } from "./repository/backup.repository.js";
+import { BackupService } from "./service/backup.service.js";
+
+const nodeHandler = httpServerHandler({ port });
+
+export default {
+    fetch: (request: any, env: any, ctx: any) => nodeHandler.fetch(request, env, ctx),
+    async scheduled(event: any, env: any, ctx: any) {
+        ctx.waitUntil(
+            (async () => {
+                try {
+                    logger.info("Cloudflare Cron Trigger fired for Monthly Backup", { cron: event.cron });
+                    const backupRepo = new BackupRepository();
+                    const backupService = new BackupService(backupRepo);
+                    const now = new Date();
+                    let targetYear = now.getFullYear();
+                    let targetMonth = now.getMonth(); // 0-indexed month gives previous month (1..12)
+                    if (targetMonth === 0) {
+                        targetMonth = 12;
+                        targetYear -= 1;
+                    }
+                    const result = await backupService.runBackup({
+                        year: targetYear,
+                        month: targetMonth,
+                        targetEmail: config.defaultBackupEmail,
+                        uploadToDrive: true,
+                        sendEmail: true,
+                    });
+                    logger.info("Scheduled backup completed successfully", { result });
+                } catch (err) {
+                    logger.error("Error executing scheduled backup via Cloudflare Cron", { err });
+                }
+            })()
+        );
+    },
+};
 
