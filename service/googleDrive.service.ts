@@ -25,14 +25,17 @@ export class GoogleDriveService {
     private tokenCache: TokenCache | null = null;
 
     /**
-     * Checks if Google Service Account credentials are provided.
+     * Checks if Google credentials (OAuth2 or Service Account) are provided.
      */
     isConfigured(): boolean {
-        return Boolean(config.googleClientEmail && config.googlePrivateKey);
+        const hasOAuth = Boolean(config.googleClientId && config.googleClientSecret && config.googleRefreshToken);
+        const hasServiceAccount = Boolean(config.googleClientEmail && config.googlePrivateKey);
+        return hasOAuth || hasServiceAccount;
     }
 
     /**
-     * Obtains an OAuth2 access token for Google Drive API using RS256 Service Account JWT.
+     * Obtains an OAuth2 access token for Google Drive API.
+     * Uses OAuth2 Refresh Token (recommended for personal Gmail with 15GB quota) or Service Account JWT fallback.
      */
     private async getAccessToken(): Promise<string> {
         if (this.tokenCache && Date.now() < this.tokenCache.expiresAt - 5 * 60 * 1000) {
@@ -41,10 +44,41 @@ export class GoogleDriveService {
 
         if (!this.isConfigured()) {
             throw new Error(
-                "Google Drive credentials not configured. Please set GOOGLE_CLIENT_EMAIL and GOOGLE_PRIVATE_KEY in .env"
+                "Google Drive credentials not configured. Please set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and GOOGLE_REFRESH_TOKEN in .env"
             );
         }
 
+        // 1. Preferred: Standard OAuth2 User Refresh Token (Uses full 15GB personal quota)
+        if (config.googleClientId && config.googleClientSecret && config.googleRefreshToken) {
+            const res = await fetch("https://oauth2.googleapis.com/token", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                    client_id: config.googleClientId,
+                    client_secret: config.googleClientSecret,
+                    refresh_token: config.googleRefreshToken,
+                    grant_type: "refresh_token",
+                }),
+            });
+
+            if (!res.ok) {
+                const errBody = await res.text();
+                logger.error("Failed to obtain OAuth2 token from Google", { errBody });
+                throw new Error(`Google OAuth2 error (${res.status}): ${errBody}`);
+            }
+
+            const data = (await res.json()) as { access_token: string; expires_in: number };
+            this.tokenCache = {
+                token: data.access_token,
+                expiresAt: Date.now() + (data.expires_in || 3600) * 1000,
+            };
+
+            return this.tokenCache.token;
+        }
+
+        // 2. Fallback: Service Account JWT flow
         const now = Math.floor(Date.now() / 1000);
         const header = { alg: "RS256", typ: "JWT" };
         const claimSet = {

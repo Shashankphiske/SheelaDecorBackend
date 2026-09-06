@@ -257,27 +257,13 @@ export class BackupService {
                 logEntry.errorMessage = "Google Drive credentials not configured. CSV data attached to email.";
             }
 
-            // 4. Send Email Summary with all generated CSV files attached
+            // 4. Send Email Summary (clean notification without file attachments)
             if (shouldSendEmail && targetEmail) {
                 try {
                     const subject = `Monthly Data Backup Report - ${monthName} ${year}`;
                     const html = this.buildEmailSummaryHtml(logEntry, monthName, year);
-
-                    const attachments = [
-                        ...Object.entries(monthlyFiles).map(([fileName, fileData]) => ({
-                            filename: fileName,
-                            content: fileData.csv,
-                            contentType: "text/csv"
-                        })),
-                        ...Object.entries(masterCsvFiles).map(([fileName, fileData]) => ({
-                            filename: `master_${fileName}`,
-                            content: fileData.csv,
-                            contentType: "text/csv"
-                        }))
-                    ];
-
-                    await sendMail(targetEmail, subject, html, attachments);
-                    logger.info(`Backup notification email sent with ${attachments.length} CSV attachments to ${targetEmail}`);
+                    await sendMail(targetEmail, subject, html);
+                    logger.info(`Backup notification email sent to ${targetEmail}`);
                 } catch (emailErr) {
                     logger.warn("Failed to send backup notification email", { emailErr });
                 }

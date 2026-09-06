@@ -15,6 +15,9 @@ interface Config {
     cronKey: string;
     googleClientEmail: string;
     googlePrivateKey: string;
+    googleClientId: string;
+    googleClientSecret: string;
+    googleRefreshToken: string;
     googleDriveParentFolderId: string;
     defaultBackupEmail: string;
 }
@@ -34,6 +37,9 @@ const config: Config = {
         }
         return key.replace(/\\n/g, "\n");
     },
+    get googleClientId() { return (process.env.GOOGLE_CLIENT_ID ?? process.env.CLIENT_ID ?? "").trim(); },
+    get googleClientSecret() { return (process.env.GOOGLE_CLIENT_SECRET ?? process.env.CLIENT_SECRET ?? "").trim(); },
+    get googleRefreshToken() { return (process.env.GOOGLE_REFRESH_TOKEN ?? process.env.REFRESH_TOKEN ?? process.env.GOOGLE_DRIVE_REFRESH_TOKEN ?? "").trim(); },
     get googleDriveParentFolderId() { return (process.env.GOOGLE_DRIVE_FOLDER_ID ?? process.env.GOOGLE_DRIVE_PARENT_FOLDER_ID ?? "").trim(); },
     get defaultBackupEmail() { return "sheeladecorproject@gmail.com"; }
 };
