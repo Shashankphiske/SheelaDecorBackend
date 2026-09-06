@@ -26,9 +26,15 @@ const config: Config = {
     get databaseUrl() { return process.env.DATABASE_URL ?? ""; },
     get redisUrl() { return process.env.REDIS_URL ?? ""; },
     get cronKey() { return process.env.CRON_KEY ?? "cronjobvalue"; },
-    get googleClientEmail() { return process.env.GOOGLE_CLIENT_EMAIL ?? process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? ""; },
-    get googlePrivateKey() { return (process.env.GOOGLE_PRIVATE_KEY ?? "").replace(/\\n/g, "\n"); },
-    get googleDriveParentFolderId() { return process.env.GOOGLE_DRIVE_FOLDER_ID ?? process.env.GOOGLE_DRIVE_PARENT_FOLDER_ID ?? ""; },
+    get googleClientEmail() { return (process.env.GOOGLE_CLIENT_EMAIL ?? process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? "").trim(); },
+    get googlePrivateKey() {
+        let key = (process.env.GOOGLE_PRIVATE_KEY ?? "").trim();
+        if (key.startsWith('"') && key.endsWith('"')) {
+            key = key.slice(1, -1);
+        }
+        return key.replace(/\\n/g, "\n");
+    },
+    get googleDriveParentFolderId() { return (process.env.GOOGLE_DRIVE_FOLDER_ID ?? process.env.GOOGLE_DRIVE_PARENT_FOLDER_ID ?? "").trim(); },
     get defaultBackupEmail() { return "sheeladecorproject@gmail.com"; }
 };
 

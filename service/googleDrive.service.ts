@@ -7,6 +7,20 @@ interface TokenCache {
     expiresAt: number;
 }
 
+function pemToArrayBuffer(pem: string): ArrayBuffer {
+    const b64 = pem
+        .replace(/-----BEGIN[ A-Z0-9_-]+-----/g, "")
+        .replace(/-----END[ A-Z0-9_-]+-----/g, "")
+        .replace(/\\n/g, "")
+        .replace(/\s+/g, "");
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+    }
+    return bytes.buffer as ArrayBuffer;
+}
+
 export class GoogleDriveService {
     private tokenCache: TokenCache | null = null;
 
@@ -48,10 +62,28 @@ export class GoogleDriveService {
         const encodedClaimSet = base64UrlEncode(claimSet);
         const signatureInput = `${encodedHeader}.${encodedClaimSet}`;
 
-        const signer = crypto.createSign("RSA-SHA256");
-        signer.update(signatureInput);
-        signer.end();
-        const signature = signer.sign(config.googlePrivateKey, "base64url");
+        let signature: string;
+        try {
+            const keyBuffer = pemToArrayBuffer(config.googlePrivateKey);
+            const cryptoKey = await crypto.subtle.importKey(
+                "pkcs8",
+                keyBuffer,
+                { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+                false,
+                ["sign"]
+            );
+            const signatureBuffer = await crypto.subtle.sign(
+                "RSASSA-PKCS1-v1_5",
+                cryptoKey,
+                new TextEncoder().encode(signatureInput)
+            );
+            signature = Buffer.from(signatureBuffer).toString("base64url");
+        } catch (subtleErr) {
+            const signer = crypto.createSign("RSA-SHA256");
+            signer.update(signatureInput);
+            signer.end();
+            signature = signer.sign(config.googlePrivateKey, "base64url");
+        }
 
         const jwt = `${signatureInput}.${signature}`;
 
@@ -94,7 +126,7 @@ export class GoogleDriveService {
 
         const searchUrl = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             query
-        )}&fields=files(id,name)&spaces=drive`;
+        )}&fields=files(id,name)&spaces=drive&supportsAllDrives=true&includeItemsFromAllDrives=true`;
 
         const searchRes = await fetch(searchUrl, {
             headers: { Authorization: `Bearer ${token}` },
@@ -116,7 +148,7 @@ export class GoogleDriveService {
             createBody.parents = [parentFolderId];
         }
 
-        const createRes = await fetch("https://www.googleapis.com/drive/v3/files?fields=id,name", {
+        const createRes = await fetch("https://www.googleapis.com/drive/v3/files?supportsAllDrives=true&fields=id,name", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -167,7 +199,7 @@ export class GoogleDriveService {
         const query = `'${folderId}' in parents and trashed = false`;
         const listUrl = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             query
-        )}&pageSize=1000&fields=files(id,name)&spaces=drive`;
+        )}&pageSize=1000&fields=files(id,name)&spaces=drive&supportsAllDrives=true&includeItemsFromAllDrives=true`;
 
         const listRes = await fetch(listUrl, {
             headers: { Authorization: `Bearer ${token}` },
@@ -185,7 +217,7 @@ export class GoogleDriveService {
         let deletedCount = 0;
         for (const file of data.files) {
             try {
-                const delRes = await fetch(`https://www.googleapis.com/drive/v3/files/${file.id}`, {
+                const delRes = await fetch(`https://www.googleapis.com/drive/v3/files/${file.id}?supportsAllDrives=true`, {
                     method: "DELETE",
                     headers: { Authorization: `Bearer ${token}` },
                 });
@@ -216,7 +248,7 @@ export class GoogleDriveService {
         const query = `name = '${fileName.replace(/'/g, "\\'")}' and '${folderId}' in parents and trashed = false`;
         const searchUrl = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             query
-        )}&fields=files(id,name)&spaces=drive`;
+        )}&fields=files(id,name)&spaces=drive&supportsAllDrives=true&includeItemsFromAllDrives=true`;
 
         const searchRes = await fetch(searchUrl, {
             headers: { Authorization: `Bearer ${token}` },
@@ -232,7 +264,7 @@ export class GoogleDriveService {
 
         if (existingFileId) {
             // Update existing file content
-            const updateUrl = `https://www.googleapis.com/upload/drive/v3/files/${existingFileId}?uploadType=media`;
+            const updateUrl = `https://www.googleapis.com/upload/drive/v3/files/${existingFileId}?uploadType=media&supportsAllDrives=true`;
             const updateRes = await fetch(updateUrl, {
                 method: "PATCH",
                 headers: {
@@ -270,7 +302,7 @@ export class GoogleDriveService {
             fileContent +
             closeDelimiter;
 
-        const uploadUrl = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name";
+        const uploadUrl = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&supportsAllDrives=true&fields=id,name";
         const uploadRes = await fetch(uploadUrl, {
             method: "POST",
             headers: {
@@ -299,7 +331,7 @@ export class GoogleDriveService {
 
         try {
             const token = await this.getAccessToken();
-            const shareUrl = `https://www.googleapis.com/drive/v3/files/${folderId}/permissions?sendNotificationEmail=false`;
+            const shareUrl = `https://www.googleapis.com/drive/v3/files/${folderId}/permissions?supportsAllDrives=true&sendNotificationEmail=false`;
 
             const res = await fetch(shareUrl, {
                 method: "POST",

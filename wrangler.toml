@@ -16,6 +16,7 @@ PORT = "4000"
 CRON_KEY = "cronjobvalue"
 NODE_ENV = "production"
 JWT_SECRET = "sheeladecor"
+GOOGLE_CLIENT_EMAIL = "sheeladecoradmin@static-dock-450412-u2.iam.gserviceaccount.com"
 
 [triggers]
 crons = [ "0 0 1 * *" ]

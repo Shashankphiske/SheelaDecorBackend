@@ -88,19 +88,27 @@ export class BackupController {
             }
         }
 
-        const result = await this.backupService.runBackup({
-            year: targetYear,
-            month: targetMonth,
-            targetEmail: config.defaultBackupEmail,
-            uploadToDrive: true,
-            sendEmail: true,
-        });
+        try {
+            const result = await this.backupService.runBackup({
+                year: targetYear,
+                month: targetMonth,
+                targetEmail: config.defaultBackupEmail,
+                uploadToDrive: true,
+                sendEmail: true,
+            });
 
-        return res.status(200).json({
-            status: "success",
-            message: `Scheduled monthly backup completed for ${result.monthName} ${targetYear}.`,
-            data: result,
-        });
+            return res.status(200).json({
+                status: "success",
+                message: `Scheduled monthly backup completed for ${result.monthName} ${targetYear}.`,
+                data: result,
+            });
+        } catch (err: any) {
+            return res.status(200).json({
+                status: "error",
+                message: err?.message || "Backup execution failed",
+                details: String(err),
+            });
+        }
     };
 
     /**
