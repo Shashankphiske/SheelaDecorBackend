@@ -1,7 +1,18 @@
 import nodemailer from "nodemailer";
 import { logger } from "../utils/logger.util.js";
 
-const sendMail = async (to: string, subject: string, html: string) => {
+export interface MailAttachment {
+    filename: string;
+    content: string | Buffer;
+    contentType?: string;
+}
+
+const sendMail = async (
+    to: string,
+    subject: string,
+    html: string,
+    attachments?: MailAttachment[]
+) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail",
@@ -11,18 +22,22 @@ const sendMail = async (to: string, subject: string, html: string) => {
             }
         });
 
-        const mailOptions = {
+        const mailOptions: any = {
             from: "'Sheela Decor' <sheeladecorproject@gmail.com>",
             to: to,
             subject: subject,
             html
+        };
+
+        if (attachments && attachments.length > 0) {
+            mailOptions.attachments = attachments;
         }
 
         const info = await transporter.sendMail(mailOptions);
         return info;
-    }catch (err: any) {
-        logger.warn("Error while sending mail");
+    } catch (err: any) {
+        logger.warn("Error while sending mail", { err: err?.message || err });
     }
-}
+};
 
-export { sendMail }
+export { sendMail };

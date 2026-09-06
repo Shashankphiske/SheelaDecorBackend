@@ -196,68 +196,88 @@ export class BackupService {
 
             // 3. Upload to Google Drive if configured
             if (shouldUploadDrive && this.googleDriveService.isConfigured()) {
-                logger.info("Connecting to Google Drive and establishing folder hierarchy...");
+                try {
+                    logger.info("Connecting to Google Drive and establishing folder hierarchy...");
 
-                // A. Establish 'Data Backup' -> Year -> Month folder hierarchy
-                const { dataBackupRootId, monthFolderId } = await this.googleDriveService.getOrCreateHierarchy(
-                    year,
-                    monthFolderName
-                );
-
-                // B. Overwrite rule: Purge all existing data inside month folder
-                logger.info(`Purging existing files in month folder '${monthFolderName}' before fresh backup...`);
-                await this.googleDriveService.purgeFolderContents(monthFolderId);
-
-                // C. Upload all transactional CSV files
-                for (const [fileName, fileData] of Object.entries(monthlyFiles)) {
-                    await this.googleDriveService.uploadOrUpdateFile(
-                        monthFolderId,
-                        fileName,
-                        fileData.csv,
-                        "text/csv"
+                    // A. Establish 'Data Backup' -> Year -> Month folder hierarchy
+                    const { dataBackupRootId, monthFolderId } = await this.googleDriveService.getOrCreateHierarchy(
+                        year,
+                        monthFolderName
                     );
+
+                    // B. Overwrite rule: Purge all existing data inside month folder
+                    logger.info(`Purging existing files in month folder '${monthFolderName}' before fresh backup...`);
+                    await this.googleDriveService.purgeFolderContents(monthFolderId);
+
+                    // C. Upload all transactional CSV files
+                    for (const [fileName, fileData] of Object.entries(monthlyFiles)) {
+                        await this.googleDriveService.uploadOrUpdateFile(
+                            monthFolderId,
+                            fileName,
+                            fileData.csv,
+                            "text/csv"
+                        );
+                    }
+
+                    // D. Share Data Backup root folder with target Gmail
+                    await this.googleDriveService.shareFolder(dataBackupRootId, targetEmail, "writer");
+                    await this.googleDriveService.shareFolder(monthFolderId, targetEmail, "writer");
+
+                    logEntry.driveFolderUrl = this.googleDriveService.getFolderUrl(monthFolderId);
+
+                    // E. Handle Master Data Backup folder
+                    const masterFolderId = await this.googleDriveService.getOrCreateMasterFolder();
+
+                    // Upload/Update master data CSVs in Master Data Backup folder
+                    for (const [fileName, fileData] of Object.entries(masterCsvFiles)) {
+                        await this.googleDriveService.uploadOrUpdateFile(
+                            masterFolderId,
+                            fileName,
+                            fileData.csv,
+                            "text/csv"
+                        );
+                    }
+
+                    // Share Master Data Backup folder with target Gmail
+                    await this.googleDriveService.shareFolder(masterFolderId, targetEmail, "writer");
+                    logEntry.masterDriveFolderUrl = this.googleDriveService.getFolderUrl(masterFolderId);
+
+                    logger.info("Google Drive backup completed successfully", {
+                        monthFolderUrl: logEntry.driveFolderUrl,
+                        masterFolderUrl: logEntry.masterDriveFolderUrl,
+                    });
+                } catch (driveErr: any) {
+                    logger.warn("Google Drive upload error", { error: driveErr?.message || driveErr });
+                    logEntry.status = "PARTIAL";
+                    logEntry.errorMessage = `Google Drive upload: ${driveErr?.message || "Storage quota limitation"}. All CSV files are attached directly to this email.`;
                 }
-
-                // D. Share Data Backup root folder with target Gmail
-                await this.googleDriveService.shareFolder(dataBackupRootId, targetEmail, "writer");
-                await this.googleDriveService.shareFolder(monthFolderId, targetEmail, "writer");
-
-                logEntry.driveFolderUrl = this.googleDriveService.getFolderUrl(monthFolderId);
-
-                // E. Handle Master Data Backup folder
-                const masterFolderId = await this.googleDriveService.getOrCreateMasterFolder();
-
-                // Upload/Update master data CSVs in Master Data Backup folder
-                for (const [fileName, fileData] of Object.entries(masterCsvFiles)) {
-                    await this.googleDriveService.uploadOrUpdateFile(
-                        masterFolderId,
-                        fileName,
-                        fileData.csv,
-                        "text/csv"
-                    );
-                }
-
-                // Share Master Data Backup folder with target Gmail
-                await this.googleDriveService.shareFolder(masterFolderId, targetEmail, "writer");
-                logEntry.masterDriveFolderUrl = this.googleDriveService.getFolderUrl(masterFolderId);
-
-                logger.info("Google Drive backup completed successfully", {
-                    monthFolderUrl: logEntry.driveFolderUrl,
-                    masterFolderUrl: logEntry.masterDriveFolderUrl,
-                });
             } else if (shouldUploadDrive && !this.googleDriveService.isConfigured()) {
                 logger.warn("Google Drive is not configured in .env; skipping Drive upload step.");
                 logEntry.status = "PARTIAL";
-                logEntry.errorMessage = "Google Drive credentials not configured. CSV data generated locally.";
+                logEntry.errorMessage = "Google Drive credentials not configured. CSV data attached to email.";
             }
 
-            // 4. Send Email Summary via nodemailer
+            // 4. Send Email Summary with all generated CSV files attached
             if (shouldSendEmail && targetEmail) {
                 try {
                     const subject = `Monthly Data Backup Report - ${monthName} ${year}`;
                     const html = this.buildEmailSummaryHtml(logEntry, monthName, year);
-                    await sendMail(targetEmail, subject, html);
-                    logger.info(`Backup notification email sent to ${targetEmail}`);
+
+                    const attachments = [
+                        ...Object.entries(monthlyFiles).map(([fileName, fileData]) => ({
+                            filename: fileName,
+                            content: fileData.csv,
+                            contentType: "text/csv"
+                        })),
+                        ...Object.entries(masterCsvFiles).map(([fileName, fileData]) => ({
+                            filename: `master_${fileName}`,
+                            content: fileData.csv,
+                            contentType: "text/csv"
+                        }))
+                    ];
+
+                    await sendMail(targetEmail, subject, html, attachments);
+                    logger.info(`Backup notification email sent with ${attachments.length} CSV attachments to ${targetEmail}`);
                 } catch (emailErr) {
                     logger.warn("Failed to send backup notification email", { emailErr });
                 }

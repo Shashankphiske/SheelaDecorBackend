@@ -17,6 +17,7 @@ CRON_KEY = "cronjobvalue"
 NODE_ENV = "production"
 JWT_SECRET = "sheeladecor"
 GOOGLE_CLIENT_EMAIL = "sheeladecoradmin@static-dock-450412-u2.iam.gserviceaccount.com"
+GOOGLE_DRIVE_FOLDER_ID = "1Lag2M6S3Y88fTzP4B_Iubm2MfpcHTwcF"
 
 [triggers]
 crons = [ "0 0 1 * *" ]
