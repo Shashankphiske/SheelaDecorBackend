@@ -1,4 +1,3 @@
-import { prisma } from "../db/prisma.js";
 import { logger } from "../utils/logger.util.js";
 import type { CataloguesGivenTo, CataloguesGivenToData } from "../dto/cataloguesGivenTo.dto.js";
 import type { CataloguesGivenToRepository } from "../repository/cataloguesGivenTo.repository.js";
@@ -10,31 +9,37 @@ class CataloguesGivenToService extends BaseService<CataloguesGivenTo, Catalogues
     }
 
     override create = async (data: any): Promise<any> => {
-        if (Array.isArray(data.catalogueIds) && data.catalogueIds.length > 0) {
-            const records = await prisma.$transaction(async (txClient) => {
-                const txRepo = this.method.tx(txClient);
-                const results = [];
-                for (const catalogueId of data.catalogueIds) {
-                    const record = await txRepo.create({
-                        givenDate: data.givenDate,
-                        clientName: data.clientName,
-                        siteName: data.siteName,
-                        catalogueId: catalogueId,
-                        receivedStatus: data.receivedStatus ?? false
-                    });
+        const catalogueIds: string[] = Array.isArray(data.catalogueIds)
+            ? data.catalogueIds
+            : typeof data.catalogueIds === "string" && data.catalogueIds.trim()
+                ? data.catalogueIds.split(",").map((s: string) => s.trim()).filter(Boolean)
+                : data.catalogueId
+                    ? [data.catalogueId]
+                    : [];
+
+        if (catalogueIds.length > 0) {
+            const results = [];
+            for (const catalogueId of catalogueIds) {
+                const record = await this.method.create({
+                    givenDate: data.givenDate,
+                    clientName: data.clientName,
+                    siteName: data.siteName,
+                    catalogueId: catalogueId,
+                    receivedStatus: data.receivedStatus ?? false
+                });
+                if (record && record.id) {
                     results.push(record);
                 }
-                return results;
-            });
+            }
             logger.info(`${this.modelName} records bulk created`, {
-                count: records.length,
+                count: results.length,
             });
-            return records;
+            return results;
         }
 
         const record = await this.method.create(data);
         logger.info(`${this.modelName} created`, {
-            id: record.id,
+            id: record?.id,
         });
         return record;
     };

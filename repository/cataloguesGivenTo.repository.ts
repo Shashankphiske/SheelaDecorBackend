@@ -10,15 +10,20 @@ class CataloguesGivenToRepository extends BaseRepository<CataloguesGivenTo, Cata
     }
 
     create = async (data: CataloguesGivenToData): Promise<CataloguesGivenTo> => {
-        return await this.model.create({
-            data: {
-                ...data,
-                givenDate: new Date(data.givenDate)
-            },
-            include: {
-                catalogue: true
-            }
-        });
+        try {
+            const { catalogueIds, ...cleanData } = data as any;
+            return await this.model.create({
+                data: {
+                    ...cleanData,
+                    givenDate: new Date(cleanData.givenDate)
+                },
+                include: {
+                    catalogue: true
+                }
+            });
+        } catch (error) {
+            this.handlePrismaError(error);
+        }
     };
 
     update = async (data: Partial<CataloguesGivenToData>, id: string, userId?: string) => {
@@ -28,7 +33,7 @@ class CataloguesGivenToRepository extends BaseRepository<CataloguesGivenTo, Cata
                 ...(userId ? { userId } : {})
             };
 
-            const updateData = { ...data };
+            const { catalogueIds, ...updateData } = data as any;
             if (updateData.givenDate) {
                 updateData.givenDate = new Date(updateData.givenDate);
             }
