@@ -110,12 +110,14 @@ abstract class BaseService<T, TData, TMethods> {
             };
         }
 
+        const limit = Number(data.limit) || 10;
         const lastRecord = records[records.length - 1] as any;
 
         logger.info(`${this.modelName} records fetched`);
 
         return {
-            records, nextCursor: {
+            records,
+            nextCursor: records.length < limit ? null : {
                 lastId: lastRecord.id,
                 lastCreatedAt: lastRecord.createdAt
             }
