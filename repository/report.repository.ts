@@ -39,10 +39,15 @@ class ReportRespository {
             })
         ]);
 
+        const totalPayments = Number(payments._sum.amount ?? 0);
+        const totalRevenue = Number(revenue._sum.totalAmount ?? 0);
+        const totalDue = Math.max(0, totalRevenue - totalPayments);
+
         return [
             {
-                totalPayments: Number(payments._sum.amount ?? 0),
-                totalRevenue: Number(revenue._sum.totalAmount ?? 0),
+                totalPayments,
+                totalRevenue,
+                totalDue,
                 totalProjects: projects
             }
         ];
